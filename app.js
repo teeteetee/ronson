@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , hostels = db.get('hostels'),orders = db.get('orders'),users=db.get('users'),posts = db.get('posts'),objects = db.get('objects');
+  , places = db.get('places'),top = db.get('top');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -143,6 +143,21 @@ app.get('*',function(req,res) {
   console.log(uacheck);
   var d = new Date();
   res.send('UNDER CONSTRUCTION');
+  places.find({},function(err,doc){
+    if(err)
+    {
+      res.render('emptyindex');
+    }
+    else {
+      if(doc.length>0)
+      {
+        res.render('index',{'places':doc});
+      }
+      else{
+        res.render('emptyindex');
+      }
+    }
+  });
   //if(uacheck === true) {
   //  res.render('mindex');
   //}
@@ -178,250 +193,200 @@ app.get('/about',function(req,res){
   res.render('about');
 });
 app.get('/top',function(req,res){
-  if(req.session.mail)
-  {
-    //TOP NEEDS TO BE CREATED 
-    res.render('top');
-  }
-  else {
-    res.render('login');
-  }
-});
-//REGISTRATION
-app.get('/rrregisterrr',function(req,res){
-     res.render('register');
-});
-
-app.post('/newuser',function(req,res){
-    //THOSE USERS ARE NORMAL PEOPLE, HOSTEL STUF WILL BE REGISTERED THROUGH ADMIN
-    var vmail = req.body.mail; 
-    var vu = req.body.u; //NEEDED TO WRITE COMMENTS, DONT ASK AT REGISTRATION
-    if (vu.length === 0 )
-      {vu = 0;}
-    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
-    var ms = {};
-    ms.trouble=1;
-    ms.mtext='email incorrect';
-    // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
-    // CHECK MAIL BEFOR WRTING
-    function validateEmail(email) { 
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-} 
-    if (validateEmail(vmail) === true) {
-    users.find({mail:vmail},function(err,doc){
-      if (err)
-      {
-        //DO SMTH
-      }
-      else {
-        if(doc.length === 0)
-        { var now = new Date();
-          var gmonth = now.getMonth();
-          var gyear = now.getUTCFullYear();
-          var gday = now.getDay();
-          users.insert({mail:vmail,phr:vp,lgn:vu,hostel:0,enquiries:{all:0,accepted:0},regdate:{year:gyear,month:gmonth,day:gday}});
-          users.findOne({mail:vmail},function(err,docdoc){
-            console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
-            if (err){
-              //DO SMTH
-            }
-            else{
-               if (docdoc) {
-                req.session = docdoc;
-                ms.trouble =0;
-                ms.mtext='success';
-                // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
-                console.log('SOMEBODY REGISTERED');
-                res.send(ms);
-               }
-               else {
-                  ms.mtext ='fail';
-                  res.send(ms);
-               }
-            }
-          });
-        }
-        else {
-           ms.mtext='email exists'
-           res.send(ms);
-        }
-      }// end of err's else
-    });
-    }   
-    else {
-      // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
-      res.send(ms);
-    }
-
-    });
-    
-app.get('/manage/:hid',function(req,res){
-    var vhostelid = req.params.hid;
-    if (req.session.hostel === 1 && req.session.mail)
+  places.top({},function(err,doc){
+    if(err)
     {
-      users.findOne({mail:req.session.mail,hostelid:vhostelid},function(err,done){
-        if (err)
-          {//SCREAM
-          }
-          else {
-            if(done)
-            {
-              hostels.findOne({hostelid:vhostelid},function(err,done){
-                if (err)
-                {
-                  //DO SOMETHING
-                }
-                else {
-                  if (done)
-                  { 
-                    console.log(JSON.stringify(done)+' GOING INTO COUTRY CHECK');
-                    console.log('-----------'+done.country+'-----------');
-                     if (done.country === "russia")
-                    { 
-                      if(done.offrqntt === 0)
-                        {res.render('nooffershosteladminru',{'hostel':done});}
-                      else
-                        {
-                        res.render('hosteladminru',{'offers':done.offers,'hostel':done});}
-                    //
-                    }
-                    else {  
-                      if(done.offrqntt === 0)
-                        {res.render('nooffershosteladminen',{'hostel':done});}
-                      else
-                        {
-                        res.render('hosteladminen',{'offers':done.offers,'hostel':done});}
-                    }
-                  }  
-                  else
-              {
-                console.log('error');
-              } 
-              }
-              
-            });
-            }
-            else 
-            {
-              res.redirect('http://topandviews.ru');
-            }
-          }
-      });
+      res.redirect('http://recentones.com');
     }
-  else
-  {
-    res.redirect('http://topandviews.ru');
-  }
-});
-//LOGIN MECHANICS
-app.post('/check',function(req,res){
-  //CHECK FOR PASSPORT PRIOR TO HOSTEL CHECK, SORT THIS OUT AFTER ALPHA
-  //"LASTIMEONLINE" MUST BE ADDED AFTER ALPHA
-  vphr=req.body.phr;
-  vlgn=req.body.lgn; // email
-  console.log(vphr+" , "+vlgn);
-  //adding a marker to send to client
-  // MARKER MECHANICS IS NOT PRESENT YET , NEEDS TO BE IMPLEMENTED
-   var  ms = {};
-  ms.trouble=1;
-  ms.mtext='db';
-  //end of marker
-  users.findOne({mail:vlgn},function(err,confirmed){
-    if (err)
-      {res.send(ms);}
-    else 
-    {
-      if (confirmed)
-      {console.log('we have found :'+JSON.stringify(confirmed));
-         if(confirmed.hostel === 1) //HOSTEL LOGED IN , SERVE HOSTELCLIENT
-            {
-              if (bcrypt.compareSync(vphr,confirmed.phr))
-               {
-                console.log('PASSWORD IS GOOD, EXTRACTING INFO FROM HOSTELS DB');
-               var x = confirmed.hostelid;
-              hostels.findOne({hostelid:x},function(err,done){
-                console.log(JSON.stringify(done));
-                if (err)
-                {
-                  console.log('----------DB ERROR-----------');
-                }
-                else {
-                  if (done)
-                  {req.session = confirmed;
-                    ms.trouble=0;
-                    ms.mtext= 'success';
-                   ms.mhostel = done.hostelid;
-                   res.send(ms);
-
-                  //
-                   // console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
-                   //  if (done.country === "russia")
-                   // { 
-                   //    console.log('GOING TO SERVE RUS');
-                   //    req.session = confirmed;
-                   //   if(done.offrqntt === 0)
-                   //   {console.log('RUS OFFER');
-                   //     res.render('index');
-                   //   }
-                   //   else
-                   //   {
-                   //     var offridlst = done.offers;
-                   //     res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
-                   // //
-                   // }
-                   // else {
-                   //    
-                   //    req.session = confirmed;
-                   //   if(done.offrqntt === 0)
-                   //   {res.render('nooffershosteladminen',{'hostel':done});}
-                   //   else
-                   //   {
-                   //     var offridlst = done.offers;
-                   //     res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
-                   // }
-                  }  
-                  else
-              {
-                //DO SOMETHING
-              } 
-              }
-              
-            });
-            }
-            else
-            {
-              ms.mtext='wrong pas';
-              res.send(ms);
-              //WRONG PASSWORD
-            }
-         }
-         else
-          //USER LOGED IN 
-         {
-          if(bcrypt.compareSync(vphr,confirmed.phr))
-          {
-          
-          req.session = confirmed;
-          console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
-          ms.trouble = 0;
-          ms.mtext= 'success';
-          res.send(ms);
-           }
-           else {
-            ms.mtext='wrong pas';
-              res.send(ms);
-              //WRONG PASSWORD
-           }
-         }
-      }
+    else
+    { 
+      if(doc.length>0)
+      {res.render('top',{'tops':doc});}
       else {
-        ms.mtext='wronguser'
-        res.send(ms);
+        res.redirect('http://recentones.com');
       }
     }
+
   });
 });
+//REGISTRATION
+//app.get('/rrregisterrr',function(req,res){
+//     res.render('register');
+//});
+
+//app.post('/newuser',function(req,res){
+//    //THOSE USERS ARE NORMAL PEOPLE, HOSTEL STUF WILL BE REGISTERED THROUGH ADMIN
+//    var vmail = req.body.mail; 
+//    var vu = req.body.u; //NEEDED TO WRITE COMMENTS, DONT ASK AT REGISTRATION
+//    if (vu.length === 0 )
+//      {vu = 0;}
+//    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+//    var ms = {};
+//    ms.trouble=1;
+//    ms.mtext='email incorrect';
+//    // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
+//    // CHECK MAIL BEFOR WRTING
+//    function validateEmail(email) { 
+//    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//    return re.test(email);
+//} 
+//    if (validateEmail(vmail) === true) {
+//    users.find({mail:vmail},function(err,doc){
+//      if (err)
+//      {
+//        //DO SMTH
+//      }
+//      else {
+//        if(doc.length === 0)
+//        { var now = new Date();
+//          var gmonth = now.getMonth();
+//          var gyear = now.getUTCFullYear();
+//          var gday = now.getDay();
+//          users.insert({mail:vmail,phr:vp,lgn:vu,hostel:0,enquiries:{all:0,accepted:0},regdate:{year:gyear,month:gmonth,day:gday}});
+//          users.findOne({mail:vmail},function(err,docdoc){
+//            console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
+//            if (err){
+//              //DO SMTH
+//            }
+//            else{
+//               if (docdoc) {
+//                req.session = docdoc;
+//                ms.trouble =0;
+//                ms.mtext='success';
+//                // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
+//                console.log('SOMEBODY REGISTERED');
+//                res.send(ms);
+//               }
+//               else {
+//                  ms.mtext ='fail';
+//                  res.send(ms);
+//               }
+//            }
+//          });
+//        }
+//        else {
+//           ms.mtext='email exists'
+//           res.send(ms);
+//        }
+//      }// end of err's else
+//    });
+//    }   
+//    else {
+//      // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
+//      res.send(ms);
+//    }
+//
+//    });
+    
+
+//LOGIN MECHANICS
+//app.post('/check',function(req,res){
+//  //CHECK FOR PASSPORT PRIOR TO HOSTEL CHECK, SORT THIS OUT AFTER ALPHA
+//  //"LASTIMEONLINE" MUST BE ADDED AFTER ALPHA
+//  vphr=req.body.phr;
+//  vlgn=req.body.lgn; // email
+//  console.log(vphr+" , "+vlgn);
+//  //adding a marker to send to client
+//  // MARKER MECHANICS IS NOT PRESENT YET , NEEDS TO BE IMPLEMENTED
+//   var  ms = {};
+//  ms.trouble=1;
+//  ms.mtext='db';
+//  //end of marker
+//  users.findOne({mail:vlgn},function(err,confirmed){
+//    if (err)
+//      {res.send(ms);}
+//    else 
+//    {
+//      if (confirmed)
+//      {console.log('we have found :'+JSON.stringify(confirmed));
+//         if(confirmed.hostel === 1) //HOSTEL LOGED IN , SERVE HOSTELCLIENT
+//            {
+//              if (bcrypt.compareSync(vphr,confirmed.phr))
+//               {
+//                console.log('PASSWORD IS GOOD, EXTRACTING INFO FROM HOSTELS DB');
+//               var x = confirmed.hostelid;
+//              hostels.findOne({hostelid:x},function(err,done){
+//                console.log(JSON.stringify(done));
+//                if (err)
+//                {
+//                  console.log('----------DB ERROR-----------');
+//                }
+//                else {
+//                  if (done)
+//                  {req.session = confirmed;
+//                    ms.trouble=0;
+//                    ms.mtext= 'success';
+//                   ms.mhostel = done.hostelid;
+//                   res.send(ms);
+//
+//                  //
+//                   // console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
+//                   //  if (done.country === "russia")
+//                   // { 
+//                   //    console.log('GOING TO SERVE RUS');
+//                   //    req.session = confirmed;
+//                   //   if(done.offrqntt === 0)
+//                   //   {console.log('RUS OFFER');
+//                   //     res.render('index');
+//                   //   }
+//                   //   else
+//                   //   {
+//                   //     var offridlst = done.offers;
+//                   //     res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
+//                   // //
+//                   // }
+//                   // else {
+//                   //    
+//                   //    req.session = confirmed;
+//                   //   if(done.offrqntt === 0)
+//                   //   {res.render('nooffershosteladminen',{'hostel':done});}
+//                   //   else
+//                   //   {
+//                   //     var offridlst = done.offers;
+//                   //     res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
+//                   // }
+//                  }  
+//                  else
+//              {
+//                //DO SOMETHING
+//              } 
+//              }
+//              
+//            });
+//            }
+//            else
+//            {
+//              ms.mtext='wrong pas';
+//              res.send(ms);
+//              //WRONG PASSWORD
+//            }
+//         }
+//         else
+//          //USER LOGED IN 
+//         {
+//          if(bcrypt.compareSync(vphr,confirmed.phr))
+//          {
+//          
+//          req.session = confirmed;
+//          console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
+//          ms.trouble = 0;
+//          ms.mtext= 'success';
+//          res.send(ms);
+//           }
+//           else {
+//            ms.mtext='wrong pas';
+//              res.send(ms);
+//              //WRONG PASSWORD
+//           }
+//         }
+//      }
+//      else {
+//        ms.mtext='wronguser'
+//        res.send(ms);
+//      }
+//    }
+//  });
+//});
 
 //app.get('/full',function(req,res) {
 //  if(req.headers.host === 'topandviews.ru') 
@@ -442,109 +407,124 @@ app.post('/check',function(req,res){
 
 
 //ADMIN SECTION FOR DB CONTROL
-app.get('/admin',function(req,res){
-  if (lguser.admin) {
-   var oc;
-   orders.count({},function(err,c){
-    if (err)
-    {}
-  else {
-    oc= c;
+//app.get('/admin',function(req,res){
+//  if (lguser.admin) {
+//   var oc;
+//   orders.count({},function(err,c){
+//    if (err)
+//    {}
+//  else {
+//    oc= c;
+//
+//  }
+//  });
+//  var hc; 
+//  hostels.count({},function(err,c){
+//    if (err)
+//    {}
+//  else {
+//    hc= c;
+//    var uc ;
+//  users.count({},function(err,c){
+//    if (err)
+//    {}
+//  else {
+//    uc= c;
+//    var huc; users.count({hostel:1},function(err,c){
+//    if (err)
+//    {}
+//  else {
+//    huc= c;
+//    res.render('admingeneral',{'orders':oc,'hostels':hc,'users':uc,'husers':huc});
+//  }
+//  });
+//  }
+//  });
+//  }
+//  });
+//
+//  }
+//  else {
+// res.render('adminauth');
+//}
+//});
 
-  }
-  });
-  var hc; 
-  hostels.count({},function(err,c){
-    if (err)
-    {}
-  else {
-    hc= c;
-    var uc ;
-  users.count({},function(err,c){
-    if (err)
-    {}
-  else {
-    uc= c;
-    var huc; users.count({hostel:1},function(err,c){
-    if (err)
-    {}
-  else {
-    huc= c;
-    res.render('admingeneral',{'orders':oc,'hostels':hc,'users':uc,'husers':huc});
-  }
-  });
-  }
-  });
-  }
-  });
-
-  }
-  else {
- res.render('adminauth');
-}
-});
-
-app.post('/alogin',function(req,res){
-  var p = 'testtest';
-  var l = 'testtest';
-
-  if(req.body.p === p && l === req.body.l && req.session.mail)
-  {
-    req.session.admin = 1;
-    users.update({mail:req.session.mail},{$set:{admin:1}});
-    console.log(req.session);
-    res.redirect('http://topandviews.ru/admin');
-    }
-else
-{res.redirect('http://topandviews.ru');}
-});
+//app.post('/alogin',function(req,res){
+//  var p = 'testtest';
+//  var l = 'testtest';
+//
+//  if(req.body.p === p && l === req.body.l && req.session.mail)
+//  {
+//    req.session.admin = 1;
+//    users.update({mail:req.session.mail},{$set:{admin:1}});
+//    console.log(req.session);
+//    res.redirect('http://topandviews.ru/admin');
+//    }
+//else
+//{res.redirect('http://topandviews.ru');}
+//});
 
 app.get('/admin/:section',function(req,res){
-  if (lguser.admin){
-  switch (req.params.section) {
-    case ('orders'):
-      orders.find({},function(err,docs){
-        if (err) {res.send('error');}
-        else {
-             if (docs != {})
-                           {
-                           console.log(docs);
-                           res.render('adminorders',{'docs' : docs});
-                            }
-      
-              else {
-                    res.send('empty db');
-                   }
-              }
-    });
-    break;
+   switch (req.params.section) {
     case('hostels'):
-      hostels.find({},function(err,docs){
-        res.render('adminhostels',{'docs' : docs});
+      places.find({},function(err,docs){
+        res.render('adminplaces',{'docs' : docs});
       });
     break;
     case('users'):
-      users.find({hostel:0},function(err,docs){
-        res.render('adminusers',{'docs' : docs});
+      top.find({},function(err,docs){
+        res.render('admintops',{'docs' : docs});
       });
     break;
-    case('hostelusers'):
-      users.find({hostel:1},function(err,docs){
-        res.render('adminhostelusers',{'docs' : docs});
-      });
-    break;
-    case('addhosteluser'):
-      res.render('newhosteluser');
-    break;
-    default:
-    //ERROR HERE OR SOMETHING
-    break;
-  }
- }
- else {
-   res.redirect('http://topandviews.ru');
- }
+   }
 });
+
+//app.get('/admin/:section',function(req,res){
+//  if (lguser.admin){
+//  switch (req.params.section) {
+//    case ('orders'):
+//      orders.find({},function(err,docs){
+//        if (err) {res.send('error');}
+//        else {
+//             if (docs != {})
+//                           {
+//                           console.log(docs);
+//                           res.render('adminorders',{'docs' : docs});
+//                            }
+//      
+//              else {
+//                    res.send('empty db');
+//                   }
+//              }
+//    });
+//    break;
+//    case('hostels'):
+//      hostels.find({},function(err,docs){
+//        res.render('adminhostels',{'docs' : docs});
+//      });
+//    break;
+//    case('users'):
+//      users.find({hostel:0},function(err,docs){
+//        res.render('adminusers',{'docs' : docs});
+//      });
+//    break;
+//    case('hostelusers'):
+//      users.find({hostel:1},function(err,docs){
+//        res.render('adminhostelusers',{'docs' : docs});
+//      });
+//    break;
+//    case('addhosteluser'):
+//      res.render('newhosteluser');
+//    break;
+//    default:
+//    //ERROR HERE OR SOMETHING
+//    break;
+//  }
+// }
+// else {
+//   res.redirect('http://topandviews.ru');
+// }
+//});
 
 app.post('/admin/hostels/add',function(req,res){
   // AUTH NEDDED
