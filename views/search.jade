@@ -175,15 +175,18 @@ head
         a(href='/')
           .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
             h2(style='color:#ddd;') Лента
+        a(href='/top')    
         .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h2(style='color:gray;') Рейтинги:
-        |           
-        a(href='/search')
-          .col-xs-4(style='text-align:center;')
-            h2(style='color:#ddd;') Поиск       
+            h2(style='color:#ddd;') Рейтинги
+        .col-xs-4(style='text-align:center;')
+            h2(style='color:gray;') Поиск:       
       .row
-        .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
-          h5(style='color:gray;')  &Pcy;&ucy;&scy;&tcy;&acy;&yacy; &bcy;&acy;&zcy;&acy; 
+        form(action='/srch',method='post',role='form')
+          .col-xs-6.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;')
+            input(type='text',class='fomr-control',name='search')
+          .col-xs-2
+            button(class='btn btn-default',type='submit') 
+              h4 Найти
       |       
       #footer.row
         a(href='/about')
