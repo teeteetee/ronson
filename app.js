@@ -134,7 +134,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-app.get('*',function(req,res) {
+app.get('/',function(req,res) {
   
   console.log('entered "/" route');
   console.log('User-Agent: ' + req.headers['user-agent']);
