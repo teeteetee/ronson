@@ -151,7 +151,8 @@ app.get('/',function(req,res) {
     else {
       if(doc.length>0)
       {
-        res.render('index',{'places':doc});
+        //res.render('index',{'places':doc});
+        res.send(JSON.stringify(doc));
       }
       else{
         res.render('emptyindex');
