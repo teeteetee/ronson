@@ -160,17 +160,6 @@ app.get('/',function(req,res) {
     }
   });
 
-  app.get('/dropplaces',function(req,res){
-    places.remove({},function(err,done){
-    if(err)
-    {
-      res.send('98');
-    }
-    else {
-      res.send('SUCCESS');
-    }
-    });
-  });
   //if(uacheck === true) {
   //  res.render('mindex');
   //}
@@ -197,6 +186,18 @@ app.get('/',function(req,res) {
   //    {res.redirect('http://topandviews.ru')}}
    
 });
+
+app.get('/dropplaces',function(req,res){
+    places.remove({},function(err,done){
+    if(err)
+    {
+      res.send('98');
+    }
+    else {
+      res.send('SUCCESS');
+    }
+    });
+  });
 
 app.get('/example',function(req,res){
   res.render('examples');
