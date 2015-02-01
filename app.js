@@ -198,6 +198,17 @@ app.get('/dropplaces',function(req,res){
     }
     });
   });
+app.get('/droptop',function(req,res){
+    top.remove({},function(err,done){
+    if(err)
+    {
+      res.send('98');
+    }
+    else {
+      res.send('SUCCESS');
+    }
+    });
+  });
 
 app.get('/example',function(req,res){
   res.render('examples');
@@ -235,9 +246,35 @@ app.post('/srch',function(req,res){
 app.get('/admin/addrating',function(req,res){
   res.render('addrating');
 });
-app.post('/admin/addrating',function(req,res){
-  res.send(req.body);
+app.get('/admin/ratinglist',function(req,res){
+  top.find({},function(err,doc){
+    if(err)
+    {
+      res.send('DB ERR')
+    }
+    else {
+      if(doc.length>0)
+      {
+         res.render('ratinglist',{'doc':doc});
+      }
+      else{
+         res.send('NO RARINGS - EMPTY DB');
+      }
+    }
+  });
 });
+
+app.post('/admin/addrating',function(req,res){
+  if(!req.body.ratingname)
+  {
+    res.send('RATINGNAME ABSENT')
+  }
+  else {
+    top.insert({ratingname:req.body.ratingname,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'}});
+    res.redirect('http://recentones.com/admin/ratinglist');
+  }
+});
+
 //REGISTRATION
 //app.get('/rrregisterrr',function(req,res){
 //     res.render('register');
