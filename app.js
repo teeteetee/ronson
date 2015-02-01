@@ -235,6 +235,9 @@ app.post('/srch',function(req,res){
 app.get('/admin/addrating',function(req,res){
   res.render('addrating');
 });
+app.post('admin/addrating',function(req,res){
+  res.send(req.body);
+});
 //REGISTRATION
 //app.get('/rrregisterrr',function(req,res){
 //     res.render('register');
