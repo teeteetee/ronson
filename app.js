@@ -159,6 +159,18 @@ app.get('/',function(req,res) {
       }
     }
   });
+
+  app.get('/dropplaces',function(req,res){
+    places.remove({},function(err,done){
+    if(err)
+    {
+      res.send('98');
+    }
+    else {
+      res.send('SUCCESS');
+    }
+    });
+  });
   //if(uacheck === true) {
   //  res.render('mindex');
   //}
