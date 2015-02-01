@@ -207,7 +207,7 @@ app.get('/about',function(req,res){
   res.render('about');
 });
 app.get('/top',function(req,res){
-  places.top({},function(err,doc){
+  top.find({},function(err,doc){
     if(err)
     {
       res.redirect('http://recentones.com');
