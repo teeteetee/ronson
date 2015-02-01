@@ -223,6 +223,14 @@ app.get('/top',function(req,res){
 
   });
 });
+
+app.get('/search',function(req,res){
+  res.render('search');
+});
+
+app.post('/srch',function(req,res){
+  res.send('intel');
+});
 //REGISTRATION
 //app.get('/rrregisterrr',function(req,res){
 //     res.render('register');
@@ -710,60 +718,6 @@ app.post('/admin/clear',function(req,res){
 //  if (lang === 'es') {res.render('contactes')}
 //  if (lang === 'it') {res.render('contactit')} 
 //});
-
-app.post('/search', function(req,res){
-  console.log("INTO SEARCH ");
-  var vmixgenders = req.body.mixgenders;
-  var vwifi = req.body.wifi;
-  var vplacename = req.body.placename;
-  var vprice = req.body.price;
-  // ADD SEARCH CRITERIAS
-  console.log('VPLACENAME IS:'+vplacename);
-  if(vplacename != 0)
-  {
-    hostels.findOne({placename:vplacename},function(err,done){
-      console.log("PLACENAME: ID DID SEARCH THE DB");
-      if (hostels.length != 0)
-        { console.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
-          res.render("srsingle",{"result":done});}
-      else {
-        console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
-        //NO EMPTYSR YET EXISTS , MUST BE CREATED
-        res.render('emptysr');
-      }
-    });
-  }
-else 
-  { var query;
-    var count =0;
-    if(vwifi===1)
-      {query='wifi:1';count++}
-    if(vmixgenders ===1 && count ===1)
-      {query=query+',mixgenders:1';count++}
-    if(vmixgenders ===1 && count ===0)
-      {query=query+'mixgenders:1';count++}
-    if(vprice!=0 && count>1)
-      {query=query+',vprice:'+vprice;count++}
-    if(vprice!=0 && count===0)
-      {query=query+'vprice:'+vprice;count++}
-    if(count>0)
-    {console.log(query);
-      eval('hostels.find({'+query+'},function(err,hostels){console.log(" ID DID SEARCH THE DB");if (hostels.length != 0){ cosnole.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");res.render("sr",{"hostels":hostels});}else {console.log(" IT WAS EMPTY AND IM GOING TO RENDER");//NO EMPTYSR YET EXISTS , MUST BE CREATEDres.render("emptysr");}});');}
-  else {
-    hostels.find({},function(err,hostels){
-          console.log(" ID DID SEARCH THE DB");
-          if (hostels.length != 0)
-            { console.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
-              res.render("sr",{"results":hostels});}
-          else {
-            console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
-            //NO EMPTYSR YET EXISTS , MUST BE CREATED
-            res.render('emptysr');
-          }
-        });
-  }
-}
-});
 
 //app.get('/emptysr',function(req,res){
 //  res.render('emptysr');
