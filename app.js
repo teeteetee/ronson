@@ -217,7 +217,7 @@ app.get('/top',function(req,res){
       if(doc.length>0)
       {res.render('top',{'tops':doc});}
       else {
-        res.redirect('http://recentones.com');
+        res.render('emptytop');
       }
     }
 
