@@ -231,6 +231,10 @@ app.get('/search',function(req,res){
 app.post('/srch',function(req,res){
   res.send('intel');
 });
+
+app.get('/admin/addrating',function(req,res){
+  res.render('addrating');
+});
 //REGISTRATION
 //app.get('/rrregisterrr',function(req,res){
 //     res.render('register');
