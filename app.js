@@ -142,7 +142,7 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
-  res.send('UNDER CONSTRUCTION');
+  //res.send('UNDER CONSTRUCTION');
   places.find({},function(err,doc){
     if(err)
     {
