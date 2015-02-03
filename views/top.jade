@@ -165,23 +165,25 @@ head
   body
     .container-fluid
       #header.row
-        .col-xs-4.col-xs-offset-4
-          img(src='/bootstrap/images/rl.png',style='width:100%;')         
+        .col-xs-4
+          h1(style='color:#ff9900') Moscow
+        |         
+        .col-xs-4(style='text-align:center;')
+          a(href='http://recentones.com')
+            h1 Recent ones         
       #timeperiod.row
-        .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-          h2(style='color:gray') &Lcy;&iecy;&ncy;&tcy;&acy;: 
-        |           
-        a(href='/top')
+        a(href='/')
           .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h2(style='color:#ddd') &Rcy;&iecy;&jcy;&tcy;&icy;&ncy;&gcy;&icy; 
+            h2(style='color:#ddd;') Лента
+        .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
+            h2(style='color:gray;') Рейтинги:
         |           
         a(href='/search')
           .col-xs-4(style='text-align:center;')
-            h2(style='color:#ddd') &Pcy;&ocy;&icy;&scy;&kcy;        
+            h2(style='color:#ddd;') Поиск       
       .row
-        .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
-          h5(style='color:gray')  &Pcy;&ucy;&scy;&tcy;&acy;&yacy; &bcy;&acy;&zcy;&acy; 
-      |       
+        #inserts.col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
+             
       #footer.row
         a(href='/about')
           .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
@@ -194,3 +196,25 @@ head
         a(href='/policy')
           .col-xs-4
             h4 Policy
+      script.
+        var toplist = #{doc};
+        var left = toplist.length%3;
+        var times = (toplist.length-left)/3;
+        if(left<3){
+
+        }
+        else{
+        for (var xx=0;xx<times;xx++)
+        { if(xx-1===times){
+          for (var yy=0;yy<3;yy++){
+           $(#inserts).append("<div class='row'></div>");
+          }
+          for (var zz=0;zz<left;zz++){
+
+          }
+        }
+          else{
+          for (var i=0;i<3;i++){}
+         }
+         }   
+         }   
