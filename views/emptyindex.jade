@@ -54,7 +54,7 @@ head
       }
       h4 {
       font-size:1vw;
-      font-family:arial;
+      font-family:roboto-thin;
       letter-spacing:0.3vw;
       text-transform:uppercase;
       color:white;
@@ -140,7 +140,7 @@ head
       }
       .container-fluid {
       min-height:100vh;
-      background-color:#eee;
+      background-color:gray;
       }
       #footer{
       width:100%;
@@ -168,8 +168,8 @@ head
         .col-xs-4.col-xs-offset-4(style='padding-top:3vh;padding-bottom:3vh;')
           img(src='/bootstrap/images/rl.png',style='width:100%;') 
       .row
-        .col-xs-12
-          h5(style='color:white;') Бесполезный сервис 
+        .col-xs-12(style='text-align:center;')
+          h5(style='color:white;') Панорамы недавно открывшихся заведений и ашретор рейтингов. 
       //           
         #timeperiod.row
           .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
@@ -186,14 +186,8 @@ head
           .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
             h5(style='color:gray')  &Pcy;&ucy;&scy;&tcy;&acy;&yacy; &bcy;&acy;&zcy;&acy;        
       #footer.row
-        a(href='/about')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 About
         |         
         a(href='/contacts')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 Contacts
-        |         
-        a(href='/policy')
-          .col-xs-4
-            h4 Policy
+          .col-xs-6.col-xs-offset-3
+            h4 Контакты
+        
