@@ -200,21 +200,45 @@ head
         var toplist = #{doc};
         var left = toplist.length%3;
         var times = (toplist.length-left)/3;
-        if(left<3){
-
+        if(toplist.length<3){
+         for (var xx=0;xx<toplist.length;xx++)
+        {
+          var rnum = xx+1;
+          $('#inserts').append("<div class='row' id='row"+rnum+"'></div>");
+          for (var i=0;i<toplist.length;i++){
+            var cellnum = xx*3+i+1;
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'></div>";
+            eval("$('#row"+rnum+"').append(insert);");
+            for (var yy=0;yy<10;yy++){
+           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx][yy]+"</h4>')");
+          }
+          }
+        }
         }
         else{
         for (var xx=0;xx<times;xx++)
-        { if(xx-1===times){
-          for (var yy=0;yy<3;yy++){
-           $(#inserts).append("<div class='row'></div>");
+        { 
+          var rnum = xx+1;
+          $('#inserts').append("<div class='row' id='row"+rnum+"'></div>");
+          if(rnum===times && times>1 && left != 3 && left != 0){
+          for (var yy=0;yy<left;yy++){
+           var cellnum = xx*3+yy+1;
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'></div>";
+            eval("$('#row"+rnum+"').append(insert);");
+            for (var zz=0;zz<10;zz++){
+           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx][zz]+"</h4>')");
           }
-          for (var zz=0;zz<left;zz++){
-
           }
         }
           else{
-          for (var i=0;i<3;i++){}
+          for (var i=0;i<3;i++){
+            var cellnum = xx*3+i+1;
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'></div>";
+            eval("$('#row"+rnum+"').append(insert);");
+            for (var yy=0;yy<10;yy++){
+           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx][yy]+"</h4>')");
+          }
+          }
          }
          }   
          }   
