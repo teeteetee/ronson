@@ -227,7 +227,7 @@ app.get('/top',function(req,res){
     { 
       if(doc.length>0)
       { console.log(doc);
-        res.render('top',{'doc': doc});}
+        res.render('top',{'doc': JSON.stringify(doc)});}
       else {
         res.render('emptytop');
       }
