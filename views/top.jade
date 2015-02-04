@@ -208,7 +208,7 @@ head
           for (var i=0;i<toplist.length;i++){
             var cellnum = i+1;
             var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 style='border-bottom:1px solid gray'>"+toplist[i].ratingname+"</h5></div>";
-            eval("$('#row"+rnum+"').append(insert);");
+            eval("$('#row1').append(insert);");
             for (var yy=1;yy<11;yy++){
            eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[i].places[yy]+"</h5>')");
           }
