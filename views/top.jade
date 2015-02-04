@@ -164,6 +164,7 @@ head
       }   
   body
     .container-fluid
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       #header.row
         .col-xs-4
           h1(style='color:#ff9900') Moscow
@@ -183,19 +184,19 @@ head
             h2(style='color:#ddd;') Поиск       
       .row
         #inserts.col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
-             
-      #footer.row
-        a(href='/about')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 About
-        |         
-        a(href='/contacts')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 Contacts
-        |         
-        a(href='/policy')
-          .col-xs-4
-            h4 Policy
+      //       
+        #footer.row
+          a(href='/about')
+            .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
+              h4 About
+          |         
+          a(href='/contacts')
+            .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
+              h4 Contacts
+          |         
+          a(href='/policy')
+            .col-xs-4
+              h4 Policy
       script.
         var toplist = #{doc};
         var left = toplist.length%3;
