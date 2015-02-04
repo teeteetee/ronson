@@ -199,7 +199,7 @@ head
               h4 Policy
       script.
         var toplist = #{doc};
-        toplist = JSON.parse(toplist);
+        toplist = JSON.stringify(toplist);
         var left = toplist.length%3;
         var times = (toplist.length-left)/3;
         if(toplist.length<3){
@@ -212,7 +212,7 @@ head
             var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=0;yy<10;yy++){
-           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx][yy]+"</h4>')");
+           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx].places[yy]+"</h4>')");
           }
           }
         }
@@ -228,7 +228,7 @@ head
             var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var zz=0;zz<10;zz++){
-           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx][zz]+"</h4>')");
+           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx].places[zz]+"</h4>')");
           }
           }
         }
@@ -238,7 +238,7 @@ head
             var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=0;yy<10;yy++){
-           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx][yy]+"</h4>')");
+           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx].places[yy]+"</h4>')");
           }
           }
          }
