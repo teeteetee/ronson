@@ -63,7 +63,6 @@ head
       letter-spacing:2px;
       text-transform:uppercase;
       font-family:roboto-thin;
-      color:white;
       font-size:3vw;
       }
       .preview {
@@ -211,10 +210,10 @@ head
           $('#inserts').append("<div class='row' id='row"+rnum+"'></div>");
           for (var i=0;i<toplist.length;i++){
             var cellnum = xx*3+i+1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'></div>";
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 style='border-bottom:1px solid gray'>"+toplist[xx].ratingname+"</h5></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=0;yy<10;yy++){
-           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx].places[yy]+"</h4>')");
+           eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[xx].places[yy]+"</h5>')");
           }
           }
         }
@@ -227,20 +226,20 @@ head
           if(rnum===times && times>1 && left != 3 && left != 0){
           for (var yy=0;yy<left;yy++){
            var cellnum = xx*3+yy+1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'></div>";
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 style='border-bottom:1px solid gray'>"+toplist[xx].ratingname+"</h5></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var zz=0;zz<10;zz++){
-           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx].places[zz]+"</h4>')");
+           eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[xx].places[zz]+"</h5>')");
           }
           }
         }
           else{
           for (var i=0;i<3;i++){
             var cellnum = xx*3+i+1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'></div>";
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 style='border-bottom:1px solid gray'>"+toplist[xx].ratingname+"</h5></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=0;yy<10;yy++){
-           eval("$('#ratcell"+cellnum+"').append('<h4>"+toplist[xx].places[yy]+"</h4>')");
+           eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[xx].places[yy]+"</h5>')");
           }
           }
          }
