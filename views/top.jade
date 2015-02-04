@@ -198,7 +198,7 @@ head
             .col-xs-4
               h4 Policy
       script.
-        var toplist = #{doc};
+        var toplist = !{doc};
         toplist = JSON.parse(toplist);
         var left = toplist.length%3;
         var times = (toplist.length-left)/3;
