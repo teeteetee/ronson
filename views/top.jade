@@ -199,9 +199,9 @@ head
               h4 Policy
       script.
         var toplist = !{doc};
-        console.log(toplist);
+        console.log("first time: "+toplist);
         toplist = JSON.parse(toplist);
-        console.log(toplist);
+        console.log("second time: "+toplist);
         var left = toplist.length%3;
         var times = (toplist.length-left)/3;
         if(toplist.length<3){
