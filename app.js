@@ -226,8 +226,8 @@ app.get('/top',function(req,res){
     else
     { 
       if(doc.length>0)
-      { console.log(JSON.stringify(doc));
-        res.render('top',{'doc': JSON.parse(doc)});}
+      { console.log(doc);
+        res.render('top',{'doc': doc});}
       else {
         res.render('emptytop');
       }
