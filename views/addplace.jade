@@ -169,75 +169,86 @@ head
             img(src='/bootstrap/images/rl.png')         
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') Добавить рейтинг      
+            h2(style='color:gray;') Добавить заведени      
       .row
-        form(action='/admin/addrating',method='post',role='form')
+        form(action='/admin/addplace',method='post',role='form', enctype='multipart/form-data')
           .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
             .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") Название рейтинга
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='ratingname')
+              span(class="input-group-addon" id="sizing-addon1") Название заведения
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameen')
             .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") Сайт
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='web')
+              span(class="input-group-addon" id="sizing-addon1") Название заведения
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameru') 
             .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 1
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='r1')
+              span(class="input-group-addon" id="sizing-addon1") Название заведения
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressen')
             .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid1')  
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 2
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='r2')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid2')  
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 3
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='r3')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid3')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 4
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='r4')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid4')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 5
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='r5')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid5')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 6
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='r6')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid6')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 7
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='r7')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid7')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 8
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='r8')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid8')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 9
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='r9')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid9')  
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") 10
-              input(type="text" class="form-control"  aria-describedby="sizing-addon1" name='r10')
-            .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") ID
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid10')   
-            button(class='btn btn-primary',type='submit') Добавить                    
+              span(class="input-group-addon" id="sizing-addon1") Название заведения
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
+      .row
+          .col-xs-3.zerop
+            button#addfield(type='button') ADD FIELD
+            button#addxmlfield(type='button') ADD XML FIELD
+            button#reset(type='button') REMOVE ALL FIELDS
+            button#rmlast(type='button', style='margin-top: 5px;') REMOVE LAST
+            button#rmlastxml(type='button', style='margin-top: 5px;') REMOVE LAST XML
+          #labels.col-xs-3.zerop
+            p
+              label  MAINPREVIEW 
+            p
+              label  XML 
+            p
+              label  NUMBER OF IMAGES (DONT TOUCH) 
+            p
+              label  NUMBER OF XML FILES (DONT TOUCH)
+            p
+              label  NUMBER OF XML FILES (DONT TOUCH)
+          #inputs.col-xs-3.zerop
+            input#mainpreview.form-control(type='file', name='mainpreview')
+            input#xml.form-control(type='file', name='xml')
+            input#imgqntt.form-control(type='text', name='imgqnnt')
+            input#xmlqntt.form-control(type='text', name='xmlqntt')
+            input#pano.form-control(type='checkbox', name='pano')           
+             
+            button(class='btn btn-primary',type='submit') Добавить  
+      script.
+      var xmlcount = 0;
+      var imgcount = 0;
+      $('#addfield').click(function(){
+      imgcount++;
+      $('#imgqntt').val(imgcount);
+      $('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" IMAGE</label></p>")
+      $('#inputs').append("<input type='file' class='form-control'  id='"+imgcount+"side' name='images[]'>")
+      });
+      $('#addxmlfield').click(function(){
+      xmlcount++;
+      $('#xmlqntt').val(xmlcount);
+      $('#labels').append("<p style='background-color:#2c7095;' id='"+xmlcount+"xmllabel'><label style='color:white;' > "+xmlcount+" XML</label></p>")
+      $('#inputs').append("<input type='file' class='form-control'  id='"+xmlcount+"xml' name='xmls[]'>")
+      //#xmlqntt and #addxmlfield must be created
+      });
+      $('#reset').click(function(){
+      $('#labels').empty();
+      $('#inputs').empty();
+      imgcount=0;
+      $('#imgqntt').val(imgcount);
+      $('#labels').append("<p><label > MAINPREVIEW </label></p> <p><label > XML </label></p> <p><label > NUMBER OF IMAGES (DONT TOUCH) </label></p>");
+      $('#inputs').append("<input type='file' class='form-control'  id='mainpreview' name='mainpreview'> <input type='file' class='form-control'  id='xml' name='xml'> <input type='text' class='form-control' id='imgqntt' name='imgqnnt'>");
+      });
+      $('#rmlast').click(function(){
+      if (imgcount > 0) {
+      var x = imgcount
+      eval("$('#"+x+"side').remove(); $('#"+x+"sidelabel').remove() ");
+      imgcount--;
+      $('#imgqntt').val(imgcount);}
+      else {}
+      });
+      $('#rmlastxml').click(function(){
+      if (xmlcount > 0) {
+      var x = xmlcount
+      eval("$('#"+x+"xml').remove(); $('#"+x+"xmllabel').remove() ");
+      xmlcount--;
+      $('#xmlqntt').val(xmlcount);}
+      else {}
+      });                  
       
