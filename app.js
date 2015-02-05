@@ -152,7 +152,7 @@ app.get('/',function(req,res) {
       if(doc.length>0)
       {
         //res.render('index',{'places':doc});
-        res.send('index',{'doc':JSON.stringify(doc)});
+        res.render('index',{'doc':JSON.stringify(doc)});
       }
       else{
         res.render('emptyindex');
@@ -1016,7 +1016,7 @@ app.post('/admin/simulateplace',function(req,res){
          aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: newid,
-         mainpreview:'nopreview.png',
+         mainpreview:'/bootstrap/images/nopreview.png',
          xml:'/bootstrap/images/emptypano.xml'
          });
          res.redirect('http://recentones.com/admin/placelist');
@@ -1029,7 +1029,7 @@ app.post('/admin/simulateplace',function(req,res){
          aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: 1,
-         mainpreview:'nopreview.png',
+         mainpreview:'/bootstrap/images/nopreview.png',
          xml:'/bootstrap/images/emptypano.xml'
          });
          res.redirect('http://recentones.com/admin/placelist');
