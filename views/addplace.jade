@@ -229,8 +229,8 @@ head
         $('#addfield').click(function(){
         imgcount++;
         $('#imgqntt').val(imgcount);
-        $('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" IMAGE</label></p>")
-        $('#inputs').append("<input type='file' class='form-control'  id='"+imgcount+"side' name='images[]'>")
+        //$('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" IMAGE</label></p>")
+        $('#inputs').append("<label for='"+imgcount+"sidelabel'>"+imgcount+" IMAGE</label><input type='file' class='form-control'  id='"+imgcount+"side' name='images[]'>")
         });
         $('#addxmlfield').click(function(){
         xmlcount++;
