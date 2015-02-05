@@ -201,24 +201,28 @@ head
                   button#reset.btn.btn-warning(type='button') Убрать все поля
                   button#rmlast.btn.btn-danger(type='button', style='margin-top: 5px;') Убрать последнее поле фото
                   button#rmlastxml.btn.btn-danger(type='button', style='margin-top: 5px;') Убрать последнее поле XML
-                #labels.col-xs-4.zerop
-                  p
-                    label  MAINPREVIEW 
-                  p
-                    label  XML 
-                  //  
+                //  
+                  #labels.col-xs-4.zerop
                     p
-                      label  NUMBER OF IMAGES (DONT TOUCH) 
-                  //
+                      label  MAINPREVIEW 
                     p
-                      label  NUMBER OF XML FILES (DONT TOUCH)
-                  p
-                    label  Панораму загружаем ?
-                #inputs.col-xs-4.zerop
+                      label  XML 
+                    //  
+                      p
+                        label  NUMBER OF IMAGES (DONT TOUCH) 
+                    //
+                      p
+                        label  NUMBER OF XML FILES (DONT TOUCH)
+                    p
+                      label  Панораму загружаем ?
+                #inputs.col-xs-8.zerop
+                  label(for='mainpreview')  MAINPREVIEW 
                   input#mainpreview.form-control(type='file', name='mainpreview')
+                  label(for='xml')  XML 
                   input#xml.form-control(type='file', name='xml')
                   input#imgqntt.form-control(style='display:none;',type='text', name='imgqnnt')
                   input#xmlqntt.form-control(style='display:none;',type='text', name='xmlqntt')
+                  label(for='pano')  Панораму загружаем ?
                   input#pano.form-control(type='checkbox', name='pano')           
              
             button(class='btn btn-primary',type='submit') Добавить 
