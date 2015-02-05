@@ -325,10 +325,10 @@ app.post('/admin/addrating',function(req,res){
         vday='0'+vday;
       }
       var vmonth = dd.getMonth()+1;
+      vmonth = vmonth.toString();
       if (vmonth.length<2){
         vmonth='0'+vmonth;
       }
-      vmonth = vmonth.toString()
       var vyear = dd.getUTCFullYear().toString();
       var fulldate = vyear+vmonth+vday;
       fulldate = parseInt(fulldate);
