@@ -172,10 +172,10 @@ head
             img(src='/bootstrap/images/rl.png')         
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') Добавить заведени      
+          h2(style='color:gray;') Добавить заведени      
       .row
         form(action='/admin/addplace',method='post',role='form', enctype='multipart/form-data')
-          .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
+          .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") Английское название заведения
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameen')
@@ -188,32 +188,32 @@ head
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") Адрес на английском
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
-      .row
-          .col-xs-4.zerop
-            button#addfield.btn.btn-success(type='button') Добавить фото
-            button#addxmlfield.btn.btn-success(type='button') Добавить XML
-            button#reset.btn.btn-warning(type='button') Убрать все поля
-            button#rmlast.btn.btn-danger(type='button', style='margin-top: 5px;') Убрать последнее поле фото
-            button#rmlastxml.btn.btn-danger(type='button', style='margin-top: 5px;') Убрать последнее поле XML
-          #labels.col-xs-4.zerop
-            p
-              label  MAINPREVIEW 
-            p
-              label  XML 
-            //  
-              p
-                label  NUMBER OF IMAGES (DONT TOUCH) 
-            //
-              p
-                label  NUMBER OF XML FILES (DONT TOUCH)
-            p
-              label  Панораму загружаем ?
-          #inputs.col-xs-4.zerop
-            input#mainpreview.form-control(type='file', name='mainpreview')
-            input#xml.form-control(type='file', name='xml')
-            input#imgqntt.form-control(style='display:none;',type='text', name='imgqnnt')
-            input#xmlqntt.form-control(style='display:none;',type='text', name='xmlqntt')
-            input#pano.form-control(type='checkbox', name='pano')           
+            .row
+                .col-xs-4.zerop
+                  button#addfield.btn.btn-success(type='button') Добавить фото
+                  button#addxmlfield.btn.btn-success(type='button') Добавить XML
+                  button#reset.btn.btn-warning(type='button') Убрать все поля
+                  button#rmlast.btn.btn-danger(type='button', style='margin-top: 5px;') Убрать последнее поле фото
+                  button#rmlastxml.btn.btn-danger(type='button', style='margin-top: 5px;') Убрать последнее поле XML
+                #labels.col-xs-4.zerop
+                  p
+                    label  MAINPREVIEW 
+                  p
+                    label  XML 
+                  //  
+                    p
+                      label  NUMBER OF IMAGES (DONT TOUCH) 
+                  //
+                    p
+                      label  NUMBER OF XML FILES (DONT TOUCH)
+                  p
+                    label  Панораму загружаем ?
+                #inputs.col-xs-4.zerop
+                  input#mainpreview.form-control(type='file', name='mainpreview')
+                  input#xml.form-control(type='file', name='xml')
+                  input#imgqntt.form-control(style='display:none;',type='text', name='imgqnnt')
+                  input#xmlqntt.form-control(style='display:none;',type='text', name='xmlqntt')
+                  input#pano.form-control(type='checkbox', name='pano')           
              
             button(class='btn btn-primary',type='submit') Добавить 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')       
