@@ -143,6 +143,7 @@ app.get('/',function(req,res) {
   console.log(uacheck);
   var d = new Date();
   res.render('index');
+  });
   //res.send('UNDER CONSTRUCTION');
   //places.find({},function(err,doc){
   //  if(err)
@@ -159,7 +160,7 @@ app.get('/',function(req,res) {
   //      res.render('emptyindex');
   //    }
   //  }
-  });
+  
 
   //if(uacheck === true) {
   //  res.render('mindex');
@@ -248,6 +249,7 @@ app.post('/srch',function(req,res){
 app.get('/admin/addrating',function(req,res){
   res.render('addrating');
 });
+
 app.get('/admin/ratinglist',function(req,res){
   top.find({},function(err,doc){
     if(err)
