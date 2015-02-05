@@ -197,17 +197,19 @@ head
               label  MAINPREVIEW 
             p
               label  XML 
+            //  
+              p
+                label  NUMBER OF IMAGES (DONT TOUCH) 
+            //
+              p
+                label  NUMBER OF XML FILES (DONT TOUCH)
             p
-              label  NUMBER OF IMAGES (DONT TOUCH) 
-            p
-              label  NUMBER OF XML FILES (DONT TOUCH)
-            p
-              label  NUMBER OF XML FILES (DONT TOUCH)
+              label  Панораму загружаем ?
           #inputs.col-xs-3.zerop
             input#mainpreview.form-control(type='file', name='mainpreview')
             input#xml.form-control(type='file', name='xml')
-            input#imgqntt.form-control(type='text', name='imgqnnt')
-            input#xmlqntt.form-control(type='text', name='xmlqntt')
+            input#imgqntt.form-control(style='display:none;',type='text', name='imgqnnt')
+            input#xmlqntt.form-control(style='display:none;',type='text', name='xmlqntt')
             input#pano.form-control(type='checkbox', name='pano')           
              
             button(class='btn btn-primary',type='submit') Добавить  
