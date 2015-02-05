@@ -163,7 +163,10 @@ head
         .col-xs-12
           each rating, i in doc
             .row(style='border-bottom:1px solid white;background-color:#eee;')
-              .col-xs-4
+              .col-xs-9
                 h5 #{rating.ratingname}
+              .col-xs-3
+                a(href='http://recentones.com/admin/redactrating/#{rating.rid}')
+                  button(class='btn btn-danger',type='button') Редактировать   
 
       

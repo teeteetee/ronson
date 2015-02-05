@@ -265,14 +265,42 @@ app.get('/admin/ratinglist',function(req,res){
   });
 });
 
+app.get('/admin/redactrating/:id',function(req,res){
+   var vrid = req.params.id;
+   top.findOne({rid:vrid},function(err,doc){
+    if(err){
+      //call houston
+    }
+    else{
+      res.send(doc);
+    }
+   });
+});
+
 app.post('/admin/addrating',function(req,res){
   if(!req.body.ratingname)
   {
     res.send('RATINGNAME ABSENT')
   }
   else {
-    top.insert({ratingname:req.body.ratingname,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'}});
-    res.redirect('http://recentones.com/admin/ratinglist');
+    top.find({},{ limit:1,sort : { rid : -1 } },function(err,doc){
+      if(err)
+      {
+        //call houston
+      }
+    else {
+      if(doc.length>0){
+       var newid = doc.rid+1;
+       top.insert({ratingname:req.body.ratingname,rid:newid,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'}});
+       res.redirect('http://recentones.com/admin/ratinglist');
+      }
+      else
+      {
+       top.insert({ratingname:req.body.ratingname,rid:1,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'}});
+       res.redirect('http://recentones.com/admin/ratinglist');
+      }
+    }
+    });
   }
 });
 
