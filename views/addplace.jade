@@ -160,7 +160,10 @@ head
       position:fixed;
       bottom:0px;
       }
-      }   
+      } 
+      .btn{
+        margin:1vh;
+      }  
   body
     .container-fluid
       #header.row
@@ -174,16 +177,16 @@ head
         form(action='/admin/addplace',method='post',role='form', enctype='multipart/form-data')
           .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
             .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") Название заведения
+              span(class="input-group-addon" id="sizing-addon1") Английское название заведения
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameen')
             .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") Название заведения
+              span(class="input-group-addon" id="sizing-addon1") Русское название заведения
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameru') 
             .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") Название заведения
+              span(class="input-group-addon" id="sizing-addon1") Адрес на русском
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressen')
             .input-group.input-group-lg
-              span(class="input-group-addon" id="sizing-addon1") Название заведения
+              span(class="input-group-addon" id="sizing-addon1") Адрес на английском
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
       .row
           .col-xs-3.zerop
