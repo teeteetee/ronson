@@ -324,7 +324,7 @@ app.post('/admin/addrating',function(req,res){
       if (vday.length<2){
         vday='0'+vday;
       }
-      var vmonth = dd.getDay()+1;
+      var vmonth = dd.getMonth()+1;
       if (vmonth.length<2){
         vmonth='0'+vmonth;
       }
