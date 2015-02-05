@@ -142,9 +142,9 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
-  res.render('index');
-  });
   //res.send('UNDER CONSTRUCTION');
+  res.render('index');
+});
   //places.find({},function(err,doc){
   //  if(err)
   //  {
@@ -160,7 +160,7 @@ app.get('/',function(req,res) {
   //      res.render('emptyindex');
   //    }
   //  }
-  
+  //});
 
   //if(uacheck === true) {
   //  res.render('mindex');
@@ -238,6 +238,10 @@ app.get('/top',function(req,res){
   });
 });
 
+app.get('/info',function(req,res){
+  res.render('info');
+});
+
 app.get('/search',function(req,res){
   res.render('search');
 });
@@ -249,7 +253,6 @@ app.post('/srch',function(req,res){
 app.get('/admin/addrating',function(req,res){
   res.render('addrating');
 });
-
 app.get('/admin/ratinglist',function(req,res){
   top.find({},function(err,doc){
     if(err)
