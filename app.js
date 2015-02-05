@@ -307,6 +307,19 @@ app.post('/admin/redactrating/:id',function(req,res){
    res.redirect('http://recentones.com/admin/ratinglist');
 });
 
+app.post('/admin/removerating/:id',function(req,res){
+  var vrid = parseInt(req.params.id);
+  //AUTH NEEDED
+  top.remove({rid:vrid},function(err,done){
+    if(err){
+      res.send('DB RM ERR');
+    }
+    else {
+      res.redirect('http://recentones.com/admin/ratinglist');
+    }
+  });
+});
+
 app.post('/admin/addrating',function(req,res){
   if(!req.body.ratingname)
   {
