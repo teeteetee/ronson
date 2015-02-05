@@ -236,6 +236,10 @@ app.get('/top',function(req,res){
   });
 });
 
+app.get('/info',function(req,res){
+  res.render('info');
+});
+
 app.get('/search',function(req,res){
   res.render('search');
 });
