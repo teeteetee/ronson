@@ -212,43 +212,43 @@ head
              
             button(class='btn btn-primary',type='submit') Добавить  
       script.
-      var xmlcount = 0;
-      var imgcount = 0;
-      $('#addfield').click(function(){
-      imgcount++;
-      $('#imgqntt').val(imgcount);
-      $('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" IMAGE</label></p>")
-      $('#inputs').append("<input type='file' class='form-control'  id='"+imgcount+"side' name='images[]'>")
-      });
-      $('#addxmlfield').click(function(){
-      xmlcount++;
-      $('#xmlqntt').val(xmlcount);
-      $('#labels').append("<p style='background-color:#2c7095;' id='"+xmlcount+"xmllabel'><label style='color:white;' > "+xmlcount+" XML</label></p>")
-      $('#inputs').append("<input type='file' class='form-control'  id='"+xmlcount+"xml' name='xmls[]'>")
-      //#xmlqntt and #addxmlfield must be created
-      });
-      $('#reset').click(function(){
-      $('#labels').empty();
-      $('#inputs').empty();
-      imgcount=0;
-      $('#imgqntt').val(imgcount);
-      $('#labels').append("<p><label > MAINPREVIEW </label></p> <p><label > XML </label></p> <p><label > NUMBER OF IMAGES (DONT TOUCH) </label></p>");
-      $('#inputs').append("<input type='file' class='form-control'  id='mainpreview' name='mainpreview'> <input type='file' class='form-control'  id='xml' name='xml'> <input type='text' class='form-control' id='imgqntt' name='imgqnnt'>");
-      });
-      $('#rmlast').click(function(){
-      if (imgcount > 0) {
-      var x = imgcount
-      eval("$('#"+x+"side').remove(); $('#"+x+"sidelabel').remove() ");
-      imgcount--;
-      $('#imgqntt').val(imgcount);}
-      else {}
-      });
-      $('#rmlastxml').click(function(){
-      if (xmlcount > 0) {
-      var x = xmlcount
-      eval("$('#"+x+"xml').remove(); $('#"+x+"xmllabel').remove() ");
-      xmlcount--;
-      $('#xmlqntt').val(xmlcount);}
-      else {}
-      });                  
-      
+        var xmlcount = 0;
+        var imgcount = 0;
+        $('#addfield').click(function(){
+        imgcount++;
+        $('#imgqntt').val(imgcount);
+        $('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" IMAGE</label></p>")
+        $('#inputs').append("<input type='file' class='form-control'  id='"+imgcount+"side' name='images[]'>")
+        });
+        $('#addxmlfield').click(function(){
+        xmlcount++;
+        $('#xmlqntt').val(xmlcount);
+        $('#labels').append("<p style='background-color:#2c7095;' id='"+xmlcount+"xmllabel'><label style='color:white;' > "+xmlcount+" XML</label></p>")
+        $('#inputs').append("<input type='file' class='form-control'  id='"+xmlcount+"xml' name='xmls[]'>")
+        //#xmlqntt and #addxmlfield must be created
+        });
+        $('#reset').click(function(){
+        $('#labels').empty();
+        $('#inputs').empty();
+        imgcount=0;
+        $('#imgqntt').val(imgcount);
+        $('#labels').append("<p><label > MAINPREVIEW </label></p> <p><label > XML </label></p> <p><label > NUMBER OF IMAGES (DONT TOUCH) </label></p>");
+        $('#inputs').append("<input type='file' class='form-control'  id='mainpreview' name='mainpreview'> <input type='file' class='form-control'  id='xml' name='xml'> <input type='text' class='form-control' id='imgqntt' name='imgqnnt'>");
+        });
+        $('#rmlast').click(function(){
+        if (imgcount > 0) {
+        var x = imgcount
+        eval("$('#"+x+"side').remove(); $('#"+x+"sidelabel').remove() ");
+        imgcount--;
+        $('#imgqntt').val(imgcount);}
+        else {}
+        });
+        $('#rmlastxml').click(function(){
+        if (xmlcount > 0) {
+        var x = xmlcount
+        eval("$('#"+x+"xml').remove(); $('#"+x+"xmllabel').remove() ");
+        xmlcount--;
+        $('#xmlqntt').val(xmlcount);}
+        else {}
+        });                  
+        
