@@ -273,7 +273,7 @@ app.get('/admin/redactrating/:id',function(req,res){
     }
     else{
       console.log(doc);
-      res.send(doc);
+      res.render('redactrating',{'doc':doc});
     }
    });
 });
@@ -292,12 +292,12 @@ app.post('/admin/addrating',function(req,res){
     else {
       if(doc.length>0){
        var newid = doc.rid+1;
-       top.insert({ratingname:req.body.ratingname,rid:newid,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'}});
+       top.insert({ratingname:req.body.ratingname,web:'www.ya.ru',rid:newid,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'}});
        res.redirect('http://recentones.com/admin/ratinglist');
       }
       else
       {
-       top.insert({ratingname:req.body.ratingname,rid:1,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'}});
+       top.insert({ratingname:req.body.ratingname,web:'www.ya.ru',rid:1,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'}});
        res.redirect('http://recentones.com/admin/ratinglist');
       }
     }

@@ -170,56 +170,43 @@ head
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
             h2(style='color:gray;') Добавить рейтинг      
-      .row
+      .row(style='padding-bottom:5vh;')
         form(action='/admin/addrating',method='post',role='form')
           .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") Название рейтинга
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='ratingname')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='ratingname') #{doc.ratingname}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") Сайт
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='web')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='web') #{doc.web}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 1
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='1')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='1') #{doc.places[0]}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 2
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='2')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='2') #{doc.places[1]}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 3
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='3')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='3') #{doc.places[2]}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 4
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='4')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='4') #{doc.places[3]}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 5
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='5')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='5') #{doc.places[4]}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 6
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='6')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='6') #{doc.places[5]}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 7
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='7')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='7') #{doc.places[6]}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 8
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='8')
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='8') #{doc.places[7]}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 9
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='9')  
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='9')  #{doc.places[8]}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") 10
-              input(type="text" class="form-control"  aria-describedby="sizing-addon1" name='10')   
+              input(type="text" class="form-control"  aria-describedby="sizing-addon1" name='10')  #{doc.places[9]} 
             button(class='btn btn-primary',type='submit') Добавить                    
-      |       
-      #footer.row
-        a(href='/about')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 About
-        |         
-        a(href='/contacts')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 Contacts
-        |         
-        a(href='/policy')
-          .col-xs-4
-            h4 Policy
