@@ -244,6 +244,10 @@ app.post('/srch',function(req,res){
   res.send('intel');
 });
 
+app.get('/admin',function(req,res){
+  res.render('admin');
+});
+
 app.get('/admin/addrating',function(req,res){
   res.render('addrating');
 });
