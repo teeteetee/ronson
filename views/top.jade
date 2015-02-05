@@ -57,7 +57,7 @@ head
       font-family:roboto-thin;
       letter-spacing:0.3vw;
       text-transform:uppercase;
-      color:white;
+      color:black;
       }
       h5 {
       letter-spacing:2px;
@@ -142,11 +142,6 @@ head
       min-height:100vh;
       background-color:#eee;
       }
-      #footer{
-      width:100%;
-      position:fixed;
-      bottom:0px;
-      }
       .headings{
         padding-top:2vh;
         padding-bottom:2vh;
@@ -157,22 +152,7 @@ head
       }
       .headings:hover{
         background-color:#308190;
-      }
-      @media only screen
-      and (min-device-width : 768px)
-      and (max-device-width : 1024px)
-      {
-      .container-fluid {
-      width:100vw;
-      margin:0px;
-      }
-      #footer{
-      background-color:;
-      width:100%;
-      position:fixed;
-      bottom:0px;
-      }
-      }   
+      }  
   body
     .container-fluid
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -192,10 +172,10 @@ head
       .row
         #inserts.col-xs-12(style='text-align:center; background-color:#eee;')
          
-    #footer.row
-      a(href='/about')
-        .col-xs-12(style='text-align:center;')
-          h4 ИНФО
+      #footer.row
+        a(href='/about')
+          .col-xs-12(style='text-align:center;')
+            h4 ИНФО
       script.
         var toplist = !{doc};
         console.log("first time: "+toplist);
