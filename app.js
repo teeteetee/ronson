@@ -272,6 +272,7 @@ app.get('/admin/redactrating/:id',function(req,res){
       //call houston
     }
     else{
+      console.log(doc);
       res.send(doc);
     }
    });
