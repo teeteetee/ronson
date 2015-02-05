@@ -114,6 +114,7 @@ head
       }
       #header {
       padding-top:0.5vw;
+      padding-bottom:0.5vw;
       background-color:gray;
       }
       .spart{
@@ -165,12 +166,9 @@ head
   body
     .container-fluid
       #header.row
-        .col-xs-4
-          h1(style='color:#ff9900') Moscow
-        |         
-        .col-xs-4(style='text-align:center;')
+        .col-xs-1
           a(href='http://recentones.com')
-            h1 Recent ones         
+            img(src='/bootstrap/images/rl.png')        
       #timeperiod.row
         a(href='/')
           .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
@@ -187,16 +185,4 @@ head
               input(type="text",class="form-control",placeholder="Карлсон")
               span(class="input-group-btn")
                 button(class="btn btn-default",type="button") Найти
-      |       
-      #footer.row
-        a(href='/about')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 About
-        |         
-        a(href='/contacts')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 Contacts
-        |         
-        a(href='/policy')
-          .col-xs-4
-            h4 Policy
+      
