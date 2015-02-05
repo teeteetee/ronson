@@ -175,7 +175,12 @@ head
             img(src='/bootstrap/images/rl.png')         
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
-          h2(style='color:gray;') Добавить заведени      
+          h2(style='color:gray;') Добавить заведени   
+      .row
+        .col-xs-12
+          h5 Добавить пустое заведение
+          form(action='/admin/simulateplace',method='post')  
+            button(class='btn btn-default') Добавить     
       .row
         form(action='/admin/addplace',method='post',role='form', enctype='multipart/form-data')
           .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')

@@ -1105,16 +1105,6 @@ console.log('FIFTH BREAKPOINT');
 //    });
 // });
 
-app.get('/upload', function(req,res) {
-      if(lguser.admin != undefined)
-      {
-        res.render('upload');
-      }
-      else
-      {console.log('got request on /upload');
-      res.render('uploadauth');}
-	    });
-
 app.post('/uploadauth', function(req,res){
   var masterlogin = 'test';
   var masterpassword = 'test';
@@ -1135,329 +1125,43 @@ app.post('/uploadauth', function(req,res){
 });  
 
 
-app.post('/orders/simulate',function(req,res){
-  //ORDERCOUNT must go here, this is begining of getting statistic together. Orders taken, objects added, visitors etc.
-  console.log('going to simulate an order');
-  vregistered = parseInt(req.body.registered);
-  vhostelid = parseInt(req.body.hostel);
-  vofferid =parseInt(req.body.offerid);
-  vfyear = parseInt(req.body.fyear);
-  vfmonth = parseInt(req.body.fmonth);
-  vfday = parseInt(req.body.fday);
-  vtoyear = parseInt(req.body.toyear);
-  vtomonth = parseInt(req.body.tomonth);
-  vtoday = parseInt(req.body.today);
-  vnights = parseInt(req.body.nights);
-  //DONT FORGET ABOUT "OUTER" FIELD
-   if (vofferid === 'test')
-   {
-     vphonep = 1;
-     vmail = 'test@test.com';
-     vphone = 79237364453;
-     vregistered = 0;
-     vhostelid = testcount;
-     vofferid = offer1;
-     vfyear = 2014;
-     vfmonth = 11;
-     vfday = 07;
-     vtoyear = 2014;
-     vtomonth = 12;
-     vtoday = 10;
-     vnights = 3; 
-    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:0,reqip:req.ip,outer:0});
-    hostels.findOne({hostelid:vhostelid},function(err,done){
-      if (err)
-      {
-        //SCREAM
-      }
-      else
-      {
-        eval('var enq = done.offers.'+vofferid+'.enquiries;');
-        enq++;
-        hostels.update({hostelid:vhostelid},{$set:{offers:{vofferid:{enquiries:enq}}}});
-         res.redirect('http://topandviews.ru/admin/orders');
-      }
-    });
-   }
-   else {
-  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:'test@test.ru',phonep:1,phone:'+8293847293524',fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:0,reqip:req.ip,outer:0});
-   hostels.findOne({hostelid:vhostelid},function(err,done){
-      if (err)
-      {
-        //SCREAM
-      }
-      else
-      {
-        eval('var enq = done.offers.'+vofferid+'.enquiries;');
-        enq++;
-        hostels.update({hostelid:vhostelid},{$set:{offers:{vofferid:{enquiries:enq}}}});
-         res.redirect('http://topandviews.ru/admin/orders');
-      }
-    });
-   }
-});
-
-
-
-app.post('/enquery/:hostel', function(req,res){
-  console.log('GOT INTO ENQUERY !!!');
-  //all the hostelclient magic happens here
-  var x = parseInt(req.params.hostel);
-  var y = parseInt(req.body.price);
-  console.log(x+' '+y);
-  //z = req.param('coco');
-  var z = req.body.coco;
-  console.log(z);
-  
-  switch ( z ) {
-   case ("enquiries"):
-   var month = parseInt(req.body.month);
-   var day = parseInt(req.body.day);
-   var dd = new Date();
-   var yearnow = dd.getUTCFullYear();
-   console.log("month is: "+month+", day is: "+day+", yearnow is: "+yearnow+", hostelid is: "+x+",price is: "+y);
-   //USED TO GET ORDERS DETAILS WHEN CLICKING ON THE DAY IN THE CALENDAR
-  orders.find({hostelid:x,offerid:y,fmonth:month,fday:day,fyear:yearnow},function(err,results){
-    console.log("found :"+JSON.stringify(results));
-    res.send(results);
-  });
-   break;
-   case ("calendar"):
-   var month = parseInt(req.body.month)+1;
-   var year = parseInt(req.body.year);
-   console.log(month);
-   console.log(year);
-   console.log('GOT INTO CALENDAR');
-     //USED FOR PRIMARY DATA GET , TO COLOR THE DAYS IN THE CALENDAR, NOTHING IS DONE WITH "NIGHTS" FIELD YET 16.12.2014
-     // used to form calendar in hostel web client , obviously (<16.12.2014)
-     // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
-     orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs){
-      if (err) {res.send('ERROR')}
-      else {
-        if(!docs || docs.length <1)
-        {// THIS IS FOR TESTING , ONLY ELSE BLOCK SHOULD BE LEFT
-          orders.find({hostelid:x,offerid:y},function(errr,lftv){
-            console.log(lftv);
-          });
-        }
-        else
-        {console.log(JSON.stringify(docs));
-                res.send(docs);}}
-     });
-   break;
-   case ("remove"):
-    //used to remove an offer 
-    
-    var vmail = req.body.mail;
-    var vp = req.body.p;
-    users.findOne({mail:vmail},function(err,done){
-      if (err)
-      {
-        //SCREAM
-      }
-      else if (done){
-        if(bcrypt.compareSync(vp,done.phr))
-          {
-           hostels.findOne({hostel:x},function(err,result){
-      var offrcnt =  result.offrqntt;
-      if (offrcnt > 0){
-      offrcnt--;
-      hostels.update({hostelid:x},{$set:{offrqntt:offrcnt}});
-      eval("hostels.update({hostelid:x},{$set:{offers:{offer"+y+":undefined}}});");
-      hostels.findOne({hotelid:x},function(err,result){
-        offrcnt++;
-        eval("if (result.offer"+offrcnt+" === undefined){console.log('OFFER SUCCESFULY DELETED');}else {console.log('OFFER SEEMS TO STILL BE PRESENT: '+results.offer"+offrcnt+");}");
-      });
-    }
-      else 
-        //WHAT SHOUD BE DONE IN THIS CASE ? 
-        {res.send("NOTHING TO BE DELETED")}
-    });
-     //SHOULD ANYTHING BE SENT TO CLIENT TO CONFIRM ??? 
-          }
-        else{
-          //MAKE THIS BEAUTIFULL LATER
-          res.send('WRONG PASS/LOG');
-        }
-      }
-      else {}
-    });
-    
-   break;
-   case ("add"):
-    //used to create an offer
-    //OFFERS MUST BE CONFIRMED 
-    //var voffrprc=req.body.offrprc;
-    var vcapacity = req.body.capacity;
-    hostels.findOne({hostelid:x},function(err,result){
-      var offrcnt = result.offrqntt;
-       offrcnt++;
-       console.log('OFFRCNT ID: '+offrcnt);
-      eval("hostels.update({hostelid:x},{$set:{offrqntt:"+offrcnt+",offers:{offer"+offrcnt+":{name:offer"+y+",price:"+y+",capacity:"+vcapacity+",enquiries:0}}}});");
-    });
-    res.redirect('http://topandviews.ru/manage/'+x);
-
-   break;
-   case ("removeownclient"):
-    //used to remove clients enquieries which didn't come through our booking system 
-    var venqid = req.body.enqid;
-    orders.update({enqid:venqid},{$set:{confirmed:2}});
-   break;
-   case ("addownclient"):
-    //used to create a client enquiries which are not comming through our system
-    //DANGEROUS ASYNC BEHAVIOR - ENQNUM MIGHT NOT BE SET IN TIME TO FORM VENQID
-  var enqnum;
-  hostels.find({hostelid:x},function(err,result){
-    if (err)
-    {console.log('DB ERROR WHILE LOOKUP FOR ADDOWNCLIENT');}
-    else
-    {
-      if(result.length != 0)
-      {enqnum = results.ownclients; }
-      else{
-        //WHAT ELSE ? 
-      }
-    }
-  });
-
-  var venqid = enqnum++;
-  //var vofferid= req.params.price; - already set as "y"
-  var vfyear = req.body.fyear;
-  var vfmonth = req.body.fmonth;
-  var vfday = req.body.fday;
-  var vtoyear = req.body.toyear;
-  var vtomonth = req.body.tomonth;
-  var vtoday = req.body.today;
-  var vnights = req.body.nights;
-   orders.insert({hostelid:vhostelid,offerid:y,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:1,reqip:req.ip,outer:1,enqid:venqid});
-   hostels.find({hostelid:x},function(err,result){
-    if (err)
-    {
-      //WHAT ??
-    }
-   else
-   {
-    if(result.length != 0)
-    {
-      var vownclients = result.ownclients;
-      vownclients++;
-      hostel.update({hostelid:x},{$set:{ownclients:vownclients}});
-    }
-   else {
-    //WHAT?
-   }
-   }
-   });
-   break;
-   case ("confirm"):
-    //used to confirm a request for a room came through our system
-    var venqid = req.body.enqid;
-    orders.find({enqid:venqid},function(err,result){
-      if (err)
-         {
-           //WHAT ??
-         }
-      else
-         {
-          if(result.length != 0)
-             { 
-               if (result.registered != 0)
-               {var vuserid = result.registered}
-               var vofferid = result.offerid;
-               var vouter = results.outer;
-                  hostels.find({hostelid:x},function(err,doc){
-                    if(err)
-                    {
-                      //DO SMTH
-                    }
-                    else {
-                      if(doc.length != 0)
-                        {
-                          //!!! CHECK IF ENOUGH CAPACITY
-                         eval("var vcapacity = doc."+vofferid+".capacity;");
-                         if (vcapacity > 0) 
-                                    {
-                                  //ADD CHECK IF OUTER
-                                  if (vouter === 1){
-                                      var vaccepted = doc.enquiries.accepted;
-                                      var vownclients = doc.ownclients;
-                                      vownclients++;
-                                      vcapacity--;
-                                      vaccepted++;
-                                      hostel.update({hostelid:x},{$set:{vofferid:{capacity:vcapacity},ownclients:vownclients,enquires:{accepted:vaccepted}}});
-                                      orders.update({enqid:venqid},{$set:{confirmed:1}});
-                                       }
-                                  else {
-
-                                      var vaccepted = doc.enquiries.accepted;
-                                      vcapacity--;
-                                      vaccepted++;
-                                      hostel.update({hostelid:x},{$set:{vofferid:{capacity:vcapacity},enquires:{accepted:vaccepted}}});
-                                      orders.update({enqid:venqid},{$set:{confirmed:1}});
-                                      users.find({userid:vuserid},function(err,someuser){
-                                        if (err)
-                                        {
-                                          //DO SOMETHING
-                                        }
-                                        else
-                                        {
-                                          if(someuser.length != 0)
-                                          {
-                                            var vuaccepted = someuser.enquiries.accepted;
-                                            vuaccepted++;
-                                            users.update({userid:vuserid},{$set:{enquiries:{accepted:vuaccepted}}});
-                                          }
-                                          else
-                                          {
-                                            //DO SOMETHING
-                                          }
-                                        }
-                                      });
-                                    }
-                                  }
-                          else {
-                            // HAPPENS WHEN TWO PEOPLE ORDER AND ONE IS MORE LUCKY THAN THE OTHER
-                            res.send("OFFER IS NOT AVALIABLE")
-                          }
-                        } 
-                      else{
-                        //DO SMTH
-                      }
-                    }
-                  });
-                 
-             }//if result.length !=0
-          else 
-              {
-               //WHAT?
-              }
-         }
-    });
-   break;
-   case ("dismiss"):
-    //used to dismiss a request for a room came through our system
-     var venqid = req.body.enqid;
-    orders.update({enqid:venqid},{$set:{accepted:2}});
-   break;
-   case("clientenquery"):
-   //ENQUERY COMMING FROM PP
-     if(req.session && req.session.mail)
-     {
-       var totalordnum = orders.find().toArray();
-       if (totalordnum.length>0)
-       {
-        var venqid = totalordnum++;
-        orders.insert({enqid:venqid,mail:req.session.mail,accepted:0,hostelid:x,message:vmessage})
+app.post('/admin/simulateplace',function(req,res){
+   places.find({},{limit:1,{pid:-1}},function(err,doc){
+     if(err){
+      res.send('db error');
+     }
+     else {
+       if(doc.length>0){
+         var newid = parseInt(doc.pid)+1;
+         places.insert({
+         placenameru : 'Тестхостел',
+         placenameen : 'Testhostel',
+         aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         adressen: 'Somefucking emb. 10 bld.3 flat 12',
+         pid: newid,
+         mainpreview:'nopreview.png',
+         xml:'/bootstrap/images/emptypano.xml'
+         });
+         res.redirect('http://recentones.com/admin/placelist');
+         console.log('PLACE SIMULATED');
+       }
+       else{
+         places.insert({
+         placenameru : 'Тестхостел',
+         placenameen : 'Testhostel',
+         aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         adressen: 'Somefucking emb. 10 bld.3 flat 12',
+         pid: 1,
+         mainpreview:'nopreview.png',
+         xml:'/bootstrap/images/emptypano.xml'
+         });
+         res.redirect('http://recentones.com/admin/placelist');
+         console.log('PLACE SIMULATED');
        }
      }
-     else
-     {}
-   break;
-   default:
-   //ADD SOME TYPE OF ERROR HERE
-   break;
-  }
+   });
 });
+
 
 
 app.post('/testnopanoupload',function(req,res){

@@ -162,9 +162,9 @@ head
           each place, i in doc
             .row(style='border-bottom:1px solid white;background-color:#eee;')
               .col-xs-9
-                h5 #{place.placename}
+                h5 #{place.placenameru}
               .col-xs-3
-                a(href='http://recentones.com/admin/redactplace/#{rating.rid}')
+                a(href='http://recentones.com/admin/redactplace/#{place.pid}')
                   button(class='btn btn-danger',type='button') 
                     h5 Редактировать   
 
