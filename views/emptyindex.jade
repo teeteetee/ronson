@@ -143,12 +143,15 @@ head
   body
     .container-fluid
       #header.row
-        .col-xs-4.col-xs-offset-4(style='padding-top:3vh;padding-bottom:3vh;')
+        .col-xs-4(style='padding-top:3vh;padding-bottom:3vh;')
           img(src='/bootstrap/images/rl.png',style='width:100%;') 
-      .row(style='background-color:gray;')
-        .col-xs-12(style='text-align:center;padding-bottom:2vh;')
-          h5(style='color:white;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
-                 
+        .col-xs-8
+          h5(style='color:white;') Панорамы недавно открывшихся заведений и агретор рейтингов.
+       //   
+        .row(style='background-color:gray;')
+          .col-xs-12(style='text-align:center;padding-bottom:2vh;')
+            h5(style='color:white;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
+            h5 Сайт наполняется      
       #timeperiod.row
         .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
           h2(style='color:#fc645a;') Лента: 
@@ -160,9 +163,7 @@ head
         a(href='/search')
           .col-xs-4(style='text-align:center;')
             h2(style='color:#a03e38;') Поиск   
-      .row
-        .col-xs-12(style='text-align:center;')
-          h5 Сайт наполняется           
+              
         
       
       
