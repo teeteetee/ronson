@@ -139,26 +139,29 @@ head
       min-height:100vh;
       background-color:gray;
       }  
+      #timeperiod{
+        bakcground-color:#393b3f;
+      }
   body
     .container-fluid
       #header.row
         .col-xs-4.col-xs-offset-4(style='padding-top:3vh;padding-bottom:3vh;')
           img(src='/bootstrap/images/rl.png',style='width:100%;') 
       .row
-        .col-xs-12(style='text-align:center;')
+        .col-xs-12(style='text-align:center;padding-bottom:2vh;')
           h5(style='color:white;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
                  
       #timeperiod.row
-        .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-          h2(style='color:gray') Лента: 
+        .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+          h2(style='color:#fc645a;') Лента: 
         |           
         a(href='/top')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h2(style='color:#ddd') Рейтинги 
+          .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+            h2(style='color:#a03e38;') Рейтинги 
         |           
         a(href='/search')
           .col-xs-4(style='text-align:center;')
-            h2(style='color:#ddd') Поиск        
+            h2(style='color:#a03e38;') Поиск        
       //  
         .row
           .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
