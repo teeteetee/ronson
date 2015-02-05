@@ -1784,10 +1784,10 @@ app.post('/testnopanoupload',function(req,res){
 
 
 /// catch 404 and forwarding to error handler
-app.use(function(req, res, next) {
+app.use(function(req, res) {
     var err = new Error('Not Found');
     err.status = 404;
-    next(err);
+    res.render('404');
 });
 
 /// error handlers
