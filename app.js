@@ -821,133 +821,10 @@ app.post('/admin/clear',function(req,res){
 //   if (lang === 'it'){res.render('blank');} 
 //});
 
-//app.get('/m/:lang/geo/:city', function(req,res){
-//    var lang = req.params.lang;
-//    var vreqcity = req.params.city;
-//    if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
-//    if (vreqcity === 'newyork') {vreqcity = 'New York'};
-//    if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
-//    var absolute = [];
-//    var rooftop = [];
-//    var terrace = [];
-//    var cuisine = [];
-//    tops.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
-//       console.log('got data for absolute');
-//         absolute = firsttypedocs;
-//         tops.find({city : vreqcity,toptype : 2}, function(err,secondtypedocs){
-//            console.log('got data for rooftop');
-//              rooftop = secondtypedocs;
-//              tops.find({city : vreqcity,toptype : 3}, function(err,thirdtypedocs){
-//                   terrace = thirdtypedocs;
-//                   tops.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
-//                        cuisine = fourthtypedocs;
-//                     
-//                         res.render('mgeoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine });   
-//                   });
-//              });
-//         });
-//
-//    });
-//
-//  
-//
-//});
-
 
 //mobile version's end
 
 
-
-//app.get('/:lang',function(req,res){
-//  var lang = req.params.lang;
-//  if (lang === 'en') {res.render('index')}
-//  if (lang === 'ru') {res.render('indexru')}
-//  if (lang === 'fr') {res.render('indexfr')}
-//  if (lang === 'de') {res.render('indexde')}
-//  if (lang === 'es') {res.render('indexes')}
-//  if (lang === 'it') {res.render('indexit')} 
-//});
-
-//app.get('/:lang/contact', function(req,res){
-//  var lang = req.params.lang;
-//  if (lang === 'en') {res.render('contact')}
-//  if (lang === 'ru') {res.render('contactru')}
-//  if (lang === 'fr') {res.render('contactfr')}
-//  if (lang === 'de') {res.render('contactde')}
-//  if (lang === 'es') {res.render('contactes')}
-//  if (lang === 'it') {res.render('contactit')} 
-//});
-
-//app.get('/emptysr',function(req,res){
-//  res.render('emptysr');
-//}); 
-
-app.get('/hostels/:hostel',function(req,res){
-  var word=req.params.hostel ;
-  if (word === null) {
-    if (req.session.mail)
-        {res.render('indexreg',{'pfrname':req.session.lgn});}
-         else {
-        res.render('index');
-        }
-  }
-  else {
-    hostels.findOne({placename:word},function(err,done){
-      if (err) {
-        //SCREAM
-      }
-      else {
-        if(done)
-        {if (done.pano === 1)
-               {
-                 if(done.offrqntt ===0)
-                 {res.render('noofferspp',{"hostel":done})}
-               else {
-                res.render('pp',{"hostel":done,"offers":done.offers});
-              }
-              }
-                else {
-                  console.log('PANO IS ZERO and oq: '+done.offrqntt+' '+done.placename+' '+done.ownclients);
-                  if (done.offrqntt === 0)
-                  {
-                    res.render('noofferspp',{"hostel":done});
-                  }
-                  else{
-                  res.render('epp',{"hostel":done,"offers":done.offers});
-                 }
-                }}
-       else {
-        res.redirect('http://topandviews.ru');
-       }
-      }
-    });
-  }
-});
-
-console.log('THIRD BREAKPOINT');
-
-//
-//app.get('/:lang/geo/:city/new', function(req,res){
-//   var nlang = req.params.lang;
-//   var ncity = req.params.city;
-//   var nnmbr = 0 ;
-//   places.find({city : ncity}, {limit : 0 ,sort: {yearnow: -1}},function(err,newdoc) {
-//       //, {limit : 0 ,sort: {yearnow: -1}}
-//       function cnt (value,index,array) {
-//        nnmbr++
-//       } 
-//       newdoc.forEach(cnt);
-//       console.log(nnmbr,newdoc);
-//
-//  if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc,pnumber : nnmbr})}
-//  if (nlang === 'ru') {res.render('newru',{city : ncity,news : newdoc,pnumber : nnmbr})}
-//  if (nlang === 'fr') {res.render('newfr')}
-//  if (nlang === 'de') {res.render('newde',{city : ncity,news : newdoc,pnumber : nnmbr})}
-//  if (nlang === 'es') {res.render('newes')}
-//  if (nlang === 'it') {res.render('newit')} 
-//
-//   });
-//});
 
 //EMPTY ORDERS
 app.post('/drop/:part',function(req,res){
@@ -1126,7 +1003,7 @@ app.post('/uploadauth', function(req,res){
 
 
 app.post('/admin/simulateplace',function(req,res){
-   places.find({},{limit:1,{pid:-1}},function(err,doc){
+   places.find({},{limit:1,sort:{pid:-1}},function(err,doc){
      if(err){
       res.send('db error');
      }
