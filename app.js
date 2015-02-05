@@ -266,7 +266,7 @@ app.get('/admin/ratinglist',function(req,res){
 });
 
 app.get('/admin/redactrating/:id',function(req,res){
-   var vrid = req.params.id;
+   var vrid = parseInt(req.params.id);
    top.findOne({rid:vrid},function(err,doc){
     if(err){
       //call houston
