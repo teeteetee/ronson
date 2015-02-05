@@ -321,7 +321,13 @@ app.post('/admin/addrating',function(req,res){
     else {
       var dd= new Date();
       var vday = dd.getDay().toString();
+      if (vday.length<2){
+        vday='0'+vday;
+      }
       var vmonth = dd.getDay()+1;
+      if (vmonth.length<2){
+        vmonth='0'+vmonth;
+      }
       vmonth = vmonth.toString()
       var vyear = dd.getUTCFullYear().toString();
       var fulldate = vyear+vmonth+vday;
