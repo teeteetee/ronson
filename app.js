@@ -301,7 +301,7 @@ app.post('/admin/redactrating/:id',function(req,res){
        vpid7 = parseInt(req.body.pid7),
        vpid8 = parseInt(req.body.pid8),
        vpid9 = parseInt(req.body.pid9),
-       vp1id0 = parseInt(req.body.pid10);
+       vpid10 = parseInt(req.body.pid10);
 
    top.update({rid:vrid},{$set:{ratingname:vrn,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}}});
    res.redirect('http://recentones.com/admin/ratinglist');
