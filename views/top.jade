@@ -53,7 +53,7 @@ head
       font-size:3vw;
       }
       h4 {
-      font-size:2vw;
+      font-size:1vw;
       font-family:roboto-thin;
       letter-spacing:0.3vw;
       text-transform:uppercase;
@@ -178,10 +178,7 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       #header.row
         .col-xs-1
-          img(src='/bootstrap/images/rl.png',style='width:100%;')     
-        .col-xs-11(style='text-align:right;')
-          a(href='http://recentones.com/info')
-            h4 ИНФО           
+          img(src='/bootstrap/images/rl.png',style='width:100%;')              
       #timeperiod.row
         a(href='/')
           .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
@@ -194,19 +191,11 @@ head
             h2(style='color:#ddd;') Поиск       
       .row
         #inserts.col-xs-12(style='text-align:center; background-color:#eee;')
-      //       
-        #footer.row
-          a(href='/about')
-            .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-              h4 About
-          |         
-          a(href='/contacts')
-            .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-              h4 Contacts
-          |         
-          a(href='/policy')
-            .col-xs-4
-              h4 Policy
+         
+    #footer.row
+      a(href='/about')
+        .col-xs-12(style='text-align:center;')
+          h4 ИНФО
       script.
         var toplist = !{doc};
         console.log("first time: "+toplist);
