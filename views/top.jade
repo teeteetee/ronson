@@ -146,6 +146,11 @@ head
       position:fixed;
       bottom:0px;
       }
+      .headings{
+        padding-top:2vh;
+        padding-bottom:2vh;
+        background-color:#ddd;
+      }
       @media only screen
       and (min-device-width : 768px)
       and (max-device-width : 1024px)
@@ -165,7 +170,7 @@ head
     .container-fluid
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       #header.row
-        .col-xs-2
+        .col-xs-1
           img(src='/bootstrap/images/rl.png',style='width:100%;')        
         .col-xs-4
           a(href='http://recentones.com')
@@ -206,7 +211,7 @@ head
           $('#inserts').append("<div class='row' id='row1'></div>");
           for (var i=0;i<toplist.length;i++){
             var cellnum = i+1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 style='border-bottom:1px solid gray'>"+toplist[i].ratingname+"</h5></div>";
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
             eval("$('#row1').append(insert);");
             for (var yy=1;yy<11;yy++){
            eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[i].places[yy]+"</h5>')");
@@ -222,7 +227,7 @@ head
           for (var yy=0;yy<left;yy++){
            var cellnum = xx*3+yy+1;
            var hnum = cellnum-1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 style='border-bottom:1px solid gray'>"+toplist[hnum].ratingname+"</h5></div>";
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var zz=1;zz<11;zz++){
            eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[hnum].places[zz]+"</h5>')");
@@ -233,7 +238,7 @@ head
           for (var i=0;i<3;i++){
             var cellnum = xx*3+i+1;
             var hnum = cellnum-1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 style='border-bottom:1px solid gray'>"+toplist[hnum].ratingname+"</h5></div>";
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
            eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[hnum].places[yy]+"</h5>')");
