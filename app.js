@@ -143,24 +143,22 @@ app.get('/',function(req,res) {
   console.log(uacheck);
   var d = new Date();
   //res.send('UNDER CONSTRUCTION');
-  res.render('index');
-});
-  //places.find({},function(err,doc){
-  //  if(err)
-  //  {
-  //    res.render('emptyindex');
-  //  }
-  //  else {
-  //    if(doc.length>0)
-  //    {
-  //      //res.render('index',{'places':doc});
-  //      res.send(JSON.stringify(doc));
-  //    }
-  //    else{
-  //      res.render('emptyindex');
-  //    }
-  //  }
-  //});
+  places.find({},function(err,doc){
+    if(err)
+    {
+      res.render('emptyindex');
+    }
+    else {
+      if(doc.length>0)
+      {
+        //res.render('index',{'places':doc});
+        res.send(JSON.stringify(doc));
+      }
+      else{
+        res.render('emptyindex');
+      }
+    }
+  });
 
   //if(uacheck === true) {
   //  res.render('mindex');
@@ -236,10 +234,6 @@ app.get('/top',function(req,res){
     }
 
   });
-});
-
-app.get('/info',function(req,res){
-  res.render('info');
 });
 
 app.get('/search',function(req,res){
