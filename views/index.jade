@@ -147,7 +147,7 @@ head
       #header.row
         .col-xs-4.col-xs-offset-4(style='padding-top:3vh;padding-bottom:3vh;')
           img(src='/bootstrap/images/rl.png',style='width:100%;') 
-      .row
+      .row(style='background-color:gray;')
         .col-xs-12(style='text-align:center;padding-bottom:2vh;')
           h5(style='color:white;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
                  
@@ -165,13 +165,7 @@ head
         
       .row(style='background-color:#eee;')
         #inserts.col-xs-12(style='text-align:center;padding-top:4vw;')
-                  
-      footer.footer
-        #footer.row
-          |         
-          a(href='/contacts')
-            .col-xs-6.col-xs-offset-3
-              h4 Контакты
+
       script.
         var toplist = !{doc};
         console.log("first time: "+toplist);
