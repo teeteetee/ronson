@@ -142,22 +142,23 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
+  res.render('index');
   //res.send('UNDER CONSTRUCTION');
-  places.find({},function(err,doc){
-    if(err)
-    {
-      res.render('emptyindex');
-    }
-    else {
-      if(doc.length>0)
-      {
-        //res.render('index',{'places':doc});
-        res.send(JSON.stringify(doc));
-      }
-      else{
-        res.render('emptyindex');
-      }
-    }
+  //places.find({},function(err,doc){
+  //  if(err)
+  //  {
+  //    res.render('emptyindex');
+  //  }
+  //  else {
+  //    if(doc.length>0)
+  //    {
+  //      //res.render('index',{'places':doc});
+  //      res.send(JSON.stringify(doc));
+  //    }
+  //    else{
+  //      res.render('emptyindex');
+  //    }
+  //  }
   });
 
   //if(uacheck === true) {
