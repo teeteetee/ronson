@@ -35,8 +35,8 @@ head
       h1 {
       font-family:high;
       font-size:3vw;
-      color:white;
       display:inline;
+      color:white;
       }
       body {
       min-width:768px;
@@ -58,8 +58,9 @@ head
       letter-spacing:0.3vw;
       text-transform:uppercase;
       color:white;
+      display: table-cell;
       vertical-align: middle;
-      display: inline-block;
+      text-align:center;
       }
       h5 {
       letter-spacing:2px;
@@ -160,11 +161,6 @@ head
       .headings:hover{
         background-color:#308190;
       }
-      span {
-      height: 100%;
-      vertical-align: middle;
-      display:inline-block;
-      }
       @media only screen
       and (min-device-width : 768px)
       and (max-device-width : 1024px)
@@ -188,7 +184,6 @@ head
           img(src='/bootstrap/images/rl.png',style='width:100%;')     
         .col-xs-11(style='text-align:right;')
           a(href='http://recentones.com/info')
-            span
             h4 ИНФО           
       #timeperiod.row
         a(href='/')
