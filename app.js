@@ -143,7 +143,7 @@ app.get('/',function(req,res) {
   console.log(uacheck);
   var d = new Date();
   //res.send('UNDER CONSTRUCTION');
-  places.find({},function(err,doc){
+  places.find({},{ limit:9,sort : { regdate : -1 } }function(err,doc){
     if(err)
     {
       res.render('emptyindex');
@@ -155,7 +155,7 @@ app.get('/',function(req,res) {
         res.send(JSON.stringify(doc));
       }
       else{
-        res.render('index');
+        res.render('emptyindex');
       }
     }
   });

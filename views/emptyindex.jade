@@ -53,11 +53,10 @@ head
       font-size:3vw;
       }
       h4 {
-      font-size:1vw;
+      font-size:2vw;
       font-family:roboto-thin;
       letter-spacing:0.3vw;
       text-transform:uppercase;
-      color:white;
       }
       h5 {
       letter-spacing:2px;
@@ -107,7 +106,7 @@ head
       z-index:2;
       }
       #footer {
-      background-color:gray;
+      background-color:#eee;
       letter-spacing:2px;
       text-transform:uppercase;
       text-align:center;
@@ -119,9 +118,6 @@ head
       .spart{
       height:2vh;
       background-color:#333;
-      }
-      #timeperiod {
-      background-color:#fff;
       }
       .color {
       height:10vh;
@@ -140,54 +136,31 @@ head
       }
       .container-fluid {
       min-height:100vh;
-      background-color:gray;
+      background-color:#eee;
+      }  
+      #timeperiod{
+        background-color:#393b3f;
       }
-      #footer{
-      width:100%;
-      position:fixed;
-      bottom:0px;
-      }
-      @media only screen
-      and (min-device-width : 768px)
-      and (max-device-width : 1024px)
-      {
-      .container-fluid {
-      width:100vw;
-      margin:0px;
-      }
-      #footer{
-      background-color:;
-      width:100%;
-      position:fixed;
-      bottom:0px;
-      }
-      }   
   body
     .container-fluid
       #header.row
         .col-xs-4.col-xs-offset-4(style='padding-top:3vh;padding-bottom:3vh;')
           img(src='/bootstrap/images/rl.png',style='width:100%;') 
-      .row
-        .col-xs-12(style='text-align:center;')
+      .row(style='background-color:gray;')
+        .col-xs-12(style='text-align:center;padding-bottom:2vh;')
           h5(style='color:white;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
-      //           
-        #timeperiod.row
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h2(style='color:gray') &Lcy;&iecy;&ncy;&tcy;&acy;: 
-          |           
-          a(href='/top')
-            .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-              h2(style='color:#ddd') &Rcy;&iecy;&jcy;&tcy;&icy;&ncy;&gcy;&icy; 
-          |           
-          a(href='/search')
-            .col-xs-4(style='text-align:center;')
-              h2(style='color:#ddd') &Pcy;&ocy;&icy;&scy;&kcy;        
-        .row
-          .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
-            h5(style='color:gray')  &Pcy;&ucy;&scy;&tcy;&acy;&yacy; &bcy;&acy;&zcy;&acy;        
-      #footer.row
-        |         
-        a(href='/contacts')
-          .col-xs-6.col-xs-offset-3
-            h4 Контакты
+                 
+      #timeperiod.row
+        .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+          h2(style='color:#fc645a;') Лента: 
+        |           
+        a(href='/top')
+          .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+            h2(style='color:#a03e38;') Рейтинги 
+        |           
+        a(href='/search')
+          .col-xs-4(style='text-align:center;')
+            h2(style='color:#a03e38;') Поиск        
         
+      
+      
