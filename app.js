@@ -364,6 +364,32 @@ app.post('/admin/addrating',function(req,res){
   }
 });
 
+app.get('/admin/placelist',function(req,res){
+  places.find({},function(err,doc){
+    if(err)
+    {
+      res.send('DB ERR')
+    }
+    else {
+      if(doc.length>0)
+      {
+         res.render('placelist',{'doc':doc});
+      }
+      else{
+         res.send('NO PLACES - EMPTY DB');
+      }
+    }
+  });
+});
+
+app.get('/admin/addplace',function(req,res){
+  res.render('addplace');
+});
+
+app.post('/admin/addplace',function(req,res){
+
+});
+
 //REGISTRATION
 //app.get('/rrregisterrr',function(req,res){
 //     res.render('register');
