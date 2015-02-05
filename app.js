@@ -143,7 +143,7 @@ app.get('/',function(req,res) {
   console.log(uacheck);
   var d = new Date();
   //res.send('UNDER CONSTRUCTION');
-  places.find({},{ limit:9,sort : { regdate : -1 } }function(err,doc){
+  places.find({},{ limit:9,sort : { regdate : -1 } },function(err,doc){
     if(err)
     {
       res.render('emptyindex');
