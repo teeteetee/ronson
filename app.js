@@ -320,9 +320,10 @@ app.post('/admin/addrating',function(req,res){
       }
     else {
       var dd= new Date();
-      var vday = toString(dd.getDay());
-      var vmonth = toString(dd.getDay()+1);
-      var vyear = toString(dd.getUTCFullYear());
+      var vday = dd.getDay().toString();
+      var vmonth = dd.getDay()+1;
+      vmonth = vmonth.toString()
+      var vyear = dd.getUTCFullYear().toString();
       var fulldate = vyear+vmonth+vday;
       fulldate = parseInt(fulldate);
       if(doc.length>0){
