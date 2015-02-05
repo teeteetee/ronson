@@ -155,7 +155,7 @@ app.get('/',function(req,res) {
         res.send(JSON.stringify(doc));
       }
       else{
-        res.render('emptyindex');
+        res.render('index');
       }
     }
   });
