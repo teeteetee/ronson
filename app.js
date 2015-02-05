@@ -244,7 +244,7 @@ app.post('/srch',function(req,res){
   res.send('intel');
 });
 
-app.get('/admin',function(req,res){
+app.get('/admax',function(req,res){
   res.render('admin');
 });
 
