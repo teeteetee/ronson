@@ -278,6 +278,35 @@ app.get('/admin/redactrating/:id',function(req,res){
    });
 });
 
+app.post('/admin/redactrating/:id',function(req,res){
+   var vrid=parseInt(req.params.id);
+   var vrn = req.body.ratingname,
+       vweb = req.body.web,
+       vp1 = req.body.1,
+       vp2 = req.body.2,
+       vp3 = req.body.3,
+       vp4 = req.body.4,
+       vp5 = req.body.5,
+       vp6 = req.body.6,
+       vp7 = req.body.7,
+       vp8 = req.body.8,
+       vp9 = req.body.9,
+       vp10 = req.body.10,
+       vpid1 = parseInt(req.body.pid1),
+       vpid2 = parseInt(req.body.pid2),
+       vpid3 = parseInt(req.body.pid3),
+       vpid4 = parseInt(req.body.pid4),
+       vpid5 = parseInt(req.body.pid5),
+       vpid6 = parseInt(req.body.pid6),
+       vpid7 = parseInt(req.body.pid7),
+       vpid8 = parseInt(req.body.pid8),
+       vpid9 = parseInt(req.body.pid9),
+       vp1id0 = parseInt(req.body.pid10),
+
+   top.update({rid:vrid},{$set:{ratingname:vrn,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}}});
+   res.redirect('http://recentones.com/admin/ratinglist');
+});
+
 app.post('/admin/addrating',function(req,res){
   if(!req.body.ratingname)
   {

@@ -171,7 +171,7 @@ head
         .col-xs-12(style='text-align:center;')
             h2(style='color:gray;') Добавить рейтинг      
       .row(style='padding-bottom:5vh;')
-        form(action='/admin/addrating',method='post',role='form')
+        form(action='/admin/redactrating/#{doc.rid}',method='post',role='form')
           .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") Название рейтинга
