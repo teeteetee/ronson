@@ -141,6 +141,19 @@ head
       #timeperiod{
         background-color:#393b3f;
       }
+      .albumnameblock{
+      z-index:200;
+      width:19vw;
+      position:absolute;
+      top:0px;
+      background-color:black;
+      opacity:0.5;
+      padding:1vh;
+      margin:3vh;
+      }
+      .albumnameblock:hover{
+      opacity:0.7;
+      }
   body
     .container-fluid
       #header.row
@@ -179,7 +192,7 @@ head
           $('#inserts').append("<div class='row' id='row1'></div>");
           for (var i=0;i<toplist.length;i++){
             var cellnum = i+1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><img src='"+toplist[i].mainpreview+"' style='width:100$;'></div>";
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5>"+toplist[i].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100$;'></a></div>";
             eval("$('#row1').append(insert);");
           }
         }
@@ -192,7 +205,7 @@ head
           for (var yy=0;yy<left;yy++){
            var cellnum = xx*3+yy+1;
            var hnum = cellnum-1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100$;'></div>";
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100$;'></a></div>";
             eval("$('#row"+rnum+"').append(insert);");
           }
         }
@@ -200,7 +213,7 @@ head
           for (var i=0;i<3;i++){
             var cellnum = xx*3+i+1;
             var hnum = cellnum-1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100$;'></div>";
+            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100$;'></a></div>";
             eval("$('#row"+rnum+"').append(insert);");
           }
          }
