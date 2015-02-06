@@ -165,7 +165,7 @@ head
       }   
   body
     #pano.container        
-      #timeperiod.row(style='display:none;')
+      #placedata.row(style='display:none;')
         .col-xs-12(style='text-align:center;')
             h2(style='color:#fc645a;') #{doc.placenameru}    
     #info
@@ -180,7 +180,7 @@ head
       pano.readConfigUrl("#{doc.xml}");
       $('#info').click(function(){
         console.log('hOHO');
-        $('#timeperiod').slideToggle();
+        $('#placedata').slideToggle();
         });
   
             
