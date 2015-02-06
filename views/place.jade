@@ -1,0 +1,172 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title Recent ones
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      @font-face {
+      font-family:br;
+      src: url('/bootstrap/fonts/bebasneue_regular.ttf');
+      }
+      @font-face {
+      font-family:bt;
+      src: url('/bootstrap/fonts/bebasneue_thin.ttf');
+      }
+      h1 {
+      font-family:high;
+      font-size:3vw;
+      display:inline;
+      color:white;
+      }
+      body {
+      min-width:768px;
+      background-color:#fff;
+      background-image:url('/bootstrap/images/stripe4.png');
+      filter: grayscale(50%);
+      }
+      h2 {
+      font-size:6vw;
+      font-family:br;
+      letter-spacing:7px;
+      }
+      h3 {
+      font-size:3vw;
+      }
+      h4 {
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:white;
+      }
+      h5 {
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-family:roboto-thin;
+      font-size:3vw;
+      }
+      .preview {
+      margin:0px;
+      padding:0px;
+      border-right:1px solid black;
+      -webkit-filter: grayscale(100%);
+      -moz-filter: grayscale(100%);
+      -o-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+      }
+      .preview:hover {
+      -webkit-filter: grayscale(0%);
+      -moz-filter: grayscale(0%);
+      -o-filter: grayscale(0%);
+      -ms-filter: grayscale(0%);
+      }
+      img {
+      width:100%;
+      }
+      .imgrow {
+      border-bottom:1px solid black;
+      }
+      .placenamebckgrnd {
+      position:absolute;
+      color:white;
+      opacity:0.7;
+      width:100%;
+      margin-bottom:auto;
+      background-color:black;
+      text-align:center;
+      z-index:1;
+      height:25%;
+      }
+      .placename {
+      position:absolute;
+      color:black;
+      width:100%;
+      text-align:center;
+      margin-bottom:auto;
+      z-index:2;
+      }
+      #header {
+      padding-top:0.5vw;
+      padding-bottom:0.5vw;
+      background-color:gray;
+      }
+      .spart{
+      height:2vh;
+      background-color:#333;
+      }
+      #timeperiod {
+      background-color:#393b3f;
+      }
+      .color {
+      height:10vh;
+      }
+      #blue{
+      background-color:#001c45;
+      }
+      #green{
+      background-color:#49a881;
+      }
+      #white{
+      background-color:white;
+      }
+      .imgrow {
+      background-color:#333;
+      }
+      .container-fluid {
+      min-height:100vh;
+      background-color:#eee;
+      }
+      .input-group{
+      margin:1vh;
+      }
+      @media only screen
+      and (min-device-width : 768px)
+      and (max-device-width : 1024px)
+      {
+      .container-fluid {
+      width:100vw;
+      margin:0px;
+      }
+      }   
+  body
+    .container-fluid
+      #header.row 
+        .col-xs-1
+          a(href='http://recentones.com')
+            img(src='/bootstrap/images/rl.png')         
+      #timeperiod.row
+        .col-xs-12(style='text-align:center;')
+            h2(style='color:#fc645a;') #{doc.placenameru}    
+      .row
+        .col-xs-6.col-xs-offset-3
+          #pano(style='width:100%;height:60vw;')
+      script(type='text/javascript', src='pano2vr_player.js')
+      script.
+        // create the panorama player with the container
+        pano=new pano2vrPlayer("pano");
+        pano.readConfigUrl("#{doc.xml}");
+      | 
+
+            
+
+      
