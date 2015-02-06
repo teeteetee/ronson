@@ -172,9 +172,10 @@ head
       }   
   body
     #pano.container        
-      #placedata.row
+    #placedata.container
+      .row
         .col-xs-12(style='text-align:center;')
-            h2(style='color:#fc645a;') #{doc.placenameru}    
+          h2(style='color:#fc645a;') #{doc.placenameru}    
     #info
       img(src='/bootstrap/images/rl.png',style='width:3vw;height:3vw;')      
     script(type='text/javascript', src='/js/pano2vr_player.js')
