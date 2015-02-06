@@ -238,7 +238,7 @@ app.get('/top',function(req,res){
 
 app.get('/places/:id',function(req,res){
   var vpid = parseInt(req.params.id);
-  places.fincOne({pid:vpid},function(err,doc){
+  places.findOne({pid:vpid},function(err,doc){
     if(err){
       res.render('404');
     }
