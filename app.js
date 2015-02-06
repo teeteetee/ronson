@@ -243,7 +243,7 @@ app.get('/places/:id',function(req,res){
       res.render('404');
     }
     else {
-      console.log(doc);
+      console.log(doc.length);
       if(doc.length>0)
       {
         res.render('place',{'doc':doc});
