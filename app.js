@@ -244,7 +244,7 @@ app.get('/places/:id',function(req,res){
     }
     else {
       console.log(doc.length);
-      if(doc.length>0)
+      if(doc)
       {
         res.render('place',{'doc':doc});
       }
