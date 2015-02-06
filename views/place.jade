@@ -144,8 +144,11 @@ head
       opacity:0.5;
       text-align:center;
       top:2vh;
-      left:2vhpx;
+      left:2vh;
       z-index:3000;
+      }
+      #info:hover{
+      opacity:1;
       }
       #pano{
       width:100vw;
@@ -167,17 +170,17 @@ head
             h2(style='color:#fc645a;') #{doc.placenameru}    
     #info
       img(src='/bootstrap/images/rl.png',style='width:3vw;height:3vw;')      
-      script(type='text/javascript', src='/js/pano2vr_player.js')
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-      // Include all compiled plugins (below), or include individual files as needed
-      script(src='/bootstrap/js/bootstrap.min.js')
-      script.
-        // create the panorama player with the container
-        pano=new pano2vrPlayer("pano");
-        pano.readConfigUrl("#{doc.xml}");
-        $('#info').click(function(){
-          $('#timeperiod').slideToggle();
-          });
+    script(type='text/javascript', src='/js/pano2vr_player.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script.
+      // create the panorama player with the container
+      pano=new pano2vrPlayer("pano");
+      pano.readConfigUrl("#{doc.xml}");
+      $('#info').click(function(){
+        $('#timeperiod').slideToggle();
+        });
   
             
 
