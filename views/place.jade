@@ -154,6 +154,13 @@ head
       width:100vw;
       height:100vh;
       }
+      #placedata{
+      display:none;
+      z-index:4000;
+      position:fixed;
+      width:100vw;
+      top:0px;
+      }
       @media only screen
       and (min-device-width : 768px)
       and (max-device-width : 1024px)
@@ -165,7 +172,7 @@ head
       }   
   body
     #pano.container        
-      #placedata.row(style='display:none;z-index:4000;position:fixed;width:100vw;top:0px;')
+      #placedata.row
         .col-xs-12(style='text-align:center;')
             h2(style='color:#fc645a;') #{doc.placenameru}    
     #info
