@@ -181,7 +181,9 @@ head
         //toplist = JSON.parse(toplist);
         //console.log("second time: "+toplist);
         var left = toplist.length%3;
+        console.log('LEFT IS: '+left);
         var times = (toplist.length-left)/3;
+        console.log('TIMES IS: '+times);
         if(toplist.length<3){
           $('#inserts').append("<div class='row' id='row1'></div>");
           for (var i=0;i<toplist.length;i++){
