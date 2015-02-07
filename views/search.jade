@@ -179,7 +179,7 @@ head
         .col-xs-4(style='text-align:center;')
             h2(style='color:#fc645a;') Поиск:       
       .row
-        .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;')
+        .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
           .input-group
             input(type="text",class="form-control",placeholder="Карлсон",id='searchfield')
             span(class="input-group-btn")
@@ -204,7 +204,7 @@ head
        $('#searchresults').empty(); 
        $('#searchresults').css('text-align','left');
        for(var i = 0;i<parsed.length;i++){
-        var insert = "<div class='row' style='border-bottom:1px solid #ddd;'><a href='http://recentones.com/place/"+parsed[i].pid+"'><div class='col-xs-2'><img src='"+parsed[i].mainpreview+"' style='width:100%'></div><div class='col-xs-10'><h5>"+parsed[i].placenameru+"</h5></div></a></div>";
+        var insert = "<div class='row' style='border-bottom:1px solid #ddd;background-color:#fff;'><a href='http://recentones.com/place/"+parsed[i].pid+"'><div class='col-xs-2' style='padding:0px;'><img src='"+parsed[i].mainpreview+"' style='width:100%'></div><div class='col-xs-10'><h5 style='color:gray;'>"+parsed[i].placenameru+"</h5></div></a></div>";
         $('#searchresults').append(insert);
        }
       }}
