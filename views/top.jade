@@ -212,6 +212,7 @@ head
            var cellnum = rnum*3+yy+1;
            var hnum = cellnum-1;
             nrnum=rnum+1;
+            $('#inserts').append("<div class='row' id='row"+nrnum+"'></div>");
             var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
             eval("$('#row"+nrnum+"').append(insert);");
             for (var zz=1;zz<11;zz++){
