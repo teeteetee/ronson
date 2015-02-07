@@ -196,8 +196,8 @@ head
       if (this.readyState === DONE){
       var parsed = JSON.parse(request.responseText);
       if (parsed.length === 0)
-      $('#searchresults').css('text-align','center');
-      $('#searchresults').append("<h5 style='margin-top:10vh;'>Ничего не нашли</h5>");
+      {$('#searchresults').css('text-align','center');
+       $('#searchresults').append("<h5 style='margin-top:10vh;'>Ничего не нашли</h5>");}
       else {
       alert('SERVER RETURNED: '+parsed);
       }}
