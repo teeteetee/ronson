@@ -1003,7 +1003,8 @@ app.post('/admin/simulateplace',function(req,res){
      }
      else {
        if(doc.length>0){
-         var newid = parseInt(doc.pid)+1;
+         var newid = parseInt(doc.pid);
+         newid++;
          places.insert({
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
