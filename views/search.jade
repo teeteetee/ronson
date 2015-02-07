@@ -190,7 +190,6 @@ head
     script.
       $('#searchbutton').click(function(){
       var query = $('#searchfield').val();
-      alert(query);
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
@@ -204,7 +203,7 @@ head
        $('#searchresults').empty(); 
        $('#searchresults').css('text-align','left');
        for(var i = 0;i<parsed.length;i++){
-        var insert = "<div class='row' style='border-bottom:1px solid #ddd;background-color:#fff;'><a href='http://recentones.com/place/"+parsed[i].pid+"'><div class='col-xs-2' style='padding:0px;'><img src='"+parsed[i].mainpreview+"' style='width:100%'></div><div class='col-xs-10'><h5 style='color:gray;'>"+parsed[i].placenameru+"</h5></div></a></div>";
+        var insert = "<div class='row' style='border-bottom:1px solid #ddd;background-color:#fff;'><a href='http://recentones.com/places/"+parsed[i].pid+"'><div class='col-xs-2' style='padding:0px;'><img src='"+parsed[i].mainpreview+"' style='width:100%'></div><div class='col-xs-10'><h5 style='color:gray;padding-top:1vw;'>"+parsed[i].placenameru+"</h5></div></a></div>";
         $('#searchresults').append(insert);
        }
       }}
