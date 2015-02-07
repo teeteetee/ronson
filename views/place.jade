@@ -160,22 +160,19 @@ head
       position:fixed;
       width:100vw;
       top:0px;
-      }
-      @media only screen
-      and (min-device-width : 768px)
-      and (max-device-width : 1024px)
-      {
-      .container-fluid {
-      width:100vw;
-      margin:0px;
-      }
       }   
   body
     #pano.container        
-    #placedata.container
-      .row
-        .col-xs-12(style='text-align:center;')
+    #placedata.container(div class='background-color:#eee;')
+      .row(style='background-color:#393b3f;')
+        .col-xs-2
+          a(href='http://recentones.com')
+            img(src='/bootstrap/images/rl.png',style='width:100%;')
+        .col-xs-10(style='text-align:center;')
           h2(style='color:#fc645a;') #{doc.placenameru}    
+      .row
+        .col-xs-12
+          h5(id='close',style='color:gray;border:1px solid gray;border-radius:4px;')
     #info
       img(src='/bootstrap/images/rl.png',style='width:3vw;height:3vw;')      
     script(type='text/javascript', src='/js/pano2vr_player.js')
@@ -186,6 +183,9 @@ head
       // create the panorama player with the container
       pano=new pano2vrPlayer("pano");
       pano.readConfigUrl("#{doc.xml}");
+      $('#close').click(function(){
+        $('placedata').slideToggle();
+        });
       $('#info').click(function(){
         console.log('hOHO');
         $('#placedata').slideToggle();
