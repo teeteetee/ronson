@@ -1002,8 +1002,8 @@ app.post('/admin/simulateplace',function(req,res){
       res.send('db error');
      }
      else {
-       if(doc.length>0){
-         var newid = parseInt(doc.pid);
+       if(doc){
+         var newid = doc.pid;
          console.log(newid);
          newid++;
          console.log(newid);
