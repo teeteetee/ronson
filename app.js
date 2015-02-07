@@ -1022,7 +1022,7 @@ app.post('/admin/simulateplace',function(req,res){
          places.insert({
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
-         aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: 1,
          mainpreview:'/bootstrap/images/nopreview.png',
