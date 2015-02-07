@@ -165,12 +165,9 @@ head
   body
     .container-fluid
       #header.row
-        .col-xs-4
-          h1(style='color:#ff9900') Moscow
-        |         
-        .col-xs-4(style='text-align:center;')
-          a(href='http://recentones.com')
-            h1 Recent ones         
+        .col-xs-1
+          a(href='http://recentones.com')   
+            img(src='/bootstrap/images/rl.png',style='width:100%;')    
       #timeperiod.row
         a(href='/')
           .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
@@ -184,16 +181,3 @@ head
       .row
         .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
           h5(style='color:gray;')  &Pcy;&ucy;&scy;&tcy;&acy;&yacy; &bcy;&acy;&zcy;&acy; 
-      |       
-      #footer.row
-        a(href='/about')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 About
-        |         
-        a(href='/contacts')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h4 Contacts
-        |         
-        a(href='/policy')
-          .col-xs-4
-            h4 Policy
