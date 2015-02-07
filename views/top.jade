@@ -205,8 +205,9 @@ head
           }
           }
           if(rnum===times && times>1 && left != 3 && left != 0){
+          console.log('populating last');
           for (var yy=0;yy<left;yy++){
-           var cellnum = xx*3+yy+1;
+           var cellnum = rnum*3+yy+1;
            var hnum = cellnum-1;
             nrnum=rnum+1;
             var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
