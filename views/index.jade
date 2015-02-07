@@ -208,7 +208,9 @@ head
             var leftrow = rnum+1;
            $('#inserts').append("<div class='row' style='padding-top:4vw;' id='row"+leftrow+"'></div>");
            var cellnum = leftrow*3+yy+1;
+           console.log('cellnum: '+cellnum);
            var hnum = cellnum-1;
+           console.log('hnum: '+hnum);
             var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
             eval("$('#row"+leftrow+"').append(insert);");
           }
