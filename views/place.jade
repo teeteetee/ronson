@@ -163,7 +163,7 @@ head
       }   
   body
     #pano.container        
-    #placedata.container(div class='background-color:#eee;')
+    #placedata.container(style='background-color:#eee;')
       .row(style='background-color:#393b3f;')
         .col-xs-1
           a(href='http://recentones.com')
@@ -171,8 +171,8 @@ head
         .col-xs-10(style='text-align:center;')
           h2(style='color:#fc645a;') #{doc.placenameru}    
       .row
-        .col-xs-12
-          h5(id='close',style='color:gray;border:1px solid gray;border-radius:4px;') Закрыть
+        .col-xs-12(style='text-align:center;')
+          h5(id='close',style='color:gray;border:1px solid gray;border-radius:4px;display:block;') Закрыть
     #info
       img(src='/bootstrap/images/rl.png',style='width:3vw;height:3vw;')      
     script(type='text/javascript', src='/js/pano2vr_player.js')
