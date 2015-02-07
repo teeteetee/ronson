@@ -194,7 +194,7 @@ head
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
-      var parsed = JSON.parse(request.responseText);
+      var parsed = request.responseText;
       if (parsed.length === 0)
       {$('#searchresults').css('text-align','center');
        $('#searchresults').append("<h5 style='margin-top:10vh;'>Ничего не нашли</h5>");}
