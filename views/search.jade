@@ -182,6 +182,30 @@ head
         form(action='/srch',method='post',role='form')
           .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;')
             .input-group
-              input(type="text",class="form-control",placeholder="Карлсон")
+              input(type="text",class="form-control",placeholder="Карлсон",id='searchfield')
               span(class="input-group-btn")
                 button(class="btn btn-default",type="button") Найти
+      .row
+        #searchresults.col-xs-10.col-xs-offset-1
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    script.
+      $('#searchbutton').click(function(){
+      var query = $('#searchfield').val();
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var parsed = JSON.parse(request.responseText);
+      if (parsed.length === 0)
+      $('#searchresults').css('text-align','center');
+      $('#searchresults').append("<h5 style='margin-top:10vh;'>Ничего не нашли</h5>");
+      else {
+      alert('SERVER RETURNED: '+parsed);
+      }}
+      };
+      request.open('POST', '/srch', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+      request.send("query="+query); 
+      });

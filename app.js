@@ -260,7 +260,25 @@ app.get('/search',function(req,res){
 });
 
 app.post('/srch',function(req,res){
-  res.send('intel');
+  var query = req.body.query;
+  var ms = {};
+  ms.trouble = 1;
+  ms.mtext = 'db'
+  places.find({placename:query},function(err,doc){
+   if(err){
+     res.send(ms);
+   }
+   else {
+    if(doc.length>0)
+    {
+      res.send(JSON.stringify(doc));
+    }
+    else {
+      ms.mtext='empty';
+      res.send(ms);
+    }
+   }
+  });
 });
 
 app.get('/admax',function(req,res){
@@ -1007,6 +1025,7 @@ app.post('/admin/simulateplace',function(req,res){
          var newid = doc[0].pid;
          newid++;
          places.insert({
+         placename:['Тестхостел','Testhostel'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
@@ -1020,6 +1039,7 @@ app.post('/admin/simulateplace',function(req,res){
        }
        else{
          places.insert({
+         placename:['Тестхостел','Testhostel'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
