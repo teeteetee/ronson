@@ -195,12 +195,18 @@ head
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
-      var parsed = request.responseText;
+      var parsed = JSON.parse(request.responseText);
       if (parsed.length === 0)
-      {$('#searchresults').css('text-align','center');
+      {$('#searchresults').empty(); 
+       $('#searchresults').css('text-align','center');
        $('#searchresults').append("<h5 style='margin-top:10vh;'>Ничего не нашли</h5>");}
       else {
-      alert('SERVER RETURNED: '+parsed);
+       $('#searchresults').empty(); 
+       $('#searchresults').css('text-align','left');
+       for(var i = 0;i<parsed.length;i++){
+        var insert = "<div class='row' style='border-bottom:1px solid #ddd;'><a href='http://recentones.com/place/"+parsed[i].pid+"'><div class='col-xs-2'><img src='"+parsed[i].mainpreview+"' style='width:100%'></div><div class='col-xs-10'><h5>"+parsed[i].placenameru+"</h5></div></a></div>";
+        $('#searchresults').append(insert);
+       }
       }}
       };
       request.open('POST', '/srch', true);
