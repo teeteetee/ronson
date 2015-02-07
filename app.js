@@ -270,7 +270,8 @@ app.post('/srch',function(req,res){
    }
    else {
     if(doc.length>0)
-    {
+    { 
+      ms.trouble = 0;
       res.send(JSON.stringify(doc));
     }
     else {

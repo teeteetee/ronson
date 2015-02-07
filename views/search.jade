@@ -179,12 +179,11 @@ head
         .col-xs-4(style='text-align:center;')
             h2(style='color:#fc645a;') Поиск:       
       .row
-        form(action='/srch',method='post',role='form')
-          .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;')
-            .input-group
-              input(type="text",class="form-control",placeholder="Карлсон",id='searchfield')
-              span(class="input-group-btn")
-                button(class="btn btn-default",type="button") Найти
+        .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;')
+          .input-group
+            input(type="text",class="form-control",placeholder="Карлсон",id='searchfield')
+            span(class="input-group-btn")
+              button(class="btn btn-default",type="button") Найти
       .row
         #searchresults.col-xs-10.col-xs-offset-1
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
