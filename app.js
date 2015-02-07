@@ -261,6 +261,7 @@ app.get('/search',function(req,res){
 
 app.post('/srch',function(req,res){
   var query = req.body.query;
+  console.log(query);
   var ms = {};
   ms.trouble = 1;
   ms.mtext = 'db'
@@ -269,6 +270,7 @@ app.post('/srch',function(req,res){
      res.send(ms);
    }
    else {
+    console.log('doc is: '+doc);
     if(doc.length>0)
     { 
       ms.trouble = 0;

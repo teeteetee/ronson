@@ -190,6 +190,7 @@ head
     script.
       $('#searchbutton').click(function(){
       var query = $('#searchfield').val();
+      alert(query);
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
