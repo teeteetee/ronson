@@ -726,32 +726,7 @@ app.get('/admin/:section',function(req,res){
 // }
 //});
 
-app.post('/admin/hostels/add',function(req,res){
-  // AUTH NEDDED
-  console.log('DDING HOSTEL USER');
-  if (
-    req.body.hostelid === undefined||
-    req.body.mail === undefined||
-    req.body.pc === undefined||
-    req.body.cname === undefined||
-    req.body.cphone === undefined||
-    req.body.regdate === undefined)
-  {res.send('ERROR: Some fields were empty');}
-else
-  {var vhostelid = req.body.hostelid;
-     var vmail = req.body.mail;
-     var vp = bcrypt.hashSync(req.body.pc,bcrypt.genSaltSync(10));
-     var vcname = req.body.cname;
-     var vcphone = req.body.cphone;
-     var vregdate = req.body.regdate;
-     console.log(vhostelid+" "+vcname+" "+vcphone+" "+vregdate);
-     var ms={};
-     ms.trouble= 0;
-     users.insert({hostelid:vhostelid,hostel:1,contact:{name:vcname,phone:vcphone},mail:vmail,phr:vp,regdate:vregdate});
-     res.send(ms);}
 
-
-});
 console.log('FIRST BREAKPOINT');
 
 //app.get('/admin', function(req,res) {
@@ -1032,7 +1007,7 @@ app.post('/admin/simulateplace',function(req,res){
          places.insert({
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
-         aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: newid,
          mainpreview:'/bootstrap/images/nopreview.png',
