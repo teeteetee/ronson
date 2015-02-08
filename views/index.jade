@@ -153,11 +153,11 @@ head
           img(src='/bootstrap/images/rl.png',style='width:100%;') 
       .row(style='background-color:#ddd;')
         .col-xs-12(style='text-align:center;padding-bottom:2vh;')
-          h5(style='color:#ff9900;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
+          h5(style='color:black;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
                  
       #timeperiod.row
         .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-          h2(style='color:white;') Лента: 
+          h2(style='color:#ff9900;') Лента: 
         |           
         a(href='/top')
           .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
@@ -165,7 +165,7 @@ head
         |           
         a(href='/search')
           .col-xs-4(style='text-align:center;')
-            h2(style='color:gray;') Поиск        
+            h2(style='color:white;') Поиск        
         
       .row(style='background-color:#eee;')
         #inserts.col-xs-12(style='text-align:center;')
@@ -200,7 +200,7 @@ head
             var hnum = cellnum-1;
             if(i===2)
             {
-             var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 tyle='color:black;'>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+             var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
                         eval("$('#row"+rnum+"').append(insert);");
             }
             else 
@@ -215,7 +215,7 @@ head
            console.log('cellnum: '+cellnum);
            var hnum = cellnum-1;
            console.log('hnum: '+hnum);
-            var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid white;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 tyle='color:black;'>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+            var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid white;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
             eval("$('#row"+leftrow+"').append(insert);");
           }
         }
