@@ -64,7 +64,6 @@ head
       text-transform:uppercase;
       font-family:roboto-thin;
       font-size:2vw;
-      font-weight:bold;
       margin:0px;
       padding-top:1vh;
       padding-bottom:1vh;
@@ -148,9 +147,7 @@ head
       .headings{
         padding-top:2vh;
         padding-bottom:2vh;
-        background-color:#94D2DD;
-        border-radius:5px;
-        color:white;
+        color:#94D2DD;
         font-size:3vw;
       }
       .headings:hover{
@@ -234,7 +231,7 @@ head
             for (var zz=1;zz<11;zz++){
             if(zz === 0 || zz%2 === 0)
             {
-             var point = "<h5 style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>"
+             var point = "<h5 style='background-color:#fff;'>"+toplist[i].places[zz]+"</h5>"
              eval("$('#ratcell"+cellnum+"').append(point);");
             }
             else
