@@ -190,11 +190,12 @@ head
     script.
       $(document).keypress(function(event){
       var keycode = (event.keyCode ? event.keyCode : event.which);
-      if(keycode == '13'){
-        alert('You pressed a "enter" key in somewhere');   
-      }
+      if(keycode == '13' && $('#searchfield').val()){
+        performsearch();   
+        }
       });
-      $('#searchbutton').click(function(){
+      $('#searchbutton').click(performsearch(););
+        function performsearch(){
       var query = $('#searchfield').val();
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
@@ -219,4 +220,4 @@ head
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
       request.send("query="+query); 
-      });
+      }
