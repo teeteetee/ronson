@@ -187,11 +187,12 @@ head
             for (var yy=1;yy<11;yy++){
             if(yy === 0 || yy%2 === 0)
             {
-             var point = "<h5 style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>"
+             var point = "<h5 style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>";
              eval("$('#ratcell"+cellnum+"').append(point);");
             }
             else
-            {eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[i].places[yy]+"</h5>')");}
+            { var point = "<h5 style='background-color:#e5e3e3;'>"+toplist[i].places[yy]+"</h5>";
+              eval("$('#ratcell"+cellnum+"').append(point)");}
           }
           }
         }
@@ -208,11 +209,12 @@ head
             for (var yy=1;yy<11;yy++){
              if(yy === 0 || yy%2 === 0)
             {
-             var point = "<h5 style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>"
+             var point = "<h5 style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>";
              eval("$('#ratcell"+cellnum+"').append(point);");
             }
             else
-           {eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[hnum].places[yy]+"</h5>')");}
+           {var point = "<h5 style='background-color:#e5e3e3;'>"+toplist[i].places[yy]+"</h5>";
+              eval("$('#ratcell"+cellnum+"').append(point)");}}
           }
           }
           console.log('rnum: '+rnum);
@@ -233,7 +235,8 @@ head
              eval("$('#ratcell"+cellnum+"').append(point);");
             }
             else
-           {eval("$('#ratcell"+cellnum+"').append('<h5>"+toplist[hnum].places[zz]+"</h5>')");}
+           {var point = "<h5 style='background-color:#e5e3e3;'>"+toplist[i].places[zz]+"</h5>";
+              eval("$('#ratcell"+cellnum+"').append(point)");}}
           }
           }
         }
