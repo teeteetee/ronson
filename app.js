@@ -1034,7 +1034,7 @@ app.post('/admin/simulateplace',function(req,res){
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: newid,
-         mainpreview:'/bootstrap/images/nopreview.png',
+         mainpreview:'/bootstrap/images/sample1.jpg',
          xml:'/bootstrap/images/emptypano.xml'
          });
          res.redirect('http://recentones.com/admin/placelist');
@@ -1048,7 +1048,7 @@ app.post('/admin/simulateplace',function(req,res){
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: 1,
-         mainpreview:'/bootstrap/images/nopreview.png',
+         mainpreview:'/bootstrap/images/sample1.jpg',
          xml:'/bootstrap/images/emptypano.xml'
          });
          res.redirect('http://recentones.com/admin/placelist');
