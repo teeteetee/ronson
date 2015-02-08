@@ -145,7 +145,6 @@ head
       z-index:200;
       top:0px;
       background-color:black;
-      opacity:0.5;
       padding:1vh;
       }
   body
@@ -200,8 +199,14 @@ head
           for (var i=0;i<3;i++){
             var cellnum = xx*3+i+1;
             var hnum = cellnum-1;
-            var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
-            eval("$('#row"+rnum+"').append(insert);");
+            if(i===2)
+            {
+             var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+                        eval("$('#row"+rnum+"').append(insert);");
+            }
+            else 
+            {var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid white;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+                        eval("$('#row"+rnum+"').append(insert);");}
           }
           if(rnum===times && left != 3 && left != 0){
           for (var yy=0;yy<left;yy++){
@@ -211,7 +216,7 @@ head
            console.log('cellnum: '+cellnum);
            var hnum = cellnum-1;
            console.log('hnum: '+hnum);
-            var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+            var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid white;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
             eval("$('#row"+leftrow+"').append(insert);");
           }
         }
