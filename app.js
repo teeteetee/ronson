@@ -209,6 +209,7 @@ app.get('/api/places/:id',function(req,res){
 });
 
 app.get('/api/recent',function(req,res){
+  console.log('API REQUEST: LIST');
   places.find({},{ limit:9,sort : { regdate : -1 } },function(err,doc){
      var ms ={};
      ms.trouble = 1;
