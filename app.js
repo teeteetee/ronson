@@ -108,8 +108,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('*', function(req,res,next) { 
   var d = new Date();
-  if(req.headers.host === 'api.topandviews.com')  //if it's a sub-domain
-   {console.log(d+' got a mobile version request on .com from '+req.ip);
+  if(req.headers.host === 'api.recentones.com')  //if it's a sub-domain
+   {console.log(d+' got an api request from '+req.ip);
     req.url = '/api' + req.url; 
     console.log(req.url); //append some text yourself
   next();} 
