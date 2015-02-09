@@ -208,6 +208,29 @@ app.get('/api/places/:id',function(req,res){
   });
 });
 
+app.get('/api/recent',function(req,res){
+  places.find({},{ limit:9,sort : { regdate : -1 } },function(err,doc){
+     var ms ={};
+     ms.trouble = 1;
+     ms.mtext = 'db';
+    if(err)
+    {
+      res.send(ms);
+    }
+    else {
+      if(doc.length>0)
+      {
+        ms.trouble = 0;
+        ms.data = JSON.stringify(doc);
+        res.send(ms);
+      }
+      else{
+        ms.mtext = 'empty';
+        res.send(ms);
+      }
+    }
+});
+
 app.get('/dropplaces',function(req,res){
     places.remove({},function(err,done){
     if(err)
