@@ -106,13 +106,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 //SUBDOMAIN MAGIC 
 
 
-//app.get('*', function(req,res,next) { 
-//  var d = new Date();
-//  if(req.headers.host === 'm.topandviews.com')  //if it's a sub-domain
-//   {console.log(d+' got a mobile version request on .com from '+req.ip);
-//    req.url = '/m' + req.url; 
-//    console.log(req.url); //append some text yourself
-//  next();} 
+app.get('*', function(req,res,next) { 
+  var d = new Date();
+  if(req.headers.host === 'api.topandviews.com')  //if it's a sub-domain
+   {console.log(d+' got a mobile version request on .com from '+req.ip);
+    req.url = '/api' + req.url; 
+    console.log(req.url); //append some text yourself
+  next();} 
  
 
  // if(req.headers.host === 'm.topandviews.co.uk')  //if it's a sub-domain
@@ -185,6 +185,25 @@ app.get('/',function(req,res) {
   //  if(req.headers.host === 'topandviews.co.uk') 
   //    {res.redirect('http://topandviews.ru')}}
    
+});
+
+app.get('/api/places/:id',function(req,res){
+  var vpid = parseInt(req.params.id);
+  places.findOne({pid:vpid},function(err,doc){
+    if(err){
+      res.render('404');
+    }
+    else {
+      console.log(doc.length);
+      if(doc)
+      {
+        res.render('apiplace',{'doc':doc});
+      }
+      else {
+        res.render('404')
+      }
+    }
+  });
 });
 
 app.get('/dropplaces',function(req,res){
@@ -607,18 +626,6 @@ app.post('/admin/addplace',function(req,res){
 //      }
 //    }
 //  });
-//});
-
-//app.get('/full',function(req,res) {
-//  if(req.headers.host === 'topandviews.ru') 
-//    {console.log(d+' request on .ru from '+req.ip);
-//     res.render('index');}
-//  if(req.headers.host === 'topandviews.com') 
-//    {console.log(d+' request on .com from '+req.ip);
-//     res.render('index');}
-//  if(req.headers.host === 'topandviews.co.uk') 
-//    {console.log(d+' request on .co.uk from '+req.ip);
-//     res.render('index');}
 //});
 
 
