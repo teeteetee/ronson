@@ -222,7 +222,7 @@ app.get('/api/recent',function(req,res){
       if(doc.length>0)
       {
         ms.trouble = 0;
-        ms.data = JSON.stringify(doc);
+        ms.data = doc;
         res.send(ms);
       }
       else{
