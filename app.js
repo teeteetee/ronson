@@ -229,6 +229,7 @@ app.get('/api/recent',function(req,res){
         res.send(ms);
       }
     }
+  });
 });
 
 app.get('/dropplaces',function(req,res){
