@@ -113,6 +113,8 @@ app.get('*', function(req,res,next) {
     req.url = '/api' + req.url; 
     console.log(req.url); //append some text yourself
   next();} 
+  else{next();}
+   });
  
 
  // if(req.headers.host === 'm.topandviews.co.uk')  //if it's a sub-domain
