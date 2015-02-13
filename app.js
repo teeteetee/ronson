@@ -112,7 +112,10 @@ app.get('*', function(req,res,next) {
    {console.log(d+' got an api request from '+req.ip);
     req.url = '/api' + req.url; 
     console.log(req.url); //append some text yourself
-  next();} 
+  next();}
+  else if (req.ip === '188.226.189.180') {
+    console.log("c'est moi");
+  } 
   else{
    console.log('-------------- REQUEST --------------')
    console.log('User-Agent: ' + req.headers['user-agent']);
