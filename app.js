@@ -286,7 +286,7 @@ app.get('/misc/:mid',function(req,res){
   var id = parseInt(req.params.mid);
   switch (id) {
     case(1):
-     res.render('contacts');
+    res.render('contacts');
     break
     case(2):
     res.render('contacts');
@@ -294,8 +294,9 @@ app.get('/misc/:mid',function(req,res){
     case(3):
     res.render('contacts');
     break
-    default
-     res.render('index');
+    default:
+    res.render('index');
+    break
   }
 });
 
