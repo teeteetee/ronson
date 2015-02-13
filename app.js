@@ -113,7 +113,12 @@ app.get('*', function(req,res,next) {
     req.url = '/api' + req.url; 
     console.log(req.url); //append some text yourself
   next();} 
-  else{next();}
+  else{
+   console.log('-------------- REQUEST --------------')
+   console.log('User-Agent: ' + req.headers['user-agent']);
+   console.log('URL: '+req.url);
+   console.log(req.ip);
+    next();}
    });
  
 
@@ -137,9 +142,6 @@ app.get('*', function(req,res,next) {
 
 
 app.get('/',function(req,res) {
-  
-  console.log('entered "/" route');
-  console.log('User-Agent: ' + req.headers['user-agent']);
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
