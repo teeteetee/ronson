@@ -24,7 +24,7 @@ app.use(logger('dev'));
 //app.use(require('connect').bodyParser());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public'),{ maxAge: 86400000 /* 1d */ }));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 86400000 }));
 //app.use(sessions({
 //  cookieName: 'session',
 //  secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
