@@ -192,6 +192,7 @@ app.get('/',function(req,res) {
       }
     }
   });
+  });
 
   //if(uacheck === true) {
   //  res.render('mindex');
