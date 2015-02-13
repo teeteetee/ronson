@@ -33,10 +33,11 @@ head
       src: url('/bootstrap/fonts/bebasneue_thin.ttf');
       }
       h1 {
-      font-family:high;
-      font-size:3vw;
-      display:inline;
-      color:white;
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:black;
       }
       body {
       min-width:768px;
@@ -165,6 +166,14 @@ head
       .row(style='text-align:center;background-color:#fff;')
         .col-xs-12
           h5(style='color:gray;') Еще
+      #footer.row    
+        .col-xs-2.col-xs-offset-2(style='text-align:right;')
+          h1 Контакты
+        .col-xs-2(style='text-align:center;')
+          h1 Манифест
+        .col-xs-2(style='text-align:left;')
+          h1 Опасность
+
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         var toplist = !{doc};
