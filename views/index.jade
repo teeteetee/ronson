@@ -195,7 +195,7 @@ head
           $('#inserts').append("<div class='row' id='row1'></div>");
           for (var i=0;i<toplist.length;i++){
             var cellnum = i+1;
-            var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[i].placenameru+"</h5><h1>"+toplist[hnum].regdate.day"."toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div>";
+            var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[i].placenameru+"</h5><h1>"+toplist[i].regdate.day"."toplist[i].regdate.month+"."+toplist[i].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div>";
             eval("$('#row1').append(insert);");
           }
         }
