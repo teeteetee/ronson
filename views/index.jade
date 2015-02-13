@@ -305,7 +305,7 @@ head
           request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
           request.setRequestHeader("Content-type", "text/plain");
           //Most libraries like jQuery/Prototype/Dojo do this
-          var eng = 'mult='+moreid;
+          var enq = 'mult='+moreid;
           console.log('mult='+moreid);
           request.send(enq);
           });
