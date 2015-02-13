@@ -115,6 +115,7 @@ app.get('*', function(req,res,next) {
   next();}
   else if (req.ip === '188.226.189.180') {
     console.log("c'est moi");
+    next();
   } 
   else{
    console.log('-------------- REQUEST --------------')
