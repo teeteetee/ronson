@@ -168,6 +168,7 @@ app.get('/',function(req,res) {
   });
 
   app.post('/more',function(req,res){
+    console.log(req.body.mult);
     var lastpid = parseInt(req.body.mult);
     var ms= {};
     ms.trouble = 1;
