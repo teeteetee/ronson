@@ -24,7 +24,7 @@ app.use(logger('dev'));
 //app.use(require('connect').bodyParser());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'),{ maxAge: 86400000 /* 1d */ }));
 //app.use(sessions({
 //  cookieName: 'session',
 //  secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
@@ -106,9 +106,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //SUBDOMAIN MAGIC 
 
 
-app.get('*', function(req,res,next) { 
-  res.set('Cache-Control', 'max-age=604800, private');
-  var d = new Date();
+app.get('*', function(req,res,next) {   var d = new Date();
   if(req.headers.host === 'api.recentones.com')  //if it's a sub-domain
    {console.log(d+' got an api request from '+req.ip);
     req.url = '/api' + req.url; 
