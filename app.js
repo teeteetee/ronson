@@ -107,7 +107,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('*', function(req,res,next) { 
-  res.set('Cache-Control', 'max-age=604800');
+  res.set('Cache-Control', 'max-age=604800, public');
   var d = new Date();
   if(req.headers.host === 'api.recentones.com')  //if it's a sub-domain
    {console.log(d+' got an api request from '+req.ip);
