@@ -303,7 +303,7 @@ head
           };
           request.open('POST', '/more', true);
           request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-          request.setRequestHeader("Content-type", "text/plain");
+          request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           //Most libraries like jQuery/Prototype/Dojo do this
           var enq = 'mult='+moreid;
           console.log('mult='+moreid);
