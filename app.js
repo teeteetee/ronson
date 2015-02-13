@@ -113,6 +113,10 @@ app.get('*', function(req,res,next) {   var d = new Date();
     req.url = '/api' + req.url; 
     console.log(req.url); //append some text yourself
   next();}
+  else if(req.headers.host === 'm.recentones.com')  //if it's a sub-domain
+   {req.url = '/m' + req.url; 
+    console.log(req.url); //append some text yourself
+     next();}
   else if (req.ip === '188.226.189.180') {
     console.log("c'est moi");
     next();
@@ -167,6 +171,7 @@ app.get('/',function(req,res) {
       }
     }
   });
+});
 
   app.post('/more',function(req,res){
     console.log(req.body.mult);
@@ -221,6 +226,25 @@ app.get('/',function(req,res) {
   //  if(req.headers.host === 'topandviews.co.uk') 
   //    {res.redirect('http://topandviews.ru')}}
    
+
+
+app.get('/m',function(req,res){
+  places.find({},{ limit:9,sort : { regdate : -1 } },function(err,doc){
+    if(err)
+    {
+      res.render('memptyindex');
+    }
+    else {
+      if(doc.length>0)
+      {
+        //res.render('index',{'places':doc});
+        res.render('mindex',{'doc':JSON.stringify(doc)});
+      }
+      else{
+        res.render('memptyindex');
+      }
+    }
+  });
 });
 
 app.get('/api/places/:id',function(req,res){
