@@ -152,7 +152,7 @@ head
     .container
       #header.row
         .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
-          img(src='/bootstrap/images/rl.png',style='width:100%;') 
+          img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
         .col-xs-10(style='text-align:left;')
           h5(style='color:white;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
                  
@@ -186,6 +186,35 @@ head
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
+        var logocount=0;
+        $('logo').mouseenter(function(){
+           switch(logocount) {
+            case(0):
+             $('logo').attr('src','/bootstrap/images/gl.png');
+             logocount++;
+            break;
+            case(1):
+             $('logo').attr('src','/bootstrap/images/bl.png');
+             logocount++;
+            break;
+            case(2):
+              $('logo').attr('src','/bootstrap/images/rl.png');
+             logocount++;
+            break;
+            case(logocount%3 == 0)
+             $('logo').attr('src','/bootstrap/images/gl.png');
+             logocount++;
+            break;
+            case(logocount%3 == 1)
+             $('logo').attr('src','/bootstrap/images/bl.png');
+             logocount++;
+            break;
+            case(logocount%3 == 0)
+             $('logo').attr('src','/bootstrap/images/rl.png');
+             logocount++;
+            break;
+           }
+          });
         var toplist = !{doc};
         console.log("first time: "+toplist);
         //toplist = JSON.parse(toplist);
