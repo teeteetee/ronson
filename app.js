@@ -175,7 +175,7 @@ app.get('/',function(req,res) {
     ms.mtext = 'db';
     console.log(lastpid)
     //db.collection.find( { field: { $gt: value1, $lt: value2 } } );
-    places.find({ limit:9,pid: { $lt : lastpid } },function(err,doc){
+    places.find({},{ limit:9,pid: { $lt : lastpid } },function(err,doc){
     if(err)
     {
       res.send(ms);
