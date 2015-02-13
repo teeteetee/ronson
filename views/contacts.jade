@@ -100,11 +100,16 @@ head
       .underline:hover {
         border-bottom:3px solid gray;
       }
+      a:hover {
+        text-decoration:none
+        outline:none
+      }
   body
     #white.container
       #header.row
         .col-xs-1(style='padding-top:15px;padding-bottom:15px;')
-          img(src='/bootstrap/images/rl.png',style='width:100%;')  
+          a(href='http://recentones.com')
+            img(src='/bootstrap/images/rl.png',style='width:100%;')  
         .col-xs-2.col-xs-offset-2.underline(style='text-align:right;border-bottom:3px solid gray;')
           h1 Контакты
         .col-xs-2.underline(style='text-align:center;border-bottom:1px solid #ddd;')
