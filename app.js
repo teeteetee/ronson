@@ -167,7 +167,7 @@ app.get('/',function(req,res) {
     }
   });
 
-  app.post('/month',function(req,res){
+  app.post('/more',function(req,res){
     var lastpid = parseInt(req.body.mult);
     var ms= {};
     ms.trouble = 1;

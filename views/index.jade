@@ -172,7 +172,7 @@ head
         #inserts.col-xs-12(style='text-align:center;')
       .row(style='text-align:center;background-color:#fff;')
         .col-xs-12
-          h5(id='more',style='color:gray;margin-bottom:10px;cursor:pointer;') Показать 
+          h5(id='more',style='color:gray;margin-bottom:10px;cursor:pointer;') Еще 
       #footer.row(style='background-color:white;padding-bottom:10px;')  
         .col-xs-2.col-xs-offset-3(style='text-align:right;')
           a(href='/misc/1')
@@ -298,7 +298,7 @@ head
           };
           request.open('POST', '/more', true);
           request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-          request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          request.setRequestHeader("Content-type", "text/plain");
           //Most libraries like jQuery/Prototype/Dojo do this
           request.send("mult="+moreid);
           });
