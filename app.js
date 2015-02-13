@@ -282,6 +282,23 @@ app.get('/top',function(req,res){
   });
 });
 
+app.get('/misc/:mid',function(req,res){
+  var id = parseInt(req.params.mid);
+  switch (id) {
+    case(1):
+     res.render('contacts');
+    break
+    case(2):
+    res.render('contacts');
+    break
+    case(3):
+    res.render('contacts');
+    break
+    default
+     res.render('index');
+  }
+});
+
 app.get('/places/:id',function(req,res){
   var vpid = parseInt(req.params.id);
   places.findOne({pid:vpid},function(err,doc){
@@ -1058,6 +1075,10 @@ app.post('/admin/simulateplace',function(req,res){
      }
      else {
        console.log('DOC LENGTH: '+doc.length)
+       var d = new Date();
+       var vday = d.getDate();
+       var vmonth = d.getMonth()+1;
+       var vyear = d.getUTCFullYear();
        if(doc.length>0){
          var newid = doc[0].pid;
          newid++;
@@ -1065,6 +1086,7 @@ app.post('/admin/simulateplace',function(req,res){
          placename:['Тестхостел','Testhostel'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
+         regdate:{day:vday,month:vmonth,year:vyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: newid,
@@ -1079,6 +1101,7 @@ app.post('/admin/simulateplace',function(req,res){
          placename:['Тестхостел','Testhostel'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
+         regdate:{day:vday,month:vmonth,year:vyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: 1,

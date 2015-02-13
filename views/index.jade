@@ -37,7 +37,7 @@ head
       font-family:arial;
       letter-spacing:0.3vw;
       text-transform:uppercase;
-      color:black;
+      color:#bbb;
       }
       body {
       min-width:768px;
@@ -168,11 +168,14 @@ head
           h5(style='color:gray;') Еще
       #footer.row(style='background-color:white;')  
         .col-xs-2.col-xs-offset-3(style='text-align:right;')
-          h1 Контакты
+          a(href='/misc/1')
+            h1 Контакты
         .col-xs-2(style='text-align:center;')
-          h1 Манифест
+          a(href='/misc/2')
+            h1 Манифест
         .col-xs-2(style='text-align:left;')
-          h1 Опасность
+          a(href='/misc/3')
+            h1 Опасность
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
