@@ -195,7 +195,7 @@ head
           $('#inserts').append("<div class='row' id='row1'></div>");
           for (var i=0;i<toplist.length;i++){
             var cellnum = i+1;
-            var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[i].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div>";
+            var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[i].placenameru+"</h5><h1>"+toplist[hnum].regdate.day"."toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div>";
             eval("$('#row1').append(insert);");
           }
         }
@@ -209,11 +209,11 @@ head
             var hnum = cellnum-1;
             if(i===2)
             {
-             var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+             var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5><h1>"+toplist[hnum].regdate.day"."toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
                         eval("$('#row"+rnum+"').append(insert);");
             }
             else 
-            {var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid #ddd;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+            {var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid #ddd;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5><h1>"+toplist[hnum].regdate.day"."toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
                         eval("$('#row"+rnum+"').append(insert);");}
           }
           if(rnum===times && left != 3 && left != 0){
@@ -224,7 +224,7 @@ head
            console.log('cellnum: '+cellnum);
            var hnum = cellnum-1;
            console.log('hnum: '+hnum);
-            var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid #ddd;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+            var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid #ddd;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5><h1>"+toplist[hnum].regdate.day"."toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
             eval("$('#row"+leftrow+"').append(insert);");
           }
         }
