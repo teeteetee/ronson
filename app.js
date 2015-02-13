@@ -167,6 +167,32 @@ app.get('/',function(req,res) {
     }
   });
 
+  app.post('/month',function(req,res){
+    var lastpid = parseInt(req.body.mult);
+    var ms= {};
+    ms.trouble = 1;
+    ms.mtext = 'db';
+    
+    //db.collection.find( { field: { $gt: value1, $lt: value2 } } );
+    places.find({},{ limit:9,pid: { $lt : lastpid } },function(err,doc){
+    if(err)
+    {
+      res.send(ms);
+    }
+    else {
+      if(doc.length>0)
+      { 
+        ms.trouble = 0;
+        ms.mdata = doc;
+        res.send(ms);
+      }
+      else{
+        ms.mtext='empty';
+        res.send(ms);
+      }
+    }
+  });
+
   //if(uacheck === true) {
   //  res.render('mindex');
   //}
