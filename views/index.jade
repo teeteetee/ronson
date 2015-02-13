@@ -188,32 +188,37 @@ head
       script.
         var logocount=0;
         $('#logo').mouseenter(function(){
-           switch(logocount) {
-            case(0):
-             $('#logo').attr('src','/bootstrap/images/gl.png');
-             logocount++;
-            break;
-            case(1):
-             $('#logo').attr('src','/bootstrap/images/bl.png');
-             logocount++;
-            break;
-            case(2):
-              $('#logo').attr('src','/bootstrap/images/rl.png');
-             logocount++;
-            break;
-            case(logocount%3 == 0)
-             $('#logo').attr('src','/bootstrap/images/gl.png');
-             logocount++;
-            break;
-            case(logocount%3 == 1)
-             $('#logo').attr('src','/bootstrap/images/bl.png');
-             logocount++;
-            break;
-            case(logocount%3 == 0)
-             $('#logo').attr('src','/bootstrap/images/rl.png');
-             logocount++;
-            break;
-           }
+          if(logocount<3)
+           {switch(logocount) {
+                       case(0):
+                        $('#logo').attr('src','/bootstrap/images/gl.png');
+                        logocount++;
+                       break;
+                       case(1):
+                        $('#logo').attr('src','/bootstrap/images/bl.png');
+                        logocount++;
+                       break;
+                       case(2):
+                         $('#logo').attr('src','/bootstrap/images/rl.png');
+                        logocount++;
+                       break;
+                      }
+                    }
+            else {
+              switch(logocount%3)
+              {         case(0):
+                         $('#logo').attr('src','/bootstrap/images/gl.png');
+                         logocount++;
+                        break;
+                        case(1):
+                         $('#logo').attr('src','/bootstrap/images/bl.png');
+                         logocount++;
+                        break;
+                        case(2):
+                         $('#logo').attr('src','/bootstrap/images/rl.png');
+                         logocount++;
+                        break;}
+            }
           });
         var toplist = !{doc};
         console.log("first time: "+toplist);
