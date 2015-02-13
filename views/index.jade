@@ -250,7 +250,7 @@ head
                      var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5><h1>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
                                 eval("$('#row"+rnum+"').append(insert);");
                     if(xx+1 == times){
-                     moreid = parseInt(toplist[hnum].pid);
+                     moreid = toplist[hnum].pid;
                      console.log('MOREID: '+moreid);
                     }
                     }
@@ -269,7 +269,7 @@ head
                     var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid #ddd;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5><h1>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
                     eval("$('#row"+leftrow+"').append(insert);");
                     if(yy+1 == left){
-                     moreid = parseInt(toplist[hnum].pid);
+                     moreid = toplist[hnum].pid;
                      console.log('MOREID: '+moreid);
                     }
                   }
@@ -305,7 +305,7 @@ head
           request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
           request.setRequestHeader("Content-type", "text/plain");
           //Most libraries like jQuery/Prototype/Dojo do this
-          request.send("mult="+moreid);
+          request.send('mult='+moreid);
           });
           populate(toplist);
            
