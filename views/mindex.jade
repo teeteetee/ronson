@@ -44,7 +44,6 @@ head
       body {
       background-color:#fff;
       background-image:url('/bootstrap/images/stripe4.png');
-      filter: grayscale(50%);
       }
       h2 {
       font-size:6vw;
@@ -154,18 +153,8 @@ head
             li 
               a(href='/misc/1') 
                 h1 Контакты
-    .container
-      //
-        #header.row
-        .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
-          img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
-        .col-xs-10(style='text-align:left;')
-          h5(style='color:white;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
-                 
-      .row(style='background-color:#eee;')
-        #inserts.col-xs-12(style='text-align:center;')
-      .row(style='text-align:center;background-color:#fff;')
-        .col-xs-12
+    #inserts.container
+        //
           h5(id='more',style='color:black;margin-bottom:10px;cursor:pointer;') Еще 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/bootstrap.min.js')
