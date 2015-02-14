@@ -247,6 +247,25 @@ app.get('/m',function(req,res){
   });
 });
 
+app.get('/m/top',function(req,res){
+  top.find({},function(err,doc){
+    if(err)
+    {
+      res.redirect('http://recentones.com');
+    }
+    else
+    { 
+      if(doc.length>0)
+      { console.log(doc);
+        res.render('mtop',{'doc': JSON.stringify(doc)});}
+      else {
+        res.render('emptytop');
+      }
+    }
+
+  });
+});
+
 app.get('/m/places/:id',function(req,res){
   var vpid = parseInt(req.params.id);
   places.findOne({pid:vpid},function(err,doc){
