@@ -247,6 +247,24 @@ app.get('/m',function(req,res){
   });
 });
 
+app.get('/m/places/:id',function(req,res){
+  var vpid = parseInt(req.params.id);
+  places.findOne({pid:vpid},function(err,doc){
+    if(err){
+      res.render('404');
+    }
+    else {
+      if(doc)
+      {
+        res.render('apiplace',{'doc':doc});
+      }
+      else {
+        res.render('404')
+      }
+    }
+  });
+});
+
 app.get('/api/places/:id',function(req,res){
   var vpid = parseInt(req.params.id);
   places.findOne({pid:vpid},function(err,doc){
