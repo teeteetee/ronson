@@ -272,7 +272,7 @@ app.get('/m/search',function(req,res){
 
 app.get('/m/misc/:id',function(req,res){
   var id = parseInt(req.params.mid);
-  switch (id) {
+  switch (mid) {
     case(1):
     res.render('mcontacts');
     break
