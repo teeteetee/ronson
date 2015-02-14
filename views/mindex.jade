@@ -112,12 +112,6 @@ head
       z-index:2;
       padding:1vh;
       }
-      #blue{
-      background-color:#001c45;
-      }
-      #green{
-      background-color:#49a881;
-      }
       #white{
       background-color:white;
       }
@@ -142,9 +136,12 @@ head
             span.icon-bar
             span.icon-bar
           a(class='navbar-brand',href='#',style='color:white;') 
-            h2(style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') Лента
+            h2(style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') Recentones
         #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
           ul(class='nav navbar-nav')
+            li(class='active')
+              a(href='/m/top') 
+                h1 Лента
             li
               a(href='/m/top') 
                 h1 Рейтинги
