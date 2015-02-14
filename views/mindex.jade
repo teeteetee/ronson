@@ -105,8 +105,9 @@ head
       color:black;
       width:100%;
       text-align:center;
-      margin-bottom:auto;
+      top:0px;
       z-index:2
+      padding:1vh;
       }
       #blue{
       background-color:#001c45;
@@ -123,12 +124,6 @@ head
       .container-fluid {
       background-color:#eee;
       }  
-      .albumnameblock{
-      z-index:200;
-      top:0px;
-      background-color:#fff;
-      padding:1vh;
-      }
       a:hover {
         text-decoration:none;
         outline:none;
@@ -144,7 +139,7 @@ head
             span.icon-bar
             span.icon-bar
           a(class='navbar-brand',href='#',style='color:white;') 
-            h2(style='font-size8:8vw;margin-left:0px;margin-right:0px;') Лента
+            h2(style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') Лента
         #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
           ul(class='nav navbar-nav')
             li(class='active')
@@ -175,7 +170,7 @@ head
         
         var toplist = !{doc};
         function populate(toplist) {for (var i=0;i<toplist.length;i++){
-                  var insert ="<div class='row' id='row"+i+"'><div class='col-xs-12' style='padding:0px;'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[i].placenameru+"</h5><h1>"+toplist[i].regdate.day+"."+toplist[i].regdate.month+"."+toplist[i].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div></div>";
+                  var insert ="<div class='row' id='row"+i+"'><div class='col-xs-12' style='padding:0px;'><div class='placename'><h5 style='color:black;'>"+toplist[i].placenameru+"</h5><h1>"+toplist[i].regdate.day+"."+toplist[i].regdate.month+"."+toplist[i].regdate.year+"</h1></div><div class='placenamebckgrnd'><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div></div></div>";
                   $('#inserts').append(insert);
                 }}
         
