@@ -142,12 +142,12 @@ head
             span.icon-bar
             span.icon-bar
           a(class='navbar-brand',href='#',style='color:white;') 
-            h2(style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') Лента
+            h2(style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') Рейтинги
         #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
           ul(class='nav navbar-nav')
             li
               a(href='/m/top') 
-                h1 Рейтинги
+                h1 Лента
             li
               a(href='/m/search')  
                 h1 Поиск
@@ -162,41 +162,32 @@ head
       script.
         
         var toplist = !{doc};
-        function populate(toplist) {for (var i=0;i<toplist.length;i++){
-                  var insert ="<div class='row' style='border-bottom:1px solid #ddd;' id='row"+i+"'><div class='col-xs-12' style='padding:0px;'><div class='placename'><h5>"+toplist[i].placenameru+"</h5><h3>"+toplist[i].regdate.day+"."+toplist[i].regdate.month+"."+toplist[i].regdate.year+"</h3></div><div class='placenamebckgrnd'><a href='http://m.recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div></div></div>";
-                  $('#inserts').append(insert);
-                }}
-        
-         $('#more').click(function(){
-          request = new XMLHttpRequest();
-          request.onreadystatechange = function () {
-          var DONE = this.DONE || 4;
-          if (this.readyState === DONE){
-          parsed = JSON.parse(request.responseText);
-          console.log(parsed);
-          if(parsed.trouble === 1)
-          {
-          console.log('TROUBLE === 1');
-          switch (parsed.mtext){
-          case('db'):
-          alert('Sorry, our database is being updated');
-          break;
-          case('empty'):
-          break;
-          }}
-          else {
-          //trouble === 0
-          $('#inserts').empty();
-          toplist = parsed.mdata;
-          populate(toplist);
+        function populate(toplist) {
+            for (var i=0;i<toplist.length;i++) {
+             var rnum = i+1;
+            $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"' style='padding-top:2vw;'></div>");
+            var cellnum = xx*3+i+1;
+            var hnum = cellnum-1;
+            var insert = "<div class='col-xs-12' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
+            eval("$('#row"+rnum+"').append(insert);");
+            for (var yy=1;yy<11;yy++){
+             if(yy === 0 || yy%2 === 0)
+            {
+             var point = "<h5 style='background-color:#fbeae9;'>"+toplist[i].places[yy]+"</h5>";
+             eval("$('#ratcell"+cellnum+"').append(point);");
+            }
+            else if( yy===10){
+              var point = "<h5 class='row"+rnum+"' style='background-color:black;color:white;'>Закрыть</h5>";
+             eval("$('#ratcell"+cellnum+"').append(point);");
+            }
+            else
+           {var point = "<h5 onclick='closefunc("+rnum+")' style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>";
+              eval("$('#ratcell"+cellnum+"').append(point)");}
           }
           }
-          };
-          request.open('POST', '/more', true);
-          request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-          request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          //Most libraries like jQuery/Prototype/Dojo do this
-          request.send('mult='+moreid);
-          });
-          populate(toplist);
+        }
+        populate();
+        function closefunc(id) {
+         eval("$('#row"+id+"').slideToggle();");
+        }
            
