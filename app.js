@@ -270,9 +270,9 @@ app.get('/m/search',function(req,res){
   res.render('msearch');
 });
 
-app.get('/m/misc/:id',function(req,res){
+app.get('/m/misc/:mid',function(req,res){
   var id = parseInt(req.params.mid);
-  switch (mid) {
+  switch (id) {
     case(1):
     res.render('mcontacts');
     break
