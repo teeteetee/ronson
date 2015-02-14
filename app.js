@@ -270,6 +270,24 @@ app.get('/m/search',function(req,res){
   res.render('msearch');
 });
 
+app.get('/m/misc/:id',function(req,res){
+  var id = parseInt(req.params.mid);
+  switch (id) {
+    case(1):
+    res.render('mcontacts');
+    break
+    case(2):
+    res.render('mcontacts');
+    break
+    case(3):
+    res.render('mcontacts');
+    break
+    default:
+    res.render('mindex');
+    break
+  }
+});
+
 app.get('/m/places/:id',function(req,res){
   var vpid = parseInt(req.params.id);
   places.findOne({pid:vpid},function(err,doc){
