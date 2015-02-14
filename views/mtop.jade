@@ -120,14 +120,14 @@ head
             $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"'><div class='col-xs-12' id='slide"+rnum+"' style='padding-left:0px;padding-right:0px;display:none' id='ratcell"+i+"' ></div></div>");
             var insert = "<div class='col-xs-10' style='padding-left:0px;padding-right:0px;'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div><div onclick='closefunc("+rnum+")' class='col-xs-2'><img style='margin:2vh;' src='/bootstrap/images/circle_bird_down.png'></div>";
             eval("$('#headingrow"+rnum+"').append(insert);");
-            for (var yy=1;yy<11;yy++){
+            for (var yy=0;yy<10;yy++){
              if(yy === 0 || yy%2 === 0)
             {
              var point = "<h5 style='margin-left:20px;'>"+toplist[i].places[yy]+"</h5>";
              eval("$('#slide"+i+"').append(point);");
-             if( yy===10){
-              var point = "<h5 onclick='closefunc("+i+")' class='row"+rnum+"' style='background-color:#333;color:white;padding-left:15px;padding-top:5px;padding-bottom:5px;'>Закрыть</h5>";
-             eval("$('#slide"+rnum+"').append(point);");
+             if( yy===9){
+              var point = "<h5 onclick='closefunc("+rnum+")' class='row"+rnum+"' style='background-color:#333;color:white;padding-left:15px;padding-top:5px;padding-bottom:5px;'>Закрыть</h5>";
+             eval("$('#slide"+i+"').append(point);");
             }
             }
             else
