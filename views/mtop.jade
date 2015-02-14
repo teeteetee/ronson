@@ -124,7 +124,7 @@ head
               var point = "<h5 style='margin-left:20px;'>"+toplist[i].places[yy]+"</h5>";
              eval("$('#slide"+i+"').append(point);");
              if( yy===10){
-              var point = "<h5 onclick='closefunc("+rnum+")' class='row"+rnum+"' style='background-color:#333;color:white;padding-left:15px;padding-top:5px;padding-bottom:5px;'>Закрыть</h5>";
+              var point = "<h5 onclick='closefunc("+i+")' class='row"+rnum+"' style='background-color:#333;color:white;padding-left:15px;padding-top:5px;padding-bottom:5px;'>Закрыть</h5>";
              eval("$('#slide"+i+"').append(point);");
              }
            }
