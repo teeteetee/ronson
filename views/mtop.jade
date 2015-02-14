@@ -124,15 +124,15 @@ head
              if(yy === 0 || yy%2 === 0)
             {
              var point = "<h5 style='background-color:#eee;'>"+toplist[i].places[yy]+"</h5>";
-             eval("$('#ratcell"+i+"').append(point);");
+             eval("$('#slide"+i+"').append(point);");
              if( yy===10){
               var point = "<h5 onclick='closefunc("+rnum+")' class='row"+rnum+"' style='background-color:black;color:white;'>Закрыть</h5>";
-             eval("$('#ratcell"+i+"').append(point);");
+             eval("$('#slide"+i+"').append(point);");
             }
             }
             else
            {var point = "<h5 style='background-color:#eee;'>"+toplist[i].places[yy]+"</h5>";
-              eval("$('#ratcell"+i+"').append(point)");}
+              eval("$('#slide"+i+"').append(point)");}
           }
           }
         }
