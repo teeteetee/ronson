@@ -33,8 +33,8 @@ head
       src: url('/bootstrap/fonts/bebasneue_thin.ttf');
       }
       h1 {
-      font-size:1vw;
-      font-family:arial;
+      font-size:6vw;
+      font-family:roboto-thin;
       letter-spacing:0.3vw;
       text-transform:uppercase;
       color:#bbb;
@@ -98,6 +98,7 @@ head
       background-color:black;
       text-align:center;
       height:25%;
+      z-index:1;
       }
       .placename {
       position:absolute;
@@ -105,6 +106,7 @@ head
       width:100%;
       text-align:center;
       margin-bottom:auto;
+      z-index:2
       }
       #blue{
       background-color:#001c45;
@@ -142,7 +144,7 @@ head
             span.icon-bar
             span.icon-bar
           a(class='navbar-brand',href='#',style='color:white;') 
-            h2 Лента
+            h2(style='font-size8:8vw;margin-left:0px;margin-right:0px;') Лента
         #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
           ul(class='nav navbar-nav')
             li(class='active')
