@@ -52,7 +52,13 @@ head
       letter-spacing:7px;
       }
       h3 {
-      font-size:3vw;
+      ffont-size:4vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:#eee;
+      margin-top:0px;
+      margin-bottom:0px;
       }
       h4 {
       font-size:2vw;
@@ -65,7 +71,7 @@ head
       text-transform:uppercase;
       font-family:high;
       color:white;
-      font-size:3vw;
+      font-size:8vw;
       margin-bottom:0px;
       }
       .preview {
@@ -167,7 +173,7 @@ head
         
         var toplist = !{doc};
         function populate(toplist) {for (var i=0;i<toplist.length;i++){
-                  var insert ="<div class='row' id='row"+i+"'><div class='col-xs-12' style='padding:0px;'><div class='placename'><h5 style='color:black;'>"+toplist[i].placenameru+"</h5><h1>"+toplist[i].regdate.day+"."+toplist[i].regdate.month+"."+toplist[i].regdate.year+"</h1></div><div class='placenamebckgrnd'><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div></div></div>";
+                  var insert ="<div class='row' id='row"+i+"'><div class='col-xs-12' style='padding:0px;'><div class='placename'><h5>"+toplist[i].placenameru+"</h5><h3>"+toplist[i].regdate.day+"."+toplist[i].regdate.month+"."+toplist[i].regdate.year+"</h3></div><div class='placenamebckgrnd'><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div></div></div>";
                   $('#inserts').append(insert);
                 }}
         
