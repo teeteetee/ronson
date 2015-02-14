@@ -44,7 +44,6 @@ head
       body {
       padding-top:51px;
       background-color:#fff;
-      background-image:url('/bootstrap/images/stripe4.png');
       }
       h2 {
       font-size:6vw;
@@ -117,14 +116,14 @@ head
         function populate(toplist) {
             for (var i=0;i<toplist.length;i++) {
              var rnum = i+1;
-            $('#inserts').append("<div class='row row"+rnum+"' id='headingrow"+rnum+"'></div>");
+            $('#inserts').append("<div class='row row"+rnum+"' style='background-color:#ddd;border-bottom:1px solid gray;' id='headingrow"+rnum+"'></div>");
             $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"'><div class='col-xs-12' id='slide"+rnum+"' style='padding-left:0px;padding-right:0px;display:none' id='ratcell"+i+"' ></div></div>");
             var insert = "<div class='col-xs-12' style='padding-left:0px;padding-right:0px;'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
             eval("$('#headingrow"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
              if(yy === 0 || yy%2 === 0)
             {
-             var point = "<h5 style='background-color:#ddd;'>"+toplist[i].places[yy]+"</h5>";
+             var point = "<h5 style='background-color:#eee;'>"+toplist[i].places[yy]+"</h5>";
              eval("$('#ratcell"+i+"').append(point);");
              if( yy===10){
               var point = "<h5 onclick='closefunc("+rnum+")' class='row"+rnum+"' style='background-color:black;color:white;'>Закрыть</h5>";
@@ -132,7 +131,7 @@ head
             }
             }
             else
-           {var point = "<h5 style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>";
+           {var point = "<h5 style='background-color:#eee;'>"+toplist[i].places[yy]+"</h5>";
               eval("$('#ratcell"+i+"').append(point)");}
           }
           }
