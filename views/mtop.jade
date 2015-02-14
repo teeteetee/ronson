@@ -123,7 +123,7 @@ head
             eval("$('#headingrow"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
               if(i===toplist.length-1) {
-                console.log('last circle :'+toplist[i].places[yy]);
+                console.log(i+' circle :'+toplist[i].places[yy]);
               }
               var point = "<h5 style='margin-left:20px;'>"+toplist[i].places[yy]+"</h5>";
              eval("$('#slide"+i+"').append(point);");
