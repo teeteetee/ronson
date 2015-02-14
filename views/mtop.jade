@@ -117,9 +117,9 @@ head
         function populate(toplist) {
             for (var i=0;i<toplist.length;i++) {
              var rnum = i+1;
-            $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"'></div>");
             $('#inserts').append("<div class='row row"+rnum+"' id='headingrow"+rnum+"'></div>");
-            var insert = "<div class='col-xs-12' id='slide"+rnum+"' style='padding-left:0px;padding-right:0px;display:none' id='ratcell"+i+"' ><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
+            $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"'><div class='col-xs-12' id='slide"+rnum+"' style='padding-left:0px;padding-right:0px;display:none' id='ratcell"+i+"' ></div></div>");
+            var insert = "<div class='col-xs-12' style='padding-left:0px;padding-right:0px;' id='ratcell"+i+"' ><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
             eval("$('#headingrow"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
              if(yy === 0 || yy%2 === 0)
