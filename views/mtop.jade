@@ -165,9 +165,7 @@ head
             for (var i=0;i<toplist.length;i++) {
              var rnum = i+1;
             $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"' style='padding-top:2vw;'></div>");
-            var cellnum = xx*3+i+1;
-            var hnum = cellnum-1;
-            var insert = "<div class='col-xs-12' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
+            var insert = "<div class='col-xs-12' ><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
              if(yy === 0 || yy%2 === 0)
