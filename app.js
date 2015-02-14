@@ -266,6 +266,10 @@ app.get('/m/top',function(req,res){
   });
 });
 
+app.get('/m/search',function(req,res){
+  res.render('msearch');
+});
+
 app.get('/m/places/:id',function(req,res){
   var vpid = parseInt(req.params.id);
   places.findOne({pid:vpid},function(err,doc){

@@ -1,0 +1,155 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title Recent ones
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      @font-face {
+      font-family:br;
+      src: url('/bootstrap/fonts/bebasneue_regular.ttf');
+      }
+      @font-face {
+      font-family:bt;
+      src: url('/bootstrap/fonts/bebasneue_thin.ttf');
+      }
+      h1 {
+      font-size:6vw;
+      font-family:roboto-thin;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:#bbb;
+      margin-top:0px;
+      margin-bottom:0px;
+      }
+      body {
+      padding-top:51px;
+      background-color:#fff;
+      }
+      h2 {
+      font-size:6vw;
+      font-family:br;
+      letter-spacing:7px;
+      }
+      h3 {
+      font-size:3vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:#eee;
+      margin-top:0px;
+      margin-bottom:0px;
+      }
+      h4 {
+      font-size:2vw;
+      font-family:roboto-thin;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      }
+      h5 {
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-family:roboto-thin;
+      font-size:8vw;
+      margin-bottom:0px;
+      }
+      img {
+      width:100%;
+      }
+      #white{
+      background-color:white;
+      } 
+      a:hover {
+        text-decoration:none;
+        outline:none;
+      }
+      .heading {
+        background-color:#ff9900;
+      }
+  body
+    nav(class='navbar navbar-fixed-top navbar-inverse')
+      .container
+        .navbar-header
+          button(type='button',class='navbar-toggle collapsed',data-toggle='collapse',data-target='#navbar',aria-expanded='false',aria-controls='navbar')
+            span.sr-only 
+              Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(class='navbar-brand',href='#',style='color:white;') 
+            h2(style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') Поиск
+        #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
+          ul(class='nav navbar-nav')
+            li
+              a(href='http://m.recentones.com') 
+                h1 Лента
+            li
+              a(href='/top')  
+                h1 Рейтинги
+            li 
+              a(href='/misc/1') 
+                h1 Контакты
+    .container
+      .row
+        .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
+          .input-group
+            input(type="text",class="form-control",placeholder="Карлсон",id='searchfield')
+            span(class="input-group-btn")
+              button(class="btn btn-default",id='searchbutton',type="button") Найти
+      .row(style='padding:0px;margin:0px;')       
+        #searchresults.col-xs-12(style='padding:0px;margin:0px;')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='/js/bootstrap.min.js')
+    script.
+      $(document).keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13' && $('#searchfield').val()){
+        performsearch();   
+        }
+      });
+      $('#searchbutton').click(performsearch);
+        function performsearch(){
+      var query = $('#searchfield').val();
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var parsed = JSON.parse(request.responseText);
+      if (parsed.trouble === 1)
+      {$('#searchresults').empty(); 
+       $('#searchresults').css('text-align','center');
+       $('#searchresults').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h5 style='margin-top:10vh;color:black;'>Ничего не нашли</h5></div></div>");}
+      else {
+       $('#searchresults').empty(); 
+       $('#searchresults').css('text-align','left');
+       for(var i = 0;i<parsed.length;i++){
+        var insert = "<div class='row' style='border-bottom:1px solid #ddd;background-color:#fff;'><a href='http://recentones.com/places/"+parsed[i].pid+"'><div class='col-xs-2' style='padding:0px;'><img src='"+parsed[i].mainpreview+"' style='width:100%'></div><div class='col-xs-10'><h5 style='color:gray;padding-top:1vw;'>"+parsed[i].placenameru+"</h5></div></a></div>";
+        $('#searchresults').append(insert);
+       }
+      }}
+      };
+      request.open('POST', '/srch', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+      request.send("query="+query); 
+      }
