@@ -165,21 +165,21 @@ head
             for (var i=0;i<toplist.length;i++) {
              var rnum = i+1;
             $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"' style='padding-top:2vw;'></div>");
-            var insert = "<div class='col-xs-12' ><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
+            var insert = "<div class='col-xs-12' id='ratcell"+i+"' ><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
              if(yy === 0 || yy%2 === 0)
             {
              var point = "<h5 style='background-color:#fbeae9;'>"+toplist[i].places[yy]+"</h5>";
-             eval("$('#ratcell"+cellnum+"').append(point);");
+             eval("$('#ratcell"+i+"').append(point);");
             }
             else if( yy===10){
               var point = "<h5 class='row"+rnum+"' style='background-color:black;color:white;'>Закрыть</h5>";
-             eval("$('#ratcell"+cellnum+"').append(point);");
+             eval("$('#ratcell"+i+"').append(point);");
             }
             else
            {var point = "<h5 onclick='closefunc("+rnum+")' style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>";
-              eval("$('#ratcell"+cellnum+"').append(point)");}
+              eval("$('#ratcell"+i+"').append(point)");}
           }
           }
         }
