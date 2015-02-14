@@ -108,8 +108,6 @@ head
               a(href='/misc/1') 
                 h1 Контакты
     #inserts.container
-        //
-          h5(id='more',style='color:black;margin-bottom:10px;cursor:pointer;') Еще 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/bootstrap.min.js')
       script. 
@@ -117,7 +115,7 @@ head
         function populate(toplist) {
             for (var i=0;i<toplist.length;i++) {
              var rnum = i+1;
-            $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"' style='padding-top:2vw;'></div>");
+            $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"'></div>");
             var insert = "<div class='col-xs-12' id='ratcell"+i+"' ><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
@@ -127,11 +125,11 @@ head
              eval("$('#ratcell"+i+"').append(point);");
             }
             else if( yy===10){
-              var point = "<h5 class='row"+rnum+"' style='background-color:black;color:white;'>Закрыть</h5>";
+              var point = "<h5 onclick='closefunc("+rnum+")' class='row"+rnum+"' style='background-color:black;color:white;'>Закрыть</h5>";
              eval("$('#ratcell"+i+"').append(point);");
             }
             else
-           {var point = "<h5 onclick='closefunc("+rnum+")' style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>";
+           {var point = "<h5 style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>";
               eval("$('#ratcell"+i+"').append(point)");}
           }
           }
