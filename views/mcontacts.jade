@@ -68,7 +68,7 @@ head
       h5 {
       letter-spacing:2px;
       text-transform:uppercase;
-      font-family:bt;
+      font-family:roboto-thin;
       font-size:8vw;
       margin-bottom:0px;
       }
@@ -78,6 +78,9 @@ head
       #white{
       background-color:white;
       } 
+      a {
+        color:black;
+      }
       a:hover {
         text-decoration:none;
         outline:none;
@@ -111,9 +114,9 @@ head
     .container
       .row
         .col-xs-8.col-xs-offset-2
-          .img(src='/bootstrap/images/rl.png')
+          img(src='/bootstrap/images/rl.png')
       .row
-        .col-xs-12
+        .col-xs-12(style='text-align:center;')
           a(href='tel:+79166667766') 
             h5 +7XXXXXXXXXX
           a(href='mailto:team@topandviews.com') 
