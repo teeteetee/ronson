@@ -122,6 +122,9 @@ head
             var insert = "<div class='col-xs-10' style='padding-left:0px;padding-right:0px;'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div><div onclick='closefunc("+rnum+")' class='col-xs-2'><img style='margin:2vh;' src='/bootstrap/images/circle_bird_down.png'></div>";
             eval("$('#headingrow"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
+              if(i===toplist.length-1) {
+                console.log('last circle :'+toplist[i].places[yy]);
+              }
               var point = "<h5 style='margin-left:20px;'>"+toplist[i].places[yy]+"</h5>";
              eval("$('#slide"+i+"').append(point);");
              if( yy===10){
