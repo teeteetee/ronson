@@ -146,21 +146,20 @@ head
         #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
           ul(class='nav navbar-nav')
             li
-              a(href='/m/top') 
+              a(href='/top') 
                 h1 Лента
             li
-              a(href='/m/search')  
+              a(href='/search')  
                 h1 Поиск
             li 
-              a(href='/m/misc/1') 
+              a(href='/misc/1') 
                 h1 Контакты
     #inserts.container
         //
           h5(id='more',style='color:black;margin-bottom:10px;cursor:pointer;') Еще 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/bootstrap.min.js')
-      script.
-        
+      script. 
         var toplist = !{doc};
         function populate(toplist) {
             for (var i=0;i<toplist.length;i++) {
