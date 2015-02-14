@@ -142,15 +142,18 @@ head
             span.icon-bar
             span.icon-bar
           a(class='navbar-brand',href='#',style='color:white;') 
-            Лента
+            h2 Лента
         #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
           ul(class='nav navbar-nav')
             li(class='active')
-              a(href='#') hey
+              a(href='/top') 
+                h1 Рейтинги
             li
-              a(href='#') jesus
+              a(href='/search')  
+                h1 Поиск
             li 
-              a(href='#') something else
+              a(href='/misc/1') 
+                h1 Контакты
     .container
       //
         #header.row
@@ -163,18 +166,7 @@ head
         #inserts.col-xs-12(style='text-align:center;')
       .row(style='text-align:center;background-color:#fff;')
         .col-xs-12
-          h5(id='more',style='color:gray;margin-bottom:10px;cursor:pointer;') Еще 
-      #footer.row(style='background-color:white;padding-bottom:10px;')  
-        .col-xs-2.col-xs-offset-3(style='text-align:right;')
-          a(href='/misc/1')
-            h1 Контакты
-        .col-xs-2(style='text-align:center;')
-          a(href='/misc/2')
-            h1 Манифест
-        .col-xs-2(style='text-align:left;')
-          a(href='/misc/3')
-            h1 Опасность
-
+          h5(id='more',style='color:black;margin-bottom:10px;cursor:pointer;') Еще 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/bootstrap.min.js')
       script.
