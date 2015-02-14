@@ -115,7 +115,7 @@ head
         var toplist = !{doc};
         function populate(toplist) {
             for (var i=0;i<toplist.length;i++) {
-              console.log(i+' turn :'+toplist[i]);
+              console.log(i+' turn :'+JSON.stringify(toplist[i]));
              var rnum = i+1;
             $('#inserts').append("<div class='row row"+rnum+"' style='background-color:#ddd;border-bottom:1px solid gray;padding-left:15px;' id='headingrow"+rnum+"'></div>");
             $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"'><div class='col-xs-12' id='slide"+rnum+"' style='padding-left:0px;padding-right:0px;display:none;' id='ratcell"+i+"' ></div></div>");
