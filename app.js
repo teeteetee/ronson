@@ -547,7 +547,7 @@ app.post('/admin/removerating/:id',function(req,res){
         res.send(ms);
       }
       else {
-        ms.troble=0;
+        ms.trouble=0;
         res.send(ms);
       }
     });}

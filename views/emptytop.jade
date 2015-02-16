@@ -122,7 +122,7 @@ head
       background-color:#333;
       }
       #timeperiod {
-      background-color:#fff;
+      background-color:black;
       }
       .color {
       height:10vh;
@@ -139,7 +139,7 @@ head
       .imgrow {
       background-color:#333;
       }
-      .container-fluid {
+      .container {
       min-height:100vh;
       background-color:#eee;
       }
@@ -149,21 +149,17 @@ head
       bottom:0px;
       }  
   body
-    .container-fluid
-      #header.row
-        .col-xs-1
-          a(href='http://recentones.com')   
-            img(src='/bootstrap/images/rl.png',style='width:100%;')    
+    .container    
       #timeperiod.row
         a(href='/')
           .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h2(style='color:#ddd;') Лента
+            h2(style='color:gray;') Лента
         .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h2(style='color:gray;') Рейтинги:
+            h2(style='color:white;') Рейтинги:
         |           
         a(href='/search')
           .col-xs-4(style='text-align:center;')
-            h2(style='color:#ddd;') Поиск       
+            h2(style='color:gray;') Поиск       
       .row
         .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
           h5(style='color:gray;')  &Pcy;&ucy;&scy;&tcy;&acy;&yacy; &bcy;&acy;&zcy;&acy; 
