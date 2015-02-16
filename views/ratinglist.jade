@@ -147,10 +147,10 @@ head
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
             h2(style='color:gray;') Рейтинги      
-      .row(style='padding-top:2vh;padding-bottom:2vh;')
+      .row
         .col-xs-12
           each rating, i in doc
-            .row(style='border-bottom:1px solid white;background-color:#eee;')
+            .row(style='border-bottom:1px solid white;background-color:#eee;padding-top:2vh;padding-bottom:2vh;')
               .col-xs-8
                 h4 #{rating.ratingname}
               .col-xs-2
