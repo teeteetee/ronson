@@ -139,17 +139,11 @@ head
       .input-group{
       margin:1vh;
       }
-      @media only screen
-      and (min-device-width : 768px)
-      and (max-device-width : 1024px)
-      {
-      .container-fluid {
-      width:100vw;
-      margin:0px;
-      }
-      }   
+      .col-xs-2{
+        padding-top:2vh;
+      } 
   body
-    .container-fluid
+    .container
       #header.row 
         .col-xs-1
           a(href='http://recentones.com')
@@ -162,7 +156,7 @@ head
           each rating, i in doc
             .row(style='border-bottom:1px solid white;background-color:#eee;')
               .col-xs-8
-                h5 #{rating.ratingname}
+                h4 #{rating.ratingname}
               .col-xs-2
                 a(href='http://recentones.com/admin/redactrating/#{rating.rid}')
                   button(class='btn btn-warning form-control',type='button') 
