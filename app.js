@@ -592,7 +592,7 @@ app.post('/admin/addrating',function(req,res){
         vmonth='0'+vmonth;
       }
       var vyear = dd.getUTCFullYear().toString();
-      var fulldate = vyear+vmonth+vday;
+      var fulldate = vday+vmonth+vyear;
       fulldate = parseInt(fulldate);
       if(doc.length>0){
        var newid = doc.rid+1;
