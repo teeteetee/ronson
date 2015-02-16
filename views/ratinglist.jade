@@ -150,14 +150,35 @@ head
       .row
         .col-xs-12
           each rating, i in doc
-            .row(style='border-bottom:1px solid white;background-color:#eee;padding-top:2vh;padding-bottom:2vh;')
+            .row(id="row#{rating.id}",style='border-bottom:1px solid white;background-color:#eee;padding-top:2vh;padding-bottom:2vh;')
               .col-xs-8
                 h4 #{rating.ratingname}
               .col-xs-2
                 a(href='http://recentones.com/admin/redactrating/#{rating.rid}')
                   button(class='btn btn-warning form-control',type='button') Редактировать 
               .col-xs-2
-                a(href='http://recentones.com/admin/removerating/#{rating.rid}')
-                  button(class='btn btn-danger form-control',type='button') Удалить   
+                  button(class='btn btn-danger form-control',type='button') Удалить  
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script.
+        function removerating(id) {
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var parsed = JSON.parse(request.responseText);
+        if (parsed.trouble === 1)
+        {alert('DB ERROR');}
+        else {
+          alert('Rating deleted !');
+         eval("$('#row"+id+"').remove();");
+        }}
+        };
+        var dest = '/admin/removerating/'+id;
+        request.open('POST', dest, true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+        request.send("uu=withoutthesecurity");  
+        }  
 
       

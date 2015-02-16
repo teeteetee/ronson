@@ -533,16 +533,24 @@ app.post('/admin/redactrating/:id',function(req,res){
 });
 
 app.post('/admin/removerating/:id',function(req,res){
-  var vrid = parseInt(req.params.id);
-  //AUTH NEEDED
-  top.remove({rid:vrid},function(err,done){
-    if(err){
-      res.send('DB RM ERR');
-    }
-    else {
-      res.redirect('http://recentones.com/admin/ratinglist');
-    }
-  });
+  var pas = req.body.uu;
+  if (pas != 'withoutthesecurity') {
+    res.redirect('http://recentones.com');
+  }
+  else 
+  {var vrid = parseInt(req.params.id);
+    var ms={};
+    ms.trouble=1;
+    ms.mtext = 'db';
+    top.remove({rid:vrid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        ms.troble=0;
+        res.send(ms);
+      }
+    });}
 });
 
 app.post('/admin/addrating',function(req,res){
