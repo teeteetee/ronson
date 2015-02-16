@@ -157,7 +157,7 @@ head
                 a(href='http://recentones.com/admin/redactrating/#{rating.rid}')
                   button(class='btn btn-warning form-control',type='button') Редактировать 
               .col-xs-2
-                  button(onclick='removerating(#{rating.id})',class='btn btn-danger form-control',type='button') Удалить  
+                  button(onclick='removerating(#{rating.rid})',class='btn btn-danger form-control',type='button') Удалить  
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         function removerating(id) {
