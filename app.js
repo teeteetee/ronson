@@ -551,6 +551,30 @@ app.post('/admin/addrating',function(req,res){
     res.send('RATINGNAME ABSENT')
   }
   else {
+    var vrid=parseInt(req.params.id);
+    var vrn = req.body.ratingname,
+       vweb = req.body.web,
+       vp1 = req.body.r1,
+       vp2 = req.body.r2,
+       vp3 = req.body.r3,
+       vp4 = req.body.r4,
+       vp5 = req.body.r5,
+       vp6 = req.body.r6,
+       vp7 = req.body.r7,
+       vp8 = req.body.r8,
+       vp9 = req.body.r9,
+       vp10 = req.body.r10,
+       vpid1 = parseInt(req.body.pid1),
+       vpid2 = parseInt(req.body.pid2),
+       vpid3 = parseInt(req.body.pid3),
+       vpid4 = parseInt(req.body.pid4),
+       vpid5 = parseInt(req.body.pid5),
+       vpid6 = parseInt(req.body.pid6),
+       vpid7 = parseInt(req.body.pid7),
+       vpid8 = parseInt(req.body.pid8),
+       vpid9 = parseInt(req.body.pid9),
+       vpid10 = parseInt(req.body.pid10);
+
     top.find({},{ limit:1,sort : { rid : -1 } },function(err,doc){
       if(err)
       {
@@ -572,12 +596,14 @@ app.post('/admin/addrating',function(req,res){
       fulldate = parseInt(fulldate);
       if(doc.length>0){
        var newid = doc.rid+1;
-       top.insert({ratingname:req.body.ratingname,regdate:fulldate,web:'www.ya.ru',rid:newid,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'},pids:{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}});
+       //top.insert({ratingname:req.body.ratingname,regdate:fulldate,web:'www.ya.ru',rid:newid,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'},pids:{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}});
+       top.insert({ratingname:vrn,rid:newid,regdate:fulldate,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}});
        res.redirect('http://recentones.com/admin/ratinglist');
       }
       else
       {
-       top.insert({ratingname:req.body.ratingname,regdate:fulldate,web:'www.ya.ru',rid:1,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'},pids:{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}});
+       //top.insert({ratingname:req.body.ratingname,regdate:fulldate,web:'www.ya.ru',rid:1,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'},pids:{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}});
+       top.insert({ratingname:vrn,rid:1,regdate:fulldate,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}});
        res.redirect('http://recentones.com/admin/ratinglist');
       }
     }
