@@ -161,11 +161,15 @@ head
         .col-xs-12
           each rating, i in doc
             .row(style='border-bottom:1px solid white;background-color:#eee;')
-              .col-xs-9
+              .col-xs-8
                 h5 #{rating.ratingname}
-              .col-xs-3
+              .col-xs-2
                 a(href='http://recentones.com/admin/redactrating/#{rating.rid}')
-                  button(class='btn btn-danger',type='button') 
-                    h5 Редактировать   
+                  button(class='btn btn-warning form-control',type='button') 
+                    h4 Редактировать 
+              .col-xs-2
+                a(href='http://recentones.com/admin/removerating/#{rating.rid}')
+                  button(class='btn btn-danger form-control',type='button') 
+                    h4 Удалить   
 
       
