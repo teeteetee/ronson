@@ -64,45 +64,8 @@ head
       font-family:roboto-thin;
       font-size:3vw;
       }
-      .preview {
-      margin:0px;
-      padding:0px;
-      border-right:1px solid black;
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
-      }
-      .preview:hover {
-      -webkit-filter: grayscale(0%);
-      -moz-filter: grayscale(0%);
-      -o-filter: grayscale(0%);
-      -ms-filter: grayscale(0%);
-      }
       img {
       width:100%;
-      }
-      .imgrow {
-      border-bottom:1px solid black;
-      }
-      .placenamebckgrnd {
-      position:absolute;
-      color:white;
-      opacity:0.7;
-      width:100%;
-      margin-bottom:auto;
-      background-color:black;
-      text-align:center;
-      z-index:1;
-      height:25%;
-      }
-      .placename {
-      position:absolute;
-      color:black;
-      width:100%;
-      text-align:center;
-      margin-bottom:auto;
-      z-index:2;
       }
       #header {
       padding-top:0.5vw;
@@ -119,27 +82,14 @@ head
       .color {
       height:10vh;
       }
-      #blue{
-      background-color:#001c45;
-      }
-      #green{
-      background-color:#49a881;
-      }
       #white{
       background-color:white;
-      }
-      .imgrow {
-      background-color:#333;
-      }
-      .container-fluid {
-      min-height:100vh;
-      background-color:#eee;
       }
       .input-group{
       margin:1vh;
       }
   body
-    .container
+    .container(style='min-height:100vh;bakcground-color:#eee;')
       #header.row 
         .col-xs-1
           a(href='http://recentones.com')
