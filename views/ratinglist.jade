@@ -138,9 +138,6 @@ head
       .input-group{
       margin:1vh;
       }
-      .col-xs-2{
-        padding-top:2vh;
-      } 
   body
     .container
       #header.row 
@@ -150,7 +147,7 @@ head
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
             h2(style='color:gray;') Рейтинги      
-      .row
+      .row(style='padding-top:2vh;padding-bottom:2vh;')
         .col-xs-12
           each rating, i in doc
             .row(style='border-bottom:1px solid white;background-color:#eee;')
