@@ -96,7 +96,11 @@ head
             img(src='/bootstrap/images/rl.png')         
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') Рейтинги      
+            h2(style='color:gray;') Рейтинги  
+      .row(style='background-color:#ddd;padding-top:2vh;padding-bottom:2vh;text-align:center;')  
+        .col-xs-2.col-xs-offset-5
+          a(href='/admin/addrating')
+            button(class='btn btn-success form-control',type='button') Добавить рейтинг
       .row
         .col-xs-12
           each rating, i in doc
