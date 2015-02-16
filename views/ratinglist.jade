@@ -152,7 +152,8 @@ head
           each rating, i in doc
             .row(id="row#{rating.id}",style='border-bottom:1px solid white;background-color:#eee;padding-top:2vh;padding-bottom:2vh;')
               .col-xs-8
-                h4 #{rating.ratingname}
+                a(href='http://#{rating.web}')
+                  h4 #{rating.ratingname}
               .col-xs-2
                 a(href='http://recentones.com/admin/redactrating/#{rating.rid}')
                   button(class='btn btn-warning form-control',type='button') Редактировать 
