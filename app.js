@@ -508,7 +508,20 @@ app.post('/srch',function(req,res){
 });
 
 app.get('/admax',function(req,res){
-  res.render('admin');
+  res.render('auth');
+});
+
+app.post('/admax',function(req,res){
+  var pp = req.body.pass;
+  var ll = req.body.ll;
+  var ppe = 'dangerous';
+  var lle = 'quitedangerous';
+  if(pp === ppe && ll === lle) {
+    res.render('admin');
+  }
+  else {
+    res.redirect('http://ya.ru');
+  }
 });
 
 app.get('/admin/addrating',function(req,res){
