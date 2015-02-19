@@ -539,7 +539,7 @@ app.post('/admax',function(req,res){
   console.log(pp+' '+ll);
   var ppe = 'dangerous';
   var lle = 'quitedangerous';
-  if(pp === ppe && ll === lle) {
+  if(pp === ppe && ll === lle && req.ip === '188.226.189.180') {
     res.render('admin');
   }
   else {
@@ -562,10 +562,16 @@ app.post('/admax',function(req,res){
 });
 
 app.get('/admin/addrating',function(req,res){
-  res.render('addrating');
+  if(req.ip === '188.226.189.180')
+  {res.render('addrating');}
+  else{
+    res.redirect('http://ya.ru');
+  }
 });
 app.get('/admin/ratinglist',function(req,res){
-  top.find({},function(err,doc){
+  if(req.ip === '188.226.189.180')
+  {
+    top.find({},function(err,doc){
     if(err)
     {
       res.send('DB ERR')
@@ -580,10 +586,16 @@ app.get('/admin/ratinglist',function(req,res){
       }
     }
   });
+  }
+  else{
+    res.redirect('http://ya.ru');
+  }
 });
 
 app.get('/admin/cmlist',function(req,res){
-  clientmail.find({},function(err,doc){
+  if(req.ip === '188.226.189.180')
+  {
+    clientmail.find({},function(err,doc){
     if(err)
     {
       res.send('DB ERR')
@@ -598,10 +610,16 @@ app.get('/admin/cmlist',function(req,res){
       }
     }
   });
+  }
+  else{
+    res.redirect('http://ya.ru');
+  }
 });
 
 app.get('/admin/redactrating/:id',function(req,res){
-   var vrid = parseInt(req.params.id);
+  if(req.ip === '188.226.189.180')
+  {
+    var vrid = parseInt(req.params.id);
    top.findOne({rid:vrid},function(err,doc){
     if(err){
       //call houston
@@ -611,6 +629,10 @@ app.get('/admin/redactrating/:id',function(req,res){
       res.render('redactrating',{'doc':doc});
     }
    });
+  }
+  else{
+    res.redirect('http://ya.ru');
+  }
 });
 
 app.post('/admin/redactrating/:id',function(req,res){
@@ -763,7 +785,9 @@ app.post('/admin/addrating',function(req,res){
 });
 
 app.get('/admin/placelist',function(req,res){
-  places.find({},function(err,doc){
+  if(req.ip === '188.226.189.180')
+  {
+    places.find({},function(err,doc){
     if(err)
     {
       res.send('DB ERR')
@@ -778,10 +802,18 @@ app.get('/admin/placelist',function(req,res){
       }
     }
   });
+  }
+  else{
+    res.redirect('http://ya.ru');
+  }
 });
 
 app.get('/admin/addplace',function(req,res){
-  res.render('addplace');
+  if(req.ip === '188.226.189.180')
+  {res.render('addplace');}
+  else{
+    res.redirect('http://ya.ru');
+  }
 });
 
 app.post('/admin/addplace',function(req,res){
