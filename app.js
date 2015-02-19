@@ -547,6 +547,7 @@ app.post('/admax',function(req,res){
     {
       if(attempt === 3)
       {
+        console.log('IP BANNED :'+req.ip);
         ban.push(req.ip);
       }
       else{
