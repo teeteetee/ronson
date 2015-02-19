@@ -37,7 +37,7 @@ head
       font-family:arial;
       letter-spacing:0.3vw;
       text-transform:uppercase;
-      color:#bbb;
+      color:white;
       margin-top:0px;
       margin-bottom:0px;
       }
@@ -90,7 +90,11 @@ head
         outline:none;
       }
       #footer {
-
+       bottom: 0px;
+       padding-bottom: 10px;
+       position: absolute;
+       width: 100%;
+       max-width: 1170px;
       }
   body
     script.
@@ -102,7 +106,7 @@ head
         .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
           img(id='logo',src='/bootstrap/images/rlbw.png',style='width:100%;') 
         .col-xs-10(style='text-align:left;')
-          h5(style='color:gray;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
+          h5(style='color:#ddd;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
                  
       #timeperiod.row
         .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
@@ -118,13 +122,12 @@ head
         
       .row(style='background-color:#eee;')
         .col-xs-12(style='text-align:center;padding-left:10vw;padding-right:10vw;')
-          h4(style='background-color:#fc645a;') Договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы сообщим вам о запуске первым.
+          h4(style='color:#fc645a;') Договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы сообщим вам о запуске первым.
           form()
             .input-group
               input(type="text",class="form-control",placeholder="cheif@yandex.ru",id='mail')
               span(class="input-group-btn")
-                button(class="btn btn-success",type="submit") Держать в курсе
-    //  
+                button(class="btn btn-success",type="submit") Держать в курсе  
       #footer.row(style='padding-top:10px;padding-bottom:10px;')  
         .col-xs-2.col-xs-offset-3(style='text-align:right;')
           a(href='/misc/1')
@@ -135,8 +138,5 @@ head
         .col-xs-2(style='text-align:left;')
           a(href='/misc/3')
             h1 Опасность
-    nav(class="navbar navbar-default navbar-bottom",role="navigation")
-      .container
-        h1 Hello World 
 
       
