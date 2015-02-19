@@ -33,10 +33,13 @@ head
       src: url('/bootstrap/fonts/bebasneue_thin.ttf');
       }
       h1 {
-      font-family:high;
-      font-size:3vw;
-      display:inline;
-      color:white;
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:#bbb;
+      margin-top:0px;
+      margin-bottom:0px;
       }
       body {
       min-width:768px;
@@ -61,8 +64,10 @@ head
       h5 {
       letter-spacing:2px;
       text-transform:uppercase;
-      font-family:roboto-thin;
-      font-size:3.5vw;
+      font-family:high;
+      color:white;
+      font-size:3vw;
+      margin-bottom:0px;
       }
       .preview {
       margin:0px;
@@ -104,14 +109,7 @@ head
       margin-bottom:auto;
       z-index:2;
       }
-      #footer {
-      background-color:#eee;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      text-align:center;
-      }
       #header {
-      padding-top:0.5vw;
       background-color:gray;
       }
       .spart{
@@ -138,32 +136,59 @@ head
       background-color:#eee;
       }  
       #timeperiod{
-        background-color:#393b3f;
+        background-color:black;
+      }
+      .albumnameblock{
+      z-index:200;
+      top:0px;
+      background-color:#fff;
+      padding:1vh;
+      }
+      a:hover {
+        text-decoration:none;
+        outline:none;
       }
   body
-    .container-fluid
+    script.
+      if(screen.width < 414){
+      window.location='http://m.recentones.com/';
+      }
+    .container(style='min-height:100vh;')
       #header.row
-        .col-xs-4(style='padding-top:3vh;padding-bottom:3vh;')
-          img(src='/bootstrap/images/rl.png',style='width:100%;') 
-        .col-xs-8(style='padding-top:10%;padding-left:5vw')
-          h5(style='color:white;') Панорамы недавно открывшихся заведений и агретор рейтингов.
-          h5 Сайт наполняется 
-       //   
-        .row(style='background-color:gray;')
-          .col-xs-12(style='text-align:center;padding-bottom:2vh;')
-            h5(style='color:white;') Панорамы недавно открывшихся заведений и агретор рейтингов.      
+        .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
+          img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
+        .col-xs-10(style='text-align:left;')
+          h5(style='color:white;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
+                 
       #timeperiod.row
         .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-          h2(style='color:#fc645a;') Лента: 
+          h2(style='color:white;') Лента: 
         |           
         a(href='/top')
           .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h2(style='color:#a03e38;') Рейтинги 
+            h2(style='color:gray;') Рейтинги 
         |           
         a(href='/search')
           .col-xs-4(style='text-align:center;')
-            h2(style='color:#a03e38;') Поиск   
-              
+            h2(style='color:gray;') Поиск        
         
-      
+      .row(style='background-color:#eee;')
+        .col-xs-12(style='text-align:center;padding-left:10vw;padding-right:10vw;')
+          h4 Договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы сообщим вам о запуске первым.
+          form()
+            .input-group
+            input(type="text",class="form-control",placeholder="cheif@yandex.ru",id='mail')
+            span(class="input-group-btn")
+              button(class="btn btn-success",type="submit") 
+      #footer.row(style='background-color:white;padding-bottom:10px;')  
+        .col-xs-2.col-xs-offset-3(style='text-align:right;')
+          a(href='/misc/1')
+            h1 Контакты
+        .col-xs-2(style='text-align:center;')
+          a(href='/misc/2')
+            h1 Манифест
+        .col-xs-2(style='text-align:left;')
+          a(href='/misc/3')
+            h1 Опасность
+
       
