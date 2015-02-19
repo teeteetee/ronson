@@ -106,13 +106,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 86400000 }));
   
 //SUBDOMAIN MAGIC 
 
-ban=[];
-function clearban(callback) {
-   console.log(ban[0]+' CLEARED FROM BAN');
-   ban.splice(0,1);
-   setTimeout(callback(callback),900000);
-}
-clearban(clearban);
+
 app.get('*', function(req,res,next) {   var d = new Date();
   if(req.headers.host === 'api.recentones.com')  //if it's a sub-domain
    {console.log(d+' got an api request from '+req.ip);
@@ -516,6 +510,13 @@ app.post('/srch',function(req,res){
 app.get('/admax',function(req,res){
   res.render('auth');
 });
+
+ban=[];
+function clearban() {
+   console.log(ban[0]+' CLEARED FROM BAN');
+   ban.splice(0,1);
+}
+setInterval(clearban,900000); 
 
 var adminrequestip='0';
 var attempt=0;
