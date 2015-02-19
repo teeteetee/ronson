@@ -120,7 +120,7 @@ head
           .col-xs-4(style='text-align:center;')
             h2(style='color:gray;') Поиск
       .row(style='background-color:#eee;')
-        #insert.col-xs-12(style='text-align:center;padding-left:10vw;padding-right:10vw;padding-top:15%;')
+        #insert.col-xs-12(style='text-align:center;padding-left:10vw;padding-right:10vw;')
           h4(style='color:black;font-family:bt;font-weight:bold;font-size:4vw;') Договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы сообщим вам о запуске первым.
           form()
             .input-group
@@ -138,6 +138,9 @@ head
           a(href='/misc/3')
             h1 Опасность
     script.
+        if(screen.width == 768) {
+          $('#insert').css('padding-top','15%');
+        }
         $('#mailsubmit').click(mail);
         function mail() {
         request = new XMLHttpRequest();
