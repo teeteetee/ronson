@@ -225,7 +225,7 @@ app.post('/keepintouch',function(req,res){
       var fulldate = vday+vmonth+vyear;
       fulldate = parseInt(fulldate);
      clientmail.find({},{ limit:1,sort : { cid : -1 } },function(err,doc){
-      if(doc[0].cid)
+      if(doc.length>0)
       { 
         var newid = cid+1;
         clientmail.insert({cid:newid,mail:cmail,regdate:fulldate});
