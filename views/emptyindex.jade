@@ -141,8 +141,9 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script.
       $(window).scroll(function () {
-      if ($(window).scrollTop() == 0)
-      {alert('Scrolled to Page Top');}});
+      if ($(window).scrollTop() == 0 && $('#header').css('display') === 'none')
+      { $('#header').slideToggle();
+      setTimeout(logocollapse,3000); }});
       function logocollapse() {$('#header').slideToggle();}
       setTimeout(logocollapse,3000);
       if(screen.width == 768) {
