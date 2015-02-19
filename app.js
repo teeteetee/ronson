@@ -514,6 +514,7 @@ app.get('/admax',function(req,res){
 app.post('/admax',function(req,res){
   var pp = req.body.pass;
   var ll = req.body.ll;
+  console.log(pp+' '+ll);
   var ppe = 'dangerous';
   var lle = 'quitedangerous';
   if(pp === ppe && ll === lle) {
