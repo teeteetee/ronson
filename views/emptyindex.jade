@@ -97,7 +97,7 @@ head
       if(screen.width < 414){
       window.location='http://m.recentones.com/';
       }
-    .container(style='min-height:100vh;background-color:#eee;')
+    .container(style='background-color:#eee;')
       #header.row
         .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
           img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
@@ -124,6 +124,7 @@ head
               input(type="text",class="form-control",placeholder="cheif@yandex.ru",id='mail')
               span(class="input-group-btn")
                 button(class="btn btn-success",type="submit") Держать в курсе
+    //  
       #footer.row(style='padding-top:10px;padding-bottom:10px;')  
         .col-xs-2.col-xs-offset-3(style='text-align:right;')
           a(href='/misc/1')
