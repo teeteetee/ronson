@@ -89,6 +89,9 @@ head
         text-decoration:none;
         outline:none;
       }
+      #footer {
+
+      }
   body
     script.
       if(screen.width < 414){
@@ -121,7 +124,7 @@ head
               input(type="text",class="form-control",placeholder="cheif@yandex.ru",id='mail')
               span(class="input-group-btn")
                 button(class="btn btn-success",type="submit") Держать в курсе
-      #footer.row(style='background-color:white;padding-bottom:10px;')  
+      #footer.row(style='padding-top:10px;padding-bottom:10px;')  
         .col-xs-2.col-xs-offset-3(style='text-align:right;')
           a(href='/misc/1')
             h1 Контакты
@@ -131,5 +134,8 @@ head
         .col-xs-2(style='text-align:left;')
           a(href='/misc/3')
             h1 Опасность
+    nav(class="navbar navbar-default navbar-bottom",role="navigation")
+      .container
+        h1 Hello World 
 
       
