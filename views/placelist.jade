@@ -64,19 +64,39 @@ head
       font-family:roboto-thin;
       font-size:3vw;
       }
+      img {
+      width:100%;
+      }
       #header {
       padding-top:0.5vw;
       padding-bottom:0.5vw;
-      background-color:gray;   
+      background-color:gray;
+      }
+      #timeperiod {
+      background-color:#fff;
+      }
+      .color {
+      height:10vh;
+      }
+      #white{
+      background-color:white;
+      }
+      .input-group{
+      margin:1vh;
+      }   
   body
-    .container-fluid
+    .container(style='min-height:100vh;background-color:#eee;')
       #header.row 
         .col-xs-1
           a(href='http://recentones.com')
             img(src='/bootstrap/images/rl.png')         
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') Заведения     
+            h2(style='color:gray;') Заведения  
+      .row(style='background-color:#ddd;padding-top:2vh;padding-bottom:2vh;text-align:center;')  
+        .col-xs-2.col-xs-offset-5
+          a(href='/admin/addplace')
+            button(class='btn btn-success form-control',type='button') Добавить заведение    
       .row
         .col-xs-12
           each place, i in doc
@@ -94,7 +114,7 @@ head
                   button(onclick='removeplace(#{place.pid})',class='btn btn-danger form-control',type='button') Удалить   
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
-        function removerating(id) {
+        function removeplace(id) {
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;
