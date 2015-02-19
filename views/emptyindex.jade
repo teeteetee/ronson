@@ -120,13 +120,13 @@ head
           .col-xs-4(style='text-align:center;')
             h2(style='color:gray;') Поиск
       .row(style='background-color:#eee;')
-        .col-xs-12(style='text-align:center;padding-left:10vw;padding-right:10vw;padding-top:15%;')
+        #insert.col-xs-12(style='text-align:center;padding-left:10vw;padding-right:10vw;padding-top:15%;')
           h4(style='color:black;font-family:bt;font-weight:bold;font-size:4vw;') Договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы сообщим вам о запуске первым.
           form()
             .input-group
               input(type="text",class="form-control",placeholder="cheif@yandex.ru",id='mail')
               span(class="input-group-btn")
-                button(class="btn btn-success",type="submit") Держать в курсе  
+                button(class="btn btn-success",type="button",id='mailsubmit') Держать в курсе  
       #footer.row(style='padding-top:10px;padding-bottom:10px;')  
         .col-xs-2.col-xs-offset-3(style='text-align:right;')
           a(href='/misc/1')
@@ -137,5 +137,27 @@ head
         .col-xs-2(style='text-align:left;')
           a(href='/misc/3')
             h1 Опасность
+    script.
+        $('#mailsubmit').click(mail);
+        function mail() {
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var parsed = JSON.parse(request.responseText);
+        if (parsed.trouble === 1)
+        {alert('Недействительный адрес, ошиблись?');}
+        else {
+         $('#insert').empty();
+         $('#insert').append("<h4 style='color:black;font-family:bt;font-weight:bold;font-size:4vw;'>До связи!</h4>");
+        }}
+        };
+        var dest = '/admin/removeplace/'+id;
+        request.open('POST', dest, true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+        request.send("cm="+$('#mail').val());  
+        }
 
       

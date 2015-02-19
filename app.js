@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('places'),top = db.get('top');
+  , places = db.get('places'),top = db.get('top'),clientmail = db.get('clientmail');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -201,6 +201,47 @@ app.get('/',function(req,res) {
   });
   });
 
+app.post('/keepintouch',function(req,res){
+  var cmail = req.body.cm;
+  function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}  
+    var ms = {};
+    ms.trouble = 1;
+    ms.mtext = 'spelling';
+    if (validateEmail(cmail) === true) {
+      var dd= new Date();
+      var vday = dd.getDate().toString();
+      if (vday.length===1){
+        vday='0'+vday;
+      }
+      var vmonth = dd.getMonth()+1;
+      vmonth = vmonth.toString();
+      if (vmonth.length===1){
+        vmonth='0'+vmonth;
+      }
+      var vyear = dd.getUTCFullYear().toString();
+      var fulldate = vday+vmonth+vyear;
+      fulldate = parseInt(fulldate);
+     clientmail.find({},{ limit:1,sort : { cid : -1 } },function(err,doc){
+      if(doc[0].cid)
+      { 
+        var newid = cid+1;
+        clientmail.insert({cid:newid,mail:cmail,regdate:fulldate});
+        ms.trouble=0;
+        res.send(ms);
+      }
+      else {
+        clientmail.insert({cid:1,mail:cmail,regdate:fulldate});
+        ms.trouble=0;
+        res.send(ms);
+      }
+    }
+    else {
+      res.send(ms);
+    }
+});
   //if(uacheck === true) {
   //  res.render('mindex');
   //}
@@ -485,6 +526,24 @@ app.get('/admin/ratinglist',function(req,res){
       }
       else{
          res.send('NO RARINGS - EMPTY DB');
+      }
+    }
+  });
+});
+
+app.get('/admin/cmlist',function(req,res){
+  clientmail.find({},function(err,doc){
+    if(err)
+    {
+      res.send('DB ERR')
+    }
+    else {
+      if(doc.length>0)
+      {
+         res.render('cmlist',{'doc':doc});
+      }
+      else{
+         res.send('EMPTY DB');
       }
     }
   });
