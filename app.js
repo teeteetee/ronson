@@ -206,7 +206,7 @@ app.post('/keepintouch',function(req,res){
   function validateEmail(email) { 
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
-}  
+ }  
     var ms = {};
     ms.trouble = 1;
     ms.mtext = 'spelling';
@@ -237,7 +237,8 @@ app.post('/keepintouch',function(req,res){
         ms.trouble=0;
         res.send(ms);
       }
-    }
+    });
+}
     else {
       res.send(ms);
     }
