@@ -144,9 +144,7 @@ head
       $win.scroll(function () {
       if ($win.scrollTop() == 0)
       {alert('Scrolled to Page Top');}}
-      function logocollapse() {
-        $('#header').slideToggle();
-      }
+      function logocollapse() {$('#header').slideToggle();}
       setTimeout(logocollapse,3000);
       if(screen.width == 768) {
         $('#insert').css('padding-top','15%');
