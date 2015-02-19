@@ -121,7 +121,8 @@ head
             h2(style='color:gray;') Поиск
       .row(style='background-color:#eee;')
         #insert.col-xs-12(style='text-align:center;padding-left:10vw;padding-right:10vw;padding-top:3%;')
-          h4(style='color:black;font-family:bt;font-weight:bold;font-size:4vw;') Договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы сообщим вам о запуске первым.
+          h4(style='color:black;font-family:bt;font-weight:bold;font-size:4vw;') В данный момент мы договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы 
+            span(style='background-color:#fc654a; color:white;') сообщим вам о запуске первым.
           form()
             .input-group
               input(type="text",class="form-control",placeholder="cheif@yandex.ru",id='mail')
@@ -142,7 +143,7 @@ head
         function logocollapse() {
           $('#header').slideToggle();
         }
-        setTimeout(logocollapse,5000);
+        setTimeout(logocollapse,3000);
         if(screen.width == 768) {
           $('#insert').css('padding-top','15%');
         }
