@@ -138,6 +138,10 @@ head
           a(href='/misc/3')
             h1 Опасность
     script.
+        function logocollapse() {
+          $('#header').slideToggle();
+        }
+        setTimeout(logocollapse,5000);
         if(screen.width == 768) {
           $('#insert').css('padding-top','15%');
         }
