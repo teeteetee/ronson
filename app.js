@@ -553,6 +553,27 @@ app.post('/admin/removerating/:id',function(req,res){
     });}
 });
 
+app.post('/admin/removeplace/:id',function(req,res){
+  var pas = req.body.uu;
+  if (pas != 'withoutthesecurity') {
+    res.redirect('http://recentones.com');
+  }
+  else 
+  {var vpid = parseInt(req.params.id);
+    var ms={};
+    ms.trouble=1;
+    ms.mtext = 'db';
+    places.remove({pid:vpid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    });}
+});
+
 app.post('/admin/addrating',function(req,res){
   if(!req.body.ratingname)
   {
@@ -1089,11 +1110,11 @@ app.post('/drop/:part',function(req,res){
   {res.redirect('http://topandviews.ru');}
 });
 
-app.post('/drop/users/mail',function(req,res){
-  var vmail = req.params.mail;
-  users.remove({mail:vmail});
-  res.send('done');
-});
+//app.post('/drop/users/mail',function(req,res){
+//  var vmail = req.params.mail;
+//  users.remove({mail:vmail});
+//  res.send('done');
+//});
 
 //UPDATE HOSTELS PAGE (STILL PACES NEEDS AN UPDATE)
 app.post('/adminsr/updatepage', function(req,res) {
@@ -1235,9 +1256,10 @@ app.post('/admin/simulateplace',function(req,res){
          var newid = doc[0].pid;
          newid++;
          places.insert({
-         placename:['Тестхостел','Testhostel'],
+         placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
+         web : 'http://recentones.com/misc/1',
          regdate:{day:vday,month:vmonth,year:vyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
@@ -1250,9 +1272,10 @@ app.post('/admin/simulateplace',function(req,res){
        }
        else{
          places.insert({
-         placename:['Тестхостел','Testhostel'],
+         placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
+         web : 'http://recentones.com/misc/1',
          regdate:{day:vday,month:vmonth,year:vyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
