@@ -140,6 +140,11 @@ head
             h1 Опасность
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script.
+        var $win = $(window);
+        $win.scroll(function () {
+        if ($win.scrollTop() == 0)
+                     {alert('Scrolled to Page Top');}
+                 }
         function logocollapse() {
           $('#header').slideToggle();
         }
