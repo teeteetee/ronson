@@ -637,8 +637,20 @@ app.post('/admin/redactrating/:id',function(req,res){
        vpid8 = parseInt(req.body.pid8),
        vpid9 = parseInt(req.body.pid9),
        vpid10 = parseInt(req.body.pid10);
-
-   top.update({rid:vrid},{$set:{ratingname:vrn,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}}});
+   var dd= new Date();
+      var vday = dd.getDate().toString();
+      if (vday.length===1){
+        vday='0'+vday;
+      }
+      var vmonth = dd.getMonth()+1;
+      vmonth = vmonth.toString();
+      if (vmonth.length===1){
+        vmonth='0'+vmonth;
+      }
+      var vyear = dd.getUTCFullYear().toString();
+      var fulldate = vday+vmonth+vyear;
+      fulldate = parseInt(fulldate)
+   top.update({rid:vrid},{$set:{ratingname:vrn,lastredact:fulldate,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}}});
    res.redirect('http://recentones.com/admin/ratinglist');
 });
 

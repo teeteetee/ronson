@@ -72,10 +72,6 @@ head
       padding-bottom:0.5vw;
       background-color:gray;
       }
-      .spart{
-      height:2vh;
-      background-color:#333;
-      }
       #timeperiod {
       background-color:#fff;
       }
@@ -105,7 +101,9 @@ head
         .col-xs-12
           each rating, i in doc
             .row(id="row#{rating.rid}",style='border-bottom:1px solid white;background-color:#eee;padding-top:2vh;padding-bottom:2vh;')
-              .col-xs-8
+              .col-xs-2
+                h4 #{rating.lastredact}
+              .col-xs-6
                 a(href='http://#{rating.web}')
                   h4 #{rating.ratingname}
               .col-xs-2
