@@ -513,8 +513,12 @@ app.get('/admax',function(req,res){
 
 ban=[];
 function clearban() {
-   console.log(ban[0]+' CLEARED FROM BAN');
-   ban.splice(0,1);
+   if(ban.length>0)
+   {console.log(ban[0]+' CLEARED FROM BAN');
+      ban.splice(0,1);}
+   else {
+    console.log('EMPTY BAN');
+   }
 }
 setInterval(clearban,900000); 
 
