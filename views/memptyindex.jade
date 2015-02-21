@@ -122,7 +122,7 @@ head
       }
   body
     nav(class='navbar navbar-fixed-top navbar-inverse')
-      .container(style='min-height:100vh;background-color:#eee;')
+      .container
         .navbar-header
           button(type='button',class='navbar-toggle collapsed',data-toggle='collapse',data-target='#navbar',aria-expanded='false',aria-controls='navbar')
             span.sr-only 
@@ -145,7 +145,7 @@ head
             li 
               a(href='/misc/1') 
                 h1 Инфо
-    #inserts.container
+    #inserts.container(style='min-height:100vh;background-color:#eee;')
       h4(style='color:black;font-family:bt;font-weight:bold;font-size:10vw;margin-top:5vh;') В данный момент мы договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы 
             span(style='color:#12a636;') сообщим вам о запуске первым.
           form()
