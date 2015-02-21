@@ -205,6 +205,7 @@ head
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
               if ( yy === 1) {
+                console.log('border-radius yy');
                 var point = "<h5 style='background-color:#fff;border-top-left-radius:4px;border-top-right-radius:4px;'>"+toplist[i].places[yy]+"</h5>";
                 eval("$('#ratcell"+cellnum+"').append(point);");
               }
