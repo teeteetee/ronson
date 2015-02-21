@@ -41,11 +41,6 @@ head
       margin-top:0px;
       margin-bottom:0px;
       }
-      body {
-      padding-top:51px;
-      background-color:#fff;
-      background-image:url('/bootstrap/images/stripe4.png');
-      }
       h2 {
       font-size:6vw;
       font-family:br;
@@ -127,7 +122,7 @@ head
       }
   body
     nav(class='navbar navbar-fixed-top navbar-inverse')
-      .container
+      .container(style='min-height:100vh;background-color:#eee;')
         .navbar-header
           button(type='button',class='navbar-toggle collapsed',data-toggle='collapse',data-target='#navbar',aria-expanded='false',aria-controls='navbar')
             span.sr-only 
@@ -151,7 +146,7 @@ head
               a(href='/misc/1') 
                 h1 Инфо
     #inserts.container
-      h4(style='color:black;font-family:bt;font-weight:bold;font-size:4vw;') В данный момент мы договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы 
+      h4(style='color:black;font-family:bt;font-weight:bold;font-size:10vw;margin-top:5vh;') В данный момент мы договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы 
             span(style='color:#12a636;') сообщим вам о запуске первым.
           form()
             .input-group
