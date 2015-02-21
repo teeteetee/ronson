@@ -117,7 +117,7 @@ head
              var rnum = i+1;
             $('#inserts').append("<div class='row row"+rnum+"' style='background-color:#ddd;border-bottom:1px solid gray;padding-left:15px;' id='headingrow"+rnum+"'></div>");
             $('#inserts').append("<div class='row row"+rnum+"' id='row"+rnum+"'><div class='col-xs-12' id='slide"+rnum+"' style='padding-left:0px;padding-right:0px;display:none;' id='ratcell"+i+"' ></div></div>");
-            var insert = "<div class='col-xs-10' style='padding-left:0px;padding-right:0px;'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div><div onclick='closefunc("+rnum+")' class='col-xs-2'><img style='margin:2vh;' src='/bootstrap/images/circle_bird_down.png'></div>";
+            var insert = "<div class='col-xs-10' onclick='closefunc("+rnum+")' style='padding-left:0px;padding-right:0px;'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
             eval("$('#headingrow"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
               var point = "<h5 style='margin-left:20px;'>"+toplist[i].places[yy]+"</h5>";
