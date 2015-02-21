@@ -466,7 +466,6 @@ app.get('/places/:id',function(req,res){
       res.render('404');
     }
     else {
-      console.log(doc.length);
       if(doc)
       {
         res.render('place',{'doc':doc});
