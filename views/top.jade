@@ -204,7 +204,7 @@ head
             var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
-              if ( yy = 1) {
+              if ( yy === 1) {
                 var point = "<h5 style='background-color:#fff;border-top-left-radius:4px;border-top-right-radius:4px;'>"+toplist[i].places[yy]+"</h5>";
                 eval("$('#ratcell"+cellnum+"').append(point);");
               }
@@ -234,7 +234,8 @@ head
             var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
             eval("$('#row"+nrnum+"').append(insert);");
             for (var zz=1;zz<11;zz++){
-             if ( zz = 1) {
+             if ( zz === 1) {
+               console.log('border-radius;');
                 var point = "<h5 style='background-color:#fff;border-top-left-radius:4px;border-top-right-radius:4px;'>"+toplist[i].places[zz]+"</h5>";
                 eval("$('#ratcell"+cellnum+"').append(point);");
               }
