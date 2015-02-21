@@ -184,7 +184,7 @@ head
             for (var yy=1;yy<11;yy++){
               if ( yy === 1) {
                 console.log('border-radius yy');
-                var point = "<h5 style='background-color:#fff;border-top-left-radius:4px;border-top-right-radius:4px;'>"+toplist[i].places[yy]+"</h5>";
+                var point = "<h5 style='background-color:#fff;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:1px solid gray;'>"+toplist[i].places[yy]+"</h5>";
                 eval("$('#ratcell"+cellnum+"').append(point);");
               }
              else if (yy===10) {
@@ -193,11 +193,11 @@ head
              }
            else if(yy === 0 || yy%2 === 0)
             {
-             var point = "<h5 style='background-color:#fbeae9;'>"+toplist[i].places[yy]+"</h5>";
+             var point = "<h5 style='background-color:#fbeae9;border-bottom:1px solid gray;'>"+toplist[i].places[yy]+"</h5>";
              eval("$('#ratcell"+cellnum+"').append(point);");
             }
             else
-            { var point = "<h5 style='background-color:#fff;'>"+toplist[i].places[yy]+"</h5>";
+            { var point = "<h5 style='background-color:#fff;border-bottom:1px solid gray;'>"+toplist[i].places[yy]+"</h5>";
               eval("$('#ratcell"+cellnum+"').append(point)");}
           }
           }
