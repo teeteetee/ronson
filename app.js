@@ -773,13 +773,13 @@ app.post('/admin/addrating',function(req,res){
       if(doc.length>0){
        var newid = doc[0].rid+1;
        //top.insert({ratingname:req.body.ratingname,regdate:fulldate,web:'www.ya.ru',rid:newid,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'},pids:{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}});
-       top.insert({ratingname:vrn,rid:newid,regdate:fulldate,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}});
+       top.insert({ratingname:vrn,rid:newid,lastredact:fulldate,regdate:fulldate,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}});
        res.redirect('http://recentones.com/admin/ratinglist');
       }
       else
       {
        //top.insert({ratingname:req.body.ratingname,regdate:fulldate,web:'www.ya.ru',rid:1,places:{1:'Один',2:'Два',3:'Три',4:'Четыре',5:'Пять',6:'Шесть',7:'Семь',8:'Восемь',9:'Девять',10:'Десять'},pids:{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,10:10}});
-       top.insert({ratingname:vrn,rid:1,regdate:fulldate,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}});
+       top.insert({ratingname:vrn,rid:1,lastredact:fulldate,regdate:fulldate,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}});
        res.redirect('http://recentones.com/admin/ratinglist');
       }
     }

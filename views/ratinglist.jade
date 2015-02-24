@@ -102,7 +102,7 @@ head
           each rating, i in doc
             .row(id="row#{rating.rid}",style='border-bottom:1px solid white;background-color:#eee;padding-top:2vh;padding-bottom:2vh;')
               .col-xs-2
-                h4 #{rating.lastredact}
+                h4(class='updateneeded') #{rating.lastredact}
               .col-xs-6
                 a(href='http://#{rating.web}')
                   h4 #{rating.ratingname}
@@ -133,5 +133,26 @@ head
         // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
         request.send("uu=withoutthesecurity");  
         }  
+        var dd= new Date();
+        var vday = dd.getDate().toString();
+        if (vday.length===1){
+          vday='0'+vday;
+        }
+        var vmonth = dd.getMonth()+1;
+        vmonth = vmonth.toString();
+        if (vmonth.length===1){
+          vmonth='0'+vmonth;
+        }
+        var vyear = dd.getUTCFullYear().toString();
+        var fulldate = vday+vmonth+vyear;
+        $('.updateneeded').each(function(){
+          alert('each running');
+          if(fulldate-parseInt(this.text())>7){
+            this.css('color','#c35');
+          }
+          else {
+            this.css('color','green');
+          }
+          });
 
       
