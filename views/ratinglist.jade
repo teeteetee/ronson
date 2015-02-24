@@ -147,7 +147,7 @@ head
         var fulldate = vday+vmonth+vyear;
         $('.updateneeded').each(function(){
           alert($(this).text());
-          if(fulldate-parseInt(this.text())>7){
+          if(fulldate-parseInt($(this).text())>7){
             $(this).css('color','#c35');
           }
           else {
