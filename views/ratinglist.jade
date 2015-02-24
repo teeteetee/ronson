@@ -148,10 +148,7 @@ head
         $('.updateneeded').each(function(){
           alert($(this).text());
           if(fulldate-parseInt($(this).text())>7){
-            $(this).css('color','#c35');
-          }
-          else {
-            $(this).css('color','green');
+            $(this).css({'background-color':'#c35','color':'white'});
           }
           });
 
