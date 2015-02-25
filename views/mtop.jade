@@ -70,7 +70,6 @@ head
       text-transform:uppercase;
       font-family:roboto-thin;
       font-size:8vw;
-      margin-bottom:0px;
       }
       img {
       width:100%;
@@ -116,7 +115,7 @@ head
             for (var i=0;i<toplist.length;i++) {
              var rnum = i+1;
             $('#inserts').append("<div class='row row"+rnum+"' style='min-height:68px;background-color:white;border-bottom:1px solid gray;padding-left:15px;' id='headingrow"+rnum+"'></div>");
-            $('#inserts').append("<div class='row row"+rnum+"' style='background-color:#eee;' id='row"+rnum+"'><div class='col-xs-12' id='slide"+rnum+"' style='padding-left:0px;padding-right:0px;display:none;' id='ratcell"+i+"' ></div></div>");
+            $('#inserts').append("<div class='row row"+rnum+"' style='background-color:#eee;box-shadow: inset 0px 3px 20px 0px gray;' id='row"+rnum+"'><div class='col-xs-12' id='slide"+rnum+"' style='padding-left:0px;padding-right:0px;display:none;' id='ratcell"+i+"' ></div></div>");
             var insert = "<div class='col-xs-10' onclick='closefunc("+rnum+")' style='padding-left:0px;padding-right:0px;'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
             eval("$('#headingrow"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
