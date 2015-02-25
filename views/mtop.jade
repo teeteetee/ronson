@@ -82,7 +82,7 @@ head
         outline:none;
       }
       .heading {
-        background-color:#ff9900;
+        font-weight:bold;
       }
   body
     nav(class='navbar navbar-fixed-top navbar-inverse')
@@ -116,7 +116,7 @@ head
              var rnum = i+1;
             $('#inserts').append("<div class='row row"+rnum+"' style='min-height:68px;background-color:white;border-bottom:1px solid gray;padding-left:15px;' id='headingrow"+rnum+"'></div>");
             $('#inserts').append("<div class='row row"+rnum+"' style='background-color:#c8eeea;' id='row"+rnum+"'><div class='col-xs-12' id='slide"+rnum+"' style='padding-left:0px;padding-right:0px;display:none;' id='ratcell"+i+"' ></div></div>");
-            var insert = "<div class='col-xs-10' onclick='closefunc("+rnum+")' style='padding-left:0px;padding-right:0px;'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
+            var insert = "<div class='col-xs-12' onclick='closefunc("+rnum+")' style='padding-left:0px;padding-right:0px;'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
             eval("$('#headingrow"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
               var point = "<h5 style='margin-left:20px;'>"+toplist[i].places[yy]+"</h5>";
