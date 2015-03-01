@@ -413,7 +413,7 @@ app.post('/removecm',function(req,res){
      var ms={};
      var pas = req.body.ps;
 
-     if(ps === 'removethatshit')
+     if(pas === 'removethatshit')
     {clientmail.remove({},function(err,done){
         ms.trouble = 1;
         if(err)
