@@ -200,7 +200,10 @@ app.get('/',function(req,res) {
     }
   });
   });
-
+app.post('/m/keepintouch',function(req,res,next){
+  req.url='/keepintouch';
+  next();
+});
 app.post('/keepintouch',function(req,res){
   var cmail = req.body.cm;
   function validateEmail(email) { 
