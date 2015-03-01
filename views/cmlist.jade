@@ -92,7 +92,10 @@ head
             img(src='/bootstrap/images/rl.png')         
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') CM      
+            h2(style='color:gray;') CM   
+      .row(style='background-color:#ddd;padding-top:2vh;padding-bottom:2vh;text-align:center;')  
+        .col-xs-2.col-xs-offset-5
+          button(class='btn btn-danger form-control',type='button',id='drop')  Очистить базу   
       .row
         .col-xs-12
           each cm, i in doc
@@ -101,6 +104,27 @@ head
                 h4 #{cm.regdate} 
               .col-xs-8
                 h4 #{cm.mail}  
+      script.
+      $('#mailsubmit').click(mail);
+        var ps = prompt("pass");
+        function mail() {
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var parsed = JSON.parse(request.responseText);
+        if (parsed.trouble === 1)
+        {alert('Недействительный адрес, ошиблись?');}
+        else {
+         alert('DB dropped');
+        }}
+        };
+        request.open('POST','/removecm', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+        request.send("ps="+ps);  
+        }
               
 
       
