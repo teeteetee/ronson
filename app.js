@@ -230,7 +230,7 @@ app.post('/keepintouch',function(req,res){
      clientmail.find({},{ limit:1,sort : { cid : -1 } },function(err,doc){
       if(doc.length>0)
       { 
-        var newid = cid+1;
+        var newid = doc[0].cid+1;
         clientmail.insert({cid:newid,mail:cmail,regdate:fulldate});
         ms.trouble=0;
         res.send(ms);
