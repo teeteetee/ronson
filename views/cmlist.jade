@@ -105,9 +105,9 @@ head
               .col-xs-8
                 h4 #{cm.mail}  
       script.
-        $('#mailsubmit').click(mail);
+        $('#drop').click(drop);
+        function drop() {
         var ps = prompt("pass");
-        function mail() {
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;
