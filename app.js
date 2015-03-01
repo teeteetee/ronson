@@ -200,10 +200,12 @@ app.get('/',function(req,res) {
     }
   });
   });
+
 app.post('/m/keepintouch',function(req,res,next){
   req.url='/keepintouch';
   next();
 });
+
 app.post('/keepintouch',function(req,res){
   var cmail = req.body.cm;
   function validateEmail(email) { 
@@ -406,6 +408,29 @@ app.get('/dropplaces',function(req,res){
     }
     });
   });
+
+app.post('/removecm',function(req,res){
+     var ms={};
+     var pas = req.body.ps;
+
+     if(ps === 'removethatshit')
+    {clientmail.remove({},function(err,done){
+        ms.trouble = 1;
+        if(err)
+        {
+          res.send(ms);
+        }
+        else {
+          ms.trouble = 0;
+          res.send(ms);
+        }
+        });}
+      else {
+       ms.trouble=1;
+       res.send(ms);
+      }
+  });
+
 app.get('/droptop',function(req,res){
     top.remove({},function(err,done){
     if(err)

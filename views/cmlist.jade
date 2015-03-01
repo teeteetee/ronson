@@ -114,7 +114,7 @@ head
         if (this.readyState === DONE){
         var parsed = JSON.parse(request.responseText);
         if (parsed.trouble === 1)
-        {alert('Недействительный адрес, ошиблись?');}
+        {alert('ERROR');}
         else {
          alert('DB dropped');
         }}
