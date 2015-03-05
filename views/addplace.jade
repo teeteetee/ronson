@@ -176,10 +176,10 @@ head
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
           h2(style='color:gray;') Добавить заведени   
-      .row(style='background-color:#ddd;text-align:center;')
+      .row(style='background-color:#ddd;text-align:center;padding-top:2vh;padding-bottom:2vh;')
         .col-xs-12
-          form(action='/admin/simulateplace',method='post')  
-            button(class='btn btn-default') Добавить пустое заведение     
+          form(action='/admin/simulateplace',method='post',style='margin:0px;')  
+            button(class='btn btn-primary') Добавить пустое заведение     
       .row
         form(action='/admin/addplace',method='post',role='form', enctype='multipart/form-data')
           .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
