@@ -505,8 +505,11 @@ app.get('/places/:id',function(req,res){
     else {
       if(doc)
       { 
-        if(doc.)
+        if(doc.pano === 1)
         res.render('place',{'doc':doc});
+        else(doc.pano === 0) {
+          res.render('emptyplace',{'doc':doc});
+        }
       }
       else {
         res.render('404')
