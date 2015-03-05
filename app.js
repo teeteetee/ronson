@@ -504,7 +504,8 @@ app.get('/places/:id',function(req,res){
     }
     else {
       if(doc)
-      {
+      { 
+        if(doc.)
         res.render('place',{'doc':doc});
       }
       else {
@@ -1476,6 +1477,7 @@ app.post('/admin/simulateplace',function(req,res){
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: newid,
+         pano:1,
          mainpreview:'/bootstrap/images/sample1.jpg',
          xml:'/bootstrap/images/emptypano.xml'
          });
@@ -1492,6 +1494,58 @@ app.post('/admin/simulateplace',function(req,res){
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          pid: 1,
+         pano:1,
+         mainpreview:'/bootstrap/images/sample1.jpg',
+         xml:'/bootstrap/images/emptypano.xml'
+         });
+         res.redirect('http://recentones.com/admin/placelist');
+         console.log('PLACE SIMULATED');
+       }
+     }
+   });
+});
+
+app.post('/admin/simulateemptyplace',function(req,res){
+   places.find({},{limit:1,sort:{pid:-1}},function(err,doc){
+     if(err){
+      res.send('db error');
+     }
+     else {
+       console.log('DOC LENGTH: '+doc.length)
+       var d = new Date();
+       var vday = d.getDate();
+       var vmonth = d.getMonth()+1;
+       var vyear = d.getUTCFullYear();
+       if(doc.length>0){
+         var newid = doc[0].pid;
+         newid++;
+         places.insert({
+         placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
+         placenameru : 'Тестхостел',
+         placenameen : 'Testhostel',
+         web : 'http://recentones.com/misc/1',
+         regdate:{day:vday,month:vmonth,year:vyear},
+         adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         adressen: 'Somefucking emb. 10 bld.3 flat 12',
+         pid: newid,
+         pano:0,
+         mainpreview:'/bootstrap/images/sample1.jpg',
+         xml:'/bootstrap/images/emptypano.xml'
+         });
+         res.redirect('http://recentones.com/admin/placelist');
+         console.log('PLACE SIMULATED');
+       }
+       else{
+         places.insert({
+         placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
+         placenameru : 'Тестхостел',
+         placenameen : 'Testhostel',
+         web : 'http://recentones.com/misc/1',
+         regdate:{day:vday,month:vmonth,year:vyear},
+         adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         adressen: 'Somefucking emb. 10 bld.3 flat 12',
+         pid: 1,
+         pano:0,
          mainpreview:'/bootstrap/images/sample1.jpg',
          xml:'/bootstrap/images/emptypano.xml'
          });

@@ -177,9 +177,12 @@ head
         .col-xs-12(style='text-align:center;')
           h2(style='color:gray;') Добавить заведени   
       .row(style='background-color:#ddd;text-align:center;padding-top:2vh;padding-bottom:2vh;')
-        .col-xs-12
+        .col-xs-6
           form(action='/admin/simulateplace',method='post',style='margin:0px;')  
-            button(class='btn btn-primary') Добавить пустое заведение     
+            button(class='btn btn-primary') Добавить пустое заведение 
+        .col-xs-6
+          form(action='/admin/simulateemptyplace',method='post',style='margin:0px;')  
+            button(class='btn btn-primary') Без панорамы     
       .row
         form(action='/admin/addplace',method='post',role='form', enctype='multipart/form-data')
           .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
