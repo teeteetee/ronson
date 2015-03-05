@@ -500,9 +500,11 @@ app.get('/places/:id',function(req,res){
   var vpid = parseInt(req.params.id);
   places.findOne({pid:vpid},function(err,doc){
     if(err){
+      console.log('DB ERROR');
       res.render('404');
     }
     else {
+      console.log(doc);
       if(doc.pano)
       { 
         if(doc.pano === 1)
