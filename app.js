@@ -600,7 +600,11 @@ app.post('/admax',function(req,res){
       }
     }
     else
-    {adminrequestip = req.ip;}
+    {adminrequestip = req.ip;
+     vmessage="<h5 style='color:#c35;'> Осталось "+attempt+" попытки ввода</h5>";
+        attempt++;
+        res.render('auth',{'message':vmessage});
+    }
   }
 });
 
