@@ -503,11 +503,11 @@ app.get('/places/:id',function(req,res){
       res.render('404');
     }
     else {
-      if(doc)
+      if(doc.pano)
       { 
         if(doc.pano === 1)
         res.render('place',{'doc':doc});
-        else(doc.pano === 0) {
+        else {
           res.render('emptyplace',{'doc':doc});
         }
       }
