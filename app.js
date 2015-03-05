@@ -594,14 +594,16 @@ app.post('/admax',function(req,res){
         ban.push(req.ip);
       }
       else{
-        vmessage="<h5 style='color:#c35;'> Осталось "+attempt+" попытки ввода</h5>";
+        var leftattempt = 3 - attempt;
+        vmessage="<h5 style='color:#c35;'> Осталось "+leftattempt+" попытки ввода</h5>";
         attempt++;
         res.render('auth',{'message':vmessage});
       }
     }
     else
     {adminrequestip = req.ip;
-     vmessage="<h5 style='color:#c35;'> Осталось "+attempt+" попытки ввода</h5>";
+     var leftattempt = 3 - attempt;
+     vmessage="<h5 style='color:#c35;'> Осталось "+leftattempt+" попытки ввода</h5>";
         attempt++;
         res.render('auth',{'message':vmessage});
     }
