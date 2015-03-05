@@ -398,18 +398,23 @@ app.get('/api/recent',function(req,res){
 });
 
 app.get('/dropplaces',function(req,res){
-    places.remove({},function(err,done){
-    if(err)
-    {
-      res.send('98');
-    }
-    else {
-      res.send('SUCCESS');
-    }
-    });
+  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+    {places.remove({},function(err,done){
+        if(err)
+        {
+          res.send('98');
+        }
+        else {
+          res.send('SUCCESS');
+        }
+        });}
+  else {
+    res.redirect('http://yandex.ru');
+  }
   });
 
 app.post('/removecm',function(req,res){
+
      var ms={};
      var pas = req.body.ps;
 
@@ -432,15 +437,19 @@ app.post('/removecm',function(req,res){
   });
 
 app.get('/droptop',function(req,res){
-    top.remove({},function(err,done){
-    if(err)
-    {
-      res.send('98');
-    }
+  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+    {top.remove({},function(err,done){
+        if(err)
+        {
+          res.send('98');
+        }
+        else {
+          res.send('SUCCESS');
+        }
+        });}
     else {
-      res.send('SUCCESS');
+      res.redirect('http://yandex.ru');
     }
-    });
   });
 
 app.get('/example',function(req,res){
