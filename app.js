@@ -227,7 +227,7 @@ app.post('/keepintouch',function(req,res){
         vmonth='0'+vmonth;
       }
       var vyear = dd.getUTCFullYear().toString();
-      var fulldate = vday+vmonth+vyear;
+      var fulldate = vyear+vmonth+vday;
       fulldate = parseInt(fulldate);
      clientmail.find({},{ limit:1,sort : { cid : -1 } },function(err,doc){
       if(doc.length>0)
@@ -728,7 +728,7 @@ app.post('/admin/redactrating/:id',function(req,res){
         vmonth='0'+vmonth;
       }
       var vyear = dd.getUTCFullYear().toString();
-      var fulldate = vday+vmonth+vyear;
+      var fulldate = vyear+vmonth+vday;
       fulldate = parseInt(fulldate)
    top.update({rid:vrid},{$set:{ratingname:vrn,lastredact:fulldate,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}}});
    res.redirect('http://recentones.com/admin/ratinglist');
@@ -823,7 +823,7 @@ app.post('/admin/addrating',function(req,res){
         vmonth='0'+vmonth;
       }
       var vyear = dd.getUTCFullYear().toString();
-      var fulldate = vday+vmonth+vyear;
+      var fulldate = vyear+vmonth+vday;
       fulldate = parseInt(fulldate);
       if(doc.length>0){
        var newid = doc[0].rid+1;
