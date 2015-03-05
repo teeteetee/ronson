@@ -26,13 +26,13 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.compress());
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2540000000 }));
-//app.use(sessions({
-//  cookieName: 'session',
-//  secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
-//  duration:4320 * 60 *1000,
-//  activeduration:1440 * 60 * 1000,
-//  httpOnly: true
-//}));
+app.use(sessions({
+  cookieName: 'session',
+  secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
+  duration:4320 * 60 *1000,
+  activeduration:1440 * 60 * 1000,
+  httpOnly: true
+}));
 
 //var lguser = {};
 //app.use(function(req,res,next){
@@ -535,7 +535,15 @@ app.post('/srch',function(req,res){
 });
 
 app.get('/admax',function(req,res){
-  res.render('auth');
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
+  var lguser={};
+   if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+   {
+    res.render('admin');}
+   else {
+   res.render('auth');
+ }
+
 });
 
 ban=[];
@@ -571,7 +579,11 @@ app.post('/admax',function(req,res){
   var ppe = 'dangerous';
   var lle = 'quitedangerous';
   if(pp === ppe && ll === lle && req.ip === '188.226.189.180') {
-    res.render('admin');
+//---------------admin cookies-------------------
+
+          req.session.sKK76d = 'porC6S78x0XZP1b2p08zGlq';
+          res.render('admin');
+//---------------admin cookies end-----------------
   }
   else {
     if(adminrequestip === req.ip)
@@ -584,7 +596,7 @@ app.post('/admax',function(req,res){
       else{
         vmessage="<h5 style='color:#c35;'> Осталось "+attempt+" попытки ввода</h5>";
         attempt++;
-        res.render('auth',{message:vmessage})
+        res.render('auth',{'message':vmessage});
       }
     }
     else
@@ -593,14 +605,14 @@ app.post('/admax',function(req,res){
 });
 
 app.get('/admin/addrating',function(req,res){
-  if(req.ip === '188.226.189.180')
+  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
   {res.render('addrating');}
   else{
     res.redirect('http://ya.ru');
   }
 });
 app.get('/admin/ratinglist',function(req,res){
-  if(req.ip === '188.226.189.180')
+  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
   {
     top.find({},function(err,doc){
     if(err)
@@ -624,7 +636,7 @@ app.get('/admin/ratinglist',function(req,res){
 });
 
 app.get('/admin/cmlist',function(req,res){
-  if(req.ip === '188.226.189.180')
+  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
   {
     clientmail.find({},function(err,doc){
     if(err)
@@ -648,7 +660,7 @@ app.get('/admin/cmlist',function(req,res){
 });
 
 app.get('/admin/redactrating/:id',function(req,res){
-  if(req.ip === '188.226.189.180')
+  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
   {
     var vrid = parseInt(req.params.id);
    top.findOne({rid:vrid},function(err,doc){
@@ -816,7 +828,7 @@ app.post('/admin/addrating',function(req,res){
 });
 
 app.get('/admin/placelist',function(req,res){
-  if(req.ip === '188.226.189.180')
+  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
   {
     places.find({},function(err,doc){
     if(err)
@@ -840,7 +852,7 @@ app.get('/admin/placelist',function(req,res){
 });
 
 app.get('/admin/addplace',function(req,res){
-  if(req.ip === '188.226.189.180')
+  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
   {res.render('addplace');}
   else{
     res.redirect('http://ya.ru');
