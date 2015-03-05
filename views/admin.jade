@@ -81,10 +81,10 @@ head
         border-bottom:1px solid #ddd;
       }
       .rl{
-        border-right:1px soild #ddd;
+        border-right:1px solid #ddd;
       }
       .lightup:hover{
-       background-color:#fff;
+       background-color:#eee;
       }
   body
     .container(style='min-height:100vh;background-color:#eee;')
@@ -97,22 +97,18 @@ head
             h2(style='color:gray;') Админка    
       .row.linebelow
         #ratinglist.lightup.col-xs-6.rl
-          a(href='http://recentones.com/admin/ratinglist')
             h5 Список рейтингов
         #addrating.lightup.col-xs-6
-          a(href='http://recentones.com/admin/addrating')
             h5 Добавить рейтинг  
       .row.linebelow
         #placelist.lightup.col-xs-6.rl
-          a(href='http://recentones.com/admin/placelist')
             h5 Список мест
         #addplace.lightup.col-xs-6
-          a(href='http://recentones.com/admin/addplace')
             h5 Добавить место 
       .row.linebelow
         #cmlist.lightup.col-xs-6.rl
-          a(href='http://recentones.com/admin/cmlist')
             h5 Адреса 
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')      
       script.
         $("#ratinglist").click(function(){
           window.location='http://recentones.com/admin/ratinglist';
