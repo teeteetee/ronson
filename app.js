@@ -505,7 +505,7 @@ app.get('/places/:id',function(req,res){
     }
     else {
       console.log(doc);
-      if(doc.pano)
+      if(doc)
       { 
         if(doc.pano === 1)
         res.render('place',{'doc':doc});
