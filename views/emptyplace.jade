@@ -74,13 +74,16 @@ head
       padding-bottom:0.5vw;
       background-color:gray;
       }  
+      #timeperiod{
+        background-color:#fff;
+      }
   body
-    .container    
+    .container(style='min-height:100vh;background-color:#eee;')    
       #timeperiod.row
         .col-xs-12(style='border-right:1px dotted #ddd;text-align:center;')
             h2(style='color:gray;') #{doc.placenameru}    
       .row
-        .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bootom:1vw;')
+        .col-xs-12(style='text-align:center;padding-top:4vw;padding-bootom:1vw;')
           h5(style='color:gray;')  Мы еще не сделали панораму,
           h5(style='color:#C8E4E5;font-size:2.5vw;') но собрали немного информации
           h5(style='color:black;font-size:2vw;') #{doc.adressen}
