@@ -183,17 +183,17 @@ head
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
-        //function cheight(){
-        //        var fheight = $('#footer').height();
-        //        console.log(fheight);
-        //        var oldmheight = $('#maincont').height();
-        //        console.log(oldmheight);
-        //        var newmheight = oldmheight - fheight;
-        //        newmheight = newmheight+'px';
-        //        console.log(newmheight);
-        //        $('#maincont').css('min-height',newmheight);
-        //       }
-        //cheight();
+        function cheight(){
+                var fheight = $('#footer').height();
+                console.log(fheight);
+                var oldmheight = $('#maincont').height();
+                console.log(oldmheight);
+                var newmheight = oldmheight - fheight;
+                newmheight = newmheight+'px';
+                console.log(newmheight);
+                $('#maincont').css('min-height',newmheight);
+               }
+        cheight();
         var moreid = 0;
         var logocount=0;
         $('#logo').mouseenter(function(){
