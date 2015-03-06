@@ -130,10 +130,6 @@ head
       }
       .imgrow {
       background-color:#333;
-      }
-      .container-fluid {
-      min-height:100vh;
-      background-color:#eee;
       }  
       #timeperiod{
         background-color:black;
@@ -154,7 +150,7 @@ head
       window.location='http://m.recentones.com/';
       }
     #wrap  
-      .container(style='min-height:100vh;background-color:#eee;')
+      .container(style='min-height:100vh;background-color:#eee;',id='maincont')
         #header.row
           .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
             img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
@@ -178,7 +174,7 @@ head
         .row(style='text-align:center;background-color:#fff;display:none',id='morebutton')
           .col-xs-12
             h5(id='more',style='color:gray;margin-bottom:10px;cursor:pointer;') Еще 
-      .container
+      .container(style='padding-left:0px;padding-right:0px;')
         #footer(style='background-color:white;padding-bottom:10px;padding-top:10px;') 
           .row 
             .col-xs-2.col-xs-offset-5(style='text-align:center;')
@@ -187,6 +183,9 @@ head
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
+        var fheight = $('#footer').css('height');
+        var newmheight = $('#maincont').css('height') - fheight;
+        $('#maincont').css('height',newmheight);
         var moreid = 0;
         var logocount=0;
         $('#logo').mouseenter(function(){
