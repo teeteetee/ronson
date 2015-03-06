@@ -189,9 +189,8 @@ head
                 var oldmheight = $('#maincont').height();
                 console.log(oldmheight);
                 var newmheight = oldmheight - fheight;
-                newmheight = newmheight+'px';
                 console.log(newmheight);
-                $('#maincont').css('height',newmheight);
+                $('#maincont').height(newmheight);
                }
         cheight();
         var moreid = 0;
