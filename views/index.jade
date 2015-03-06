@@ -150,7 +150,7 @@ head
       window.location='http://m.recentones.com/';
       }
     #wrap  
-      .container(style='background-color:#eee;',id='maincont')
+      .container(style='min-height:100vh;background-color:#eee;',id='maincont')
         #header.row
           .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
             img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
@@ -186,7 +186,7 @@ head
         function cheight(){
                 var fheight = $('#footer').height();
                 console.log(fheight);
-                var oldmheight = $(window).height();
+                var oldmheight = $('#maincont').height();
                 console.log(oldmheight);
                 var newmheight = oldmheight - fheight;
                 newmheight = newmheight+'px';
