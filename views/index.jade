@@ -191,6 +191,7 @@ head
                 console.log(oldmheight);
                 oldmheight = parseInt(oldmheight.replace(/\D/g,''));
                 var newmheight = oldmheight - fheight;
+                newmheight = newmheight+'px';
                 console.log(newmheight);
                 $('#maincont').css('height',newmheight);
                }
