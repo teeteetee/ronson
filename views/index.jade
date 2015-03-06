@@ -149,8 +149,8 @@ head
       if(screen.width < 414){
       window.location='http://m.recentones.com/';
       }
-    #wrap  
-      .container(style='min-height:100vh;background-color:#eee;',id='maincont')
+    #wrap(style='min-height:100vh;')  
+      .container(style='height:100%;background-color:#eee;',id='maincont')
         #header.row
           .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
             img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
@@ -183,17 +183,17 @@ head
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
-        function cheight(){
-                var fheight = $('#footer').height();
-                console.log(fheight);
-                var oldmheight = $('#maincont').height();
-                console.log(oldmheight);
-                var newmheight = oldmheight - fheight;
-                newmheight = newmheight+'px';
-                console.log(newmheight);
-                $('#maincont').css('min-height',newmheight);
-               }
-        cheight();
+        //function cheight(){
+        //        var fheight = $('#footer').height();
+        //        console.log(fheight);
+        //        var oldmheight = $('#maincont').height();
+        //        console.log(oldmheight);
+        //        var newmheight = oldmheight - fheight;
+        //        newmheight = newmheight+'px';
+        //        console.log(newmheight);
+        //        $('#maincont').css('min-height',newmheight);
+        //       }
+        //cheight();
         var moreid = 0;
         var logocount=0;
         $('#logo').mouseenter(function(){
