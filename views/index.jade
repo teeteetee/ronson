@@ -186,8 +186,10 @@ head
         function cheight(){
                 var fheight = $('#footer').css('height');
                 console.log(fheight);
+                fheight = parseInt(fheight.replace(/\D/g,''));
                 var oldmheight = $('#maincont').css('height');
                 console.log(oldmheight);
+                oldmheight = parseInt(oldmheight.replace(/\D/g,''));
                 var newmheight = oldmheight - fheight;
                 console.log(newmheight);
                 $('#maincont').css('height',newmheight);
