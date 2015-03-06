@@ -174,7 +174,7 @@ head
         
       .row(style='background-color:#eee;')
         #inserts.col-xs-12(style='text-align:center;')
-      .row(style='text-align:center;background-color:#fff;')
+      .row(style='text-align:center;background-color:#fff;display:none',id='morebutton')
         .col-xs-12
           h5(id='more',style='color:gray;margin-bottom:10px;cursor:pointer;') Еще 
       #footer.row(style='background-color:white;padding-bottom:10px;')  
@@ -220,6 +220,9 @@ head
             }
           });
         var toplist = !{doc};
+        if(toplist.length===9){
+         $('#morebutton').css('display','block')
+        }
         function populate(toplist) {console.log("first time: "+toplist);
                 //toplist = JSON.parse(toplist);
                 //console.log("second time: "+toplist);
