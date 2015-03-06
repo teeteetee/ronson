@@ -149,7 +149,7 @@ head
       if(screen.width < 414){
       window.location='http://m.recentones.com/';
       }
-    #wrap(style='min-height:100vh;')  
+    #wrap  
       .container(style='height:100%;background-color:#eee;',id='maincont')
         #header.row
           .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
@@ -230,6 +230,9 @@ head
             }
           });
         var toplist = !{doc};
+        if(toplist.length<4){
+          $('#wrap').css('height','100vh');
+        }
         if(toplist.length===9){
          $('#morebutton').css('display','block');
          $('#footer').css('padding-top','0px');
