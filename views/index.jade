@@ -183,9 +183,15 @@ head
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
-        var fheight = $('#footer').css('height');
-        var newmheight = $('#maincont').css('height') - fheight;
-        $('#maincont').css('height',newmheight);
+        function cheight(){
+                var fheight = $('#footer').css('height');
+                console.log(fheight);
+                console.log($('#maincont').css('height'));
+                var newmheight = $('#maincont').css('height') - fheight;
+                console.log(newmheight);
+                $('#maincont').css('height',newmheight);
+               }
+        cheight();
         var moreid = 0;
         var logocount=0;
         $('#logo').mouseenter(function(){
