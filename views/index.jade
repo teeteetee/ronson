@@ -153,7 +153,7 @@ head
       if(screen.width < 414){
       window.location='http://m.recentones.com/';
       }
-    .container
+    .container(style='min-height:100vh;')
       #header.row
         .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
           img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
@@ -177,7 +177,7 @@ head
       .row(style='text-align:center;background-color:#fff;display:none',id='morebutton')
         .col-xs-12
           h5(id='more',style='color:gray;margin-bottom:10px;cursor:pointer;') Еще 
-      #footer.row(style='background-color:white;padding-bottom:10px;')  
+      #footer.row(style='background-color:white;padding-bottom:10px;padding-top:10px;')  
         .col-xs-2.col-xs-offset-5(style='text-align:center;')
           a(href='/misc/1')
             h1 Инфо
@@ -221,7 +221,8 @@ head
           });
         var toplist = !{doc};
         if(toplist.length===9){
-         $('#morebutton').css('display','block')
+         $('#morebutton').css('display','block');
+         $('#footer').css('padding-top','0px');
         }
         function populate(toplist) {console.log("first time: "+toplist);
                 //toplist = JSON.parse(toplist);
