@@ -153,34 +153,37 @@ head
       if(screen.width < 414){
       window.location='http://m.recentones.com/';
       }
-    .container(style='min-height:100vh;')
-      #header.row
-        .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
-          img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
-        .col-xs-10(style='text-align:left;')
-          h5(style='color:white;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
-                 
-      #timeperiod.row
-        .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-          h2(style='color:white;') Лента: 
-        |           
-        a(href='/top')
+    #wrap  
+      .container(style='min-height:100vh;background-color:#eee;')
+        #header.row
+          .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
+            img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
+          .col-xs-10(style='text-align:left;')
+            h5(style='color:white;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
+                   
+        #timeperiod.row
           .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h2(style='color:gray;') Рейтинги 
-        |           
-        a(href='/search')
-          .col-xs-4(style='text-align:center;')
-            h2(style='color:gray;') Поиск        
-        
-      .row(style='background-color:#eee;')
-        #inserts.col-xs-12(style='text-align:center;')
-      .row(style='text-align:center;background-color:#fff;display:none',id='morebutton')
-        .col-xs-12
-          h5(id='more',style='color:gray;margin-bottom:10px;cursor:pointer;') Еще 
-      #footer.row(style='background-color:white;padding-bottom:10px;padding-top:10px;')  
-        .col-xs-2.col-xs-offset-5(style='text-align:center;')
-          a(href='/misc/1')
-            h1 Инфо
+            h2(style='color:white;') Лента: 
+          |           
+          a(href='/top')
+            .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+              h2(style='color:gray;') Рейтинги 
+          |           
+          a(href='/search')
+            .col-xs-4(style='text-align:center;')
+              h2(style='color:gray;') Поиск        
+          
+        .row(style='background-color:#eee;')
+          #inserts.col-xs-12(style='text-align:center;')
+        .row(style='text-align:center;background-color:#fff;display:none',id='morebutton')
+          .col-xs-12
+            h5(id='more',style='color:gray;margin-bottom:10px;cursor:pointer;') Еще 
+      .container
+        #footer(style='background-color:white;padding-bottom:10px;padding-top:10px;') 
+          .row 
+            .col-xs-2.col-xs-offset-5(style='text-align:center;')
+              a(href='/misc/1')
+                h1 Инфо
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
