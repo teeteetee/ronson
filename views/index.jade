@@ -186,7 +186,7 @@ head
         function cheight(){
                 var fheight = $('#footer').height();
                 console.log(fheight);
-                var oldmheight = $('#maincont').height();
+                var oldmheight = $(window).height();
                 console.log(oldmheight);
                 var newmheight = oldmheight - fheight;
                 newmheight = newmheight+'px';
