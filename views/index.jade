@@ -187,7 +187,8 @@ head
                 var fheight = $('#footer').css('height');
                 console.log(fheight);
                 console.log($('#maincont').css('height'));
-                var newmheight = $('#maincont').css('height') - fheight;
+                var oldmheight = $('#maincont').css('height');
+                var newmheight = oldmheight - fheight;
                 console.log(newmheight);
                 $('#maincont').css('height',newmheight);
                }
