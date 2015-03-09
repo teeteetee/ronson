@@ -57,14 +57,12 @@ head
       font-family:arial;
       letter-spacing:0.3vw;
       text-transform:uppercase;
-      color:white;
       }
       h5 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
+      letter-spacing:2px;
       text-transform:uppercase;
-      color:black;
+      font-family:roboto-thin;
+      font-size:3vw;
       }
       img {
       width:100%;
@@ -76,16 +74,16 @@ head
       }
       #timeperiod {
       background-color:#fff;
-      } 
-      .linebelow{
-        border-bottom:1px solid #ddd;
       }
-      .rl{
-        border-right:1px solid #ddd;
+      .color {
+      height:10vh;
       }
-      .lightup:hover{
-       background-color:#C8E4E5;
+      #white{
+      background-color:white;
       }
+      .input-group{
+      margin:1vh;
+      }   
   body
     .container(style='min-height:100vh;background-color:#eee;')
       #header.row 
@@ -94,45 +92,38 @@ head
             img(src='/bootstrap/images/rl.png')         
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') Админка    
-      .row.linebelow
-        #ratinglist.lightup.col-xs-6.rl
-            h5 Список рейтингов
-        #addrating.lightup.col-xs-6
-            h5 Добавить рейтинг  
-      .row.linebelow
-        #placelist.lightup.col-xs-6.rl
-            h5 Список мест
-        #addplace.lightup.col-xs-6
-            h5 Добавить место 
-      .row.linebelow
-        #cmlist.lightup.col-xs-6.rl
-            h5 Адреса
-        #clientlist.lightup.col-xs-6.rl
-            h5 Подтверждения 
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')      
+            h2(style='color:gray;') CM   
+      .row(style='background-color:#ddd;padding-top:2vh;padding-bottom:2vh;text-align:center;')  
+        .col-xs-2.col-xs-offset-5
+          button(class='btn btn-danger form-control',type='button',id='drop')  Очистить базу   
+      .row
+        .col-xs-12
+          each cm, i in doc
+            .row(id="row#{doc.clid}",style='border-bottom:1px solid white;background-color:#eee;')
+              .col-xs-2
+                h4 #{doc.nameru} 
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
       script.
-        $("#ratinglist").click(function(){
-          window.location='http://recentones.com/admin/ratinglist';
-          });
-        $("#addrating").click(function(){
-          window.location='http://recentones.com/admin/addrating';
-          });
-        $("#placelist").click(function(){
-          window.location='http://recentones.com/admin/placelist';
-          });
-        $("#addplace").click(function(){
-          window.location='http://recentones.com/admin/addplace';
-          });
-        $("#cmlist").click(function(){
-          window.location='http://recentones.com/admin/cmlist';
-          });
-        $("#clientlist").click(function(){
-          window.location='http://recentones.com/admin/clientlist';
-          });
-        
-
-
-            
+        $('#drop').click(drop);
+        function drop() {
+        var ps = prompt("pass");
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var parsed = JSON.parse(request.responseText);
+        if (parsed.trouble === 1)
+        {alert('ERROR');}
+        else {
+         alert('DB dropped');
+        }}
+        };
+        request.open('POST','/removecl', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+        request.send("ps="+ps);  
+        }
+              
 
       

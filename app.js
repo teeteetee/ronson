@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('places'),top = db.get('top'),clientmail = db.get('clientmail');
+  , places = db.get('places'),top = db.get('top'),clientmail = db.get('clientmail'),clients = db.get('clients');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -70,12 +70,6 @@ app.use(sessions({
 // }
 //});
 
-
-//app.get('/hostel', function(req,res) {
-//  console.log('JESUS !!!');
-//  res.render('hostel');
-//});
-
 //app.get('/logout',function(req,res){
 //  console.log('trying to logout');
 //  req.session.reset();
@@ -84,26 +78,6 @@ app.use(sessions({
 //});
 
 
- //app.get('/index',function(req,res){
- //  var incomming = req.headers.host;
-
- // if (incomming === 'topandviews.ru') {
- //   console.log(' serving RU');
- //   res.render('index');
- // } 
-  
- // if (incomming === 'topandviews.co.uk') {
- //   console.log(' serving CO.UK');
- //   res.render('index');
- // }
-
- // if (incomming === 'topandviews.com') {
- //   console.log(' serving COM');
- //   res.render('index');
- //    }
-//});
-
-  
 //SUBDOMAIN MAGIC 
 
 
@@ -129,23 +103,7 @@ app.get('*', function(req,res,next) {   var d = new Date();
     next();}
    });
  
-
- // if(req.headers.host === 'm.topandviews.co.uk')  //if it's a sub-domain
- //   {console.log(d+' got a mobile version request on co.uk from '+req.ip);
- //   req.url = '/m' + req.url;  //append some text yourself
- //   console.log(req.url);
- //   next();} 
-     
-  
- // if(req.headers.host === 'm.topandviews.ru')  //if it's a sub-domain
- //   {console.log(d+' got a mobile version request on .ru from  '+req.ip);
- //   req.url = '/m' + req.url ;  //append some text yourself
- //   console.log(req.url);
- //   next();}
- //   
- //   else {next();}
-
-//}); 
+ 
 
 
 
@@ -248,31 +206,57 @@ app.post('/keepintouch',function(req,res){
       res.send(ms);
     }
 });
-  //if(uacheck === true) {
-  //  res.render('mindex');
-  //}
-  ////MIGH ADD AN ELSE
-  //else
-  //{if(req.headers.host === 'topandviews.ru') 
-  //    {console.log(d+' request on .ru from '+req.ip);
-  //     if (req.session.admin === 1) {
-  //      res.render('adminindex',{'prfname':req.session.lgn});
-  //     }
-  //     else if(req.session.hostel === 1) {
-  //      res.render('hostelindex',{'pfrname':req.session.lgn,'hostelid':req.session.hostelid});
-  //     }
-  //     else if (req.session.mail != undefined && req.session.lgn != undefined)
-  //      {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});
-  //  console.log('!!! REGISTERED USER CAME BACK !!!');}
-  //     else {
-  //     res.render('index');}
-  //   }
-  //  if(req.headers.host === 'topandviews.com') 
-  //    {res.redirect('http://topandviews.ru')}
-  //   
-  //  if(req.headers.host === 'topandviews.co.uk') 
-  //    {res.redirect('http://topandviews.ru')}}
-   
+
+app.get('/simulateclient',function(req,res){
+ clients.insert({clid:1,nameru:'Одесса-мама'});
+ clients.find({},function(err,done){
+  if(err)
+  {
+    res.send('DB ERROR');
+  }
+  else {
+    res.render('clientlist',{'doc':done});
+  }
+ });
+});
+
+app.get('/conf/:cid',function(req,res){
+  var cid = req.params.cid;
+  clients.findOne({clid:cid},function(err,client){
+   if(err)
+   {
+    // HANDLE ERROR
+   }
+   else {
+    if(client){
+      res.render('confirmation',{'doc':client});
+    }
+    else {
+      res.render('mistake');
+    }
+   }
+  });
+}); 
+
+
+app.post('/conf/:cid',function(req,res){
+  var cid = req.params.cid;
+  clients.findOne({clid:cid},function(err,client){
+    if(err)
+   {
+     // HANDLE ERROR
+   }
+   else {
+    if(client){
+      //GET DATA
+      //PUSH IT  TO DB
+    }
+    else {
+      console.log('CONFIRMATION POST ERROR')
+    }
+   }
+  })
+});
 
 
 app.get('/m',function(req,res){
@@ -436,21 +420,44 @@ app.post('/removecm',function(req,res){
       }
   });
 
-app.get('/droptop',function(req,res){
-  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
-    {top.remove({},function(err,done){
+app.post('/removecl',function(req,res){
+
+     var ms={};
+     var pas = req.body.ps;
+
+     if(pas === 'removethatshit')
+    {clients.remove({},function(err,done){
+        ms.trouble = 1;
         if(err)
         {
-          res.send('98');
+          res.send(ms);
         }
         else {
-          res.send('SUCCESS');
+          ms.trouble = 0;
+          res.send(ms);
         }
         });}
-    else {
-      res.redirect('http://yandex.ru');
-    }
+      else {
+       ms.trouble=1;
+       res.send(ms);
+      }
   });
+
+//app.get('/droptop',function(req,res){
+//  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+//    {top.remove({},function(err,done){
+//        if(err)
+//        {
+//          res.send('98');
+//        }
+//        else {
+//          res.send('SUCCESS');
+//        }
+//        });}
+//    else {
+//      res.redirect('http://yandex.ru');
+//    }
+//  });
 
 app.get('/example',function(req,res){
   res.render('examples');
@@ -632,6 +639,7 @@ app.get('/admin/addrating',function(req,res){
     res.redirect('http://ya.ru');
   }
 });
+
 app.get('/admin/ratinglist',function(req,res){
   if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
   {
@@ -644,6 +652,30 @@ app.get('/admin/ratinglist',function(req,res){
       if(doc.length>0)
       {
          res.render('ratinglist',{'doc':doc});
+      }
+      else{
+         res.send('NO RARINGS - EMPTY DB');
+      }
+    }
+  });
+  }
+  else{
+    res.redirect('http://ya.ru');
+  }
+});
+
+app.get('/admin/clientlist',function(req,res){
+  if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  {
+    clients.find({},function(err,doc){
+    if(err)
+    {
+      res.send('DB ERR')
+    }
+    else {
+      if(doc.length>0)
+      {
+         res.render('clientlist',{'doc':doc});
       }
       else{
          res.send('NO RARINGS - EMPTY DB');
@@ -884,317 +916,15 @@ app.post('/admin/addplace',function(req,res){
 
 });
 
-//REGISTRATION
-//app.get('/rrregisterrr',function(req,res){
-//     res.render('register');
-//});
-
-//app.post('/newuser',function(req,res){
-//    //THOSE USERS ARE NORMAL PEOPLE, HOSTEL STUF WILL BE REGISTERED THROUGH ADMIN
-//    var vmail = req.body.mail; 
-//    var vu = req.body.u; //NEEDED TO WRITE COMMENTS, DONT ASK AT REGISTRATION
-//    if (vu.length === 0 )
-//      {vu = 0;}
-//    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
-//    var ms = {};
-//    ms.trouble=1;
-//    ms.mtext='email incorrect';
-//    // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
-//    // CHECK MAIL BEFOR WRTING
-//    function validateEmail(email) { 
-//    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//    return re.test(email);
-//} 
-//    if (validateEmail(vmail) === true) {
-//    users.find({mail:vmail},function(err,doc){
-//      if (err)
-//      {
-//        //DO SMTH
-//      }
-//      else {
-//        if(doc.length === 0)
-//        { var now = new Date();
-//          var gmonth = now.getMonth();
-//          var gyear = now.getUTCFullYear();
-//          var gday = now.getDay();
-//          users.insert({mail:vmail,phr:vp,lgn:vu,hostel:0,enquiries:{all:0,accepted:0},regdate:{year:gyear,month:gmonth,day:gday}});
-//          users.findOne({mail:vmail},function(err,docdoc){
-//            console.log('FOUND AFTER INSERTING NEW USER :'+JSON.stringify(docdoc));
-//            if (err){
-//              //DO SMTH
-//            }
-//            else{
-//               if (docdoc) {
-//                req.session = docdoc;
-//                ms.trouble =0;
-//                ms.mtext='success';
-//                // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
-//                console.log('SOMEBODY REGISTERED');
-//                res.send(ms);
-//               }
-//               else {
-//                  ms.mtext ='fail';
-//                  res.send(ms);
-//               }
-//            }
-//          });
-//        }
-//        else {
-//           ms.mtext='email exists'
-//           res.send(ms);
-//        }
-//      }// end of err's else
-//    });
-//    }   
-//    else {
-//      // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
-//      res.send(ms);
-//    }
-//
-//    });
-    
-
-//LOGIN MECHANICS
-//app.post('/check',function(req,res){
-//  //CHECK FOR PASSPORT PRIOR TO HOSTEL CHECK, SORT THIS OUT AFTER ALPHA
-//  //"LASTIMEONLINE" MUST BE ADDED AFTER ALPHA
-//  vphr=req.body.phr;
-//  vlgn=req.body.lgn; // email
-//  console.log(vphr+" , "+vlgn);
-//  //adding a marker to send to client
-//  // MARKER MECHANICS IS NOT PRESENT YET , NEEDS TO BE IMPLEMENTED
-//   var  ms = {};
-//  ms.trouble=1;
-//  ms.mtext='db';
-//  //end of marker
-//  users.findOne({mail:vlgn},function(err,confirmed){
-//    if (err)
-//      {res.send(ms);}
-//    else 
-//    {
-//      if (confirmed)
-//      {console.log('we have found :'+JSON.stringify(confirmed));
-//         if(confirmed.hostel === 1) //HOSTEL LOGED IN , SERVE HOSTELCLIENT
-//            {
-//              if (bcrypt.compareSync(vphr,confirmed.phr))
-//               {
-//                console.log('PASSWORD IS GOOD, EXTRACTING INFO FROM HOSTELS DB');
-//               var x = confirmed.hostelid;
-//              hostels.findOne({hostelid:x},function(err,done){
-//                console.log(JSON.stringify(done));
-//                if (err)
-//                {
-//                  console.log('----------DB ERROR-----------');
-//                }
-//                else {
-//                  if (done)
-//                  {req.session = confirmed;
-//                    ms.trouble=0;
-//                    ms.mtext= 'success';
-//                   ms.mhostel = done.hostelid;
-//                   res.send(ms);
-//
-//                  //
-//                   // console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
-//                   //  if (done.country === "russia")
-//                   // { 
-//                   //    console.log('GOING TO SERVE RUS');
-//                   //    req.session = confirmed;
-//                   //   if(done.offrqntt === 0)
-//                   //   {console.log('RUS OFFER');
-//                   //     res.render('index');
-//                   //   }
-//                   //   else
-//                   //   {
-//                   //     var offridlst = done.offers;
-//                   //     res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
-//                   // //
-//                   // }
-//                   // else {
-//                   //    
-//                   //    req.session = confirmed;
-//                   //   if(done.offrqntt === 0)
-//                   //   {res.render('nooffershosteladminen',{'hostel':done});}
-//                   //   else
-//                   //   {
-//                   //     var offridlst = done.offers;
-//                   //     res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
-//                   // }
-//                  }  
-//                  else
-//              {
-//                //DO SOMETHING
-//              } 
-//              }
-//              
-//            });
-//            }
-//            else
-//            {
-//              ms.mtext='wrong pas';
-//              res.send(ms);
-//              //WRONG PASSWORD
-//            }
-//         }
-//         else
-//          //USER LOGED IN 
-//         {
-//          if(bcrypt.compareSync(vphr,confirmed.phr))
-//          {
-//          
-//          req.session = confirmed;
-//          console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
-//          ms.trouble = 0;
-//          ms.mtext= 'success';
-//          res.send(ms);
-//           }
-//           else {
-//            ms.mtext='wrong pas';
-//              res.send(ms);
-//              //WRONG PASSWORD
-//           }
-//         }
-//      }
-//      else {
-//        ms.mtext='wronguser'
-//        res.send(ms);
-//      }
-//    }
-//  });
-//});
-
 
 //done with subdomains
 
-//full version starts here, mobile will be below
 
 
-//ADMIN SECTION FOR DB CONTROL
-//app.get('/admin',function(req,res){
-//  if (lguser.admin) {
-//   var oc;
-//   orders.count({},function(err,c){
-//    if (err)
-//    {}
-//  else {
-//    oc= c;
-//
-//  }
-//  });
-//  var hc; 
-//  hostels.count({},function(err,c){
-//    if (err)
-//    {}
-//  else {
-//    hc= c;
-//    var uc ;
-//  users.count({},function(err,c){
-//    if (err)
-//    {}
-//  else {
-//    uc= c;
-//    var huc; users.count({hostel:1},function(err,c){
-//    if (err)
-//    {}
-//  else {
-//    huc= c;
-//    res.render('admingeneral',{'orders':oc,'hostels':hc,'users':uc,'husers':huc});
-//  }
-//  });
-//  }
-//  });
-//  }
-//  });
-//
-//  }
-//  else {
-// res.render('adminauth');
-//}
-//});
-
-//app.post('/alogin',function(req,res){
-//  var p = 'testtest';
-//  var l = 'testtest';
-//
-//  if(req.body.p === p && l === req.body.l && req.session.mail)
-//  {
-//    req.session.admin = 1;
-//    users.update({mail:req.session.mail},{$set:{admin:1}});
-//    console.log(req.session);
-//    res.redirect('http://topandviews.ru/admin');
-//    }
-//else
-//{res.redirect('http://topandviews.ru');}
-//});
-
-app.get('/admin/:section',function(req,res){
-   switch (req.params.section) {
-    case('hostels'):
-      places.find({},function(err,docs){
-        res.render('adminplaces',{'docs' : docs});
-      });
-    break;
-    case('users'):
-      top.find({},function(err,docs){
-        res.render('admintops',{'docs' : docs});
-      });
-    break;
-   }
-});
-
-//app.get('/admin/:section',function(req,res){
-//  if (lguser.admin){
-//  switch (req.params.section) {
-//    case ('orders'):
-//      orders.find({},function(err,docs){
-//        if (err) {res.send('error');}
-//        else {
-//             if (docs != {})
-//                           {
-//                           console.log(docs);
-//                           res.render('adminorders',{'docs' : docs});
-//                            }
-//      
-//              else {
-//                    res.send('empty db');
-//                   }
-//              }
-//    });
-//    break;
-//    case('hostels'):
-//      hostels.find({},function(err,docs){
-//        res.render('adminhostels',{'docs' : docs});
-//      });
-//    break;
-//    case('users'):
-//      users.find({hostel:0},function(err,docs){
-//        res.render('adminusers',{'docs' : docs});
-//      });
-//    break;
-//    case('hostelusers'):
-//      users.find({hostel:1},function(err,docs){
-//        res.render('adminhostelusers',{'docs' : docs});
-//      });
-//    break;
-//    case('addhosteluser'):
-//      res.render('newhosteluser');
-//    break;
-//    default:
-//    //ERROR HERE OR SOMETHING
-//    break;
-//  }
-// }
-// else {
-//   res.redirect('http://topandviews.ru');
-// }
-//});
 
 
 console.log('FIRST BREAKPOINT');
 
-//app.get('/admin', function(req,res) {
-//  res.render('adminauth',{'message' : null});
-//});
 
 //EMPTY DB (STILL PLACES NEEDS CORRECTION) NAND DELETE PICTURES
 app.post('/admin/clear',function(req,res){
@@ -1217,122 +947,9 @@ app.post('/admin/clear',function(req,res){
   else {
     res.send('ERROR');}
 });
- console.log('SECOND BREAKPOINT');
-//app.get('/upload', function(req,res) {
-//      console.log('got request on /upload');
-//      res.render('uploadauth');
-//      });
-
-//app.post('/uploadauth', function(req,res){
-//  var masterlogin = 'tooleetoo676';
-//  var masterpassword = 'cloderstam555';
-//  var login = req.body.login;
-//  var pass = req.body.password;
-//
-//  if (masterlogin !== login || masterpassword !== pass ) 
-//                                                        {
-//                                                          res.render('uploadauth');
-//                                                        }
-//  else 
-//      {
-//        res.render('upload');
-//      }                                                      
-//
-//});  
-
-// MOBILE VERSION STARTS HERE
-
-//app.get('/m/',function(req,res){
-//  console.log('got to /m/ section, render depending on req.headers.host');
-//  if (req.headers.host === 'm.topandviews.ru') {res.render('mindex')}
-//  if (req.headers.host === 'm.topandviews.com') {res.render('mindex')}
-//  if (req.headers.host === 'm.topandviews.co.uk') {res.render('mindex')}  
-//});
-
-//app.get('/m/:lang/*',function (req,res,next){
-//  var checklang = req.params.lang;
-//  if (checklang === 'ru' ||checklang ===  'en' ||checklang ===  'es' ||checklang ===  'fr' ||checklang ===  'de' ||checklang ===  'it')
-//    {next()}
-//  else {res.render('my404')}
-//});
+ 
 
 
-//app.get('/m/:lang/geo', function(req,res){
-//  var lang = req.params.lang;
-//  if (lang === 'ru'){res.render('mgeoru');} 
-//   if (lang === 'en'){res.render('mgeo');} 
-//   if (lang === 'de'){res.render('mgeode');} 
-//   if (lang === 'fr'){res.render('mgeofr');} 
-//   if (lang === 'es'){res.render('mgeoes');} 
-//   if (lang === 'it'){res.render('mgeoit');} 
-//});
-
-//app.get('/m/:lang', function(req,res){
-//  console.log('got into /m/:lang route')
-//   var lang = req.params.lang;
-//   if (lang === 'ru'){res.render('mindexru');} 
-//   if (lang === 'en'){res.render('mindex');} 
-//   if (lang === 'de'){res.render('mindexde');} 
-//   if (lang === 'fr'){res.render('blank');} 
-//   if (lang === 'es'){res.render('blank');} 
-//   if (lang === 'it'){res.render('blank');} 
-//});
-
-
-//mobile version's end
-
-
-
-//EMPTY ORDERS
-app.post('/drop/:part',function(req,res){
-  if(req.session.admin === 1)
-  {
-    var pp = 'secureshit';
-  switch(req.params.part)
-  {
-    case('orders'):
-     if(req.body.p ===  pp)
-      {orders.remove({});
-        console.log('ORDERS DB DROPPED FROM '+ req.ip);
-        res.redirect('http://topandviews.ru/admin/orders');
-      }
-    break;
-    case('users'):
-     if(req.body.p ===  pp)
-     {users.remove({});
-     console.log('USERS DB DROPPED FROM '+ req.ip);
-     res.redirect('http://topandviews.ru/admin/users');}
-    break;
-    case('hostelusers'):
-     if(req.body.p ===  pp)
-     {users.remove({hostel:1});
-     console.log('HOSTEL USERS DB DROPPED FROM '+ req.ip);
-     res.redirect('http://topandviews.ru/admin/hostelusers');}
-    break;
-    case('hostels'):
-     if(req.body.p ===  pp)
-     {var hid = req.body.hid;
-      hostels.remove({hostelid:hid},function(err){
-        if (!err)
-        {
-          console.log('HOSTELID '+ hid+' DROPPED FROM '+ req.ip);
-           res.redirect('http://topandviews.ru/admin/hostels');
-        }
-       else
-        {res.send('there was an error');}
-      });}
-    break;
-  }
- }
- else
-  {res.redirect('http://topandviews.ru');}
-});
-
-//app.post('/drop/users/mail',function(req,res){
-//  var vmail = req.params.mail;
-//  users.remove({mail:vmail});
-//  res.send('done');
-//});
 
 //UPDATE HOSTELS PAGE (STILL PACES NEEDS AN UPDATE)
 app.post('/adminsr/updatepage', function(req,res) {
@@ -1347,116 +964,27 @@ app.post('/adminsr/updatepage', function(req,res) {
 	
 });
 
-console.log('FOURTH BREAKPOINT');
-
-//UPDATE HOSTELS MECHANICS (STILL PLACES NEEDS AN UPDATE)
-app.post('/admin/update', function(req,res) {
- 
- // UPDATES variable should be introduced, incremets each update on a place
-
- // var vplacename = req.body.placename ,
- // vnameru = req.body.nameru,
- // vnameen = req.body.nameen,
- // vtelephone = req.body.telephone,
- // vwww = req.body.www,
- // vppredir = req.body.ppredir,
- // vworkinghours = req.body.workinghours,
- // vrooftopbool = req.body.rooftop,
- // vterracebool = req.body.terrace,
- // vfid = req.body.fid ,
- // foid = req.body.oid ,
- // vmid = req.body.mid ,
- // vcity = req.body.city,
- // vcountry = req.body.country,
- // vyearnow = req.body.yearnow,
- // vyearfounded = req.body.yearfounded,
- // vadressru = req.body.adressru,
- // vadressen = req.body.adressen;
 
 
-  if(req.files.images.length > 0) {
-    var data = JSON.stringify(req.files);
-    res.send(req.files.images[1]);
-  }
-  else 
-    {res.send('empty files');
-  }
 
-    
-
-//	places.update({placename: vplacename},{
-//nameru : vnameru,
-//nameen : vnameen,
-//telephone : vtelephone,
-//www : vwww,
-//ppredir : vppredir,
-//mainpreview : vmainpreview,
-//cigarsbool : vcigarsbool,
-//shishabool : vshishabool,
-//workinghours : vworkinghours,
-//rooftopbool : vrooftopbool,
-//terracebool : vterracebool,
-//fid : vfid,
-//mid : vmid,
-//oid : foid,
-//toptype : vtoptype,
-//glbtype : vglbtype,
-//city : vcity,
-//country : vcountry,
-//yearnow : vyearnow,
-//type : vtype,
-//yearfounded : vyearfounded,
-//images : photonum,
-//});
+//app.post('/uploadauth', function(req,res){
+//  var masterlogin = 'test';
+//  var masterpassword = 'test';
+//  var login = req.body.login;
+//  var pass = req.body.password;
+//  console.log(pass);
+//  console.log(login);
+//  console.log("JESUS");
+//  if (masterlogin != login || masterpassword != pass ) 
+//                                                        {
+//                                                          res.render('uploadauth');
+//                                                        }
+//  else 
+//      {
+//        res.render('upload');
+//      }                                                      
 //
-//    console.log(vplacename+' has been updated')
-//	res.redirect(vppredir);
-
-  
-});
-console.log('FIFTH BREAKPOINT');
-//app.post('/testupload', function(req,res){
-//    var firstfield = req.body.textupload;
-//    var secondfield = req.files.fileupload.name;
-//    if (secondfield != 0) {console.log(secondfield);}
-//    else {
-//    	console.log('its fucking empty , bro !');
-//         }
-//    vteset ="/public/images/places/" + req.files.fileupload.name;
-//    console.log(vteset);
-//});
-
-
-//app.post('/search', function(req,res){
-//
-//	var query = req.body.search;
-//	console.log('searching for '+query);
-//	var docs = [];
-//	places.find({placename:query}, function(err,docs){
-//       console.log(docs);
-//       res.render('searchresults', {'searchresults': docs});
-//       // placename:query});
-//    });
-// });
-
-app.post('/uploadauth', function(req,res){
-  var masterlogin = 'test';
-  var masterpassword = 'test';
-  var login = req.body.login;
-  var pass = req.body.password;
-  console.log(pass);
-  console.log(login);
-  console.log("JESUS");
-  if (masterlogin != login || masterpassword != pass ) 
-                                                        {
-                                                          res.render('uploadauth');
-                                                        }
-  else 
-      {
-        res.render('upload');
-      }                                                      
-
-});  
+//});  
 
 
 app.post('/admin/simulateplace',function(req,res){
