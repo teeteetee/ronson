@@ -667,7 +667,7 @@ app.get('/admin/ratinglist',function(req,res){
 app.get('/admin/clientlist',function(req,res){
   if(req.ip === '188.226.189.180'  || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
   {
-    clients.find({},function(err,doc){
+    clients.find({},function(err,done){
     if(err)
     {
       res.send('DB ERR')
@@ -675,7 +675,7 @@ app.get('/admin/clientlist',function(req,res){
     else {
       if(doc.length>0)
       {
-         res.render('clientlist',{'doc':doc});
+         res.render('clientlist',{'doc':done});
       }
       else{
          res.send('NO RARINGS - EMPTY DB');
