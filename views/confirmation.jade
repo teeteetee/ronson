@@ -86,9 +86,10 @@ head
           a(href='http://recentones.com')
             img(src='/bootstrap/images/rl.png',style='width:100%;')  
         .col-xs-10
-          h1 Подверждение времени съемки
-          h1 #{doc.nameru}
-        
+          h1 Подверждение времени съемки      
+      #text.row(style='padding-bottom: 2vh; padding-top: 2vh; text-align: center;')
+        .col-xs-12
+          h3 #{doc.nameru}
       .row
         .col-xs-10.col-xs-offset-1
           form(action='/admin/addcl',class='form-horizontal',method='post',role='form')
@@ -107,7 +108,7 @@ head
             .form-group
               textarea(class='form-control',rows='3',placeholder='Комментарии')
             .form-group(style='text-align:center;')   
-              button(class='btn btn-success',type='submit',style='margin-top:2vh;') Добавить                    
+              button(class='btn btn-success btn-lg',type='submit',style='margin-top:2vh;') Добавить                    
       
           
           
