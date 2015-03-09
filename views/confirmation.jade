@@ -1,0 +1,97 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title Recent ones
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+    style.
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:high;
+      src: url('/bootstrap/fonts/Attentica.ttf');
+      }
+      @font-face {
+      font-family:br;
+      src: url('/bootstrap/fonts/bebasneue_regular.ttf');
+      }
+      @font-face {
+      font-family:bt;
+      src: url('/bootstrap/fonts/bebasneue_thin.ttf');
+      }
+      h1 {
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:gray;
+      }
+      body {
+      min-width:768px;
+      background-color:#fff;
+      background-image:url('/bootstrap/images/stripe4.png');
+      filter: grayscale(50%);
+      }
+      h2 {
+      font-size:6vw;
+      font-family:br;
+      letter-spacing:7px;
+      }
+      h3 {
+      font-family:roboto-thin;
+      font-size:3vw;
+      }
+      h4 {
+      font-size:2vw;
+      font-family:roboto-thin;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      }
+      h5 {
+      font-family:helvetica,sans;
+      font-size:2vw;
+      }
+      img {
+      width:100%;
+      }
+      .underline:hover {
+        border-bottom:3px solid gray;
+      }
+      a {
+        font-family:br;
+        font-size:3vw;
+        color:#fc654a;
+      }
+      a:hover {
+        text-decoration:none;
+        outline:none;
+      }
+  body
+    .container(style='background-color:#eee;min-height:100vh;')
+      #header.row
+        .col-xs-1(style='padding-top:15px;padding-bottom:15px;')
+          a(href='http://recentones.com')
+            img(src='/bootstrap/images/rl.png',style='width:100%;')  
+        .col-xs-10
+          h1 Подверждение времени съемки
+        
+      #text.row(style='padding-right: 5vw; padding-left: 6vw; text-align: justify;')
+        .col-xs-12
+          h3 Разнообразный текст
+          
+          
+
+        
