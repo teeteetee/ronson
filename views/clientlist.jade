@@ -98,10 +98,10 @@ head
           button(class='btn btn-danger form-control',type='button',id='drop')  Очистить базу   
       .row
         .col-xs-12
-          each cm, i in doc
-            .row(id="row#{doc.clid}",style='border-bottom:1px solid white;background-color:#eee;')
+          each clnt, i in doc
+            .row(id="row#{clnt.clid}",style='border-bottom:1px solid white;background-color:#eee;')
               .col-xs-2
-                h4 #{doc.nameru} 
+                h4 #{clnt.nameru} 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
       script.
         $('#drop').click(drop);
