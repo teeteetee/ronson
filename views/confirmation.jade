@@ -95,20 +95,20 @@ head
           form(action='/admin/addcl',class='form-horizontal',method='post',role='form')
             .form-group
               .input-group.input-group-lg
-                span(class="input-group-addon" id="sizing-addon1") Дата 
-                input(type="text" class="form-control" aria-describedby="sizing-addon1" name='ratingname')
+                span(class="input-group-addon",id="sizing-addon1") Дата 
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='sdate',placeholder='11 июля')
             .form-group
               .input-group.input-group-lg
                 span(class="input-group-addon" id="sizing-addon1") Время
-                input(type="text" class="form-control" aria-describedby="sizing-addon1" name='web')
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='stime',placeholder='13.30-14.20')
             .form-group
               .input-group.input-group-lg
                 span(class="input-group-addon" id="sizing-addon1") Контактное лицо
-                input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid1') 
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='contact',placeholder='Иванов Федор +79647777777') 
             .form-group
-              textarea(class='form-control',rows='3',placeholder='Комментарии')
+              textarea(class='form-control',rows='3',name='comments',placeholder='Комментарии')
             .form-group(style='text-align:center;')   
-              button(class='btn btn-success btn-lg',type='submit',style='margin-top:2vh;') Добавить                    
+              button(class='btn btn-primary btn-lg',type='submit',style='margin-top:2vh;') Подтверждаю                    
       
           
           
