@@ -85,7 +85,7 @@ head
       margin:1vh;
       }   
   body
-    .container
+    .container(style='background-color:#eee;min-height:100vh;')
       #header.row
         .col-xs-1
           a(href='http://recentones.com')
@@ -93,7 +93,7 @@ head
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
             h2(style='color:gray;') Добавить заведение в лист для подтверждения     
-      .row(style='background-color:#eee;')
+      .row
         form(action='/admin/addcl',method='post',role='form')
           .col-xs-8.col-xs-offset-2(style='text-align:center;padding-top:4vw;padding-bottom:4vw;')
             .input-group.input-group-lg
