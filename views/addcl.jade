@@ -93,9 +93,9 @@ head
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
             h2(style='color:gray;') Добавить заведение в лист для подтверждения     
-      .row
+      .row(style='background-color:#eee;')
         form(action='/admin/addcl',method='post',role='form')
-          .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
+          .col-xs-8.col-xs-offset-2(style='text-align:center;padding-top:4vw;padding-bottom:4vw;')
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") Название 
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='ratingname')
