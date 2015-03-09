@@ -221,7 +221,7 @@ app.get('/simulateclient',function(req,res){
 });
 
 app.get('/conf/:cid',function(req,res){
-  var cid = req.params.cid;
+  var cid = parseInt(req.params.cid);
   clients.findOne({clid:cid},function(err,client){
    if(err)
    {
