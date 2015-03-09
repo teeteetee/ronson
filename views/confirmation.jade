@@ -93,6 +93,22 @@ head
         .col-xs-12
           h3 Разнообразный текст
           h3 #{doc.clid}
+      .row
+        form(action='/admin/addcl',class='form-horizontal',method='post',role='form')
+          .form-group
+            label (for="inputPassword" class="col-xs-2 control-label") Дата
+            .col-xs-10
+              inpu(type="password" class="form-control" id="inputPassword" placeholder="Password")
+          .form-group
+            label (for="inputPassword" class="col-xs-2 control-label") Время
+            .col-xs-10
+              inpu(type="password" class="form-control" id="inputPassword" placeholder="Password")
+          .form-group
+            label (for="inputPassword" class="col-xs-2 control-label") Контактное лицо
+            .col-xs-10
+              inpu(type="password" class="form-control" id="inputPassword" placeholder="Password")    
+            button(class='btn btn-primary',type='submit',style='margin-top:2vh;') Добавить                    
+      
           
           
 
