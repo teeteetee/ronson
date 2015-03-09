@@ -673,6 +673,7 @@ app.get('/admin/clientlist',function(req,res){
       res.send('DB ERR')
     }
     else {
+      console.log(done);
       if(done.length>0)
       {
          res.render('clientlist',{'doc':done});
