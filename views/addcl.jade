@@ -57,11 +57,13 @@ head
       font-family:arial;
       letter-spacing:0.3vw;
       text-transform:uppercase;
+      color:white;
       }
       h5 {
       letter-spacing:2px;
       text-transform:uppercase;
       font-family:roboto-thin;
+      color:white;
       font-size:3vw;
       }
       img {
@@ -72,61 +74,36 @@ head
       padding-bottom:0.5vw;
       background-color:gray;
       }
+      .spart{
+      height:2vh;
+      background-color:#333;
+      }
       #timeperiod {
       background-color:#fff;
-      }
-      .color {
-      height:10vh;
-      }
-      #white{
-      background-color:white;
       }
       .input-group{
       margin:1vh;
       }   
   body
-    .container(style='min-height:100vh;background-color:#eee;')
-      #header.row 
+    .container
+      #header.row
         .col-xs-1
           a(href='http://recentones.com')
             img(src='/bootstrap/images/rl.png')         
       #timeperiod.row
         .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') CM   
-      .row(style='background-color:#ddd;padding-top:2vh;padding-bottom:2vh;text-align:center;')  
-        .col-xs-2.col-xs-offset-4
-          button(class='btn btn-danger form-control',type='button',id='drop')  Очистить базу  
-        .col-xs-2
-          button(class='btn btn-success form-control',type='button',id='new')  Добавить 
+            h2(style='color:gray;') Добавить заведение в лист для подтверждения     
       .row
-        .col-xs-12
-          each clnt, i in doc
-            .row(id="row#{clnt.clid}",style='border-bottom:1px solid white;background-color:#eee;')
-              .col-xs-2
-                h4 #{clnt.nameru} 
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
-      script.
-        $('#new').click(function(){window.location='http://recentones.com/admin/addcl'});
-        $('#drop').click(drop);
-        function drop() {
-        var ps = prompt("pass");
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        var parsed = JSON.parse(request.responseText);
-        if (parsed.trouble === 1)
-        {alert('ERROR');}
-        else {
-         alert('DB dropped');
-        }}
-        };
-        request.open('POST','/removecl', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
-        request.send("ps="+ps);  
-        }
-              
-
+        form(action='/admin/addcl',method='post',role='form')
+          .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
+            .input-group.input-group-lg
+              span(class="input-group-addon" id="sizing-addon1") Название 
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='ratingname')
+            .input-group.input-group-lg
+              span(class="input-group-addon" id="sizing-addon1") Сайт
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='web')
+            .input-group.input-group-lg
+              span(class="input-group-addon" id="sizing-addon1") ID
+              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid1')    
+            button(class='btn btn-primary',type='submit') Добавить                    
       

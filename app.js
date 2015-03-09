@@ -207,7 +207,7 @@ app.post('/keepintouch',function(req,res){
     }
 });
 
-app.get('/simulateclient',function(req,res){
+app.get('/admin/simulateclient',function(req,res){
  clients.insert({clid:1,nameru:'Одесса-мама'});
  clients.find({},function(err,done){
   if(err)
@@ -638,6 +638,18 @@ app.get('/admin/addrating',function(req,res){
   else{
     res.redirect('http://ya.ru');
   }
+});
+
+app.get('/admin/addcl',function(req,res){
+  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  {res.render('addcl');}
+  else{
+    res.redirect('http://ya.ru');
+  }
+});
+
+app.post('/admin/addcl',function(req,res){
+
 });
 
 app.get('/admin/ratinglist',function(req,res){
