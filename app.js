@@ -492,7 +492,7 @@ app.get('/misc/:mid',function(req,res){
     res.render('contacts');
     break
     case(2):
-    res.render('contacts');
+    res.render('manifesto');
     break
     case(3):
     res.render('contacts');
