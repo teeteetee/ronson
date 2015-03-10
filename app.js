@@ -284,7 +284,9 @@ app.post('/conf/:cid',function(req,res){
         //eval("clients.update({clid:cid},{$set:{msnum:newmsnum,ms"+newmsnum+":{regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact}});");
         var tempobj = {regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact};
         if(newmsnum>1){
-          var updmessages = client.messages.push(tempobj);
+          var updmessages = client.messages;
+          updmessages.push(tempobj);
+          console.log(updmessages);
                     clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
                     ms.trouble = 0;
                     res.send(ms);
