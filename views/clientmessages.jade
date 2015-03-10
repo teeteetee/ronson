@@ -97,17 +97,17 @@ head
       .row
         .col-xs-12
           each cm, i in doc
-            .row(id="row#{cm.cid}",style='border-bottom:1px solid white;background-color:#eee;')
+            .row(id="row#{doc.cid}",style='border-bottom:1px solid white;background-color:#eee;')
               .col-xs-2
-                h4 #{cm.regdate} 
+                h4 #{doc.regdate} 
               .col-xs-2
-                h4 #{cm.shdate} 
+                h4 #{doc.shdate} 
               .col-xs-2
-                h4 #{cm.shtime}
+                h4 #{doc.shtime}
               .col-xs-3
-                h4 #{cm.contact}
+                h4 #{doc.contact}
               .col-xs-3(style='background-color:##C8E4E5;')
-                h4 #{cm,comment}
+                h4 #{doc.comment}
       
               
 
