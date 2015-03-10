@@ -94,10 +94,12 @@ head
         .col-xs-12(style='text-align:center;')
             h2(style='color:gray;') CM   
       .row(style='background-color:#ddd;padding-top:2vh;padding-bottom:2vh;text-align:center;')  
-        .col-xs-2.col-xs-offset-4
+        .col-xs-2.col-xs-offset-2
           button(class='btn btn-danger form-control',type='button',id='drop')  Очистить базу  
         .col-xs-2
           button(class='btn btn-success form-control',type='button',id='new')  Добавить 
+        .col-xs-2
+          button(class='btn btn-success form-control',type='button',id='test')  Тест
       .row
         .col-xs-12
           each clnt, i in doc
@@ -108,6 +110,7 @@ head
                   button(onclick='removeplace(#{clnt.clid})',class='btn btn-danger form-control',type='button') Удалить   
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
+        $('#test').click(function(){window.location='http://recentones.com/admin/simulateclient'});
         function removeplace(id) {
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
