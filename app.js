@@ -283,7 +283,8 @@ app.post('/conf/:cid',function(req,res){
       else {
         //eval("clients.update({clid:cid},{$set:{msnum:newmsnum,ms"+newmsnum+":{regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact}});");
         var tempobj = {regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact};
-        var updmessages= client.messages.push(tempobj);
+        console.log(typeof client.messages);
+        var updmessages = client.messages.push(tempobj);
         console.log(updmessages);
         clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
         ms.trouble = 0;
