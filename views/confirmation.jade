@@ -121,6 +121,7 @@ head
         var DONE = this.DONE || 4;
         if (this.readyState === DONE){
         var parsed = JSON.parse(request.responseText);
+        alert(parsed);
         if (parsed.trouble === 1)
         {alert('ERROR');}
         else {
