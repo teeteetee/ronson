@@ -315,7 +315,7 @@ app.get('/msg/:cid',function(req,res){
           //HANDLE
         }
         else {
-          console.log('in msg'+done);
+          console.log('in msg'+JSON.stringify(done));
           res.render('clientmessages',{'placename':done.nameru,'doc':done.messages});
         }
         });
