@@ -240,7 +240,8 @@ app.get('/conf/:cid',function(req,res){
 
 
 app.post('/conf/:cid',function(req,res){
-  var cid = req.params.cid;
+  console.log('going to insert message');
+  var cid = parseInt(req.params.cid);
   clients.findOne({clid:cid},function(err,client){
     if(err)
    {
@@ -250,12 +251,68 @@ app.post('/conf/:cid',function(req,res){
     if(client){
       //GET DATA
       //PUSH IT  TO DB
+      var ms = {};
+      ms.trouble = 1;
+      var cdate = req.body.cdate;
+      var ctime = req.body.ctime;
+      var ccontact = req.body.contact;
+      var ccomment = req.body.comments;
+      var newmsnum = client.msnum++;
+      // -- date --
+      var dd= new Date();
+      var vday = dd.getDate().toString();
+      if (vday.length===1){
+        vday='0'+vday;
+      }
+      var vmonth = dd.getMonth()+1;
+      vmonth = vmonth.toString();
+      if (vmonth.length===1){
+        vmonth='0'+vmonth;
+      }
+      var vyear = dd.getUTCFullYear().toString();
+      var fulldate = vyear+vmonth+vday;
+      fulldate = parseInt(fulldate)
+      // -- date --
+      if(!cdate || !ctime || !contact)
+      {
+        ms.mtext('data');
+        res.send(ms);
+      }
+      else {
+        //eval("clients.update({clid:cid},{$set:{msnum:newmsnum,ms"+newmsnum+":{regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact}});");
+        var tempobj = {regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact};
+        var updmessages= client.messages.push(tempobj);
+        console.log(updmessages);
+        clients.update({clid:cid},{$set:{msnum:newmsnum,msessages:updmessages}});
+        ms.trouble = 0;
+        res.send(ms);
+      }
     }
     else {
-      console.log('CONFIRMATION POST ERROR')
+      console.log('CONFIRMATION POST ERROR');
+      ms.mtext = 'db';
+      res.send(ms);
     }
    }
   })
+});
+
+app.get('/msg/:cid',function(req,res){
+  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+    { var cid = parseInt(req.params.cid);
+      clients.findOne({clid:cid},function(err,done){
+        if(err)
+        {
+          //HANDLE
+        }
+        else {
+          res.render('clientmessages',{'placename':done.nameru,'doc':done.messages});
+        }
+        });
+    }
+  else {
+    res.redirect('http://yandex.ru');
+  }
 });
 
 
@@ -780,7 +837,7 @@ app.post('/admin/redactrating/:id',function(req,res){
       }
       var vyear = dd.getUTCFullYear().toString();
       var fulldate = vyear+vmonth+vday;
-      fulldate = parseInt(fulldate)
+      fulldate = parseInt(fulldate);
    top.update({rid:vrid},{$set:{ratingname:vrn,lastredact:fulldate,web:vweb,places:{1:vp1,2:vp2,3:vp3,4:vp4,5:vp5,6:vp6,7:vp7,8:vp8,9:vp9,10:vp10},pids:{1:vpid1,2:vpid2,3:vpid3,4:vpid4,5:vpid5,6:vpid6,7:vpid7,8:vpid8,9:vpid9,10:vpid10}}});
    res.redirect('http://recentones.com/admin/ratinglist');
 });
