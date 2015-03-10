@@ -208,7 +208,7 @@ app.post('/keepintouch',function(req,res){
 });
 
 app.get('/admin/simulateclient',function(req,res){
- clients.insert({clid:1,nameru:'Одесса-мама',messages:[''],msnum:0});
+ clients.insert({clid:1,nameru:'Одесса-мама',msnum:0});
  clients.find({},function(err,done){
   if(err)
   {
@@ -284,12 +284,20 @@ app.post('/conf/:cid',function(req,res){
         //eval("clients.update({clid:cid},{$set:{msnum:newmsnum,ms"+newmsnum+":{regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact}});");
         var tempobj = {regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact};
         console.log(typeof client.messages);
-        
+        if(newmsnum>1){
           var updmessages = client.messages.push(tempobj);
-          console.log(updmessages);
-          clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
-          ms.trouble = 0;
-          res.send(ms);
+                    console.log(updmessages);
+                    clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
+                    ms.trouble = 0;
+                    res.send(ms);
+        }
+        else
+          {        var updmessages = [];
+                   updmessages.push(tempobj);
+                    console.log(updmessages);
+                    clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
+                    ms.trouble = 0;
+                    res.send(ms);}
     }
   }
     else {
