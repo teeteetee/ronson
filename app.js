@@ -253,6 +253,7 @@ app.post('/conf/:cid',function(req,res){
       //PUSH IT  TO DB
       var ms = {};
       ms.trouble = 1;
+      console.log(req.body);
       var cdate = req.body.cdate;
       var ctime = req.body.ctime;
       var ccontact = req.body.contact;
