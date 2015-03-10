@@ -291,6 +291,7 @@ app.post('/conf/:cid',function(req,res){
           ms.trouble = 0;
           res.send(ms);
     }
+  }
     else {
       console.log('CONFIRMATION POST ERROR');
       ms.mtext = 'db';
