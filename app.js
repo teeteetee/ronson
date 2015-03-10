@@ -208,7 +208,7 @@ app.post('/keepintouch',function(req,res){
 });
 
 app.get('/admin/simulateclient',function(req,res){
- clients.insert({clid:1,nameru:'Одесса-мама',messages:[],msnumber:0});
+ clients.insert({clid:1,nameru:'Одесса-мама',messages:[],msnum:0});
  clients.find({},function(err,done){
   if(err)
   {
@@ -285,7 +285,7 @@ app.post('/conf/:cid',function(req,res){
         var tempobj = {regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact};
         var updmessages= client.messages.push(tempobj);
         console.log(updmessages);
-        clients.update({clid:cid},{$set:{msnum:newmsnum,msessages:updmessages}});
+        clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
         ms.trouble = 0;
         res.send(ms);
       }
