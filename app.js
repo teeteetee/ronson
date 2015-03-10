@@ -283,10 +283,8 @@ app.post('/conf/:cid',function(req,res){
       else {
         //eval("clients.update({clid:cid},{$set:{msnum:newmsnum,ms"+newmsnum+":{regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact}});");
         var tempobj = {regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact};
-        console.log(typeof client.messages);
         if(newmsnum>1){
           var updmessages = client.messages.push(tempobj);
-                    console.log(updmessages);
                     clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
                     ms.trouble = 0;
                     res.send(ms);
@@ -294,7 +292,6 @@ app.post('/conf/:cid',function(req,res){
         else
           {        var updmessages = [];
                    updmessages.push(tempobj);
-                    console.log(updmessages);
                     clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
                     ms.trouble = 0;
                     res.send(ms);}
@@ -318,8 +315,7 @@ app.get('/msg/:cid',function(req,res){
           //HANDLE
         }
         else {
-          console.log('messages: '+done.messages);
-          console.log(typeof done.messages);
+          console.log('in msg'+done);
           res.render('clientmessages',{'placename':done.nameru,'doc':done.messages});
         }
         });
