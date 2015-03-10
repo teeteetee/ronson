@@ -257,6 +257,7 @@ app.post('/conf/:cid',function(req,res){
       var cdate = req.body.cdate;
       var ctime = req.body.ctime;
       var ccontact = req.body.contact;
+      console.log(ccontact);
       var ccomment = req.body.comments;
       var newmsnum = client.msnum++;
       // -- date --
