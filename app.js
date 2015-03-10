@@ -318,6 +318,8 @@ app.get('/msg/:cid',function(req,res){
           //HANDLE
         }
         else {
+          console.log('messages: '+messages);
+          console.log(typeof done.messages);
           res.render('clientmessages',{'placename':done.nameru,'doc':done.messages});
         }
         });
