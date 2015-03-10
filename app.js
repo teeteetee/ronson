@@ -208,7 +208,7 @@ app.post('/keepintouch',function(req,res){
 });
 
 app.get('/admin/simulateclient',function(req,res){
- clients.insert({clid:1,nameru:'Одесса-мама'});
+ clients.insert({clid:1,nameru:'Одесса-мама',messages:[],msnumber:0});
  clients.find({},function(err,done){
   if(err)
   {
@@ -709,6 +709,27 @@ app.get('/admin/addcl',function(req,res){
 
 app.post('/admin/addcl',function(req,res){
 
+});
+
+app.post('/admin/removecl',function(req,res){
+  var pas = req.body.uu;
+  if (pas != 'withoutthesecurity') {
+    res.redirect('http://recentones.com');
+  }
+  else 
+  {var vpid = parseInt(req.params.cid);
+    var ms={};
+    ms.trouble=1;
+    ms.mtext = 'db';
+    clients.remove({clid:cid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    });}
 });
 
 app.get('/admin/ratinglist',function(req,res){

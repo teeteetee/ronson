@@ -104,29 +104,30 @@ head
             .row(id="row#{clnt.clid}",style='border-bottom:1px solid white;background-color:#eee;')
               .col-xs-2
                 h4 #{clnt.nameru} 
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
+              .col-xs-2.col-xs-offset-8
+                  button(onclick='removeplace(#{clnt.clid})',class='btn btn-danger form-control',type='button') Удалить   
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
-        $('#new').click(function(){window.location='http://recentones.com/admin/addcl'});
-        $('#drop').click(drop);
-        function drop() {
-        var ps = prompt("pass");
+        function removeplace(id) {
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;
         if (this.readyState === DONE){
         var parsed = JSON.parse(request.responseText);
         if (parsed.trouble === 1)
-        {alert('ERROR');}
+        {alert('DB ERROR');}
         else {
-         alert('DB dropped');
+          alert('client deleted !');
+         eval("$('#row"+id+"').remove();");
         }}
         };
-        request.open('POST','/removecl', true);
+        var dest = '/admin/removecl/'+id;
+        request.open('POST', dest, true);
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
-        request.send("ps="+ps);  
-        }
+        request.send("uu=withoutthesecurity");  
+        }  
               
 
       
