@@ -711,9 +711,10 @@ app.post('/admin/addcl',function(req,res){
 
 });
 
-app.post('/admin/removecl',function(req,res){
+app.post('/admin/removecl/:cid',function(req,res){
   var pas = req.body.uu;
-  if (pas != 'withoutthesecurity') {
+  var cid = parseInt(req.params.cid);
+  if (pas != 'withoutthesecurity' && ) {
     res.redirect('http://recentones.com');
   }
   else 
