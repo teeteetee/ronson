@@ -273,7 +273,7 @@ app.post('/conf/:cid',function(req,res){
       var fulldate = vyear+vmonth+vday;
       fulldate = parseInt(fulldate)
       // -- date --
-      if(!cdate || !ctime || !contact)
+      if(!cdate || !ctime || !сcontact)
       {
         ms.mtext('data');
         res.send(ms);
