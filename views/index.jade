@@ -119,15 +119,6 @@ head
       .color {
       height:10vh;
       }
-      #blue{
-      background-color:#001c45;
-      }
-      #green{
-      background-color:#49a881;
-      }
-      #white{
-      background-color:white;
-      }
       .imgrow {
       background-color:#333;
       }  
@@ -157,9 +148,9 @@ head
               img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
             .col-xs-10(style='text-align:left;')
               h5(style='color:white;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
-        .row 
-          .col-xs-12
-            .media(style='padding-top:15px;padding-bottom:15px;')
+        #header.row 
+          .col-xs-12(style='padding-top:15px;padding-bottom:15px;')
+            .media
               .media-left
                 img(id='logo',src='/bootstrap/images/rl.png',style='width:64px;height:64px;')
               .media-body  
