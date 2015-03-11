@@ -151,12 +151,19 @@ head
       }
     #wrap  
       .container(style='background-color:#eee;',id='maincont')
-        #header.row
-          .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
-            img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
-          .col-xs-10(style='text-align:left;')
-            h5(style='color:white;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
-                   
+        //
+          #header.row
+            .col-xs-2(style='padding-top:15px;padding-bottom:15px;')
+              img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;') 
+            .col-xs-10(style='text-align:left;')
+              h5(style='color:white;font-family:roboto-thin;font-size:4vw;') Панорамы недавно открывшихся заведений и агретор рейтингов. 
+        .row 
+          .col-xs-12
+            .media
+              .media-left
+                img(id='logo',src='/bootstrap/images/rl.png',style='width:64px;height:64px;')
+              .media-body  
+                h5(style='color:white;font-family:roboto-thin;font-size:3vw;') Панорамы недавно открывшихся заведений и агретор рейтингов.        
         #timeperiod.row
           .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
             h2(style='color:white;') Лента: 
