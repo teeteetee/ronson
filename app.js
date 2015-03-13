@@ -564,7 +564,7 @@ app.get('/misc/:mid',function(req,res){
     res.render('manifesto');
     break
     case(3):
-    res.render('contacts');
+    res.render('partnership');
     break
     default:
     res.render('index');
