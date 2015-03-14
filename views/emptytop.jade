@@ -34,30 +34,13 @@ head
       }
       h1 {
       font-family:high;
-      font-size:3vw;
-      display:inline;
-      color:white;
+      letter-spacing:7px;
       }
       body {
       min-width:768px;
       background-color:#fff;
       background-image:url('/bootstrap/images/stripe4.png');
       filter: grayscale(50%);
-      }
-      h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
-      }
-      h3 {
-      font-size:3vw;
-      }
-      h4 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:white;
       }
       h5 {
       letter-spacing:2px;
@@ -66,100 +49,28 @@ head
       color:white;
       font-size:3vw;
       }
-      .preview {
-      margin:0px;
-      padding:0px;
-      border-right:1px solid black;
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
-      }
-      .preview:hover {
-      -webkit-filter: grayscale(0%);
-      -moz-filter: grayscale(0%);
-      -o-filter: grayscale(0%);
-      -ms-filter: grayscale(0%);
-      }
-      img {
-      width:100%;
-      }
-      .imgrow {
-      border-bottom:1px solid black;
-      }
-      .placenamebckgrnd {
-      position:absolute;
-      color:white;
-      opacity:0.7;
-      width:100%;
-      margin-bottom:auto;
-      background-color:black;
-      text-align:center;
-      z-index:1;
-      height:25%;
-      }
-      .placename {
-      position:absolute;
-      color:black;
-      width:100%;
-      text-align:center;
-      margin-bottom:auto;
-      z-index:2;
-      }
-      #footer {
-      background-color:gray;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      text-align:center;
-      }
       #header {
       padding-top:0.5vw;
       padding-bottom:0.5vw;
       background-color:gray;
       }
-      .spart{
-      height:2vh;
-      background-color:#333;
-      }
       #timeperiod {
       background-color:black;
       }
-      .color {
-      height:10vh;
-      }
-      #blue{
-      background-color:#001c45;
-      }
-      #green{
-      background-color:#49a881;
-      }
-      #white{
-      background-color:white;
-      }
-      .imgrow {
-      background-color:#333;
-      }
-      .container {
-      min-height:100vh;
-      background-color:#eee;
-      }
-      #footer{
-      width:100%;
-      position:fixed;
-      bottom:0px;
-      }  
+       
   body
     .container    
       #timeperiod.row
-        a(href='/')
-          .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h2(style='color:gray;') Лента
-        .col-xs-4(style='border-right:1px dotted #ddd;text-align:center;')
-            h2(style='color:white;') Рейтинги:
+        .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+          h1(style='color:gray;') Лента 
+        |           
+        a(href='/top')
+          .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+            h1(style='color:#ddd;') Рейтинги 
         |           
         a(href='/search')
           .col-xs-4(style='text-align:center;')
-            h2(style='color:gray;') Поиск       
+            h1(style='color:gray;') Поиск      
       .row
         .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;')
           h5(style='color:gray;')  &Pcy;&ucy;&scy;&tcy;&acy;&yacy; &bcy;&acy;&zcy;&acy; 
