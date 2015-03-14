@@ -32,8 +32,7 @@ head
       font-family:bt;
       src: url('/bootstrap/fonts/bebasneue_thin.ttf');
       }
-      h1 {
-      font-size:1vw;
+      h6 {
       font-family:arial;
       letter-spacing:0.3vw;
       text-transform:uppercase;
@@ -47,27 +46,25 @@ head
       background-image:url('/bootstrap/images/stripe4.png');
       filter: grayscale(50%);
       }
-      h2 {
-      font-size:6vw;
+      h1 {
       font-family:high;
       letter-spacing:7px;
       }
-      h3 {
-      font-size:3vw;
-      }
       h4 {
-      font-size:2vw;
-      font-family:roboto-thin;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
+      color:black;
+      font-family:bt;
+      font-weight:bold;
+      font-size:40px;
       }
       h5 {
       letter-spacing:2px;
       text-transform:uppercase;
-      font-family:high;
-      color:white;
-      font-size:3vw;
       margin-bottom:0px;
+      color:white;
+      font-family:roboto-thin;
+      font-size:30px;
+      margin-top:0px;
+      line-height:64px;
       }
       img {
       width:100%;
@@ -108,21 +105,21 @@ head
             .media-left(style='padding-right:15px;')
               img(id='logo',src='/bootstrap/images/rlbw.png',style='width:64px;height:64px;')
             .media-body  
-              h5(style='color:white;font-family:roboto-thin;font-size:2.5vw; margin-top:0px;line-height:64px;') Виртуальные туры и рейтинги            
+              h5 Виртуальные туры и рейтинги            
       #timeperiod.row
         .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-          h2(style='color:#ddd;') Лента 
+          h1(style='color:#ddd;') Лента 
         |           
         a(href='/top')
           .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h2(style='color:gray;') Рейтинги 
+            h1(style='color:gray;') Рейтинги 
         |           
         a(href='/search')
           .col-xs-4(style='text-align:center;')
-            h2(style='color:gray;') Поиск
+            h1(style='color:gray;') Поиск
       .row(style='background-color:#eee;')
         #insert.col-xs-12(style='text-align:center;padding-left:10vw;padding-right:10vw;padding-top:3%;')
-          h4(style='color:black;font-family:bt;font-weight:bold;font-size:40px;') В данный момент мы договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы 
+          h4 В данный момент мы договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы 
             span(style='color:#12a636;') сообщим вам о запуске первым.
           form()
             .input-group
@@ -132,7 +129,7 @@ head
       #footer.row(style='padding-top:10px;padding-bottom:10px;')  
         .col-xs-2.col-xs-offset-5(style='text-align:center;')
           a(href='/misc/2')
-            h1 Инфо
+            h6 Инфо
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script.
       if(screen.width == 768) {
