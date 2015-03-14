@@ -32,37 +32,20 @@ head
       font-family:bt;
       src: url('/bootstrap/fonts/bebasneue_thin.ttf');
       }
-      h1 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:gray;
-      }
       body {
       min-width:768px;
       background-color:#fff;
       background-image:url('/bootstrap/images/stripe4.png');
       filter: grayscale(50%);
       }
-      h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
-      }
       h3 {
       font-family:roboto-thin;
-      font-size:3vw;
       }
       h4 {
       font-size:2vw;
       font-family:roboto-thin;
       letter-spacing:0.3vw;
       text-transform:uppercase;
-      }
-      h5 {
-      font-family:helvetica,sans;
-      font-size:2vw;
       }
       img {
       width:100%;
@@ -79,20 +62,23 @@ head
         text-decoration:none;
         outline:none;
       }
+      .pulldown {
+        margin-top:10px;
+      }
   body
     .container(style='background-color:white;min-height:100vh;')
       #header.row
         .col-xs-1(style='padding-top:15px;padding-bottom:15px;')
           a(href='http://recentones.com')
             img(src='/bootstrap/images/rl.png',style='width:100%;')  
-        .col-xs-2.col-xs-offset-2.underline(style='text-align:right;border-bottom:3px solid gray;')
-          h1(style='letter-spacing:3px;') Контакты
-        .col-xs-2.underline(style='text-align:center;border-bottom:1px solid #ddd;')
-          a(href='/misc/2')
-            h1(style='letter-spacing:3px;') Манифест
-        .col-xs-2.underline(style='text-align:left;border-bottom:1px solid #ddd;')
+        .col-xs-2.col-xs-offset-2.underline.pulldown(style='text-align:right;border-bottom:1px solid #ddd;')
+          h6(style='letter-spacing:3px;font-size:10px;') Контакты
+        .col-xs-2.underline.pulldown(style='text-align:center;border-bottom:3px solid gray;') 
+          a(href='/misc/2') 
+            h6(style='letter-spacing:3px;font-size:10px;') Манифест
+        .col-xs-2.underline.pulldown(style='text-align:left;border-bottom:1px solid #ddd;')
           a(href='/misc/3')
-            h1(style='letter-spacing:1px;') Сотрудничество
+            h6(style='letter-spacing:1px;font-size:10px;') Сотрудничество
       #text.row(style='padding-right: 5vw; padding-left: 6vw; text-align: justify;')
         .col-xs-12
           h3 Телефон московского отделения
