@@ -70,7 +70,7 @@ head
       h6{
       font-family:arial; 
       text-transform:uppercase;
-      color:#bbb;
+      color:white;
       margin-top:0px;
       margin-bottom:0px;
       letter-spacing:2px;
@@ -180,7 +180,7 @@ head
           .row 
             .col-xs-2.col-xs-offset-5(style='text-align:center;')
               a(href='/misc/1')
-                h6(style='margin-top:10px;') Инфо
+                h6(style='margin-top:10px;color:#bbb;') Инфо
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
@@ -257,7 +257,7 @@ head
                 for (var xx=0;xx<times;xx++)
                 { 
                   var rnum = xx+1;
-                  $('#inserts').append("<div class='row' style='border-bottom:1px solid #ddd;' id='row"+rnum+"'></div>");
+                  $('#inserts').append("<div class='row' style='border-top:1px solid #ddd;' id='row"+rnum+"'></div>");
                   for (var i=0;i<3;i++){
                     var cellnum = xx*3+i+1;
                     var hnum = cellnum-1;
@@ -277,7 +277,7 @@ head
                   if(rnum===times && left != 3 && left != 0){
                   for (var yy=0;yy<left;yy++){
                     var leftrow = rnum+1;
-                   $('#inserts').append("<div class='row' style='border-bottom:1px solid #ddd;' id='row"+leftrow+"'></div>");
+                   $('#inserts').append("<div class='row' style='border-top:1px solid #ddd;' id='row"+leftrow+"'></div>");
                    var cellnum = rnum*3+yy+1;
                    console.log('cellnum: '+cellnum);
                    var hnum = cellnum-1;
