@@ -33,24 +33,14 @@ head
       src: url('/bootstrap/fonts/bebasneue_thin.ttf');
       }
       h1 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:#bbb;
-      margin-top:0px;
-      margin-bottom:0px;
+      font-family:high;
+      letter-spacing:7px;
       }
       body {
       min-width:768px;
       background-color:#fff;
       background-image:url('/bootstrap/images/stripe4.png');
       filter: grayscale(50%);
-      }
-      h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
       }
       h3 {
       font-size:3vw;
@@ -61,13 +51,20 @@ head
       letter-spacing:0.3vw;
       text-transform:uppercase;
       }
-      h5 {
+      h2 {
       letter-spacing:2px;
       text-transform:uppercase;
       font-family:high;
       color:white;
-      font-size:3vw;
       margin-bottom:0px;
+      }
+      h6{
+      font-family:arial; 
+      text-transform:uppercase;
+      color:#bbb;
+      margin-top:0px;
+      margin-bottom:0px;
+      letter-spacing:2px;
       }
       .preview {
       margin:0px;
@@ -151,15 +148,15 @@ head
                 h5(style='color:white;font-family:roboto-thin;font-size:2.5vw; margin-top:0px;line-height:64px;') Панорамы новых заведений и агретор рейтингов.        
         #timeperiod.row
           .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h2(style='color:white;') Лента: 
+            h1(style='color:white;') Лента: 
           |           
           a(href='/top')
             .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-              h2(style='color:gray;') Рейтинги 
+              h1(style='color:gray;') Рейтинги 
           |           
           a(href='/search')
             .col-xs-4(style='text-align:center;')
-              h2(style='color:gray;') Поиск        
+              h1(style='color:gray;') Поиск        
           
         .row(style='background-color:#eee;')
           #inserts.col-xs-12(style='text-align:center;')
@@ -171,7 +168,7 @@ head
           .row 
             .col-xs-2.col-xs-offset-5(style='text-align:center;')
               a(href='/misc/1')
-                h1 Инфо
+                h6 Инфо
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
@@ -240,7 +237,7 @@ head
                   $('#inserts').append("<div class='row' id='row1'></div>");
                   for (var i=0;i<toplist.length;i++){
                     var cellnum = i+1;
-                    var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[i].placenameru+"</h5><h1>"+toplist[i].regdate.day+"."+toplist[i].regdate.month+"."+toplist[i].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div>";
+                    var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h2 style='color:black;'>"+toplist[i].placenameru+"</h2><h6>"+toplist[i].regdate.day+"."+toplist[i].regdate.month+"."+toplist[i].regdate.year+"</h6></div><a href='http://recentones.com/places/"+toplist[i].pid+"'><img src='"+toplist[i].mainpreview+"' style='width:100%;'></a></div>";
                     eval("$('#row1').append(insert);");
                   }
                 }
@@ -254,7 +251,7 @@ head
                     var hnum = cellnum-1;
                     if(i===2)
                     {
-                     var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5><h1>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+                     var insert = "<div class='col-xs-4' style='padding:0px;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h2 style='color:black;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
                                 eval("$('#row"+rnum+"').append(insert);");
                     if(xx+1 == times){
                      moreid = toplist[hnum].pid;
@@ -262,7 +259,7 @@ head
                     }
                     }
                     else 
-                    {var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid #ddd;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5><h1>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+                    {var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid #ddd;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h2 style='color:black;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
                                 eval("$('#row"+rnum+"').append(insert);");}
                   }
                   if(rnum===times && left != 3 && left != 0){
@@ -273,7 +270,7 @@ head
                    console.log('cellnum: '+cellnum);
                    var hnum = cellnum-1;
                    console.log('hnum: '+hnum);
-                    var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid #ddd;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h5 style='color:black;'>"+toplist[hnum].placenameru+"</h5><h1>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h1></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
+                    var insert = "<div class='col-xs-4' style='padding:0px;border-right:1px solid #ddd;' id='ratcell"+cellnum+"'><div class='albumnameblock'><h2 style='color:black;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></div><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img src='"+toplist[hnum].mainpreview+"' style='width:100%;'></a></div>";
                     eval("$('#row"+leftrow+"').append(insert);");
                     if(yy+1 == left){
                      moreid = toplist[hnum].pid;
