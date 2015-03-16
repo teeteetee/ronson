@@ -639,24 +639,24 @@ app.get('/admax',function(req,res){
 
   }
   });
-  var placenum; 
+  var vplacenum; 
   places.count({},function(err,c){
     if (err)
     {}
   else {
-    placenum= c;
-    var interested ;
+    vplacenum= c;
+    var vinterested ;
   clientmail.count({},function(err,c){
     if (err)
     {}
   else {
-    interested= c;
-    var accepts; 
+    vinterested= c;
+    var vaccepts; 
     clients.count({hostel:1},function(err,c){
     if (err)
     {}
   else {
-    accepts= c;
+    vaccepts= c;
     res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts});
   }
   });
