@@ -113,16 +113,7 @@ head
                       a(href='http://recentones.com/msg/#{clnt.clid}') #{clnt.nameru}
                     td 
                       button(onclick='removeplace(#{clnt.clid})',class='btn btn-danger form-control',type='button') Удалить
-      //
-        .row
-          .col-xs-12
-            each clnt, i in doc
-              .row(id="row#{clnt.clid}",style='border-bottom:1px solid white;background-color:#eee;padding-top:2vh;padding-bottom:2vh;')
-                .col-xs-2
-                  a(href='http://recentones.com/msg/#{clnt.clid}')
-                    h4 #{clnt.nameru} 
-                .col-xs-2.col-xs-offset-8
-                    button(onclick='removeplace(#{clnt.clid})',class='btn btn-danger form-control',type='button') Удалить   
+    
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         $('#test').click(function(){window.location='http://recentones.com/admin/simulateclient'});
