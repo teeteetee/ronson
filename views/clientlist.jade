@@ -82,9 +82,18 @@ head
         .col-xs-12
           ol(class="breadcrumb",style='margin-top:10px;margin-bottom:10px;')
             li
-              a(href="/admax") Админка
+              a(href="/admax") Главная
             li(class="active") Подтверждение съемки  
-      .row(style='background-color:#ddd;padding-top:2vh;padding-bottom:2vh;text-align:center;')  
+      .row(style='padding-top:10px;padding-bottom:10px;text-align:center;') 
+        .col-xs-12 
+          .btn-group.btn-group-justified(role="group",aria-label="...")
+            .btn-group(role="group")
+              button(type="button" class="btn btn-default") Сброс базы
+            .btn-group(role="group")
+              button(type="button" class="btn btn-default") Добавить
+            .btn-group(role="group")
+              button(type="button" class="btn btn-default") тест
+      //
         .col-xs-2.col-xs-offset-3
           button(class='btn btn-danger form-control',type='button',id='drop')  Очистить базу  
         .col-xs-2
