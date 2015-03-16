@@ -630,7 +630,42 @@ app.get('/admax',function(req,res){
   var lguser={};
    if(req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
    {
-    res.render('admin');}
+    var vratingnum;
+   top.count({},function(err,c){
+    if (err)
+    {}
+  else {
+    vratingnum= c;
+
+  }
+  });
+  var placenum; 
+  places.count({},function(err,c){
+    if (err)
+    {}
+  else {
+    placenum= c;
+    var interested ;
+  clientmail.count({},function(err,c){
+    if (err)
+    {}
+  else {
+    interested= c;
+    var accepts; 
+    clients.count({hostel:1},function(err,c){
+    if (err)
+    {}
+  else {
+    accepts= c;
+    res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts});
+  }
+  });
+  }
+  });
+  }
+  });
+}
+
    else {
    res.render('auth');
  }

@@ -95,11 +95,17 @@ head
                   a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
     .container(style='min-height:100vh;background-color:#eee;')  
       .list-group(style='margin-top:10px;margin-bottom:10px;')
-        a(href="#",class="list-group-item active") Cras justo odio 
-        a(href="#",class="list-group-item") Dapibus ac facilisis in
-        a(href="#",class="list-group-item") Morbi leo risus
-        a(href="#",class="list-group-item") Porta ac consectetur ac
-        a(href="#",class="list-group-item") Vestibulum at eros 
+        a(href="#",class="list-group-item active") Главная панель 
+        a(href="#",class="list-group-item") Список рейтингов
+          span(class="badge") #{ratingnum}
+        a(href="#",class="list-group-item") Добавить рейтинг
+        a(href="#",class="list-group-item") Список мест
+          span(class="badge") #{placenum}
+        a(href="#",class="list-group-item") Добавить место
+        a(href="#",class="list-group-item") Адреса
+          span(class="badge") #{interested}
+        a(href="#",class="list-group-item") Подтверждения
+          span(class="badge") #{accepts} 
       .row.linebelow
         #ratinglist.lightup.col-xs-6.rl
             h5 Список рейтингов
