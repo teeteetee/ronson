@@ -113,21 +113,21 @@ head
         .col-xs-12
           .panel.panel-default
             .panel-heading 
-              | Заведения
+              | Подтверждения
             table(class='table')
               tbody
                 each cm, i in doc
                   tr
                     td 
-                      #{cm.regdate} 
+                      | #{cm.regdate} 
                     td
-                      #{cm.shdate}
+                      | #{cm.shdate}
                     td 
-                      #{cm.shtime}
+                      | #{cm.shtime}
                     td 
-                      #{cm.contact}
+                      | #{cm.contact}
                     td 
-                      #{cm.comment}
+                      | #{cm.comment}
 
       script(src='/js/bootstrap.min.js')
               
