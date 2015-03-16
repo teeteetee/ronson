@@ -111,18 +111,24 @@ head
               h4 Сообщения  
       .row
         .col-xs-12
-          each cm, i in doc
-            .row(id="row",style='border-bottom:1px solid white;background-color:#eee;')
-              .col-xs-2
-                h4 #{cm.regdate} 
-              .col-xs-2
-                h4 #{cm.shdate} 
-              .col-xs-2
-                h4 #{cm.shtime}
-              .col-xs-3
-                h4 #{cm.contact}
-              .col-xs-3(style='background-color:#C8E4E5;')
-                h4 #{cm.comment}
+          .panel.panel-default
+            .panel-heading 
+              | Заведения
+            table(class='table')
+              tbody
+                each cm, i in doc
+                  tr
+                    td 
+                      #{cm.regdate} 
+                    td
+                      #{cm.shdate}
+                    td 
+                      #{cm.shtime}
+                    td 
+                      #{cm.contact}
+                    td 
+                      #{cm.comment}
+
       script(src='/js/bootstrap.min.js')
               
 
