@@ -102,20 +102,19 @@ head
         .col-xs-12
           .panel.panel-default
             .panel-heading 
-              | Подтверждения от
+              | Заведения
             table(class='table')
               tbody
                 each place, i in doc
                   tr
                     td 
-                      a(href='http://recentones.com/msg/#{place.pid}') #{place.placenameru}
+                      a(href='http://recentones.com/places/#{place.pid}') #{place.placenameru}
                     td 
                       a(href='http://recentones.com/admin/redactplace/#{place.pid}')
-                        button(class='btn btn-warning form-control',type='button') Редактировать
+                        button(class='btn btn-warning',type='button') Редактировать
                     td
-                      button(onclick='removeplace(#{place.pid})',class='btn btn-danger form-control',type='button') Удалить 
+                      button(onclick='removeplace(#{place.pid})',class='btn btn-danger',type='button') Удалить 
      
-       
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         function removeplace(id) {
