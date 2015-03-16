@@ -42,7 +42,6 @@ head
       min-width:768px;
       background-color:#fff;
       background-image:url('/bootstrap/images/stripe4.png');
-      filter: grayscale(50%);
       }
       h2 {
       font-size:6vw;
@@ -66,110 +65,24 @@ head
       color:white;
       font-size:3vw;
       }
-      .preview {
-      margin:0px;
-      padding:0px;
-      border-right:1px solid black;
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
-      }
-      .preview:hover {
-      -webkit-filter: grayscale(0%);
-      -moz-filter: grayscale(0%);
-      -o-filter: grayscale(0%);
-      -ms-filter: grayscale(0%);
-      }
-      img {
-      width:100%;
-      }
-      .imgrow {
-      border-bottom:1px solid black;
-      }
-      .placenamebckgrnd {
-      position:absolute;
-      color:white;
-      opacity:0.7;
-      width:100%;
-      margin-bottom:auto;
-      background-color:black;
-      text-align:center;
-      z-index:1;
-      height:25%;
-      }
-      .placename {
-      position:absolute;
-      color:black;
-      width:100%;
-      text-align:center;
-      margin-bottom:auto;
-      z-index:2;
-      }
-      #footer {
-      background-color:gray;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      text-align:center;
-      }
-      #header {
-      padding-top:0.5vw;
-      padding-bottom:0.5vw;
-      background-color:gray;
-      }
-      .spart{
-      height:2vh;
-      background-color:#333;
-      }
-      #timeperiod {
-      background-color:#fff;
-      }
-      .color {
-      height:10vh;
-      }
-      #blue{
-      background-color:#001c45;
-      }
-      #green{
-      background-color:#49a881;
-      }
-      #white{
-      background-color:white;
-      }
-      .imgrow {
-      background-color:#333;
-      }
-      .container-fluid {
-      min-height:100vh;
-      background-color:#eee;
-      }
-      .input-group{
-      margin:1vh;
-      }
-      @media only screen
-      and (min-device-width : 768px)
-      and (max-device-width : 1024px)
-      {
-      .container-fluid {
-      width:100vw;
-      margin:0px;
-      }
-      #footer{
-      background-color:;
-      width:100%;
-      position:fixed;
-      bottom:0px;
-      }
-      }   
+      
   body
-    .container-fluid
-      #header.row
-        .col-xs-1
-          a(href='http://recentones.com')
-            img(src='/bootstrap/images/rl.png')         
-      #timeperiod.row
-        .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') Добавить рейтинг      
+    nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
+          .container
+            .navbar-header
+              a(class="navbar-brand" href="/")
+                img(alt="Logo",src="/bootstrap/images/rl.png",height='20',width='20')
+            .collapse.navbar-collapse#navbar-collapse-9
+              ul(class='nav navbar-nav')
+                li(class='active')
+                  a(href='/admax',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
+    .container(style='min-height:100vh;background-color:white;')
+      .row
+        .col-xs-12
+          ol(class="breadcrumb",style='margin-top:10px;margin-bottom:10px;')
+            li
+              a(href="/admax") Главная
+            li(class="active") Добавить рейтинг       
       .row
         form(action='/admin/addrating',method='post',role='form')
           .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
