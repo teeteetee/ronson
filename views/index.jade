@@ -155,6 +155,7 @@ head
                 a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
               li
                 a(href='/search',style='font-family:high;font-size:20px;letter-spacing:2px;') Поиск
+          p(class="navbar-text navbar-right") Виртуальные туры и рейтинги
           //
             .container(style='background-color:#eee;',id='maincont')
               #header.row 
@@ -163,20 +164,19 @@ head
                     .media-left(style='padding-right:15px;')
                       img(id='logo',src='/bootstrap/images/rl.png',style='width:64px;height:64px;')
                     .media-body  
-                      h5(style='line-height:64px;') Виртуальные туры и рейтинги     
-      .container   
-        #timeperiod.row
-          .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h1(style='color:white;') Лента 
-          |           
-          a(href='/top')
-            .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-              h1(style='color:gray;') Рейтинги 
-          |           
-          a(href='/search')
-            .col-xs-4(style='text-align:center;')
-              h1(style='color:gray;') Поиск        
-          
+                      h5(style='line-height:64px;') Виртуальные туры и рейтинги        
+            #timeperiod.row
+              .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+                h1(style='color:white;') Лента 
+              |           
+              a(href='/top')
+                .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+                  h1(style='color:gray;') Рейтинги 
+              |           
+              a(href='/search')
+                .col-xs-4(style='text-align:center;')
+                  h1(style='color:gray;') Поиск        
+      .container      
         .row(style='background-color:#eee;')
           #inserts.col-xs-12(style='text-align:center;')
         .row(style='text-align:center;display:none',id='morebutton')
