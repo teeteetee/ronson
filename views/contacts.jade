@@ -58,14 +58,6 @@ head
       .underline:hover {
         border-bottom:3px solid gray;
       }
-      a {
-        font-family:br;
-        color:#fc654a;
-      }
-      a:hover {
-        text-decoration:none;
-        outline:none;
-      }
       .pulldown {
         margin-top:10px;
       }
@@ -75,14 +67,20 @@ head
             .navbar-header
               button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-9")
                 span(class="sr-only") Toggle navigation
+                span(class='icon-bar')
+                span(class='icon-bar')
+                span(class='icon-bar')
+              a(class='navbar-brand',href='/') Brand
             .collapse.navbar-collapse#navbar-collapse-9
               ul(class='nav navbar-nav')
                 li(class='active') Контакты
-                li Манифест
-                li Сотрудничество
+                li
+                  a(href='#') Манифест
+                li 
+                  a(href='#') Сотрудничество
     .container(style='background-color:white;min-height:100vh;')
       #header.row
-        //
+        // 
           .col-xs-1(style='padding-top:15px;padding-bottom:15px;')
             a(href='http://recentones.com')
               img(src='/bootstrap/images/rl.png',style='width:100%;')  
@@ -101,25 +99,25 @@ head
             .col-xs-6
               h3 Москва
             .col-xs-6
-              a(href='tel:+79342371237')
+              a(href='tel:+79342371237',style='font-family:br;color:#fc654a;')
                 h3 +79342371237
           .row
             .col-xs-6
               h3 Основная почта:
             .col-xs-6
-              a(href='mailto:main@recentones.com') 
+              a(href='mailto:main@recentones.com',style='font-family:br;color:#fc654a;') 
                 h3 main@recentones.com 
           .row
             .col-xs-6  
               h3 PR отдел:
             .col-xs-6
-              a(href='mailto:pr@recentones.com') 
+              a(href='mailto:pr@recentones.com',style='font-family:br;color:#fc654a;') 
                 h3 pr@recentones.com
           .row
             .col-xs-6
               h3 Коммерческий отдел:
             .col-xs-6
-              a(href='mailto:commerce@recentones.com') 
+              a(href='mailto:commerce@recentones.com',style='font-family:br;color:#fc654a;') 
                 h3 commerce@recentones.com
           
 
