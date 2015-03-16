@@ -139,9 +139,12 @@ head
                         label  NUMBER OF XML FILES (DONT TOUCH)
                     p
                       label  Панораму загружаем ?
-                #inputs.col-xs-8.zerop
+                #inputs.col-xs-12.zerop
                   label(for='mainpreview')  MAINPREVIEW 
                   input#mainpreview.form-control(type='file', name='mainpreview')
+                  .input-group.input-group-lg(style='margin-bottom:5px;')
+                    span(class="input-group-addon" id="sizing-addon1") MAINPREVIEW
+                    input(type="file" class="form-control" aria-describedby="sizing-addon1" name='mainpreview')
                   label(for='xml')  XML 
                   input#xml.form-control(type='file', name='xml')
                   input#imgqntt.form-control(style='display:none;',type='text', name='imgqnnt')
