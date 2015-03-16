@@ -88,19 +88,11 @@ head
         .col-xs-12 
           .btn-group.btn-group-justified(role="group",aria-label="...")
             .btn-group(role="group")
-              button(type="button" class="btn btn-default") Сброс базы
+              button(type="button",class="btn btn-default",id='drop') Сброс базы
             .btn-group(role="group")
-              button(type="button" class="btn btn-default") Добавить
+              button(type="button",class="btn btn-default",id='new') Добавить
             .btn-group(role="group")
-              button(type="button" class="btn btn-default") Тест
-      //
-        .col-xs-2.col-xs-offset-3
-          button(class='btn btn-danger form-control',type='button',id='drop')  Очистить базу  
-        .col-xs-2
-          button(class='btn btn-success form-control',type='button',id='new')  Добавить 
-        .col-xs-2
-          button(class='btn btn-warning form-control',type='button',id='test')  Тест
-
+              button(type="button",class="btn btn-default",id='test') Тест
       .row
         .col-xs-12
           .panel.panel-default
