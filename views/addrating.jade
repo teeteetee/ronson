@@ -85,7 +85,7 @@ head
             li(class="active") Добавить рейтинг       
       .row
         form(action='/admin/addrating',method='post',role='form')
-          .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
+          .col-xs-12(style='text-align:center;')
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") Название рейтинга
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='ratingname')
@@ -152,5 +152,5 @@ head
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") ID
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid10')   
-            button(class='btn btn-primary',type='submit') Добавить                    
+            button(class='btn btn-primary',type='submit',style='margin-top:10px;') Добавить                    
       
