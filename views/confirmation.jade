@@ -64,36 +64,32 @@ head
       font-family:helvetica,sans;
       font-size:2vw;
       }
+      img {
+      width:100%;
+      }
       .underline:hover {
         border-bottom:3px solid gray;
       }
+      a {
+        font-family:br;
+        font-size:3vw;
+        color:#fc654a;
+      }
+      a:hover {
+        text-decoration:none;
+        outline:none;
+      }
   body
-    nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
-          .container
-            .navbar-header
-              a(class="navbar-brand" href="/")
-                img(alt="Logo",src="/bootstrap/images/rl.png",height='20',width='20')
-            .collapse.navbar-collapse#navbar-collapse-9
-              ul(class='nav navbar-nav')
-                li(class='active')
-                  a(href='/admax',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
     .container(style='background-color:#eee;min-height:100vh;')
-      .row
+      #header.row
+        .col-xs-1(style='padding-top:15px;padding-bottom:15px;')
+          a(href='http://recentones.com')
+            img(src='/bootstrap/images/rl.png',style='width:100%;')  
+        .col-xs-10
+          h1 Подверждение времени съемки      
+      #text.row(style='padding-bottom: 2vh; padding-top: 2vh; text-align: center;')
         .col-xs-12
-          ol(class="breadcrumb")
-            li
-            a(href="/admax") Главная панель
-            li(class="active") Подтверждение времени съемки #{doc.nameru}
-      //
-        #header.row
-          .col-xs-1(style='padding-top:15px;padding-bottom:15px;')
-            a(href='http://recentones.com')
-              img(src='/bootstrap/images/rl.png',style='width:100%;')  
-          .col-xs-10
-            h1 Подверждение времени съемки      
-        #text.row(style='padding-bottom: 2vh; padding-top: 2vh; text-align: center;')
-          .col-xs-12
-            h3 #{doc.nameru}
+          h3 #{doc.nameru}
       #formrow.row
         .col-xs-10.col-xs-offset-1
           form(action='/conf/#{doc.clid}',class='form-horizontal',method='post',role='form')
