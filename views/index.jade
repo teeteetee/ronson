@@ -147,44 +147,58 @@ head
       if(screen.width < 414){
       window.location='http://m.recentones.com/';
       }
-    #wrap  
-      .container(style='background-color:#eee;',id='maincont')
-        #header.row 
-          .col-xs-12(style='padding-top:15px;padding-bottom:15px;')
-            .media
-              .media-left(style='padding-right:15px;')
-                img(id='logo',src='/bootstrap/images/rl.png',style='width:64px;height:64px;')
-              .media-body  
-                h5(style='line-height:64px;') Виртуальные туры и рейтинги        
-        #timeperiod.row
-          .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h1(style='color:white;') Лента 
-          |           
-          a(href='/top')
+    #wrap 
+      nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
+        .container
+          .navbar-header
+            a(class="navbar-brand" style='padding:5px;' href="/")
+              img(alt="Logo",id='logo',src="/bootstrap/images/rl.png",height='40',width='40')
+          .collapse.navbar-collapse#navbar-collapse-9
+            ul(class='nav navbar-nav')
+              li(class='active')
+                a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
+              li(class='active')
+                a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
+              li(class='active')
+                a(href='/search',style='font-family:high;font-size:20px;letter-spacing:2px;') Поиск
+          //
+            .container(style='background-color:#eee;',id='maincont')
+              #header.row 
+                .col-xs-12(style='padding-top:15px;padding-bottom:15px;')
+                  .media
+                    .media-left(style='padding-right:15px;')
+                      img(id='logo',src='/bootstrap/images/rl.png',style='width:64px;height:64px;')
+                    .media-body  
+                      h5(style='line-height:64px;') Виртуальные туры и рейтинги        
+          #timeperiod.row
             .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-              h1(style='color:gray;') Рейтинги 
-          |           
-          a(href='/search')
-            .col-xs-4(style='text-align:center;')
-              h1(style='color:gray;') Поиск        
-          
-        .row(style='background-color:#eee;')
-          #inserts.col-xs-12(style='text-align:center;')
-        .row(style='text-align:center;display:none',id='morebutton')
-          .col-xs-12
-            //
-              button(style='border-radius:0px;border:3px solid black;margin:10px;')
-                h5(id='more',style='color:black;cursor:pointer;') Еще 
-            nav
-              ul(class='pager') 
-                li 
-                  a(href='#') Еще
-      .container(style='padding-left:0px;padding-right:0px;')
-        #footer(style='background-color:#eee;padding-bottom:10px;padding-top:10px;') 
-          .row 
-            .col-xs-2.col-xs-offset-5(style='text-align:center;')
-              a(href='/misc/1')
-                h6(style='margin-top:10px;color:#bbb;') Инфо
+              h1(style='color:white;') Лента 
+            |           
+            a(href='/top')
+              .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
+                h1(style='color:gray;') Рейтинги 
+            |           
+            a(href='/search')
+              .col-xs-4(style='text-align:center;')
+                h1(style='color:gray;') Поиск        
+            
+          .row(style='background-color:#eee;')
+            #inserts.col-xs-12(style='text-align:center;')
+          .row(style='text-align:center;display:none',id='morebutton')
+            .col-xs-12
+              //
+                button(style='border-radius:0px;border:3px solid black;margin:10px;')
+                  h5(id='more',style='color:black;cursor:pointer;') Еще 
+              nav
+                ul(class='pager') 
+                  li 
+                    a(href='#') Еще
+        .container(style='padding-left:0px;padding-right:0px;')
+          #footer(style='background-color:#eee;padding-bottom:10px;padding-top:10px;') 
+            .row 
+              .col-xs-2.col-xs-offset-5(style='text-align:center;')
+                a(href='/misc/1')
+                  h6(style='margin-top:10px;color:#bbb;') Инфо
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
