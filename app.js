@@ -652,7 +652,7 @@ app.get('/admax',function(req,res){
   else {
     vinterested= c;
     var vaccepts; 
-    clients.count({hostel:1},function(err,c){
+    clients.count({},function(err,c){
     if (err)
     {}
   else {
