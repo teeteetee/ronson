@@ -72,17 +72,29 @@ head
   body
     .container(style='background-color:white;min-height:100vh;')
       #header.row
-        .col-xs-1(style='padding-top:15px;padding-bottom:15px;')
-          a(href='http://recentones.com')
-            img(src='/bootstrap/images/rl.png',style='width:100%;')  
-        .col-xs-2.col-xs-offset-2.underline.pulldown(style='text-align:right;border-bottom:3px solid gray;')
-          h6(style='letter-spacing:3px;font-size:10px;') Контакты
-        .col-xs-2.underline.pulldown(style='text-align:center;border-bottom:1px solid #ddd;') 
-          a(href='/misc/2') 
-            h6(style='letter-spacing:3px;font-size:10px;') Манифест
-        .col-xs-2.underline.pulldown(style='text-align:left;border-bottom:1px solid #ddd;')
-          a(href='/misc/3')
-            h6(style='letter-spacing:1px;font-size:10px;') Сотрудничество
+        //
+          .col-xs-1(style='padding-top:15px;padding-bottom:15px;')
+            a(href='http://recentones.com')
+              img(src='/bootstrap/images/rl.png',style='width:100%;')  
+          .col-xs-2.col-xs-offset-2.underline.pulldown(style='text-align:right;border-bottom:3px solid gray;')
+            h6(style='letter-spacing:3px;font-size:10px;') Контакты
+          .col-xs-2.underline.pulldown(style='text-align:center;border-bottom:1px solid #ddd;') 
+            a(href='/misc/2') 
+              h6(style='letter-spacing:3px;font-size:10px;') Манифест
+          .col-xs-2.underline.pulldown(style='text-align:left;border-bottom:1px solid #ddd;')
+            a(href='/misc/3')
+              h6(style='letter-spacing:1px;font-size:10px;') Сотрудничество
+        nav(class="navbar navbar-inverse navbar-static-top")
+          .container
+            .navbar-header
+              a(href='/')
+                img(src='/bootstrap/images/rl.png' style='height:20px;width:20px;')
+            .collapse navbar-collapse
+              ul(class='nav navbar-nav')
+                li(class='active') Контакты
+                li Манифест
+                li Сотрудничество
+
       #text.row(style='padding-right: 5vw; padding-left: 6vw; text-align: justify;')
         .col-xs-12
           .row
