@@ -98,17 +98,17 @@ head
             button(class='btn btn-primary') Без панорамы     
       .row
         form(action='/admin/addplace',method='post',role='form', enctype='multipart/form-data')
-          .col-xs-12(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
-            .input-group.input-group-lg
+          .col-xs-12(style='text-align:center;padding-top:10px;padding-bottom:10px;')
+            .input-group.input-group-lg(style='margin-bottom:5px;')
               span(class="input-group-addon" id="sizing-addon1") Английское название заведения
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameen')
-            .input-group.input-group-lg
+            .input-group.input-group-lg(style='margin-bottom:5px;')
               span(class="input-group-addon" id="sizing-addon1") Русское название заведения
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameru') 
-            .input-group.input-group-lg
+            .input-group.input-group-lg(style='margin-bottom:5px;')
               span(class="input-group-addon" id="sizing-addon1") Адрес на русском
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressen')
-            .input-group.input-group-lg
+            .input-group.input-group-lg(style='margin-bottom:5px;')
               span(class="input-group-addon" id="sizing-addon1") Адрес на английском
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
             .row
