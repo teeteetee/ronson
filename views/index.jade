@@ -234,15 +234,15 @@ head
         function populate(toplist) {console.log("first time: "+toplist);
                 //toplist = JSON.parse(toplist);
                 //console.log("second time: "+toplist);
-                var left = toplist.length%3;
+                var left = toplist.length%2;
                 console.log('LEFT IS: '+left);
-                var times = (toplist.length-left)/3;
+                var times = (toplist.length-left)/2;
                 console.log('TIMES IS: '+times);
-                if(toplist.length<3){
+                if(toplist.length<2){
                   $('#inserts').append("<div class='row' id='row1'></div>");
                   for (var i=0;i<toplist.length;i++){
                     var cellnum = i+1;
-                    var insert = "<div class='col-xs-4'  id='ratcell"+cellnum+"'><a width='230' height='230' href='http://recentones.com/places/"+toplist[i].pid+"'><img class='img-circle' src='"+toplist[i].mainpreview+"'></a></div>";
+                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><a href='http://recentones.com/places/"+toplist[i].pid+"'><img class='img-circle' src='"+toplist[i].mainpreview+"' ></a></div>";
                     eval("$('#row1').append(insert);");
                   }
                 }
@@ -251,12 +251,12 @@ head
                 { 
                   var rnum = xx+1;
                   $('#inserts').append("<div class='row' id='row"+rnum+"'></div>");
-                  for (var i=0;i<3;i++){
-                    var cellnum = xx*3+i+1;
+                  for (var i=0;i<2;i++){
+                    var cellnum = xx*2+i+1;
                     var hnum = cellnum-1;
                     if(i===2)
                     {
-                     var insert = "<div class='col-xs-4'  id='ratcell"+cellnum+"'><a width='230' height='230' href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-circle' src='"+toplist[hnum].mainpreview+"'></a></div>";
+                     var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-circle' src='"+toplist[hnum].mainpreview+"' ></a></div>";
                                 eval("$('#row"+rnum+"').append(insert);");
                     if(xx+1 == times){
                      moreid = toplist[hnum].pid;
@@ -264,18 +264,18 @@ head
                     }
                     }
                     else 
-                    {var insert = "<div class='col-xs-4'  id='ratcell"+cellnum+"'><a width='230' height='230' href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-circle' src='"+toplist[hnum].mainpreview+"'></a></div>";
+                    {var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-circle' src='"+toplist[hnum].mainpreview+"' ></a></div>";
                                 eval("$('#row"+rnum+"').append(insert);");}
                   }
-                  if(rnum===times && left != 3 && left != 0){
+                  if(rnum===times && left != 2 && left != 0){
                   for (var yy=0;yy<left;yy++){
                     var leftrow = rnum+1;
                    $('#inserts').append("<div class='row' id='row"+leftrow+"'></div>");
-                   var cellnum = rnum*3+yy+1;
+                   var cellnum = rnum*2+yy+1;
                    console.log('cellnum: '+cellnum);
                    var hnum = cellnum-1;
                    console.log('hnum: '+hnum);
-                    var insert = "<div class='col-xs-4'  id='ratcell"+cellnum+"'><a width='230' height='230' href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-circle' src='"+toplist[hnum].mainpreview+"'></a></div>";
+                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-circle' src='"+toplist[hnum].mainpreview+"' ></a></div>";
                     eval("$('#row"+leftrow+"').append(insert);");
                     if(yy+1 == left){
                      moreid = toplist[hnum].pid;
