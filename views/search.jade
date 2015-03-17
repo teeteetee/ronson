@@ -119,7 +119,7 @@ head
               a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо
     .container(style='margin-top:50px;')           
       .row
-        .col-xs-10.col-xs-offset-1(style='text-align:center; padding-top:20px;padding-bottom:20px;')
+        .col-xs-10.col-xs-offset-1#fldc(style='text-align:center; padding-top:100px;padding-bottom:20px;')
           .input-group
             input(type="text",class="form-control",placeholder="Карлсон",id='searchfield')
             span(class="input-group-btn")
@@ -143,10 +143,12 @@ head
       if (this.readyState === DONE){
       var parsed = JSON.parse(request.responseText);
       if (parsed.trouble === 1)
-      {$('#searchresults').empty(); 
+      {$('#fldc').css('padding-top','20px');
+       $('#searchresults').empty(); 
        $('#searchresults').css('text-align','center');
        $('#searchresults').append("<h5 style='margin-top:10vh;color:black;'>Ничего не нашли</h5>");}
       else {
+       $('#fldc').css('padding-top','20px');
        $('#searchresults').empty(); 
        $('#searchresults').css('text-align','left');
        for(var i = 0;i<parsed.length;i++){
