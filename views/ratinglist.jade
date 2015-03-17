@@ -41,7 +41,6 @@ head
       body {
       min-width:768px;
       background-color:#fff;
-      background-image:url('/bootstrap/images/stripe4.png');
       }
       h2 {
       font-size:6vw;
@@ -63,53 +62,45 @@ head
       font-family:roboto-thin;
       font-size:3vw;
       }
-      img {
-      width:100%;
-      }
-      #header {
-      padding-top:0.5vw;
-      padding-bottom:0.5vw;
-      background-color:gray;
-      }
-      #timeperiod {
-      background-color:#fff;
-      }
-      .color {
-      height:10vh;
-      }
-      #white{
-      background-color:white;
-      }
-      .input-group{
-      margin:1vh;
-      }
   body
-    .container(style='min-height:100vh;background-color:#eee;')
-      #header.row 
-        .col-xs-1
-          a(href='http://recentones.com')
-            img(src='/bootstrap/images/rl.png')         
-      #timeperiod.row
-        .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') Рейтинги  
-      .row(style='background-color:#ddd;padding-top:2vh;padding-bottom:2vh;text-align:center;')  
-        .col-xs-2.col-xs-offset-5
-          a(href='/admin/addrating')
-            button(class='btn btn-success form-control',type='button') Добавить рейтинг
+    nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
+          .container
+            .navbar-header
+              a(class="navbar-brand" style='padding:5px;' href="/")
+                img(alt="Logo",src="/bootstrap/images/rl.png",height='40',width='40')
+            .collapse.navbar-collapse#navbar-collapse-9
+              ul(class='nav navbar-nav')
+                li(class='active')
+                  a(href='/admax',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
+    .container(style='min-height:100vh;background-color:white;')
       .row
         .col-xs-12
-          each rating, i in doc
-            .row(id="row#{rating.rid}",style='border-bottom:1px solid white;background-color:#eee;padding-top:2vh;padding-bottom:2vh;')
-              .col-xs-2
-                h4(class='updateneeded') #{rating.lastredact}
-              .col-xs-6
-                a(href='http://#{rating.web}')
-                  h4 #{rating.ratingname}
-              .col-xs-2
-                a(href='http://recentones.com/admin/redactrating/#{rating.rid}')
-                  button(class='btn btn-warning form-control',type='button') Редактировать 
-              .col-xs-2
-                  button(onclick='removerating(#{rating.rid})',class='btn btn-danger form-control',type='button') Удалить  
+          ol(class="breadcrumb",style='margin-top:10px;margin-bottom:10px;')
+            li
+              a(href="/admax") Главная
+            li(class="active") Список рейтингов  
+      .row(style='padding-top:10px;padding-bottom:10px;text-align:center;') 
+        .col-xs-12 
+          a(href='/admin/addrating')
+            button(class='btn btn-default',type='button') Добавить рейтинг   
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-heading 
+              | Заведения
+            table(class='table')
+              tbody
+                each rating, i in doc
+                  tr(id="row#{rating.rid}")
+                    td(class='updateneeded') 
+                      | #{rating.lastredact}
+                    td
+                      a(href='http://#{rating.web}') #{rating.ratingname}
+                    td 
+                      a(href='http://recentones.com/admin/redactrating/#{rating.rid}')
+                        button(class='btn btn-warning',type='button') Редактировать
+                    td
+                      button(onclick='removerating(#{rating.rid})',class='btn btn-danger',type='button') Удалить   
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         function removerating(id) {
