@@ -17,159 +17,35 @@ head
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
       @font-face {
-      font-family:roboto-thin;
-      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
-      }
-      @font-face {
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
-      }
-      @font-face {
-      font-family:br;
-      src: url('/bootstrap/fonts/bebasneue_regular.ttf');
-      }
-      @font-face {
-      font-family:bt;
-      src: url('/bootstrap/fonts/bebasneue_thin.ttf');
-      }
-      h1 {
-      font-family:high;
-      font-size:3vw;
-      display:inline;
-      color:white;
       }
       body {
       min-width:768px;
       background-color:#fff;
-      background-image:url('/bootstrap/images/stripe4.png');
-      filter: grayscale(50%);
       }
-      h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
+      .input-group {
+        margin-bottom:5px;
       }
-      h3 {
-      font-size:3vw;
-      }
-      h4 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:white;
-      }
-      h5 {
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-family:roboto-thin;
-      color:white;
-      font-size:3vw;
-      }
-      .preview {
-      margin:0px;
-      padding:0px;
-      border-right:1px solid black;
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
-      }
-      .preview:hover {
-      -webkit-filter: grayscale(0%);
-      -moz-filter: grayscale(0%);
-      -o-filter: grayscale(0%);
-      -ms-filter: grayscale(0%);
-      }
-      img {
-      width:100%;
-      }
-      .imgrow {
-      border-bottom:1px solid black;
-      }
-      .placenamebckgrnd {
-      position:absolute;
-      color:white;
-      opacity:0.7;
-      width:100%;
-      margin-bottom:auto;
-      background-color:black;
-      text-align:center;
-      z-index:1;
-      height:25%;
-      }
-      .placename {
-      position:absolute;
-      color:black;
-      width:100%;
-      text-align:center;
-      margin-bottom:auto;
-      z-index:2;
-      }
-      #footer {
-      background-color:gray;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      text-align:center;
-      }
-      #header {
-      padding-top:0.5vw;
-      padding-bottom:0.5vw;
-      background-color:gray;
-      }
-      .spart{
-      height:2vh;
-      background-color:#333;
-      }
-      #timeperiod {
-      background-color:#fff;
-      }
-      .color {
-      height:10vh;
-      }
-      #blue{
-      background-color:#001c45;
-      }
-      #green{
-      background-color:#49a881;
-      }
-      #white{
-      background-color:white;
-      }
-      .imgrow {
-      background-color:#333;
-      }
-      .container-fluid {
-      min-height:100vh;
-      background-color:#eee;
-      }
-      .input-group{
-      margin:1vh;
-      }
-      @media only screen
-      and (min-device-width : 768px)
-      and (max-device-width : 1024px)
-      {
-      .container-fluid {
-      width:100vw;
-      margin:0px;
-      }
-      #footer{
-      background-color:;
-      width:100%;
-      position:fixed;
-      bottom:0px;
-      }
-      }   
   body
-    .container-fluid
-      #header.row
-        .col-xs-1
-          a(href='http://recentones.com')  
-           img(src='/bootstrap/images/rl.png')  
-      #timeperiod.row
-        .col-xs-12(style='text-align:center;')
-            h2(style='color:gray;') Добавить рейтинг      
+    nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
+          .container
+            .navbar-header
+              a(class="navbar-brand" style='padding:5px;' href="/")
+                img(alt="Logo",src="/bootstrap/images/rl.png",height='40',width='40')
+            .collapse.navbar-collapse#navbar-collapse-9
+              ul(class='nav navbar-nav')
+                li(class='active')
+                  a(href='/admax',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
+    .container(style='min-height:100vh;background-color:white;')
+      .row
+        .col-xs-12
+          ol(class="breadcrumb",style='margin-top:10px;margin-bottom:10px;')
+            li
+              a(href="/admax") Главная
+            li
+              a(href='/admin/ratinglist') Список рейтингов
+            li(class='active') Редактируем #{doc.ratingname} 
       .row(style='padding-bottom:5vh;')
         form(action='/admin/redactrating/#{doc.rid}',method='post',role='form')
           .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
@@ -240,4 +116,4 @@ head
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") ID
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid10' value='#{doc.pids[10]}') 
-            button(class='btn btn-primary',type='submit') Добавить                    
+            button(class='btn btn-primary',type='submit',style='margin-top:10px;margin-bottom:20px;') Добавить                    

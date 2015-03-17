@@ -17,53 +17,13 @@ head
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
       @font-face {
-      font-family:roboto-thin;
-      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
-      }
-      @font-face {
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
-      }
-      @font-face {
-      font-family:br;
-      src: url('/bootstrap/fonts/bebasneue_regular.ttf');
-      }
-      @font-face {
-      font-family:bt;
-      src: url('/bootstrap/fonts/bebasneue_thin.ttf');
-      }
-      h1 {
-      font-family:high;
-      font-size:3vw;
-      display:inline;
-      color:white;
       }
       body {
       min-width:768px;
       background-color:#fff;
       background-image:url('/bootstrap/images/stripe4.png');
-      }
-      h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
-      }
-      h3 {
-      font-size:3vw;
-      }
-      h4 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:white;
-      }
-      h5 {
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-family:roboto-thin;
-      color:white;
-      font-size:3vw;
       }
       .input-group {
         margin-bottom:5px;
@@ -87,7 +47,7 @@ head
             li(class="active") Добавить рейтинг       
       .row
         form(action='/admin/addrating',method='post',role='form')
-          .col-xs-12(style='text-align:center;')
+          .col-xs-10.col-xs-offset-1(style='text-align:center;')
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") Название рейтинга
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='ratingname')
