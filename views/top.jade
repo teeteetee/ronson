@@ -39,7 +39,6 @@ head
       body {
       min-width:768px;
       background-color:#fff;
-      background-image:url('/bootstrap/images/stripe1.png');
       }
       h2 {
       font-size:6vw;
@@ -65,82 +64,6 @@ head
       padding-top:1vh;
       padding-bottom:1vh;
       }
-      .preview {
-      margin:0px;
-      padding:0px;
-      border-right:1px solid black;
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
-      }
-      .preview:hover {
-      -webkit-filter: grayscale(0%);
-      -moz-filter: grayscale(0%);
-      -o-filter: grayscale(0%);
-      -ms-filter: grayscale(0%);
-      }
-      img {
-      width:100%;
-      }
-      .imgrow {
-      border-bottom:1px solid black;
-      }
-      .placenamebckgrnd {
-      position:absolute;
-      color:white;
-      opacity:0.7;
-      width:100%;
-      margin-bottom:auto;
-      background-color:black;
-      text-align:center;
-      z-index:1;
-      height:25%;
-      }
-      .placename {
-      position:absolute;
-      color:black;
-      width:100%;
-      text-align:center;
-      margin-bottom:auto;
-      z-index:2;
-      }
-      #footer {
-      letter-spacing:2px;
-      text-transform:uppercase;
-      text-align:center;
-      }
-      #header {
-      padding-top:0.5vw;
-      padding-bottom:0.5vw;
-      background-color:gray;
-      }
-      .spart{
-      height:2vh;
-      background-color:#333;
-      }
-      #timeperiod{
-        background-color:black;
-      }
-      .color {
-      height:10vh;
-      }
-      #blue{
-      background-color:#001c45;
-      }
-      #green{
-      background-color:#49a881;
-      }
-      #white{
-      background-color:white;
-      }
-      .imgrow {
-      background-color:#333;
-      }
-      .container{
-      min-height:100vh;
-      background-color:#eee;
-      }
       .headings{
         padding-top:2vh;
         padding-bottom:2vh;
@@ -149,20 +72,25 @@ head
         font-family:high;
       }  
   body
-    .container
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')                
-      #timeperiod.row
-        a(href='/')
-          .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h1(style='color:gray;') Лента
-        .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h1(style='color:white;') Рейтинги
-        |           
-        a(href='/search')
-          .col-xs-4(style='text-align:center;')
-            h1(style='color:gray;') Поиск       
+    nav(class="navbar navbar-inverse navbar-fixed-top")
+      .container
+        .navbar-header
+          a(class="navbar-brand" style='padding:5px;' href="/")
+            img(alt="Logo",id='logo',src="/bootstrap/images/rl.png",height='40',width='40')
+        .collapse.navbar-collapse#navbar-collapse-9
+          ul(class='nav navbar-nav')
+            li(class='active')
+              a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
+            li
+              a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
+            li
+              a(href='/search',style='font-family:high;font-size:20px;letter-spacing:2px;') Поиск
+            li
+              a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
+    .container(style='margin-top:50px;')
       .row
         #inserts.col-xs-12(style='text-align:center; background-color:#676767;padding-bottom:2vw;')
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         var toplist = !{doc};
         console.log("first time: "+toplist);
