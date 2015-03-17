@@ -256,7 +256,7 @@ head
                     var hnum = cellnum-1;
                     if(i===2)
                     {
-                     var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[hnum].mainpreview+"' ></a></div>";
+                     var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><ul class='list-group'><li class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='color:white;margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></li></ul></div>";
                                 eval("$('#row"+rnum+"').append(insert);");
                     if(xx+1 == times){
                      moreid = toplist[hnum].pid;
