@@ -104,25 +104,16 @@ head
           $('#inserts').append("<div class='row' id='row1' style='padding-top:2vw;'></div>");
           for (var i=0;i<toplist.length;i++){
             var cellnum = i+1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[i].ratingname+"</h5></div>";
+            var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' class='list-group-item active'>"+toplist[i].ratingname+"</a></div></div>";
             $('#row1').append(insert);
-            for (var yy=1;yy<11;yy++){
-              if ( yy === 1) {
-                console.log('border-radius yy');
-                var point = "<h5 style='background-color:#fff;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:1px solid gray;'>"+toplist[i].places[yy]+"</h5>";
-                eval("$('#ratcell"+cellnum+"').append(point);");
-              }
-             else if (yy===10) {
-               var point = "<h5 style='background-color:#C8E4E5;border-bottom-left-radius:4px;border-bottom-right-radius:4px;'>"+toplist[i].places[yy]+"</h5>";
-             eval("$('#ratcell"+cellnum+"').append(point);");
-             }
-           else if(yy === 0 || yy%2 === 0)
+            for (var yy=1;yy<11;yy++){  
+           if(yy === 0 || yy%2 === 0)
             {
-             var point = "<h5 style='background-color:#C8E4E5;border-bottom:1px solid gray;'>"+toplist[i].places[yy]+"</h5>";
+             var point = "<a href='#' style='background-color:#C8E4E5;' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
              eval("$('#ratcell"+cellnum+"').append(point);");
             }
             else
-            { var point = "<h5 style='background-color:#fff;border-bottom:1px solid gray;'>"+toplist[i].places[yy]+"</h5>";
+            { var point = "<a href='#' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
               eval("$('#ratcell"+cellnum+"').append(point)");}
           }
           }
@@ -135,25 +126,16 @@ head
           for (var i=0;i<3;i++){
             var cellnum = xx*3+i+1;
             var hnum = cellnum-1;
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
+            var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
-              if ( yy === 1) {
-                console.log('border-radius yy');
-                var point = "<h5 style='background-color:#fff;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:1px solid gray;'>"+toplist[i].places[yy]+"</h5>";
-                eval("$('#ratcell"+cellnum+"').append(point);");
-              }
-             else if (yy===10) {
-               var point = "<h5 style='background-color:#C8E4E5;border-bottom-left-radius:4px;border-bottom-right-radius:4px;'>"+toplist[i].places[yy]+"</h5>";
-             eval("$('#ratcell"+cellnum+"').append(point);");
-             }
-             else if(yy === 0 || yy%2 === 0)
+             if(yy === 0 || yy%2 === 0)
             {
-             var point = "<h5 style='background-color:#C8E4E5;border-bottom:1px solid gray;'>"+toplist[i].places[yy]+"</h5>";
+             var point = "<a href='#' style='background-color:#C8E4E5;' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
              eval("$('#ratcell"+cellnum+"').append(point);");
             }
             else
-           {var point = "<h5 style='background-color:#fff;border-bottom:1px solid gray;'>"+toplist[i].places[yy]+"</h5>";
+           {var point = "<a href='#' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
               eval("$('#ratcell"+cellnum+"').append(point)");}
           }
           }
@@ -166,25 +148,16 @@ head
            var hnum = cellnum-1;
             nrnum=rnum+1;
             $('#inserts').append("<div class='row' id='row"+nrnum+"' style='padding-top:2vw;'></div>");
-            var insert = "<div class='col-xs-4' id='ratcell"+cellnum+"'><h5 class='headings'>"+toplist[hnum].ratingname+"</h5></div>";
+            var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
             eval("$('#row"+nrnum+"').append(insert);");
             for (var zz=1;zz<11;zz++){
-             if ( zz === 1) {
-               console.log('border-radius;');
-                var point = "<h5 style='background-color:#fff;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:1px solid gray;'>"+toplist[i].places[zz]+"</h5>";
-                eval("$('#ratcell"+cellnum+"').append(point);");
-              }
-             else if (zz===10) {
-               var point = "<h5 style='background-color:#C8E4E5;border-bottom-left-radius:4px;border-bottom-right-radius:4px;'>"+toplist[i].places[zz]+"</h5>";
-             eval("$('#ratcell"+cellnum+"').append(point);");
-             }
             else if (zz === 0 || zz%2 === 0)
             {
-             var point = "<h5 style='background-color:#C8E4E5;border-bottom:1px solid gray;'>"+toplist[i].places[zz]+"</h5>"
+             var point = "<a href='#' style='background-color:#C8E4E5;' class='list-group-item'>"+toplist[i].places[zz]+"</a>";
              eval("$('#ratcell"+cellnum+"').append(point);");
             }
             else
-           {var point = "<h5 style='background-color:#fff;border-bottom:1px solid gray;'>"+toplist[i].places[zz]+"</h5>";
+           {var point = "<a href='#' class='list-group-item'>"+toplist[i].places[zz]+"</a>";
               eval("$('#ratcell"+cellnum+"').append(point)");}
           }
           }
