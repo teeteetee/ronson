@@ -239,7 +239,7 @@ head
                 var times = (toplist.length-left)/2;
                 console.log('TIMES IS: '+times);
                 if(toplist.length<2){
-                  $('#inserts').append("<div class='row' id='row1'></div>");
+                  $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row1'></div>");
                   for (var i=0;i<toplist.length;i++){
                     var cellnum = i+1;
                     var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><a href='http://recentones.com/places/"+toplist[i].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[i].mainpreview+"' ></a></div>";
@@ -250,7 +250,7 @@ head
                 for (var xx=0;xx<times;xx++)
                 { 
                   var rnum = xx+1;
-                  $('#inserts').append("<div class='row' id='row"+rnum+"'></div>");
+                  $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rnum+"'></div>");
                   for (var i=0;i<2;i++){
                     var cellnum = xx*2+i+1;
                     var hnum = cellnum-1;
@@ -270,7 +270,7 @@ head
                   if(rnum===times && left != 2 && left != 0){
                   for (var yy=0;yy<left;yy++){
                     var leftrow = rnum+1;
-                   $('#inserts').append("<div class='row' id='row"+leftrow+"'></div>");
+                   $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+leftrow+"'></div>");
                    var cellnum = rnum*2+yy+1;
                    console.log('cellnum: '+cellnum);
                    var hnum = cellnum-1;
