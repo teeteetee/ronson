@@ -39,7 +39,6 @@ head
       body {
       min-width:768px;
       background-color:#fff;
-      background-image:url('/bootstrap/images/stripe4.png');
       }
       h5 {
       letter-spacing:2px;
@@ -58,17 +57,22 @@ head
       }
        
   body
-    .container(style='height:100vh;background-color:#eee;')    
-      #timeperiod.row
-        a(href='/')
-          .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h1(style='color:gray;') Лента            
-        .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-          h1(style='color:#ddd;') Рейтинги 
-        |           
-        a(href='/search')
-          .col-xs-4(style='text-align:center;')
-            h1(style='color:gray;') Поиск      
+    nav(class="navbar navbar-inverse navbar-fixed-top")
+      .container
+        .navbar-header
+          a(class="navbar-brand" style='padding:5px;' href="/")
+            img(alt="Logo",id='logo',src="/bootstrap/images/rl.png",height='40',width='40')
+        .collapse.navbar-collapse#navbar-collapse-9
+          ul(class='nav navbar-nav')
+            li
+              a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
+            li(class='active')
+              a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
+            li
+              a(href='/search',style='font-family:high;font-size:20px;letter-spacing:2px;') Поиск
+            li
+              a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо
+    .container    
       .row
         .col-xs-12(style='text-align:center;padding-top:4vw;')
           h5(style='color:gray;')  &Pcy;&ucy;&scy;&tcy;&acy;&yacy; &bcy;&acy;&zcy;&acy; 
