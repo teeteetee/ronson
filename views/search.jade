@@ -127,21 +127,23 @@ head
       .imgrow {
       background-color:#333;
       }
-      .container {
-      min-height:100vh;
-      background-color:#eee;
-      }
   body
-    .container       
-      #timeperiod.row
-        a(href='/')
-          .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h1(style='color:gray;') Лента
-        a(href='/top')    
-          .col-xs-4(style='border-right:1px dotted gray;text-align:center;')
-            h1(style='color:gray;') Рейтинги
-        .col-xs-4(style='text-align:center;')
-            h1(style='color:white;') Поиск      
+    nav(class="navbar navbar-inverse navbar-fixed-top")
+      .container
+        .navbar-header
+          a(class="navbar-brand" style='padding:5px;' href="/")
+            img(alt="Logo",id='logo',src="/bootstrap/images/rl.png",height='40',width='40')
+        .collapse.navbar-collapse#navbar-collapse-9
+          ul(class='nav navbar-nav')
+            li(class='active')
+              a(href='/',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
+            li
+              a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
+            li(class='active')
+              a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Поиск
+            li
+              a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо
+    .container (style='min-height:100vh;background-color:#eee;')           
       .row
         .col-xs-8.col-xs-offset-2(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
           .input-group
