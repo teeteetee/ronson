@@ -49,7 +49,7 @@ head
       .row(style='padding-bottom:5vh;')
         form(action='/admin/redactrating/#{doc.rid}',method='post',role='form')
           .col-xs-10.col-xs-offset-1(style='text-align:center; background-color:#eee;padding-top:4vw;padding-bottom:4vw;')
-            h5(style='color:gray;') Дата загрузки : #{doc.regdate}
+            h4 Дата загрузки : #{doc.regdate}
             .input-group.input-group-lg
               span(class="input-group-addon" id="sizing-addon1") Название рейтинга
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='ratingname' value='#{doc.ratingname}') 
