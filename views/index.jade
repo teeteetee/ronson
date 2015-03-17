@@ -34,7 +34,7 @@ head
       }
       body {
       min-width:768px;
-      background-color:#fff;
+      background-color:#eee;
       }
       h5{
       letter-spacing:2px;
@@ -163,17 +163,14 @@ head
               .col-xs-4(style='text-align:center;')
                 h1(style='color:gray;') Поиск        
     .container(style='margin-top:50px;')      
-      .row(style='background-color:#eee;')
+      .row
         #inserts.col-xs-12(style='text-align:center;')
-      .row(style='text-align:center;display:none',id='morebutton')
-        .col-xs-12
-          //
-            button(style='border-radius:0px;border:3px solid black;margin:10px;')
-              h5(id='more',style='color:black;cursor:pointer;') Еще 
+    footer(class='footer' style='background-color:white;')
+      .container
           nav
             ul(class='pager') 
               li 
-                a(href='#') Еще
+                a(href='#',id='more') Еще
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         function cheight(){
