@@ -38,7 +38,7 @@ head
       }
       body {
       min-width:768px;
-      background-color:#fff;
+      background-color:#eee;
       }
       h2 {
       font-size:6vw;
@@ -89,7 +89,7 @@ head
               a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
     .container(style='margin-top:50px;')
       .row
-        #inserts.col-xs-12(style='text-align:center; background-color:#676767;padding-bottom:2vw;')
+        #inserts.col-xs-12(style='text-align:center;padding-bottom:20px;')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         var toplist = !{doc};
@@ -151,7 +151,7 @@ head
             var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
             eval("$('#row"+nrnum+"').append(insert);");
             for (var zz=1;zz<11;zz++){
-            else if (zz === 0 || zz%2 === 0)
+            if (zz === 0 || zz%2 === 0)
             {
              var point = "<a href='#' style='background-color:#C8E4E5;' class='list-group-item'>"+toplist[i].places[zz]+"</a>";
              eval("$('#ratcell"+cellnum+"').append(point);");
