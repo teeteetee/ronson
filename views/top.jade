@@ -107,7 +107,7 @@ head
             var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' style='cursor:default' class='list-group-item active'>"+toplist[i].ratingname+"</a></div></div>";
             $('#row1').append(insert);
             for (var yy=1;yy<11;yy++){  
-            var point = "<a href='"+toplist[i].pids[yy]+"' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
+            var point = "<a href='http://recentones.com/places/"+toplist[i].pids[yy]+"' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
               eval("$('#ratcell"+cellnum+"').append(point)");
           }
           }
@@ -123,7 +123,7 @@ head
             var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' style='cursor:default' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
-             var point = "<a href='"+toplist[i].pids[yy]+"' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
+             var point = "<a href='http://recentones.com/places/"+toplist[i].pids[yy]+"' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
               eval("$('#ratcell"+cellnum+"').append(point)");
           }
           }
@@ -139,7 +139,7 @@ head
             var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' style='cursor:default' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
             eval("$('#row"+nrnum+"').append(insert);");
             for (var zz=1;zz<11;zz++){
-            var point = "<a href='"+toplist[i].pids[zz]+"' class='list-group-item'>"+toplist[i].places[zz]+"</a>";
+            var point = "<a href='http://recentones.com/places/"+toplist[i].pids[zz]+"' class='list-group-item'>"+toplist[i].places[zz]+"</a>";
               eval("$('#ratcell"+cellnum+"').append(point)");
           }
           }
