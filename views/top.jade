@@ -104,10 +104,10 @@ head
           $('#inserts').append("<div class='row' id='row1' style='padding-top:2vw;'></div>");
           for (var i=0;i<toplist.length;i++){
             var cellnum = i+1;
-            var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' class='list-group-item active'>"+toplist[i].ratingname+"</a></div></div>";
+            var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' style='cursor:default' class='list-group-item active'>"+toplist[i].ratingname+"</a></div></div>";
             $('#row1').append(insert);
             for (var yy=1;yy<11;yy++){  
-            var point = "<a href='#' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
+            var point = "<a href='"+toplist[i].pids[yy]+"' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
               eval("$('#ratcell"+cellnum+"').append(point)");
           }
           }
@@ -120,10 +120,10 @@ head
           for (var i=0;i<3;i++){
             var cellnum = xx*3+i+1;
             var hnum = cellnum-1;
-            var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
+            var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' style='cursor:default' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
             eval("$('#row"+rnum+"').append(insert);");
             for (var yy=1;yy<11;yy++){
-             var point = "<a href='#' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
+             var point = "<a href='"+toplist[i].pids[yy]+"' class='list-group-item'>"+toplist[i].places[yy]+"</a>";
               eval("$('#ratcell"+cellnum+"').append(point)");
           }
           }
@@ -136,10 +136,10 @@ head
            var hnum = cellnum-1;
             nrnum=rnum+1;
             $('#inserts').append("<div class='row' id='row"+nrnum+"' style='padding-top:2vw;'></div>");
-            var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
+            var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' style='cursor:default' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
             eval("$('#row"+nrnum+"').append(insert);");
             for (var zz=1;zz<11;zz++){
-            var point = "<a href='#' class='list-group-item'>"+toplist[i].places[zz]+"</a>";
+            var point = "<a href='"+toplist[i].pids[zz]+"' class='list-group-item'>"+toplist[i].places[zz]+"</a>";
               eval("$('#ratcell"+cellnum+"').append(point)");
           }
           }
