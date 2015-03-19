@@ -123,7 +123,7 @@ app.get('/',function(req,res) {
       {
         if(doc.length === 5)
         {doc = doc.splice(4, 1);
-          coneole.log('SENDING '+doc.length+'DOCUMENTS');
+          console.log('SENDING '+doc.length+'DOCUMENTS');
                 res.render('index',{'doc':JSON.stringify(doc),'more':1});}
         else {
          res.render('index',{'doc':JSON.stringify(doc),'more':0}); 
