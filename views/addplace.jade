@@ -86,9 +86,11 @@ head
         .col-xs-12 
           .btn-group.btn-group-justified(role="group",aria-label="...")
             .btn-group(role="group")
-              button(type="button",class="btn btn-default",id='drop') Добавить пустое
+              form(action='/admin/simulateplace',method='post',style='margin:0px;')
+                button(type="submit",class="btn btn-default",id='drop') Добавить пустое
             .btn-group(role="group")
-              button(type="button",class="btn btn-default",id='new') Добавить без панорамы
+              form(action='/admin/simulateemptyplace',method='post',style='margin:0px;')
+                button(type="button",class="btn btn-default",id='new') Добавить без панорамы
       //
         .col-xs-6
           form(action='/admin/simulateplace',method='post',style='margin:0px;')  
