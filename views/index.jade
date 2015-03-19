@@ -130,7 +130,7 @@ head
       .main.container(style='margin-top:50px;z-index:2;')   
         .row
           #inserts.col-xs-12(style='text-align:center;')
-      footer(class='footer main' style='background-color:white;')
+      footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
         .container
             nav
               ul(class='pager') 
@@ -138,6 +138,7 @@ head
                   a(href='#',id='more') Еще
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
+        var more = #{more};
         $('#close').click(function(){
           $("#welcome").css("display","none");
           $('.main').css({'filter':'blur(0px) brightness(1)','-o-filter':'blur(0px) brightness(1)','-moz-filter':'blur(0px) brightness(1)','-webkit-filter':'blur(0px) brightness(1)'});
@@ -228,9 +229,8 @@ head
         //if(toplist.length<4){
         //  $('#wrap').css('height','100vh');
         //}
-        if(toplist.length===9){
+        if(more===1){
          $('#morebutton').css('display','block');
-         $('#footer').css('padding-top','0px');
         }
         function populate(toplist) {console.log("first time: "+toplist);
                 //toplist = JSON.parse(toplist);
@@ -308,6 +308,9 @@ head
           $('#inserts').empty();
           toplist = parsed.mdata;
           populate(toplist);
+           if(parsed.more === 0){
+            $('#morebutton').css('display','none');
+           }
           }
           }
           };

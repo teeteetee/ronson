@@ -113,7 +113,7 @@ app.get('/',function(req,res) {
   console.log(uacheck);
   var d = new Date();
   //res.send('UNDER CONSTRUCTION');
-  places.find({},{ limit:9,sort : { regdate : -1 } },function(err,doc){
+  places.find({},{ limit:5,sort : { regdate : -1 } },function(err,doc){
     if(err)
     {
       res.render('emptyindex');
@@ -121,8 +121,12 @@ app.get('/',function(req,res) {
     else {
       if(doc.length>0)
       {
-        //res.render('index',{'places':doc});
-        res.render('index',{'doc':JSON.stringify(doc)});
+        if(doc.length === 5)
+        doc = doc.splice(4, 1);
+        res.render('index',{'doc':JSON.stringify(doc),'more':1});
+        else {
+         res.render('index',{'doc':JSON.stringify(doc),'more':0}); 
+        }
       }
       else{
         res.render('emptyindex');
@@ -139,20 +143,24 @@ app.get('/',function(req,res) {
     ms.mtext = 'db';
     console.log(lastpid)
     //db.collection.find( { field: { $gt: value1, $lt: value2 } } );
-    places.find({pid: { $gt : lastpid }},{ limit:9,sort:{pid:1} },function(err,doc){
+    places.find({pid: { $gt : lastpid }},{ limit:5,sort:{pid:1} },function(err,doc){
     if(err)
     {
       res.send(ms);
     }
     else {
-      if(doc.length>0)
+      if(doc.length===5)
       { 
+        doc = doc.splice(4, 1);
         ms.trouble = 0;
+        ms.more = 1;
         ms.mdata = doc;
         res.send(ms);
       }
       else{
-        ms.mtext='empty';
+        ms.trouble = 0;
+        ms.more = 0;
+        ms.mdata = doc;
         res.send(ms);
       }
     }
