@@ -73,11 +73,14 @@ head
               a(href='/',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
             li
               a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
-            li
-              a(href='/search',style='font-family:high;font-size:20px;letter-spacing:2px;') Поиск
             li(class='active')
-              a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо
-    .container(style='background-color:white;min-height:100vh;margin-top:50px;')
+              a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
+          form(class="navbar-form navbar-right" id='srch' role="search")
+           .input-group
+              input(type="text" class="form-control" id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
+              span(class='input-group-btn')
+                button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
+                  span(class='glyphicon glyphicon-search')  
       .row
         .col-xs-12
           ul(class="nav nav-pills nav-justified" style='margin-top:10px;margin-bottom:10px;')
