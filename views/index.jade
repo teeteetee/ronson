@@ -225,7 +225,7 @@ head
                   for (var i=0;i<2;i++){
                     var cellnum = xx*2+i+1;
                     var hnum = cellnum-1;
-                    if(i===2)
+                    if(i===1)
                     {
                      var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></li></ul></div>";
                                 eval("$('#row"+rnum+"').append(insert);");
@@ -277,7 +277,7 @@ head
           //trouble === 0
           toplist = parsed.mdata;
           populate(toplist,morecount);
-          $("html, body").animate({ scrollTop: $("#morebutton").scrollTop() }, 1000);
+          //$("html, body").animate({ scrollTop: $("#morebutton").scrollTop() }, 1000);
            if(parsed.more === 0){
             $('#morebutton').css('display','none');
            }
