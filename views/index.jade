@@ -59,6 +59,11 @@ head
       margin-bottom:0px;
       letter-spacing:2px;
       }
+      #welcome {
+        width:100%;
+        height:100%;
+        filter: blur(20px);
+      }
   body
     script.
       if(screen.width < 414){
@@ -77,13 +82,16 @@ head
               a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
             li
               a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
-          form(class="navbar-form navbar-right" role="search")
-            .input-group
+          form(class="navbar-form navbar-right" id='srch' role="search")
+           .input-group
               input(type="text" class="form-control" id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
               span(class='input-group-btn')
                 button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                   span(class='glyphicon glyphicon-search')    
-    .container(style='margin-top:50px;')      
+    .container(style='margin-top:50px;')   
+      #welcome(style='text-align:center;')
+        h1(style='color:white;margin-top:40vh;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
+        button(type='button',class='btn btn-lg',style='background-color:transparent;border-color:white;color:white',onclick='$("#welcome").css("display","hidden")') Пропустите !
       .row
         #inserts.col-xs-12(style='text-align:center;')
     footer(class='footer' style='background-color:white;')
@@ -94,6 +102,42 @@ head
                 a(href='#',id='more') Еще
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
+        $(document).keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13' && $('#searchfield').val()){
+        $('#srch').submit  
+        }
+        });
+        $('#searchbutton').click(performsearch);
+        function performsearch(){
+        var query = $('#searchfield').val();
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var parsed = JSON.parse(request.responseText);
+        if (parsed.trouble === 1)
+        {$('#fldc').css('padding-top','20px');
+        $('#searchresults').empty(); 
+        $('#searchresults').css('text-align','center');
+        $('#searchresults').append("<h5 style='margin-top:10vh;color:black;'>Ничего не нашли</h5>");}
+        else {
+        $('#fldc').css('padding-top','20px');
+        $('#searchresults').empty(); 
+        $('#searchresults').css('text-align','left');
+        for(var i = 0;i<parsed.length;i++){
+         var insert = "<div class='row' style='border-bottom:1px solid #ddd;background-color:#fff;'><a href='http://recentones.com/places/"+parsed[i].pid+"'><div class='col-xs-2' style='padding:0px;'><img src='"+parsed[i].mainpreview+"' style='width:100%'></div><div class='col-xs-10'><h5 style='color:gray;padding-top:1vw;'>"+parsed[i].placenameru+"</h5></div></a></div>";
+         $('#searchresults').append(insert);
+         }
+        }}
+        };
+        request.open('POST', '/srch', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+        request.send("query="+query); 
+        }
+
         function cheight(){
                 var fheight = $('#footer').height()+20;
                 console.log(fheight);
