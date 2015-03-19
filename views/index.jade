@@ -229,7 +229,7 @@ head
                     {
                      var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></li></ul></div>";
                                 eval("$('#row"+rnum+"').append(insert);");
-                    if(xx+1 == times){
+                    if(xx+1 === times){
                      moreid = toplist[hnum].pid;
                      console.log('MOREID: '+moreid);
                     }
