@@ -82,8 +82,8 @@ head
         .col-xs-8.col-xs-offset-2
           h1(style='font-size:45px;') #{doc.nameru}
           h2(style='color:lightgray;font-family:roboto-thin;') Подтверждение проведения съемки
-      #message.row
-        .col-xs-8.col-xs-offset-2
+      .row
+        #message.col-xs-8.col-xs-offset-2
       #formrow.row
         .col-xs-8.col-xs-offset-2
           form(action='/conf/#{doc.clid}',class='form-horizontal',method='post',role='form')
