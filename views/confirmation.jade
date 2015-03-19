@@ -84,8 +84,8 @@ head
           h2(style='color:lightgray;font-family:roboto-thin;') Подтверждение проведения съемки
       .row
         #message.col-xs-8.col-xs-offset-2
-      #formrow.row
-        .col-xs-8.col-xs-offset-2
+      .row
+        #formrow.col-xs-8.col-xs-offset-2
           form(action='/conf/#{doc.clid}',class='form-horizontal',method='post',role='form')
             .form-group
               .input-group.input-group-lg
@@ -133,7 +133,10 @@ head
          var parsed = JSON.parse(request.responseText);
          alert(parsed.trouble);
          if (parsed.trouble === 1)
-         {alert('ERROR');}
+         {
+          $('#message').empty();
+          $('#message').append("<div class='alert alert-danger' role='alert'>Приносим свои извинения, что-то не так на сервере, в службу поддержки отправлено уведомление. Пошлите нам подтверждение письмом. </div>");
+         }
          else {
           $('#message').empty();
           $('#formrow').empty();
