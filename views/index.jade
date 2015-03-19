@@ -110,9 +110,9 @@ head
                 a(href='#',id='more') Еще
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
-        function close () {
+        function close() {
           $("#welcome").css("display","hidden");
-          $('#main').css({'filter':'blur(10px)','-o-filter':'blur(10px)','-moz-filter':'blur(10px)','-webkit-filter':'blur(10px)'});
+          $('#main').css({'filter':'blur(0px)','-o-filter':'blur(0px)','-moz-filter':'blur(0px)','-webkit-filter':'blur(0px)'});
         }
         $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
