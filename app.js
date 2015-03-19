@@ -1143,9 +1143,18 @@ app.post('/admin/simulateplace',function(req,res){
      else {
        console.log('DOC LENGTH: '+doc.length)
        var d = new Date();
-       var vday = d.getDate();
+       var vday = dd.getDate().toString();
        var vmonth = d.getMonth()+1;
        var vyear = d.getUTCFullYear();
+       if (vday.length===1){
+         vday='0'+vday;
+         vday=parseInt(vday);
+       }
+       vmonth = vmonth.toString();
+       if (vmonth.length===1){
+         vmonth='0'+vmonth;
+       }
+       vmonth=parseInt(vmonth);
        if(doc.length>0){
          var newid = doc[0].pid;
          newid++;
