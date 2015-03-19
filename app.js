@@ -152,7 +152,7 @@ app.get('/',function(req,res) {
     else {
       if(doc.length===5)
       { 
-        doc = doc.splice(4, 1);
+        doc = doc.splice(0, 4);
         ms.trouble = 0;
         ms.more = 1;
         ms.mdata = doc;
