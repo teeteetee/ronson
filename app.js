@@ -122,7 +122,7 @@ app.get('/',function(req,res) {
       if(doc.length>0)
       {
         if(doc.length === 5)
-        {doc = doc.splice(4, 1);
+        {doc = doc.splice(0, 4);
           console.log('SENDING '+doc.length+'DOCUMENTS');
                 res.render('index',{'doc':JSON.stringify(doc),'more':1});}
         else {
