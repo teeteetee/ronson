@@ -178,18 +178,7 @@ head
         // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
         request.send("query="+query); 
         }
-
-        function cheight(){
-                var fheight = $('#footer').height()+20;
-                console.log(fheight);
-                var oldmheight = $(window).height();
-                console.log(oldmheight);
-                var newmheight = oldmheight - fheight;
-                newmheight = newmheight+'px';
-                console.log(newmheight);
-                $('#maincont').css('min-height',newmheight);
-               }
-        cheight();
+        var morecount =1;
         var moreid = 0;
         var logocount=0;
         $('#logo').mouseenter(function(){
@@ -232,32 +221,33 @@ head
         if(more===1){
          $('#morebutton').css('display','block');
         }
-        function populate(toplist) {console.log("first time: "+toplist);
+        function populate(toplist,multiplier) {console.log("first time: "+toplist);
                 //toplist = JSON.parse(toplist);
                 //console.log("second time: "+toplist);
+                morecount++;
                 var left = toplist.length%2;
                 console.log('LEFT IS: '+left);
                 var times = (toplist.length-left)/2;
                 console.log('TIMES IS: '+times);
                 if(toplist.length<2){
-                  $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row1'></div>");
+                  $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+1*multiplier+"'></div>");
                   for (var i=0;i<toplist.length;i++){
                     var cellnum = i+1;
-                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><a href='http://recentones.com/places/"+toplist[i].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[i].mainpreview+"' ></a></div>";
+                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><a href='http://recentones.com/places/"+toplist[i].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[i].mainpreview+"' ></a></div>";
                     eval("$('#row1').append(insert);");
                   }
                 }
                 else{
                 for (var xx=0;xx<times;xx++)
                 { 
-                  var rnum = xx+1;
+                  var rnum = (xx+1)*multiplier;
                   $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rnum+"'></div>");
                   for (var i=0;i<2;i++){
                     var cellnum = xx*2+i+1;
                     var hnum = cellnum-1;
                     if(i===2)
                     {
-                     var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></li></ul></div>";
+                     var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></li></ul></div>";
                                 eval("$('#row"+rnum+"').append(insert);");
                     if(xx+1 == times){
                      moreid = toplist[hnum].pid;
@@ -265,18 +255,18 @@ head
                     }
                     }
                     else 
-                    {var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></li></ul></div>";
+                    {var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></li></ul></div>";
                                 eval("$('#row"+rnum+"').append(insert);");}
                   }
                   if(rnum===times && left != 2 && left != 0){
                   for (var yy=0;yy<left;yy++){
                     var leftrow = rnum+1;
-                   $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+leftrow+"'></div>");
+                   $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+leftrow*multiplier+"'></div>");
                    var cellnum = rnum*2+yy+1;
                    console.log('cellnum: '+cellnum);
                    var hnum = cellnum-1;
                    console.log('hnum: '+hnum);
-                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum+"'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[hnum].mainpreview+"' ></a></div>";
+                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[hnum].mainpreview+"' ></a></div>";
                     eval("$('#row"+leftrow+"').append(insert);");
                     if(yy+1 == left){
                      moreid = toplist[hnum].pid;
@@ -305,9 +295,8 @@ head
           }}
           else {
           //trouble === 0
-          $('#inserts').empty();
           toplist = parsed.mdata;
-          populate(toplist);
+          populate(toplist,morecount);
            if(parsed.more === 0){
             $('#morebutton').css('display','none');
            }
