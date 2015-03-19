@@ -92,7 +92,9 @@ head
             table(class='table')
               tbody
                 each place, i in doc
-                  tr
+                  tr(id='row#{place.pid}')
+                    td
+                      | #{place.pid}
                     td 
                       a(href='http://recentones.com/places/#{place.pid}') #{place.placenameru}
                     td 
