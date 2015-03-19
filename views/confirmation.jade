@@ -79,9 +79,11 @@ head
               a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо
     .container(style='background-color:white;min-height:100vh;margin-top:50px;')     
       #text.row(style='padding-bottom:20px; padding-top:20px; text-align: center;')
-        .col-xs-12
+        .col-xs-8.col-xs-offset-2
           h1(style='font-size:45px;') #{doc.nameru}
           h2(style='color:lightgray;font-family:roboto-thin;') Подтверждение проведения съемки
+      #message.row
+        .col-xs-8.col-xs-offset-2
       #formrow.row
         .col-xs-8.col-xs-offset-2
           form(action='/conf/#{doc.clid}',class='form-horizontal',method='post',role='form')
@@ -110,18 +112,18 @@ head
         var comments = $('#comments').val();
          if(!sdate)
          {
-          $('#formrow').empty();
-          $('#formrow').append("<div class='alert alert-danger' role='alert'>Вы не указали <strong>дату</strong></div>");
+          $('#message').empty();
+          $('#message').append("<div class='alert alert-danger' role='alert'>Вы не указали <strong>дату</strong></div>");
          }
          else if(!stime)
          {
-          $('#formrow').empty();
-          $('#formrow').append("<div class='alert alert-danger' role='alert'>Вы не указали <strong>время</strong></div>");
+          $('#message').empty();
+          $('#message').append("<div class='alert alert-danger' role='alert'>Вы не указали <strong>время</strong></div>");
          }
          else if(!contact)
          {
-          $('#formrow').empty();
-          $('#formrow').append("<div class='alert alert-danger' role='alert'>Вы не указали <strong>Контактное лицо</strong></div>");
+          $('#message').empty();
+          $('#message').append("<div class='alert alert-danger' role='alert'>Вы не указали <strong>Контактное лицо</strong></div>");
          }
          else
         {request = new XMLHttpRequest();
@@ -133,8 +135,9 @@ head
          if (parsed.trouble === 1)
          {alert('ERROR');}
          else {
+          $('#message').empty();
           $('#formrow').empty();
-          $('#formrow').append("<div class='alert alert-success' role='alert'>Спасибо, мы вам позвоним!</div>");
+          $('#formrow').append("<div class='alert alert-success' role='alert'><strong>Спасибо</strong>, мы вам позвоним!</div>");
          }}
          };
          request.open('POST','/conf/#{doc.clid}', true);
