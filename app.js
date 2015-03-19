@@ -232,7 +232,7 @@ app.get('/conf/:cid',function(req,res){
       res.render('confirmation',{'doc':client});
     }
     else {
-      res.render('mistake');
+      res.render('404');
     }
    }
   });
