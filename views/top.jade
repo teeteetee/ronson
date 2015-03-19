@@ -86,12 +86,11 @@ head
             li
               a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
     .container(style='margin-top:50px;')
-      .row
+      .row(style='margin-top:20px;')
         .col-xs-12
           .alert.alert-info(role="alert")
             strong
-              span(class='glyphicon glyphicon-time')
-            | Мы еще не успели отснять все заведения в списках, но через месяц все будет готово.
+              | Мы еще не успели отснять все заведения в списках, но через месяц все будет готово.
       .row
         #inserts.col-xs-12(style='text-align:center;padding-bottom:20px;')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -105,7 +104,7 @@ head
         var times = (toplist.length-left)/3;
         console.log('times :'+times);
         if(toplist.length<3){
-          $('#inserts').append("<div class='row' id='row1' style='padding-top:2vw;'></div>");
+          $('#inserts').append("<div class='row' id='row1' ></div>");
           for (var i=0;i<toplist.length;i++){
             var cellnum = i+1;
             var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' style='cursor:default' class='list-group-item active'>"+toplist[i].ratingname+"</a></div></div>";
@@ -120,7 +119,7 @@ head
         for (var xx=0;xx<times;xx++)
         { 
           var rnum = xx+1;
-          $('#inserts').append("<div class='row' id='row"+rnum+"' style='padding-top:2vw;'></div>");
+          $('#inserts').append("<div class='row' id='row"+rnum+"' ></div>");
           for (var i=0;i<3;i++){
             var cellnum = xx*3+i+1;
             var hnum = cellnum-1;
@@ -139,7 +138,7 @@ head
            var cellnum = rnum*3+yy+1;
            var hnum = cellnum-1;
             nrnum=rnum+1;
-            $('#inserts').append("<div class='row' id='row"+nrnum+"' style='padding-top:2vw;'></div>");
+            $('#inserts').append("<div class='row' id='row"+nrnum+"' ></div>");
             var insert = "<div class='col-xs-4'><div class='list-group' id='ratcell"+cellnum+"'><a href='#' style='cursor:default' class='list-group-item active'>"+toplist[hnum].ratingname+"</a></div></div>";
             eval("$('#row"+nrnum+"').append(insert);");
             for (var zz=1;zz<11;zz++){
