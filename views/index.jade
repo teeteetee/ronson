@@ -66,11 +66,11 @@ head
       height:100%;
       -ms-background-color:lightblue;
       }
-      #main{
-      filter: blur(10px);
-      -webkit-filter: blur(10px);
-      -moz-filter: blur(10px);
-      -o-filter: blur(10px);
+      .main{
+      filter: blur(20px);
+      -webkit-filter: blur(20px);
+      -moz-filter: blur(20px);
+      -o-filter: blur(20px);
       }
   body
     script.
@@ -96,13 +96,13 @@ head
               span(class='input-group-btn')
                 button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                   span(class='glyphicon glyphicon-search')    
-    #main.container(style='margin-top:50px;')   
+    .container(style='margin-top:50px;')   
       #welcome(style='text-align:center;')
         h1(style='color:white;margin-top:35vh;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
         button(type='button',class='btn btn-lg',style='background-color:transparent;border-color:white;color:white',onclick='close') Пропустите !
-      .row(style='z-index:2;')
+      .main.row(style='z-index:2;')
         #inserts.col-xs-12(style='text-align:center;')
-    footer(class='footer' style='background-color:white;')
+    footer(class='footer main' style='background-color:white;')
       .container
           nav
             ul(class='pager') 
@@ -112,7 +112,7 @@ head
       script.
         function close() {
           $("#welcome").css("display","hidden");
-          $('#main').css({'filter':'blur(0px)','-o-filter':'blur(0px)','-moz-filter':'blur(0px)','-webkit-filter':'blur(0px)'});
+          $('.main').css({'filter':'blur(0px)','-o-filter':'blur(0px)','-moz-filter':'blur(0px)','-webkit-filter':'blur(0px)'});
         }
         $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
