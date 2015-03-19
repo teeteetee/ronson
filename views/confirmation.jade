@@ -44,6 +44,11 @@ head
       font-family:helvetica,sans;
       font-size:2vw;
       }
+      .btn-primary {
+      color: #fff;
+      background-color: lightgreen;
+      border-color: lightgreen;
+      }
         ::-webkit-input-placeholder { /* WebKit browsers */
       color: lightgray;
       }
@@ -103,25 +108,41 @@ head
         var stime = $('#stime').val();
         var contact = $('#contact').val();
         var comments = $('#comments').val();
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        var parsed = JSON.parse(request.responseText);
-        alert(parsed.trouble);
-        if (parsed.trouble === 1)
-        {alert('ERROR');}
-        else {
-         $('#formrow').empty();
-         $('#formrow').append("<div class='col-xs-12' style='text-align:center;'><h2>Спасибо</h2></div>");
-        }}
-        };
-        request.open('POST','/conf/#{doc.clid}', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
-        alert("cdate="+sdate+"&ctime="+stime+"&contact="+contact+"&comments="+comments);
-        request.send("cdate="+sdate+"&ctime="+stime+"&contact="+contact+"&comments="+comments);  
+         if(!sdate)
+         {
+          $('#formrow').empty();
+          $('#formrow').append("<div class='alert alert-danger' role='alert'>Вы не указали <strong>дату</strong></div>");
+         }
+         else if(!stime)
+         {
+          $('#formrow').empty();
+          $('#formrow').append("<div class='alert alert-danger' role='alert'>Вы не указали <strong>время</strong></div>");
+         }
+         else if(!contact)
+         {
+          $('#formrow').empty();
+          $('#formrow').append("<div class='alert alert-danger' role='alert'>Вы не указали <strong>Контактное лицо</strong></div>");
+         }
+         else
+        {request = new XMLHttpRequest();
+         request.onreadystatechange = function () {
+         var DONE = this.DONE || 4;
+         if (this.readyState === DONE){
+         var parsed = JSON.parse(request.responseText);
+         alert(parsed.trouble);
+         if (parsed.trouble === 1)
+         {alert('ERROR');}
+         else {
+          $('#formrow').empty();
+          $('#formrow').append("<div class='alert alert-success' role='alert'>Спасибо, мы вам позвоним!</div>");
+         }}
+         };
+         request.open('POST','/conf/#{doc.clid}', true);
+         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+         // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+         alert("cdate="+sdate+"&ctime="+stime+"&contact="+contact+"&comments="+comments);
+         request.send("cdate="+sdate+"&ctime="+stime+"&contact="+contact+"&comments="+comments); } 
         });
           
           
