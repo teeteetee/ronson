@@ -71,6 +71,10 @@ head
       -webkit-filter: blur(20px);
       -moz-filter: blur(20px);
       -o-filter: blur(20px);
+      filter: brightness(50%);
+      -webkit-filter: brightness(50%);
+      -moz-filter: brightness(50%);
+      -o-filter: brightness(50%);
       }
   body
     script.
@@ -98,7 +102,7 @@ head
                   span(class='glyphicon glyphicon-search')    
     .container(style='margin-top:50px;')   
       #welcome(style='text-align:center;')
-        h1(style='color:white;margin-top:35vh;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
+        h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
         button(type='button',class='btn btn-lg',style='border-radius:30px;background-color:transparent;border-color:white;color:white',id='close') Пропустите !
       .main.row(style='z-index:2;')
         #inserts.col-xs-12(style='text-align:center;')
@@ -112,7 +116,7 @@ head
       script.
         $('#close').click(function(){
           $("#welcome").css("display","none");
-          $('.main').css({'filter':'blur(0px)','-o-filter':'blur(0px)','-moz-filter':'blur(0px)','-webkit-filter':'blur(0px)'});
+          $('.main').css({'filter':'blur(0px)','-o-filter':'blur(0px)','-moz-filter':'blur(0px)','-webkit-filter':'blur(0px)','filter':'brightness(100%)','-o-filter':'brightness(100%)','-moz-filter':'brightness(100%)','-webkit-filter':'brightness(100%)'});
         });
         $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
