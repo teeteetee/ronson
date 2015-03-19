@@ -67,14 +67,10 @@ head
       -ms-background-color:lightblue;
       }
       .main{
-      filter: blur(20px);
-      -webkit-filter: blur(20px);
-      -moz-filter: blur(20px);
-      -o-filter: blur(20px);
-      filter: brightness(50%);
-      -webkit-filter: brightness(50%);
-      -moz-filter: brightness(50%);
-      -o-filter: brightness(50%);
+      filter: blur(20px),brightness(50%);
+      -webkit-filter: blur(20px),brightness(50%);
+      -moz-filter: blur(20px),brightness(50%);
+      -o-filter: blur(20px),brightness(50%);
       }
   body
     script.
@@ -116,7 +112,7 @@ head
       script.
         $('#close').click(function(){
           $("#welcome").css("display","none");
-          $('.main').css({'filter':'blur(0px)','-o-filter':'blur(0px)','-moz-filter':'blur(0px)','-webkit-filter':'blur(0px)','filter':'brightness(100%)','-o-filter':'brightness(100%)','-moz-filter':'brightness(100%)','-webkit-filter':'brightness(100%)'});
+          $('.main').css({'filter':'blur(0px),brightness(100%)','-o-filter':'blur(0px),brightness(100%)','-moz-filter':'blur(0px),brightness(100%)','-webkit-filter':'blur(0px),brightness(100%)'});
         });
         $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
