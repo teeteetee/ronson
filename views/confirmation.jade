@@ -131,11 +131,10 @@ head
          var DONE = this.DONE || 4;
          if (this.readyState === DONE){
          var parsed = JSON.parse(request.responseText);
-         alert(parsed.trouble);
          if (parsed.trouble === 1)
          {
           $('#message').empty();
-          $('#message').append("<div class='alert alert-danger' role='alert'>Приносим свои извинения, что-то не так на сервере, в службу поддержки отправлено уведомление. Пошлите нам подтверждение письмом. </div>");
+          $('#message').append("<div class='alert alert-danger' role='alert'>Приносим свои извинения, что-то не так на сервере, в службу поддержки отправлено уведомление.<strong> Пошлите нам подтверждение письмом.</strong></div>");
          }
          else {
           $('#message').empty();
@@ -146,8 +145,6 @@ head
          request.open('POST','/conf/#{doc.clid}', true);
          request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
          request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-         // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
-         alert("cdate="+sdate+"&ctime="+stime+"&contact="+contact+"&comments="+comments);
          request.send("cdate="+sdate+"&ctime="+stime+"&contact="+contact+"&comments="+comments); } 
         });
           
