@@ -106,9 +106,10 @@ head
           .row  
             .col-xs-12(style='text-align:center;')
               h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Recentones -  сайт о только что открывшихся заведениях, виртуальных турах по ним, рейтингах. 
-              h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Сейчас мы проводим съемки, вот-вот начнем выкладывать туры.  
-              input(type='text' placeholder='chief@yandex.ru',style='background-color:transparent;border-color:white;width:200px;')
-              button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close')  Сообщите мне о запуске ! 
+              h1(style='color:white;font-size:45px;font-family:high;') Сейчас мы проводим съемки, вот-вот начнем выкладывать туры. 
+              form(class='form-signin') 
+                input(type='email' class='form-control' placeholder='chief@yandex.ru',style='background-color:transparent;border-color:white;width:200px;')
+                button(type='button',class='btn btn-lg btn-block',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close')  Сообщите мне о запуске ! 
       .main.container(style='min-height:100vh;z-index:2;background-color:#eee;') 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script.
