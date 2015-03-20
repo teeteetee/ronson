@@ -81,7 +81,9 @@ head
             li(class='list-group-item')
               h5 #{doc.adressru}
               h5(style='color:lightgray;') #{doc.adressen} 
+            li(class='list-group-item')
               h5 Заведение открылось #{doc.founddate.day}.#{doc.founddate.month}.#{doc.founddate.year} 
+            li(class='list-group-item')
               a(href='#{doc.contacts.www}')
                 h5 Перейти на сайт заведения
               a(href='tel:#{doc.contacts.phone}')
