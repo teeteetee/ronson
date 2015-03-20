@@ -122,7 +122,7 @@ app.get('/',function(req,res) {
       if(doc.length>0)
       { for (var yy = 0;yy<4;yy++)
         {
-          console.log('PLACE ID: '+doc[yy].pid);
+          console.log('PLACE ID: '+doc[yy].pid+', FOUNDDATE: '+doc[yy].founddateint);
         }
         var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
         var mnum = d.getMonth();
@@ -168,7 +168,7 @@ app.get('/',function(req,res) {
       { 
         for (var yy = 0;yy<4;yy++)
         {
-          console.log('PLACE ID: '+doc[yy].pid);
+          console.log('PLACE ID: '+doc[yy].pid)+', FOUNDDATE: '+doc[yy].founddateint);
         }
         doc = doc.splice(0, 4);
         ms.trouble = 0;
@@ -179,7 +179,7 @@ app.get('/',function(req,res) {
       else{
         for (var yy = 0;yy<doc.length;yy++)
         {
-          console.log('PLACE ID: '+doc[yy].pid);
+          console.log('PLACE ID: '+doc[yy].pid+', FOUNDDATE: '+doc[yy].founddateint);
         }
         ms.trouble = 0;
         ms.more = 0;
