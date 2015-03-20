@@ -122,12 +122,13 @@ app.get('/',function(req,res) {
       if(doc.length>0)
       { var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
         var mnum = d.getMonth();
+        var mnumprocessed= mnum+1;
         if(doc.length === 5)
         {doc = doc.splice(0, 4);
           console.log('SENDING '+doc.length+'DOCUMENTS');
-                res.render('index',{'doc':JSON.stringify(doc),'more':1,'month':months[mnum]});}
+                res.render('index',{'doc':JSON.stringify(doc),'more':1,'month':months[mnum],'currentmonth':mnumprocessed});}
         else {
-         res.render('index',{'doc':JSON.stringify(doc),'more':0,'month':months[mnum]}); 
+         res.render('index',{'doc':JSON.stringify(doc),'more':0,'month':months[mnum],'currentmonth':mnumprocessed}); 
         }
       }
       else{
@@ -1164,7 +1165,7 @@ app.post('/admin/simulateplace',function(req,res){
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
          regdate:{day:vday,month:vmonth,year:vyear},
-         founddate:{day:'01',month:'07',year:'2014'},
+         founddate:{day:'01',month:'02',year:'2014'},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          contacts:{phone:'+7XXXXXXXXXX',www:'http://recentones.com/bobo'},
@@ -1182,7 +1183,7 @@ app.post('/admin/simulateplace',function(req,res){
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
          regdate:{day:vday,month:vmonth,year:vyear},
-         founddate:{day:'01',month:'07',year:'2014'},
+         founddate:{day:'01',month:'02',year:'2014'},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          contacts:{phone:'+7XXXXXXXXXX',www:'http://recentones.com/bobo'},
@@ -1216,7 +1217,7 @@ app.post('/admin/simulateemptyplace',function(req,res){
          placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
-         founddate:{day:'01',month:'07',year:'2014'},
+         founddate:{day:'01',month:'02',year:'2014'},
          regdate:{day:vday,month:vmonth,year:vyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
@@ -1234,7 +1235,7 @@ app.post('/admin/simulateemptyplace',function(req,res){
          placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
-         founddate:{day:'01',month:'07',year:'2014'},
+         founddate:{day:'01',month:'02',year:'2014'},
          regdate:{day:vday,month:vmonth,year:vyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',

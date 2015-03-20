@@ -109,7 +109,7 @@ head
               button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close') Пропустите !  
       .main.container(style='margin-top:50px;z-index:2;') 
         .row
-          .col-xs-12
+          .col-xs-12(style='text-align:center;')
             h1(style='margin-bottom:20px;margin-top:20px;font-family:high;font-size:45px;') #{month}   
         .row
           #inserts.col-xs-12(style='text-align:center;')
@@ -162,6 +162,8 @@ head
         //request.send("query="+query); 
         //}
         var morecount =1;
+        var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
+        var currentmonth = #{currentmonth};
         var moreid = 0;
         var logocount=0;
         $('#logo').mouseenter(function(){
@@ -224,6 +226,12 @@ head
                 for (var xx=0;xx<times;xx++)
                 { 
                   var rnum = (xx+1)*multiplier;
+                  var tmphnum =xx*2
+                  if(parseInt(toplist[tmphnum].founddate.month<currentmonth)
+                  { 
+                    var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;
+                    $('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:20px;font-family:high;font-size:45px;>"+months[tmpmonth]+"</h1></div></div>");
+                  }
                   $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rnum+"'></div>");
                   for (var i=0;i<2;i++){
                     var cellnum = xx*2+i+1;
@@ -232,6 +240,7 @@ head
                     {
                      var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></li></ul></div>";
                                 eval("$('#row"+rnum+"').append(insert);");
+                                currentmonth=toplist[hnum].regdate.month;
                     if(xx+1 === times){
                      moreid = toplist[hnum].pid;
                      console.log('MOREID: '+moreid);
@@ -240,6 +249,7 @@ head
                     else 
                     {var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].regdate.day+"."+toplist[hnum].regdate.month+"."+toplist[hnum].regdate.year+"</h6></li></ul></div>";
                                 eval("$('#row"+rnum+"').append(insert);");}
+                                currentmonth=toplist[hnum].regdate.month;
                   }
                   if(rnum===times && left != 2 && left != 0){
                   for (var yy=0;yy<left;yy++){
