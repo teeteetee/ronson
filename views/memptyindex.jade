@@ -32,129 +32,84 @@ head
       font-family:bt;
       src: url('/bootstrap/fonts/bebasneue_thin.ttf');
       }
-      h1 {
-      font-size:6vw;
-      font-family:roboto-thin;
-      letter-spacing:0.3vw;
+      body {
+      min-width:768px;
+      background-color:#ddd;
+      }
+      h5{
+      letter-spacing:2px;
       text-transform:uppercase;
-      color:#bbb;
-      margin-top:0px;
       margin-bottom:0px;
+      color:white;
+      font-family:roboto-thin;
+      font-size:30px;
+      margin-top:0px;
       }
       h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
-      }
-      h3 {
-      font-size:3vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:#eee;
-      margin-top:0px;
-      margin-bottom:0px;
-      }
-      h4 {
-      font-size:2vw;
-      font-family:roboto-thin;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      }
-      h5 {
       letter-spacing:2px;
       text-transform:uppercase;
       font-family:high;
-      color:white;
-      font-size:8vw;
       margin-bottom:0px;
       }
-      .preview {
-      margin:0px;
-      padding:0px;
-      border-right:1px solid black;
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
+      h6{
+      font-family:arial; 
+      text-transform:uppercase;
+      margin-top:0px;
+      color:lightgrey;
+      margin-bottom:0px;
+      letter-spacing:2px;
       }
-      .preview:hover {
-      -webkit-filter: grayscale(0%);
-      -moz-filter: grayscale(0%);
-      -o-filter: grayscale(0%);
-      -ms-filter: grayscale(0%);
-      }
-      img {
-      width:100%;
-      }
-      .imgrow {
-      border-bottom:1px solid black;
-      }
-      .placenamebckgrnd {
-      color:white;
-      width:100%;
-      background-color:black;
-      text-align:center;
-      z-index:1;
-      }
-      .placename {
-      background-color:rgba(0,0,0,0.26);
+      #welcome {
       position:absolute;
-      color:black;
+      z-index:3000;
       width:100%;
-      text-align:center;
-      top:0px;
-      z-index:2;
-      padding:1vh;
+      height:100%;
+      -ms-background-color:lightblue;
       }
-      #white{
-      background-color:white;
+      .main{
+      filter: blur(20px) brightness(0.5);
+      -webkit-filter: blur(20px) brightness(0.5);
+      -moz-filter: blur(20px) brightness(0.5);
+      -o-filter: blur(20px) brightness(0.5);
       }
-      .imgrow {
-      background-color:#333;
-      }
-      .container-fluid {
-      background-color:#eee;
-      }  
-      a:hover {
-        text-decoration:none;
-        outline:none;
+      .col-lg-4 {
+      margin-bottom: 20px;
+      text-align: center;
       }
   body
-    nav(class='navbar navbar-fixed-top navbar-inverse')
+    script.
+      if(screen.width < 414){
+      window.location='http://m.recentones.com/';
+      }
+    nav(class="navbar navbar-inverse navbar-fixed-top",style='z-index:3001')
       .container
         .navbar-header
-          button(type='button',class='navbar-toggle collapsed',data-toggle='collapse',data-target='#navbar',aria-expanded='false',aria-controls='navbar')
-            span.sr-only 
-              Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          h2(class='navbar-brand',style='font-size8:8vw;margin-top:0px;margin-bottom:0px;') 
-            span 
-              img(src='/bootstrap/images/rl.png',style='width:20px;') 
-            |  Лента  
-        #navbar.navbar-collapse.collapse(aria-expanded='false',style='height:1px;')
+          a(class="navbar-brand" style='padding:5px;' href="/")
+            img(alt="Logo",id='logo',src="/bootstrap/images/rl.png",height='40',width='40')
+        .collapse.navbar-collapse#navbar-collapse-9
           ul(class='nav navbar-nav')
+            li(class='active')
+              a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
             li
-              a(href='/top') 
-                h1 Рейтинги
+              a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
             li
-              a(href='/search')  
-                h1 Поиск
-            li 
-              a(href='/misc/1') 
-                h1 Контакты
-    #inserts.container(style='min-height:100vh;background-color:#eee;')
-      h4(style='color:black;font-family:bt;font-weight:bold;font-size:10vw;margin-top:80px;') В данный момент мы договариваемся, фотографируем, наполняем базу. Оставьте адрес, и мы 
-            span(style='color:#12a636;') сообщим вам о запуске первым.
-          form()
-            .input-group
-              input(type="text",class="form-control",placeholder="cheif@yandex.ru",id='mail')
-              span(class="input-group-btn")
-                button(class="btn btn-success",type="button",id='mailsubmit') Держать в курсе 
-      //
-        h5(id='more',style='color:black;margin-bottom:10px;cursor:pointer;') Еще 
+              a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
+          form(class="navbar-form navbar-right" id='srch' role="search")
+           .input-group
+              input(type="text" class="form-control" id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
+              span(class='input-group-btn')
+                button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
+                  span(class='glyphicon glyphicon-search') 
+    #wrap 
+      #welcome
+        .container(style='margin-bottom:60px;')
+          .row  
+            .col-xs-12(style='text-align:center;')
+              h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Recentones -  сайт о только что открывшихся заведениях, виртуальных турах по ним, рейтингах. 
+              h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Сейчас мы проводим съемки, вот-вот начнем выкладывать туры.  
+              input(type='text' placeholder='chief@yandex.ru',style='background-color:transparent;border-color:white;width:200px;')
+              button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close')  Сообщите мне о запуске ! 
+      .main.container(style='min-height:100vh;z-index:2;background-color:#eee;') 
     script(async,src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
