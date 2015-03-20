@@ -145,15 +145,22 @@ app.get('/',function(req,res) {
     ms.trouble = 1;
     ms.mtext = 'db';
     console.log(lastpid)
-    //db.collection.find( { field: { $gt: value1, $lt: value2 } } );
-    places.find({pid: { $gt : lastpid }},{ limit:5,sort:{pid:1} },function(err,doc){
+    //places.find({pid: { $gt : lastpid }},{ limit:5,sort:{pid:1} },function(err,doc){
+      places.find({pid:{$lt: lastpid}},{limit:5,sort:{founddateint:-1}},funciton(err,doc){
     if(err)
     {
       res.send(ms);
     }
     else {
       console.log('MORE DOC IS:'+doc);
-      if(doc.length===5)
+      if(doc.length === 0)
+      {
+        ms.trouble = 1;
+        ms.more = 0;
+        ms.mtext = 'empty';
+        res.send(ms);
+      }
+      else if(doc.length===5)
       { 
         doc = doc.splice(0, 4);
         ms.trouble = 0;
