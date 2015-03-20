@@ -146,7 +146,7 @@ app.get('/',function(req,res) {
     ms.mtext = 'db';
     console.log(lastpid)
     //places.find({pid: { $gt : lastpid }},{ limit:5,sort:{pid:1} },function(err,doc){
-      places.find({pid:{$lt: lastpid}},{limit:5,sort:{founddateint:-1}},funciton(err,doc){
+    places.find({pid:{$lt: lastpid}},{limit:5,sort:{founddateint:-1}},function(err,doc){
     if(err)
     {
       res.send(ms);
