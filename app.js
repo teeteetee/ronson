@@ -152,6 +152,7 @@ app.get('/',function(req,res) {
       res.send(ms);
     }
     else {
+      console.log('MORE DOC IS:'+doc);
       if(doc.length===5)
       { 
         doc = doc.splice(0, 4);
