@@ -51,22 +51,6 @@ head
       text-transform:uppercase;
       color:gray;
       }
-      .underline:hover {
-        border-bottom:3px solid gray;
-      }
-      .pulldown {
-        margin-top:10px;
-      }
-      .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-      color: #fff;
-      background-color: lightgray;
-      }
-      .nav-pills>li>a {
-        border-radius:30px;
-      }
-      a{
-        color:lightgray;
-      }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
@@ -88,18 +72,9 @@ head
                 button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                   span(class='glyphicon glyphicon-search')  
     .container(style='background-color:white;min-height:100vh;margin-top:50px;')
-      .row
-        .col-xs-12
-          ul(class="nav nav-pills nav-justified" style='margin-top:10px;margin-bottom:10px;')
-            li(class='active') 
-              a(href='#',style='font-family:high;font-size:25px;letter-spacing:2px;') Контакты
-            li 
-              a(href='/misc/2',style='font-family:high;font-size:25px;letter-spacing:2px;') Манифест
-            li 
-              a(href='/misc/3',style='font-family:high;font-size:25px;letter-spacing:2px;') Сотрудничество
       #text.row(style='padding-right:100px; padding-left:100px; text-align: justify;')
-        .col-xs-8.col-xs-12
-          h2(style='margin-bottom:20px;margin-top:20px;') #{doc.placenameru} 
+        .col-xs-8.col-xs-12(style='text-align:center')
+          h1(style='margin-bottom:20px;margin-top:20px;font-family:high;font-size:45px;') #{doc.placenameru} 
           ul(class='list-group')
             li(class='list-group-item' style='padding:0px;')
               #pano(style='width:400px;height:250px;')
