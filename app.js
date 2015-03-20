@@ -113,7 +113,7 @@ app.get('/',function(req,res) {
   console.log(uacheck);
   var d = new Date();
   //res.send('UNDER CONSTRUCTION');
-  places.find({},{ limit:5,sort : { regdate : -1 } },function(err,doc){
+  places.find({},{ limit:5,sort : { founddateint : -1 } },function(err,doc){
     if(err)
     {
       res.render('emptyindex');
@@ -340,7 +340,7 @@ app.get('/msg/:cid',function(req,res){
 
 
 app.get('/m',function(req,res){
-  places.find({},{ limit:9,sort : { regdate : -1 } },function(err,doc){
+  places.find({},{ limit:9,sort : { founddateint: -1 } },function(err,doc){
     if(err)
     {
       res.render('memptyindex');
@@ -438,7 +438,7 @@ app.get('/api/places/:id',function(req,res){
 
 app.get('/api/recent',function(req,res){
   console.log('API REQUEST: LIST');
-  places.find({},{ limit:9,sort : { regdate : -1 } },function(err,doc){
+  places.find({},{ limit:9,sort : { founddateint : -1 } },function(err,doc){
      var ms ={};
      ms.trouble = 1;
      ms.mtext = 'db';
@@ -1165,6 +1165,7 @@ app.post('/admin/simulateplace',function(req,res){
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
          regdate:{day:vday,month:vmonth,year:vyear},
+         founddateint:20140201,
          founddate:{day:'01',month:'02',year:'2014'},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
@@ -1182,6 +1183,7 @@ app.post('/admin/simulateplace',function(req,res){
          placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
+         founddateint:20140201,
          regdate:{day:vday,month:vmonth,year:vyear},
          founddate:{day:'01',month:'02',year:'2014'},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
@@ -1217,6 +1219,7 @@ app.post('/admin/simulateemptyplace',function(req,res){
          placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
+         founddateint:20140201,
          founddate:{day:'01',month:'02',year:'2014'},
          regdate:{day:vday,month:vmonth,year:vyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
@@ -1235,6 +1238,7 @@ app.post('/admin/simulateemptyplace',function(req,res){
          placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
+         founddateint:20140201,
          founddate:{day:'01',month:'02',year:'2014'},
          regdate:{day:vday,month:vmonth,year:vyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
