@@ -32,151 +32,80 @@ head
       font-family:bt;
       src: url('/bootstrap/fonts/bebasneue_thin.ttf');
       }
-      h1 {
-      font-family:high;
-      font-size:3vw;
-      display:inline;
-      color:white;
-      }
       body {
       min-width:768px;
       background-color:#fff;
       background-image:url('/bootstrap/images/stripe4.png');
       }
-      h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
-      }
       h3 {
-      font-size:3vw;
+      font-family:roboto-thin;
       }
       h4 {
-      font-size:1vw;
-      font-family:arial;
+      font-size:2vw;
+      font-family:roboto-thin;
       letter-spacing:0.3vw;
       text-transform:uppercase;
-      color:white;
       }
-      h5 {
-      letter-spacing:2px;
+      h6 {
+      font-family:arial;
       text-transform:uppercase;
-      font-family:roboto-thin;
-      font-size:3vw;
+      color:gray;
       }
-      .preview {
-      margin:0px;
-      padding:0px;
-      border-right:1px solid black;
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
+      .underline:hover {
+        border-bottom:3px solid gray;
       }
-      .preview:hover {
-      -webkit-filter: grayscale(0%);
-      -moz-filter: grayscale(0%);
-      -o-filter: grayscale(0%);
-      -ms-filter: grayscale(0%);
+      .pulldown {
+        margin-top:10px;
       }
-      img {
-      width:100%;
+      .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+      color: #fff;
+      background-color: lightgray;
       }
-      .imgrow {
-      border-bottom:1px solid black;
+      .nav-pills>li>a {
+        border-radius:30px;
       }
-      .placenamebckgrnd {
-      position:absolute;
-      color:white;
-      opacity:0.7;
-      width:100%;
-      margin-bottom:auto;
-      background-color:black;
-      text-align:center;
-      z-index:1;
-      height:25%;
+      a{
+        color:lightgray;
       }
-      .placename {
-      position:absolute;
-      color:black;
-      width:100%;
-      text-align:center;
-      margin-bottom:auto;
-      z-index:2;
-      }
-      #header {
-      padding-top:0.5vw;
-      padding-bottom:0.5vw;
-      background-color:gray;
-      }
-      .spart{
-      height:2vh;
-      background-color:#333;
-      }
-      #timeperiod {
-      background-color:#393b3f;
-      }
-      .color {
-      height:10vh;
-      }
-      #blue{
-      background-color:#001c45;
-      }
-      #green{
-      background-color:#49a881;
-      }
-      #white{
-      background-color:white;
-      }
-      .imgrow {
-      background-color:#333;
-      }
-      .container-fluid {
-      min-height:100vh;
-      background-color:#eee;
-      }
-      .input-group{
-      margin:1vh;
-      }
-      #info {
-      position:fixed;
-      opacity:0.5;
-      text-align:center;
-      top:2vh;
-      left:2vh;
-      z-index:3000;
-      }
-      #info:hover{
-      opacity:1;
-      }
-      #pano{
-      height:100vh;
-      }
-      #placedata{
-      display:none;
-      z-index:4000;
-      position:fixed;
-      width:100vw;
-      top:0px;
-      }   
   body
-    #pano.container-fluid(style='padding:0px;')       
-    #placedata.container(style='background-color:#eee;')
-      .row(style='background-color:#393b3f;')
-        .col-xs-1
-          a(href='http://recentones.com')
-            img(src='/bootstrap/images/rl.png',style='width:100%;padding-top:2vh;')
-        .col-xs-10(style='text-align:center;')
-          h2(style='color:#fc645a;') #{doc.placenameru}    
+    nav(class="navbar navbar-inverse navbar-fixed-top")
+      .container
+        .navbar-header
+          a(class="navbar-brand" style='padding:5px;' href="/")
+            img(alt="Logo",id='logo',src="/bootstrap/images/rl.png",height='40',width='40')
+        .collapse.navbar-collapse#navbar-collapse-9
+          ul(class='nav navbar-nav')
+            li
+              a(href='/',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
+            li
+              a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
+            li(
+              a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
+          form(class="navbar-form navbar-right" id='srch' role="search")
+           .input-group
+              input(type="text" class="form-control" id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
+              span(class='input-group-btn')
+                button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
+                  span(class='glyphicon glyphicon-search')  
+    .container(style='background-color:white;min-height:100vh;margin-top:50px;')
       .row
-        .col-xs-12(style='text-align:left;')
-          h5 #{doc.adressru}
-          h5(style='color:gray;') #{doc.adressen}
-      .row(style='background-color:#fff;')
-        .col-xs-12(style='text-align:center;')
-          h5(id='close',style='cursor:pointer;') Закрыть
-    #info
-      img(src='/bootstrap/images/rl.png',style='width:4vw;height:4vw;')      
+        .col-xs-12
+          ul(class="nav nav-pills nav-justified" style='margin-top:10px;margin-bottom:10px;')
+            li(class='active') 
+              a(href='#',style='font-family:high;font-size:25px;letter-spacing:2px;') Контакты
+            li 
+              a(href='/misc/2',style='font-family:high;font-size:25px;letter-spacing:2px;') Манифест
+            li 
+              a(href='/misc/3',style='font-family:high;font-size:25px;letter-spacing:2px;') Сотрудничество
+      #text.row(style='padding-right:100px; padding-left:100px; text-align: justify;')
+        .col-xs-8.col-xs-12
+          h2(style='margin-bottom:20px;margin-top:20px;') #{doc.placenameru} 
+          ul(class='list-group')
+            li(class='list-group-item' style='padding:0px;')
+              #pano(style='width:400px;height:250px;')
+            li(class='list-group-item')
+              h5 #{doc.adressru}
+              h5(style='color:gray;') #{doc.adressen}      
     script(type='text/javascript', src='/js/pano2vr_player.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -185,13 +114,7 @@ head
       // create the panorama player with the container
       pano=new pano2vrPlayer("pano");
       pano.readConfigUrl("#{doc.xml}");
-      $('#close').click(function(){
-        $('#placedata').slideToggle();
-        });
-      $('#info').click(function(){
-        console.log('hOHO');
-        $('#placedata').slideToggle();
-        });
+      
   
             
 

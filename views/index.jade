@@ -129,35 +129,35 @@ head
         $('#srch').submit  
         }
         });
-        $('#searchbutton').click(performsearch);
-        function performsearch(){
-        var query = $('#searchfield').val();
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        var parsed = JSON.parse(request.responseText);
-        if (parsed.trouble === 1)
-        {$('#fldc').css('padding-top','20px');
-        $('#searchresults').empty(); 
-        $('#searchresults').css('text-align','center');
-        $('#searchresults').append("<h5 style='margin-top:10vh;color:black;'>Ничего не нашли</h5>");}
-        else {
-        $('#fldc').css('padding-top','20px');
-        $('#searchresults').empty(); 
-        $('#searchresults').css('text-align','left');
-        for(var i = 0;i<parsed.length;i++){
-         var insert = "<div class='row' style='border-bottom:1px solid #ddd;background-color:#fff;'><a href='http://recentones.com/places/"+parsed[i].pid+"'><div class='col-xs-2' style='padding:0px;'><img src='"+parsed[i].mainpreview+"' style='width:100%'></div><div class='col-xs-10'><h5 style='color:gray;padding-top:1vw;'>"+parsed[i].placenameru+"</h5></div></a></div>";
-         $('#searchresults').append(insert);
-         }
-        }}
-        };
-        request.open('POST', '/srch', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
-        request.send("query="+query); 
-        }
+        //$('#searchbutton').click(performsearch);
+        //function performsearch(){
+        //var query = $('#searchfield').val();
+        //request = new XMLHttpRequest();
+        //request.onreadystatechange = function () {
+        //var DONE = this.DONE || 4;
+        //if (this.readyState === DONE){
+        //var parsed = JSON.parse(request.responseText);
+        //if (parsed.trouble === 1)
+        //{$('#fldc').css('padding-top','20px');
+        //$('#searchresults').empty(); 
+        //$('#searchresults').css('text-align','center');
+        //$('#searchresults').append("<h5 style='margin-top:10vh;color:black;'>Ничего не нашли</h5>");}
+        //else {
+        //$('#fldc').css('padding-top','20px');
+        //$('#searchresults').empty(); 
+        //$('#searchresults').css('text-align','left');
+        //for(var i = 0;i<parsed.length;i++){
+        // var insert = "<div class='row' style='border-bottom:1px solid #ddd;background-color:#fff;'><a href='http://recentones.com/places/"+parsed[i].pid+"'><div class='col-xs-2' style='padding:0px;'><img src='"+parsed[i].mainpreview+"' style='width:100%'></div><div class='col-xs-10'><h5 style='color:gray;padding-top:1vw;'>"+parsed[i].placenameru+"</h5></div></a></div>";
+        // $('#searchresults').append(insert);
+        // }
+        //}}
+        //};
+        //request.open('POST', '/srch', true);
+        //request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        //request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //// THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+        //request.send("query="+query); 
+        //}
         var morecount =1;
         var moreid = 0;
         var logocount=0;
