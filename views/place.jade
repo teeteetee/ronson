@@ -75,11 +75,11 @@ head
       #text.row
         .col-xs-8.col-xs-offset-2(style='text-align:center;')
           h1(style='margin-bottom:20px;margin-top:20px;font-family:high;font-size:45px;') #{doc.placenameru} 
-          h5 Заведение открылось #{doc.founddate.day}.#{doc.founddate.month}.#{doc.founddate.year}
-          ul(class='list-group' style='margin-bottom:20px;')
+          ul(class='list-group' style='margin-bottom:20px;text-align:left;')
             li(class='list-group-item' style='padding:0px;')
               #pano(style='height:400px;')
             li(class='list-group-item')
+              h5 Заведение открылось #{doc.founddate.day}.#{doc.founddate.month}.#{doc.founddate.year}
               h5 #{doc.adressru}
               h5(style='color:lightgray;') #{doc.adressen}  
               a(href='#{doc.contacts.www}')
