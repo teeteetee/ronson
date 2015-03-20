@@ -120,7 +120,11 @@ app.get('/',function(req,res) {
     }
     else {
       if(doc.length>0)
-      { var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
+      { for (var yy = 0;yy<4;yy++)
+        {
+          console.log('PLACE ID: '+doc[yy].pid);
+        }
+        var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
         var mnum = d.getMonth();
         var mnumprocessed= mnum+1;
         if(doc.length === 5)
@@ -162,6 +166,10 @@ app.get('/',function(req,res) {
       }
       else if(doc.length===5)
       { 
+        for (var yy = 0;yy<4;yy++)
+        {
+          console.log('PLACE ID: '+doc[yy].pid);
+        }
         doc = doc.splice(0, 4);
         ms.trouble = 0;
         ms.more = 1;
@@ -169,6 +177,10 @@ app.get('/',function(req,res) {
         res.send(ms);
       }
       else{
+        for (var yy = 0;yy<doc.length;yy++)
+        {
+          console.log('PLACE ID: '+doc[yy].pid);
+        }
         ms.trouble = 0;
         ms.more = 0;
         ms.mdata = doc;
