@@ -243,8 +243,9 @@ head
                                 currentmonth=parseInt(toplist[hnum].founddate.month);
                                 console.log('SET CURRENTMONTH TO '+currentmonth);
                     if(xx+1 === times){
-                     moreid = toplist[hnum].pid;
-                     console.log('MOREID: '+moreid);
+                      if(moreid<toplist[hnum].pid;)
+                        {moreid = toplist[hnum].pid;
+                        console.log('MOREID: '+moreid);}
                     }
                     }
                     else 
@@ -264,8 +265,9 @@ head
                     var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[hnum].mainpreview+"' ></a></div>";
                     eval("$('#row"+leftrow+"').append(insert);");
                     if(yy+1 == left){
-                     moreid = toplist[hnum].pid;
-                     console.log('MOREID: '+moreid);
+                      if(moreid<toplist[hnum].pid;)
+                        {moreid = toplist[hnum].pid;
+                        console.log('MOREID: '+moreid);}
                     }
                   }
                 }}
