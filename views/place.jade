@@ -80,10 +80,12 @@ head
               #pano(style='height:400px;')
             li(class='list-group-item')
               h5 #{doc.adressru}
-              h5(style='color:gray;') #{doc.adressen} 
+              h5(style='color:lightgray;') #{doc.adressen} 
               h5 Заведение открылось #{doc.founddate.day}.#{doc.founddate.month}.#{doc.founddate.year} 
               a(href='#{doc.contacts.www}')
                 h5 Перейти на сайт заведения
+              a(href='tel:#{doc.contacts.phone}')
+                h5 +79342371237
 
     script(type='text/javascript', src='/js/pano2vr_player.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
