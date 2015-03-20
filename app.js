@@ -120,13 +120,14 @@ app.get('/',function(req,res) {
     }
     else {
       if(doc.length>0)
-      {
+      { var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
+        var mnum = d.getMonth();
         if(doc.length === 5)
         {doc = doc.splice(0, 4);
           console.log('SENDING '+doc.length+'DOCUMENTS');
-                res.render('index',{'doc':JSON.stringify(doc),'more':1});}
+                res.render('index',{'doc':JSON.stringify(doc),'more':1,'month':months[mnum]});}
         else {
-         res.render('index',{'doc':JSON.stringify(doc),'more':0}); 
+         res.render('index',{'doc':JSON.stringify(doc),'more':0,'month':months[mnum]}); 
         }
       }
       else{
