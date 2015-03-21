@@ -81,6 +81,11 @@ head
       padding: 15px;
       margin: 0 auto;
       }
+      .alert-danger {
+      color: white;
+      background-color: #f2dede;
+      border-color: #ebccd1;
+      }
   body
     script.
       if(screen.width < 414){
@@ -114,11 +119,14 @@ head
                 h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Виртуальные туры
               .col-xs-4
                 h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Рейтинги
+          .row
+            #trbl.col-xs-6.col-xs-offset-3
+
           .row  
             .col-xs-12(style='text-align:center;')
               form(class='form-signin') 
-                input(type='email' id='mail' class='form-control' placeholder='chief@yandex.ru',style='background-color:transparent;border-color:white;')
-                button(type='button',class='btn btn-lg btn-block',style='margin-top:20px;border-radius:30px;background-color:lightsalmon;border-color:lightsalmon;color:white',id='close')  Сообщите мне о запуске  
+                input(type='email' id='mail' class='form-control' placeholder='chief@yandex.ru',style='background-color:transparent;border-color:white;color:white;')
+                button(type='button',id='mailsubmit',class='btn btn-lg btn-block',style='margin-top:20px;border-radius:30px;background-color:lightsalmon;border-color:lightsalmon;color:white',id='close')  Сообщите мне о запуске  
       .main.container(style='min-height:100vh;z-index:2;background-color:#eee;') 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script.
@@ -127,13 +135,19 @@ head
       }
       $('#mailsubmit').click(mail);
       function mail() {
+      function validateEmail(email) { 
+       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+       return re.test(email);
+       }   
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var parsed = JSON.parse(request.responseText);
       if (parsed.trouble === 1)
-      {alert('Недействительный адрес, ошиблись?');}
+      {//alert('Недействительный адрес, ошиблись?');
+       $('#trbl').eppend('<div class="alert alert-danger" role="alert"> Недействительный адрес, ошиблись? </div>');
+       }
       else {
        $('#msg').empty();
        $('#msg').append("<div class='row'><div class='col-xs-12'><h1 style='color:white;margin-top:35vh;font-size:45px;font-family:roboto-thin;letter-spacing:2px;text-transform:uppercase;'> До связи !</h1></div></div>");
