@@ -101,7 +101,7 @@ head
               a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
     #wrap 
       #welcome
-        .container(style='margin-bottom:60px;')
+        #msg.container(style='margin-bottom:60px;')
           .row
             .col-xs-12(style='text-align:center;')
               h1(style='color:white;margin-top:25vh;font-size:45px;font-family:roboto-thin;letter-spacing:2px;text-transform:uppercase;') Новые места
@@ -117,8 +117,8 @@ head
           .row  
             .col-xs-12(style='text-align:center;')
               form(class='form-signin') 
-                input(type='email' class='form-control' placeholder='chief@yandex.ru',style='background-color:transparent;border-color:white;')
-                button(type='button',class='btn btn-lg btn-block',style='margin-top:20px;border-radius:30px;background-color:lightsalmon;border-color:lightsalmon;color:white',id='close')  Сообщите мне о запуске ! 
+                input(type='email' id='mail' class='form-control' placeholder='chief@yandex.ru',style='background-color:transparent;border-color:white;')
+                button(type='button',class='btn btn-lg btn-block',style='margin-top:20px;border-radius:30px;background-color:lightsalmon;border-color:lightsalmon;color:white',id='close')  Сообщите мне о запуске  
       .main.container(style='min-height:100vh;z-index:2;background-color:#eee;') 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script.
@@ -135,8 +135,8 @@ head
       if (parsed.trouble === 1)
       {alert('Недействительный адрес, ошиблись?');}
       else {
-       $('#insert').empty();
-       $('#insert').append("<h4 style='color:black;font-family:bt;font-weight:bold;font-size:4vw;'>До связи!</h4>");
+       $('#msg').empty();
+       $('#msg').append("<div class='row'><div class='col-xs-12'><h1 style='color:white;margin-top:35vh;font-size:45px;font-family:roboto-thin;letter-spacing:2px;text-transform:uppercase;'> До связи !</h1></div></div>");
       }}
       };
       request.open('POST','/keepintouch', true);
