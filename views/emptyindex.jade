@@ -94,6 +94,10 @@ head
           outline:0px !important;
           -webkit-appearance:none;
       }
+      .main {
+        filter:brightness(0,7);
+        filter:grayscale(0.5);
+      }
   body
     script.
       if(screen.width < 414){
@@ -117,9 +121,9 @@ head
         #msg.container(style='margin-bottom:60px;')
           .row
             .col-xs-12(style='text-align:center;')
-              h1(style='margin-top:25vh;font-size:45px;font-family:roboto-thin;letter-spacing:2px;text-transform:uppercase;') Новые места
-              h1(style='margin-top:20px;font-size:45px;font-family:roboto-thin;letter-spacing:2px;text-transform:uppercase;') Виртуальные туры
-              h1(style='margin-top:20px;font-size:45px;font-family:roboto-thin;letter-spacing:2px;text-transform:uppercase;') Рейтинги
+              h1(style='color:white;margin-top:25vh;font-size:45px;font-family:roboto-thin;letter-spacing:2px;text-transform:uppercase;') Новые места
+              h1(style='color:white;margin-top:20px;font-size:45px;font-family:roboto-thin;letter-spacing:2px;text-transform:uppercase;') Виртуальные туры
+              h1(style='color:white;margin-top:20px;font-size:45px;font-family:roboto-thin;letter-spacing:2px;text-transform:uppercase;') Рейтинги
             //
               .col-xs-4
                 h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Новые места
