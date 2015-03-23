@@ -35,6 +35,11 @@ head
       body {
       min-width:768px;
       background-color:#ddd;
+      background-image: url(bootstrap/images/mainbg.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
       }
       h5{
       letter-spacing:2px;
@@ -88,13 +93,6 @@ head
           outline:0px !important;
           -webkit-appearance:none;
       }
-      .main{
-      background-image: url(bootstrap/images/mainbg.jpg) no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      }
   body
     script.
       if(screen.width < 414){
@@ -136,8 +134,7 @@ head
               form(class='form-signin') 
                 input(type='email' id='mail' class='form-control' placeholder='chief@yandex.ru')
                 button(type='button',id='mailsubmit',class='btn btn-lg btn-block',style='margin-top:20px;border-radius:30px;background-color:lightsalmon;border-color:lightsalmon;color:white')  Сообщите мне о запуске  
-      .main.container(style='padding:0px;width:100%;min-height:100vh;z-index:2;') 
-        img(style='width:100%;',src='/bootstrap/images/mainbg.jpg')
+      .main.container(style='min-height:100vh;z-index:2;') 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script.
       if(screen.width == 768) {
