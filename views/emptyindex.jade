@@ -136,7 +136,7 @@ head
           .row(style='margin-top:10px;')
             #trbl.col-xs-6.col-xs-offset-3
 
-          .row  
+          #getmail.row  
             .col-xs-12(style='text-align:center;')
               form(class='form-signin') 
                 input(type='email' id='mail' class='form-control' placeholder='chief@yandex.ru')
@@ -145,7 +145,7 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script.
       if(screen.width == 768) {
-        $('#insert').css('padding-top','15%');
+        $('#getmail').css('padding-top','15%');
       }
       $('#mailsubmit').click(mail);
       function mail() {
