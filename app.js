@@ -130,13 +130,12 @@ app.get('/',function(req,res) {
         var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
         var mnum = d.getMonth();
         var monthinsert = months[mnum]+year;
-        var mnumprocessed= mnum+1;
         if(doc.length === 5)
         {doc = doc.splice(0, 4);
           console.log('SENDING '+doc.length+'DOCUMENTS');
-                res.render('index',{'doc':JSON.stringify(doc),'more':1,'month':monthinsert,'currentmonth':mnumprocessed});}
+                res.render('index',{'doc':JSON.stringify(doc),'more':1,'month':monthinsert});}
         else {
-         res.render('index',{'doc':JSON.stringify(doc),'more':0,'month':monthinsert,'currentmonth':mnumprocessed}); 
+         res.render('index',{'doc':JSON.stringify(doc),'more':0,'month':monthinsert}); 
         }
       }
       else{
