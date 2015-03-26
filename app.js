@@ -1319,7 +1319,6 @@ app.post('/admin/simulateemptyplacewithdate',function(req,res){
          });
          res.redirect('http://recentones.com/admin/placelist');
          console.log('PLACE SIMULATED');
-         res.redirect('http:/recentones.com');
        }
        else{
          places.insert({
@@ -1339,7 +1338,6 @@ app.post('/admin/simulateemptyplacewithdate',function(req,res){
          });
          res.redirect('http://recentones.com/admin/placelist');
          console.log('PLACE SIMULATED');
-         res.redirect('http:/recentones.com');
        }
      }
    });
