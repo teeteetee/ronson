@@ -113,7 +113,7 @@ head
       .main.container(style='margin-top:50px;z-index:2;') 
         .row
           .col-xs-12(style='text-align:center;')
-            h1(style='margin-bottom:10px;margin-top:20px;font-family:high;font-size:45px;letter-spacing:2px;') #{month}   
+            h1(style='margin-bottom:0px;margin-top:20px;font-family:high;font-size:45px;letter-spacing:2px;') #{month}   
         .row
           #inserts.col-xs-12(style='text-align:center;')
       footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
@@ -234,8 +234,8 @@ head
                   var tmphnum =xx*2;
                   console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month));
                   if(parseInt(toplist[tmphnum].founddate.month)<currentmonth)
-                  { var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;
-                    $('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:10px;font-family:high;font-size:45px;letter-spacing:2px;>"+months[tmpmonth]+"</h1></div></div>");}
+                  { var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;console.log('INSERTING MONTH HEADER');
+                    $('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:0px;font-family:high;font-size:45px;letter-spacing:2px;>"+months[tmpmonth]+"</h1></div></div>");}
                   $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rnum+"'></div>");
                   for (var i=0;i<2;i++){
                     var cellnum = xx*2+i+1;
