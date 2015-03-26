@@ -1279,6 +1279,8 @@ app.post('/admin/simulateemptyplace',function(req,res){
 
 app.post('/admin/simulateemptyplacewithdate',function(req,res){
    console.log('simulating place with date');
+   console.log(req);
+   console.log(JSON.stringify(req));
    // example 20140321
    console.log(req.body.founddate);
    console.log(req.body.foundday);
