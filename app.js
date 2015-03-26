@@ -1307,7 +1307,7 @@ app.post('/admin/simulateemptyplacewithdate',function(req,res){
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
          founddateint:vfounddateint,
-         founddate:{day:vfounday,month:vfoundmonth,year:vfoundyear},
+         founddate:{day:vfoundday,month:vfoundmonth,year:vfoundyear},
          regdate:{day:vregday,month:vregmonth,year:vregyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
@@ -1319,6 +1319,7 @@ app.post('/admin/simulateemptyplacewithdate',function(req,res){
          });
          res.redirect('http://recentones.com/admin/placelist');
          console.log('PLACE SIMULATED');
+         res.redirect('http:/recentones.com');
        }
        else{
          places.insert({
@@ -1326,7 +1327,7 @@ app.post('/admin/simulateemptyplacewithdate',function(req,res){
          placenameru : 'Тестхостел',
          placenameen : 'Testhostel',
          founddateint:vfounddateint,
-         founddate:{day:'01',month:'02',year:'2014'},
+         founddate:{day:vfoundday,month:vfoundmonth,year:vfoundyear},
          regdate:{day:vregday,month:vregmonth,year:vregyear},
          adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
@@ -1338,6 +1339,7 @@ app.post('/admin/simulateemptyplacewithdate',function(req,res){
          });
          res.redirect('http://recentones.com/admin/placelist');
          console.log('PLACE SIMULATED');
+         res.redirect('http:/recentones.com');
        }
      }
    });
