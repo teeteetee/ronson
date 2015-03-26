@@ -91,7 +91,7 @@ head
               button(type="button",class="btn btn-default",id='new') Добавить без панорамы
             .btn-group(role="group")
               button(type="button",class="btn btn-default",id='new3') Добавить c датой
-      #withdate.row(style='padding-top:10px;padding-bottom:10px;text-align:center;background-color:gray;') 
+      #withdate.row(style='padding-top:10px;padding-bottom:10px;text-align:center;background-color:gray;display:none;') 
         .col-xs-12
           form(role='form',action='/admin/simulateemptyplacewithdate',method='post',enctype='multipart/form-data')
             .form-group
@@ -123,7 +123,7 @@ head
                 span(class="input-group-addon") Год основания
                 input(type="text",class="form-control",aria-describedby="sizing-addon1",name='foundyear',placeholder='2014') 
             .form-group(style='text-align:center;')   
-              button(class='btn btn-primary',type='submit',style='margin-top:20px;border-radius:30px;background-color:teal;color:white;') Создать 
+              button(class='btn btn-success',type='submit',style='margin-top:20px;border-radius:30px;') Создать 
       //
         .col-xs-6
           form(action='/admin/simulateplace',method='post',style='margin:0px;')  
