@@ -242,15 +242,15 @@ head
                   for (var i=0;i<2;i++){
                     var cellnum = xx*2+i+1;
                     var hnum = cellnum-1;
-                    //inserting month header if new month
+                    if(i===1)
+                    {
+                      //inserting month header if new month
                     console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month)+', currnet month is: '+currentmonth);
                     if(parseInt(toplist[tmphnum].founddate.month)<currentmonth)
                     { var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;console.log('INSERTING MONTH HEADER');$('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:0px;font-family:high;font-size:45px;letter-spacing:2px;''>"+months[tmpmonth]+"</h1></div></div>");
                       console.log('SHOULD HAVE INSERTED MONTH');
                     }
                     //end of month header insert
-                    if(i===1)
-                    {
                      var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].founddate.day+"."+toplist[hnum].founddate.month+"."+toplist[hnum].founddate.year+"</h6></li></ul></div>";
                                 eval("$('#row"+rnum+"').append(insert);");
                                 currentmonth=parseInt(toplist[hnum].founddate.month);
@@ -261,7 +261,14 @@ head
                     }
                     }
                     else 
-                    {var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].founddate.day+"."+toplist[hnum].founddate.month+"."+toplist[hnum].founddate.year+"</h6></li></ul></div>";
+                    {//inserting month header if new month
+                    console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month)+', currnet month is: '+currentmonth);
+                    if(parseInt(toplist[tmphnum].founddate.month)<currentmonth)
+                    { var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;console.log('INSERTING MONTH HEADER');$('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:0px;font-family:high;font-size:45px;letter-spacing:2px;''>"+months[tmpmonth]+"</h1></div></div>");
+                      console.log('SHOULD HAVE INSERTED MONTH');
+                    }
+                    //end of month header insert
+                      var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].founddate.day+"."+toplist[hnum].founddate.month+"."+toplist[hnum].founddate.year+"</h6></li></ul></div>";
                                 eval("$('#row"+rnum+"').append(insert);");}
                                 currentmonth=parseInt(toplist[hnum].founddate.month);
                                 console.log('SET CURRENTMONTH TO '+currentmonth);
