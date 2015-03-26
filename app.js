@@ -1280,7 +1280,7 @@ app.post('/admin/simulateemptyplace',function(req,res){
 app.post('/admin/simulateemptyplacewithdate',function(req,res){
    console.log('simulating place with date');
    // example 20140321
-   console.log('REQ BODY IS: '+JSON.stringify(req.body, null, 4));
+   console.log('REQ BODY IS: '+JSON.stringify(req.body));
    var vfounddate = req.body.founddate;
    console.log(vfounddate);
    if(typeof vfounddate != 'number') {
