@@ -232,7 +232,7 @@ head
                   var rnum = (xx+1)*multiplier;
                   var tmphnum =xx*2;
                   //inserting month header if new month
-                  console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month));
+                  console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month)+', currnet month is: '+currentmonth);
                   if(parseInt(toplist[tmphnum].founddate.month)<currentmonth)
                   { var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;console.log('INSERTING MONTH HEADER');$('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:0px;font-family:high;font-size:45px;letter-spacing:2px;''>"+months[tmpmonth]+"</h1></div></div>");
                     console.log('SHOULD HAVE INSERTED MONTH');
@@ -243,7 +243,7 @@ head
                     var cellnum = xx*2+i+1;
                     var hnum = cellnum-1;
                     //inserting month header if new month
-                    console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month));
+                    console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month)+', currnet month is: '+currentmonth);
                     if(parseInt(toplist[tmphnum].founddate.month)<currentmonth)
                     { var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;console.log('INSERTING MONTH HEADER');$('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:0px;font-family:high;font-size:45px;letter-spacing:2px;''>"+months[tmpmonth]+"</h1></div></div>");
                       console.log('SHOULD HAVE INSERTED MONTH');
