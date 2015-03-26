@@ -93,7 +93,7 @@ head
               button(type="button",class="btn btn-default",id='new3') Добавить c датой
       #withdate.row(style='padding-top:10px;padding-bottom:10px;text-align:center;background-color:gray;display:none;') 
         .col-xs-12
-          form(role='form',action='/admin/simulateemptyplacewithdate',method='post',enctype='multipart/form-data')
+          form(action='/admin/simulateemptyplacewithdate',method='post',role='form', enctype='multipart/form-data')
             .form-group
               .input-group
                 span(class="input-group-addon") Дата основания (одним числом) 
