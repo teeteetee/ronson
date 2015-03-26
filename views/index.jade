@@ -112,7 +112,7 @@ head
               button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close') Пропустите !  
       .main.container(style='margin-top:50px;z-index:2;') 
         .row
-          .col-xs-12(style='text-align:center;')
+          .col-xs-12(style='text-align:center;',id='monthheader')
             h1(style='margin-bottom:0px;margin-top:20px;font-family:high;font-size:45px;letter-spacing:2px;') #{month}   
         .row
           #inserts.col-xs-12(style='text-align:center;')
@@ -164,12 +164,7 @@ head
         //// THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
         //request.send("query="+query); 
         //}
-        var morecount =1;
-        var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
-        var currentmonth = #{currentmonth};
-        console.log('CURRENT MONTH: '+currentmonth);
-        //last place id
-        var moreid = 0;
+        // LOGO COLOURING
         var logocount=0;
         $('#logo').mouseenter(function(){
           if(logocount<3)
@@ -204,128 +199,67 @@ head
                         break;}
             }
           });
-        var toplist = !{doc};
-        //if(toplist.length<4){
-        //  $('#wrap').css('height','100vh');
-        //}
-        if(more===1){
-         $('#morebutton').css('display','block');
-        }
-        function populate(toplist,multiplier) {console.log("first time: "+toplist);
-                //toplist = JSON.parse(toplist);
-                //console.log("second time: "+toplist);
-                morecount++;
-                var left = toplist.length%2;
-                console.log('LEFT IS: '+left);
-                var times = (toplist.length-left)/2;
-                console.log('TIMES IS: '+times);
-                if(toplist.length<2){
-                  $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+1*multiplier+"'></div>");
-                  for (var i=0;i<toplist.length;i++){
-                    var cellnum = i+1;
-                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><a href='http://recentones.com/places/"+toplist[i].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[i].mainpreview+"' ></a></div>";
-                    eval("$('#row1').append(insert);");
-                  }
+        
+        function populate(toplist) {
+          var left = toplist.length%2;
+          var cycles = (toplist-left)/2;
+          for(var xx=0;xx<cycles;xx++){
+            $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
+            //branch for outputting left
+            if(xx+1 === cycles && left) {
+              xx++;
+              $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
+              var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[xx].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
+                eval("$('#row"+xx+"').append(insert);");
+            }
+            else {
+              
+                for(var yy=0;yy<2;yy++){
+                var listnum = xx+yy;
+                var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
+                eval("$('#row"+xx+"').append(insert);");
                 }
-                else{
-                for (var xx=0;xx<times;xx++){ 
-                  var rnum = (xx+1)*multiplier;
-                  var tmphnum =xx*2;
-                  //inserting month header if new month
-                  console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month)+', currnet month is: '+currentmonth);
-                  if(parseInt(toplist[tmphnum].founddate.month)<currentmonth)
-                  { var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;console.log('INSERTING MONTH HEADER');$('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:0px;font-family:high;font-size:45px;letter-spacing:2px;''>"+months[tmpmonth]+"</h1></div></div>");
-                    console.log('SHOULD HAVE INSERTED MONTH');
-                  }
-                  //end of month header insert
-                  $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rnum+"'></div>");
-                  for (var i=0;i<2;i++){
-                    var cellnum = xx*2+i+1;
-                    var hnum = cellnum-1;
-                    if(i===1)
-                    {
-                      //inserting month header if new month
-                    console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month)+', currnet month is: '+currentmonth);
-                    if(parseInt(toplist[tmphnum].founddate.month)<currentmonth)
-                    { var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;console.log('INSERTING MONTH HEADER');$('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:0px;font-family:high;font-size:45px;letter-spacing:2px;''>"+months[tmpmonth]+"</h1></div></div>");
-                      console.log('SHOULD HAVE INSERTED MONTH');
-                    }
-                    //end of month header insert
-                     var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].founddate.day+"."+toplist[hnum].founddate.month+"."+toplist[hnum].founddate.year+"</h6></li></ul></div>";
-                                eval("$('#row"+rnum+"').append(insert);");
-                                currentmonth=parseInt(toplist[hnum].founddate.month);
-                                console.log('SET CURRENTMONTH TO '+currentmonth);
-                    if(xx+1 === times && moreid<toplist[hnum].pid){
-                      moreid = toplist[hnum].pid;
-                        console.log('MOREID: '+moreid);
-                    }
-                    }
-                    else 
-                    {//inserting month header if new month
-                    console.log('founddate month '+parseInt(toplist[tmphnum].founddate.month)+', currnet month is: '+currentmonth);
-                    if(parseInt(toplist[tmphnum].founddate.month)<currentmonth)
-                    { var tmpmonth = parseInt(toplist[tmphnum].founddate.month)-1;console.log('INSERTING MONTH HEADER');$('#inserts').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h1 style='margin-bottom:20px;margin-top:0px;font-family:high;font-size:45px;letter-spacing:2px;''>"+months[tmpmonth]+"</h1></div></div>");
-                      console.log('SHOULD HAVE INSERTED MONTH');
-                    }
-                    //end of month header insert
-                      var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].founddate.day+"."+toplist[hnum].founddate.month+"."+toplist[hnum].founddate.year+"</h6></li></ul></div>";
-                                eval("$('#row"+rnum+"').append(insert);");}
-                                currentmonth=parseInt(toplist[hnum].founddate.month);
-                                console.log('SET CURRENTMONTH TO '+currentmonth);
-                  }
-                  if(rnum===times && left != 2 && left != 0){
-                  console.log('ODD TOPLIST LENGTH, INSERTTING SILNGLE COL-XS-6');
-                  for (var yy=0;yy<left;yy++){
-                    var leftrow = rnum+1;
-                   $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+leftrow*multiplier+"'></div>");
-                   var cellnum = rnum*2+yy+1;
-                   console.log('cellnum: '+cellnum);
-                   var hnum = cellnum-1;
-                   console.log('hnum: '+hnum);
-                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].founddate.day+"."+toplist[hnum].founddate.month+"."+toplist[hnum].founddate.year+"</h6></li></ul></div>";
-                    eval("$('#row"+leftrow+"').append(insert);");
-                    if(yy+1 == left && moreid<toplist[hnum].pid){
-                      moreid = toplist[hnum].pid;
-                        console.log('MOREID: '+moreid);
-                    }
-                  }
-                }}
-         }
-         }   
-         $('#more').click(function(){
-          request = new XMLHttpRequest();
-          request.onreadystatechange = function () {
-          var DONE = this.DONE || 4;
-          if (this.readyState === DONE){
-          parsed = JSON.parse(request.responseText);
-          console.log(parsed);
-          if(parsed.trouble === 1)
-          {
-          console.log('TROUBLE === 1');
-          switch (parsed.mtext){
-          case('db'):
-          alert('Sorry, our database is being updated');
-          break;
-          case('empty'):
-          alert('EMPTY');
-          break;
-          }}
-          else {
-          //trouble === 0
-          toplist = parsed.mdata;
-          populate(toplist,morecount);
-          //$("html, body").animate({ scrollTop: $("#morebutton").scrollTop() }, 1000);
-           if(parsed.more === 0){
-            $('#morebutton').css('display','none');
-           }
-          }
-          }
-          };
-          request.open('POST', '/more', true);
-          request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-          request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          //Most libraries like jQuery/Prototype/Dojo do this
-          request.send('mult='+moreid);
-          });
-          populate(toplist,1);
+            
+
+            }//else from outputting left
+          }//for main cycle
+        }
+
+        $('#more').click(function(){
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        switch (parsed.mtext){
+        case('db'):
+        alert('Sorry, our database is being updated');
+        break;
+        case('empty'):
+        alert('EMPTY');
+        break;
+        }}
+        else {
+        //trouble === 0
+        toplist = parsed.mdata;
+        //populate is modified , check if suitable
+        populate(toplist,morecount);
+        //$("html, body").animate({ scrollTop: $("#morebutton").scrollTop() }, 1000);
+        if(parsed.more === 0){
+        $('#morebutton').css('display','none');
+        }
+        }
+        }
+        };
+        request.open('POST', '/more', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        request.send('mult='+moreid);
+        });
+        populate(toplist);
            

@@ -112,6 +112,8 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
+  var year = d.getUTCFullYear().toString();;
+  year = "'"+year.substr(2);
   //res.send('UNDER CONSTRUCTION');
   places.find({},{ limit:5,sort : { founddateint : -1 } },function(err,doc){
     if(err)
@@ -127,13 +129,14 @@ app.get('/',function(req,res) {
         }
         var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
         var mnum = d.getMonth();
+        var monthinsert = months[mnum]+year;
         var mnumprocessed= mnum+1;
         if(doc.length === 5)
         {doc = doc.splice(0, 4);
           console.log('SENDING '+doc.length+'DOCUMENTS');
-                res.render('index',{'doc':JSON.stringify(doc),'more':1,'month':months[mnum],'currentmonth':mnumprocessed});}
+                res.render('index',{'doc':JSON.stringify(doc),'more':1,'month':monthinsert,'currentmonth':mnumprocessed});}
         else {
-         res.render('index',{'doc':JSON.stringify(doc),'more':0,'month':months[mnum],'currentmonth':mnumprocessed}); 
+         res.render('index',{'doc':JSON.stringify(doc),'more':0,'month':monthinsert,'currentmonth':mnumprocessed}); 
         }
       }
       else{
