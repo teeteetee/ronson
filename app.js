@@ -1281,6 +1281,7 @@ app.post('/admin/simulateemptyplacewithdate',function(req,res){
    console.log('simulating place with date');
    // example 20140321
    var vfounddate = req.body.founddate;
+   console.log(vfounddate);
    if(typeof vfounddate != 'number') {
     vfounddateint = parseInt(req.body.founddate);
    }
@@ -1292,55 +1293,55 @@ app.post('/admin/simulateemptyplacewithdate',function(req,res){
    var vfoundday = req.body.foundday;
    var vfoundmonth = req.body.foundmonth;
    var vfoundyear = req.body.foundyear;
-   console.log(typeof vfounday)
-   places.find({},{limit:1,sort:{pid:-1}},function(err,doc){
-     if(err){
-      res.send('db error');
-     }
-     else {
-       console.log('DOC LENGTH: '+doc.length)
-       if(doc.length>0){
-         var newid = doc[0].pid;
-         newid++;
-         places.insert({
-         placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
-         placenameru : 'Тестхостел',
-         placenameen : 'Testhostel',
-         founddateint:vfounddateint,
-         founddate:{day:vfoundday,month:vfoundmonth,year:vfoundyear},
-         regdate:{day:vregday,month:vregmonth,year:vregyear},
-         adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
-         adressen: 'Somefucking emb. 10 bld.3 flat 12',
-         contacts:{phone:'+7XXXXXXXXXX',www:'http://recentones.com/bobo'},
-         pid: newid,
-         pano:0,
-         mainpreview:'/bootstrap/images/sample1.jpg',
-         xml:'/bootstrap/images/emptypano.xml'
-         });
-         res.redirect('http://recentones.com/admin/placelist');
-         console.log('PLACE SIMULATED');
-       }
-       else{
-         places.insert({
-         placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
-         placenameru : 'Тестхостел',
-         placenameen : 'Testhostel',
-         founddateint:vfounddateint,
-         founddate:{day:vfoundday,month:vfoundmonth,year:vfoundyear},
-         regdate:{day:vregday,month:vregmonth,year:vregyear},
-         adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
-         adressen: 'Somefucking emb. 10 bld.3 flat 12',
-         contacts:{phone:'+7XXXXXXXXXX',www:'http://recentones.com/bobo'},
-         pid: 1,
-         pano:0,
-         mainpreview:'/bootstrap/images/sample1.jpg',
-         xml:'/bootstrap/images/emptypano.xml'
-         });
-         res.redirect('http://recentones.com/admin/placelist');
-         console.log('PLACE SIMULATED');
-       }
-     }
-   });
+   console.log(typeof vfoundday)
+   //places.find({},{limit:1,sort:{pid:-1}},function(err,doc){
+   //  if(err){
+   //   res.send('db error');
+   //  }
+   //  else {
+   //    console.log('DOC LENGTH: '+doc.length)
+   //    if(doc.length>0){
+   //      var newid = doc[0].pid;
+   //      newid++;
+   //      places.insert({
+   //      placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
+   //      placenameru : 'Тестхостел',
+   //      placenameen : 'Testhostel',
+   //      founddateint:vfounddateint,
+   //      founddate:{day:vfoundday,month:vfoundmonth,year:vfoundyear},
+   //      regdate:{day:vregday,month:vregmonth,year:vregyear},
+   //      adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+   //      adressen: 'Somefucking emb. 10 bld.3 flat 12',
+   //      contacts:{phone:'+7XXXXXXXXXX',www:'http://recentones.com/bobo'},
+   //      pid: newid,
+   //      pano:0,
+   //      mainpreview:'/bootstrap/images/sample1.jpg',
+   //      xml:'/bootstrap/images/emptypano.xml'
+   //      });
+   //      res.redirect('http://recentones.com/admin/placelist');
+   //      console.log('PLACE SIMULATED');
+   //    }
+   //    else{
+   //      places.insert({
+   //      placename:['Тестхостел','Testhostel','testhostel','тестхостел'],
+   //      placenameru : 'Тестхостел',
+   //      placenameen : 'Testhostel',
+   //      founddateint:vfounddateint,
+   //      founddate:{day:vfoundday,month:vfoundmonth,year:vfoundyear},
+   //      regdate:{day:vregday,month:vregmonth,year:vregyear},
+   //      adressru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+   //      adressen: 'Somefucking emb. 10 bld.3 flat 12',
+   //      contacts:{phone:'+7XXXXXXXXXX',www:'http://recentones.com/bobo'},
+   //      pid: 1,
+   //      pano:0,
+   //      mainpreview:'/bootstrap/images/sample1.jpg',
+   //      xml:'/bootstrap/images/emptypano.xml'
+   //      });
+   //      res.redirect('http://recentones.com/admin/placelist');
+   //      console.log('PLACE SIMULATED');
+   //    }
+   //  }
+   //});
 });
 
 
