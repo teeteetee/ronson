@@ -89,6 +89,41 @@ head
               button(type="button",class="btn btn-default",id='new2') Добавить пустое
             .btn-group(role="group")
               button(type="button",class="btn btn-default",id='new') Добавить без панорамы
+            .btn-group(role="group")
+              button(type="button",class="btn btn-default",id='new3') Добавить c датой
+      #withdate.row(style='padding-top:10px;padding-bottom:10px;text-align:center;background-color:gray;') 
+        .col-xs-12
+          form(role='form',action='/admin/simulateemptyplacewithdate',method='post',enctype='multipart/form-data')
+            .form-group
+              .input-group
+                span(class="input-group-addon") Дата основания (одним числом) 
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='founddate',placeholder='20140321')
+            .form-group
+              .input-group
+                span(class="input-group-addon") День регистрации 
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='regday',placeholder='01')
+            .form-group
+              .input-group
+                span(class="input-group-addon") Месяц регистрации 
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='regmonth',placeholder='05')
+            .form-group
+              .input-group
+                span(class="input-group-addon") Год регистрации 
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='regyear',placeholder='2014')
+            .form-group
+              .input-group
+                span(class="input-group-addon") День основания
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='foundday',placeholder='13')
+            .form-group
+              .input-group
+                span(class="input-group-addon") Месяц основания
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='foundmonth',placeholder='05')
+            .form-group
+              .input-group
+                span(class="input-group-addon") Год основания
+                input(type="text",class="form-control",aria-describedby="sizing-addon1",name='foundyear',placeholder='2014') 
+            .form-group(style='text-align:center;')   
+              button(class='btn btn-primary',type='submit',style='margin-top:20px;border-radius:30px;background-color:teal;color:white;') Создать 
       //
         .col-xs-6
           form(action='/admin/simulateplace',method='post',style='margin:0px;')  
@@ -154,6 +189,7 @@ head
                 button(class='btn btn-primary',type='submit',style='margin-top:10px;margin-bottom:10px;') Добавить 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')       
       script.
+        $('#new3').click(function(){$('#withdate').slideToggle();})
         $('#new').click(function(){$.post("/admin/simulateplace")}); 
         $('#new2').click(function(){$.post("/admin/simulateemptyplace")});
         var xmlcount = 0;
