@@ -262,7 +262,7 @@ head
                    console.log('cellnum: '+cellnum);
                    var hnum = cellnum-1;
                    console.log('hnum: '+hnum);
-                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img class='img-rounded' style='width:100%;' src='"+toplist[hnum].mainpreview+"' ></a></div>";
+                    var insert = "<div class='col-xs-6'  id='ratcell"+cellnum*multiplier+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[hnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[hnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[hnum].placenameru+"</h2><h6>"+toplist[hnum].founddate.day+"."+toplist[hnum].founddate.month+"."+toplist[hnum].founddate.year+"</h6></li></ul></div>";
                     eval("$('#row"+leftrow+"').append(insert);");
                     if(yy+1 == left && moreid<toplist[hnum].pid){
                       moreid = toplist[hnum].pid;
