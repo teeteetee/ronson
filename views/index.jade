@@ -204,6 +204,7 @@ head
         function populate(toplist) {
           var left = toplist.length%2;
           var cycles = (toplist-left)/2;
+          console.log('cycles: '+cycles+', left: '+left);
           for(var xx=0;xx<cycles;xx++){
             $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
             //branch for outputting left
