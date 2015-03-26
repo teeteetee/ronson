@@ -119,8 +119,9 @@ app.get('/',function(req,res) {
       res.render('emptyindex');
     }
     else {
+      console.log(doc);
       if(doc.length>0)
-      { for (var yy = 0;yy<4;yy++)
+      { for (var yy = 0;yy<doc.length;yy++)
         {
           console.log('PLACE ID: '+doc[yy].pid+', FOUNDDATE: '+doc[yy].founddateint);
         }
