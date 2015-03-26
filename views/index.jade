@@ -125,6 +125,9 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         var more = #{more};
+        if(more===1){
+         $('#morebutton').css('display','block');
+        }
         $('#close').click(function(){
           $("#welcome").css("display","none");
           $('.main').css({'filter':'blur(0px) brightness(1)','-o-filter':'blur(0px) brightness(1)','-moz-filter':'blur(0px) brightness(1)','-webkit-filter':'blur(0px) brightness(1)'});
