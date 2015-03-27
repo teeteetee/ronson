@@ -128,7 +128,7 @@ head
                   a(href='#',id='more') Еще
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
-        var modrownum = 2;
+        var rownum = 0;
         var lastfounddate;
         var more = #{more};
         if(more===1){
@@ -216,13 +216,14 @@ head
           console.log('cycles: '+cycles+', left: '+left);
           if(funcmore===0)
           {for(var xx=0;xx<cycles;xx++){
-                      $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
+                      console.log(rownum);
+                      $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rownum+"'></div>");
                       //branch for outputting left
                       if(xx+1 === cycles && left) {
                         xx=(xx+1)*2;
-                        $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
+                        $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rownum+"'></div>");
                         var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[xx].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
-                          eval("$('#row"+xx+"').append(insert);");
+                          eval("$('#row"+rownum+"').append(insert);");
                         lastfounddate=toplist[xx].founddateint;
                       }
                       else {
@@ -231,28 +232,31 @@ head
                           if(yy===0)
                           {var listnum = xx*2;
                            var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
-                           eval("$('#row"+xx+"').append(insert);");}
+                           eval("$('#row"+rownum+"').append(insert);");}
                           else {
                             var listnum = xx*2+1;
                            var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
-                           eval("$('#row"+xx+"').append(insert);");
+                           eval("$('#row"+rownum+"').append(insert);");
                            lastfounddate=toplist[listnum].founddateint;
                           }
                           }//for populating row
                       
                       }//else from outputting left
+                      rownum++;
+                      console.log(rownum);
                     }//for main cycle
-
+                
                   }
           else {
              for(var xx=0;xx<cycles;xx++){
-                      $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx*modrownum+"'></div>");
+                      console.log(rownum);
+                      $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rownum+"'></div>");
                       //branch for outputting left
                       if(xx+1 === cycles && left) {
                         xx=(xx+1)*2;
-                        $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx*modrownum+"'></div>");
+                        $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rownum+"'></div>");
                         var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[xx].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
-                          eval("$('#row"+xx*modrownum+"').append(insert).fadeIn(Slow);");
+                          eval("$('#row"+rownum+"').append(insert).fadeIn(Slow);");
                         lastfounddate=toplist[xx].founddateint;
                       }
                       else {
@@ -261,18 +265,19 @@ head
                           if(yy===0)
                           {var listnum = xx*2;
                            var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
-                           eval("$('#row"+xx*modrownum+"').append(insert).fadeIn(Slow);");}
+                           eval("$('#row"+rownum+"').append(insert).fadeIn(Slow);");}
                           else {
                             var listnum = xx*2+1;
                            var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
-                           eval("$('#row"+xx*modrownum+"').append(insert).fadeIn(Slow);");
+                           eval("$('#row"+rownum+"').append(insert).fadeIn(Slow);");
                            lastfounddate=toplist[listnum].founddateint;
                           }
                           }//for populating row
                       
                       }//else from outputting left
+                      rownum++;
+                      console.log(rownum);
                     }//for main cycle
-                modrownum++;
           }
         }
 
