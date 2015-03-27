@@ -245,12 +245,14 @@ head
           else {
              $('#inserts').append("<div class='loadwrap' id='loadwrap"+loadwrapcount+"'></div>");
             for(var xx=0;xx<cycles;xx++){
-                      $('#loadwrap'+loadwrapcount).append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx*loadwrapcount+"'></div>");
+                      var insert = "<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx*loadwrapcount+"'></div>";
+                      eval("$('#loadwrap"+loadwrapcount+"').append(insert);");
                       //branch for outputting left
                       if(xx+1 === cycles && left) {
                         xx=(xx+1)*2;
-                        $('#loadwrap'+loadwrapcount).append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx*loadwrapcount+"'></div>");
-                        var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[xx].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
+                         insert = "<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx*loadwrapcount+"'></div>";
+                        eval("$('#loadwrap"+loadwrapcount+"').append(insert);");
+                         insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[xx].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
                           eval("$('#row"+xx+"').append(insert);");
                         lastfounddate=toplist[xx].founddateint;
                       }
