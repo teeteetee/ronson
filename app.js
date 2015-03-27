@@ -154,7 +154,8 @@ app.get('/',function(req,res) {
     //places.find({pid: { $gt : lastpid }},{ limit:5,sort:{pid:1} },function(err,doc){
     places.find({founddateint:{$lt: lastfounddate}},{limit:5,sort:{founddateint:-1}},function(err,doc){
     if(err)
-    {
+    { 
+      console.log(err);
       res.send(ms);
     }
     else {
