@@ -210,11 +210,11 @@ head
             }
           });
         
-        function populate(toplist,more) {
+        function populate(toplist,funcmore) {
           var left = toplist.length%2;
           var cycles = (toplist.length-left)/2;
           console.log('cycles: '+cycles+', left: '+left);
-          if(more===0)
+          if(funcmore===0)
           {for(var xx=0;xx<cycles;xx++){
                       $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
                       //branch for outputting left
@@ -239,9 +239,10 @@ head
                            lastfounddate=toplist[listnum].founddateint;
                           }
                           }//for populating row
-                          $('#inserts').append("<div class='loadwrap' id='loadwrap"+loadwrapcount+"'></div>");
+                      
                       }//else from outputting left
                     }//for main cycle
+                    $('#inserts').append("<div class='loadwrap' id='loadwrap"+loadwrapcount+"'></div>");
                   }
           else {
             for(var xx=0;xx<cycles;xx++){
