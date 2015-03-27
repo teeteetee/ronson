@@ -246,6 +246,7 @@ head
              $('#inserts').append("<div class='loadwrap' id='loadwrap"+loadwrapcount+"'></div>");
             for(var xx=0;xx<cycles;xx++){
                       var insert = "<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx*loadwrapcount+"'></div>";
+                      console.log(insert);
                       eval("$('#loadwrap"+loadwrapcount+"').append(insert);");
                       //branch for outputting left
                       if(xx+1 === cycles && left) {
