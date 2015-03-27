@@ -146,14 +146,13 @@ app.get('/',function(req,res) {
 });
 
   app.post('/more',function(req,res){
-    console.log(req.body.mult);
-    var lastpid = parseInt(req.body.mult);
+    var lastfounddate = parseInt(req.body.lastfounddate);
     var ms= {};
     ms.trouble = 1;
     ms.mtext = 'db';
     console.log(lastpid)
     //places.find({pid: { $gt : lastpid }},{ limit:5,sort:{pid:1} },function(err,doc){
-    places.find({pid:{$lt: lastpid}},{limit:5,sort:{founddateint:-1}},function(err,doc){
+    places.find({vfounddate:{$lt: lastfounddate}},{limit:5,sort:{founddateint:-1}},function(err,doc){
     if(err)
     {
       res.send(ms);
@@ -1303,6 +1302,7 @@ app.post('/admin/simulateemptyplacewithdate',function(req,res){
    var vfoundday = req.body.foundday;
    var vfoundmonth = req.body.foundmonth;
    var vfoundyear = req.body.foundyear;
+  
    console.log(typeof vfoundday)
    places.find({},{limit:1,sort:{pid:-1}},function(err,doc){
      if(err){
