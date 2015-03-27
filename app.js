@@ -173,7 +173,7 @@ app.get('/',function(req,res) {
         {
           console.log('PLACE ID: '+doc[yy].pid+', FOUNDDATE: '+doc[yy].founddateint);
         }
-        doc = doc.splice(0, 4);
+        doc = doc.splice(-0, 4);
         ms.trouble = 0;
         ms.more = 1;
         ms.mdata = doc;
