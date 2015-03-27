@@ -250,8 +250,8 @@ head
           else {
              for(var xx=0;xx<cycles;xx++){
                       console.log('MORE rownum is: '+rownum);
-                      var insert ="<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rownum+"'></div>";
-                      $(insert).hide().appendTo('#inserts').fadeIn('slow');
+                      var insert ="<div class='row' style='margin-top:15px;margin-bottom:15px;display:none;' id='row"+rownum+"'></div>";
+                      $(insert).appendTo('#inserts');
                       //branch for outputting left
                       if(xx+1 === cycles && left) {
                         xx=(xx+1)*2;
@@ -277,6 +277,7 @@ head
                           }//for populating row
                       
                       }//else from outputting left
+                      eval("$('#row"+rownum+"'').fadeIn(slow);")
                       rownum++;
                       console.log('MORE rownum is: '+rownum);
                     }//for main cycle
