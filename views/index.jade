@@ -239,11 +239,11 @@ head
                            lastfounddate=toplist[listnum].founddateint;
                           }
                           }//for populating row
+                          $('#inserts').append("<div class='loadwrap' id='loadwrap"+loadwrapcount+"'></div>");
                       }//else from outputting left
                     }//for main cycle
                   }
           else {
-             $('#inserts').append("<div class='loadwrap' id='loadwrap"+loadwrapcount+"'></div>");
             for(var xx=0;xx<cycles;xx++){
                       var insert = "<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx*loadwrapcount+"'></div>";
                       console.log(insert);
@@ -275,6 +275,7 @@ head
                     }//for main cycle
                 $('#loadwrap'+loadwrapcount).slideToggle();
                 loadwrapcount++;
+                $('#inserts').append("<div class='loadwrap' id='loadwrap"+loadwrapcount+"'></div>");
           }
         }
 
