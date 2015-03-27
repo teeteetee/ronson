@@ -216,7 +216,7 @@ head
           console.log('cycles: '+cycles+', left: '+left);
           if(funcmore===0)
           {for(var xx=0;xx<cycles;xx++){
-                      console.log(rownum);
+                      console.log('rownum is: '+rownum);
                       $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rownum+"'></div>");
                       //branch for outputting left
                       if(xx+1 === cycles && left) {
@@ -243,13 +243,13 @@ head
                       
                       }//else from outputting left
                       rownum++;
-                      console.log(rownum);
+                      console.log('rownum is: '+rownum);
                     }//for main cycle
                 
                   }
           else {
              for(var xx=0;xx<cycles;xx++){
-                      console.log(rownum);
+                      console.log('MORE rownum is: '+rownum);
                       $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rownum+"'></div>");
                       //branch for outputting left
                       if(xx+1 === cycles && left) {
@@ -276,7 +276,7 @@ head
                       
                       }//else from outputting left
                       rownum++;
-                      console.log(rownum);
+                      console.log('MORE rownum is: '+rownum);
                     }//for main cycle
           }
         }
