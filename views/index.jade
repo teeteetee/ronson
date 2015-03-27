@@ -309,6 +309,7 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         //Most libraries like jQuery/Prototype/Dojo do this
+        console.log('lastfounddate='+lastfounddate);
         request.send('lastfounddate='+lastfounddate);
         });
         populate(toplist,0);
