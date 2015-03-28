@@ -63,6 +63,11 @@ head
       }
       .alert{
         text-align:center;
+        font-family:roboto-thin;
+      }
+      .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
+        background-color:mediumseagreen;
+        border-color:mediumseagreen;
       }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top")
@@ -86,7 +91,7 @@ head
           h1(style='font-size:45px;') #{doc.nameru}
           h2(style='color:lightgray;font-family:roboto-thin;') Подтверждение проведения съемки
       .row
-        #message.col-xs-8.col-xs-offset-2
+        #message.col-xs-8.col-xs-offset-2(style='padding:0px;')
       .row
         #formrow.col-xs-8.col-xs-offset-2
           form(action='/conf/#{doc.clid}',class='form-horizontal',method='post',role='form')
