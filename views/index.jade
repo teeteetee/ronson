@@ -9,7 +9,7 @@ head
     title Recent ones
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
-    link(rel="stylesheet",href="/dist/css/animsition.min.css")
+    link(href='/css/animations.css', rel='stylesheet')
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
@@ -100,9 +100,9 @@ head
               li(class='active')
                 a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
               li
-                a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;',class="animsition-link") Рейтинги 
+                a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
               li
-                a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;',class="animsition-link") Инфо 
+                a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
             form(class="navbar-form navbar-right" id='srch' role="search")
              .input-group
                 input(type="text" class="form-control" id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
@@ -116,44 +116,42 @@ head
               .col-xs-12(style='text-align:center;')
                 h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
                 button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close') Пропустите !  
-        .main.container(style='margin-top:50px;z-index:2;',id='main') 
-          .row
-            .col-xs-12(style='text-align:center;',id='monthheader')
-              h1(style='margin-bottom:0px;margin-top:20px;font-family:high;font-size:45px;letter-spacing:2px;') #{month}   
-          .row
-            #inserts.col-xs-12(style='text-align:center;')
-        footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
-          .container
-              nav
-                ul(class='pager') 
-                  li 
-                    a(id='more') Еще
+        .pt-main.pt-perspective
+          .pt-page.pt-page-1
+            .container(style='margin-top:50px;z-index:2;',id='main') 
+              .row
+                .col-xs-12(style='text-align:center;',id='monthheader')
+                  h1(style='margin-bottom:0px;margin-top:20px;font-family:high;font-size:45px;letter-spacing:2px;') #{month}   
+              .row
+                #inserts.col-xs-12(style='text-align:center;')
+            footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
+              .container
+                  nav
+                    ul(class='pager') 
+                      li 
+                        a(id='more') Еще
+          .pt-page.pt-page-2
+            .container(style='min-height:100vh;background-color:#eee;')    
+              #timeperiod.row
+                .col-xs-12(style='text-align:center;')
+                  h2(style='color:gray;') Xxxxxx
+              .row
+                .col-xs-12(style='text-align:center;padding-top:1vw;padding-bottom:1vw;')
+                  h5(style='color:gray;background-color:white;border-radius:8px;padding-top:5vw;padding-bottom:5vw;margin-bottom:3vw;')
+                    span 
+                      a(href='http://recentones.com')
+                        img(src='/bootstrap/images/bl.png',style='width:10vw;margin-bottom:2vw;')
+                    br 
+                    | Мы еще не сделали панораму
+                    br
+                    span(style='font-size:2.5vw;') но собрали немного информации
+                  a(href='#')
+                    h5(style='color:#fc6d6d;font-size:2vw;font-weight:bold;') Перейти на сайт заведения
+                  h5(style='color:black;font-size:2vw;font-weight:bold;') xxxxx
+                  h5(style='color:black;font-size:2vw;font-weight:bold;') xxxx
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-      script(src="/dist/js/jquery.animsition.min.js")
+      script(src="js/pagetransitions.js")
       script.
-        //page animation
-        $(document).ready(function() {$(".animsition").animsition({
-            inClass               :   'fade-in',
-            outClass              :   'fade-out',
-            inDuration            :    1500,
-            outDuration           :    1500,
-            linkElement           :   '.animsition-link',
-            // e.g. linkElement   :   'a:not([target="_blank"]):not([href^=#])'
-            loading               :    true,
-            loadingParentElement  :   'body', //animsition wrapper element
-            loadingClass          :   'animsition-loading',
-            unSupportCss          : [ 'animation-duration',
-                                      '-webkit-animation-duration',
-                                      '-o-animation-duration'
-                                    ],
-            //"unSupportCss" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
-            //The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
-            overlay               :   false,
-            overlayClass          :   'animsition-overlay-slide',
-            overlayParentElement  :   'body'
-          });
-        });
-        //page animation end
         var rownum = 0;
         var lastfounddate;
         var more = #{more};
@@ -248,7 +246,7 @@ head
                       if(xx+1 === cycles && left) {
                         var modrownum = rownum+1;
                         $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+modrownum+"'></div>");
-                        var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a class='animsition-link' href='http://recentones.com/places/"+toplist[xx].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
+                        var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' data-animation='2' class='list-group-item'><a href='http://recentones.com/places/"+toplist[xx].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
                           eval("$('#row"+rownum+"').append(insert);");
                         lastfounddate=toplist[xx].founddateint;
                         $('#morebutton').css('display','none');
@@ -258,11 +256,11 @@ head
                           for(var yy=0;yy<2;yy++){
                           if(yy===0)
                           {var listnum = xx*2;
-                           var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a class='animsition-link' href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
+                           var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' data-animation='2' class='list-group-item'><a href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
                            eval("$('#row"+rownum+"').append(insert);");}
                           else {
                             var listnum = xx*2+1;
-                           var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a class='animsition-link' href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
+                           var insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' data-animation='2' class='list-group-item'><a href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
                            eval("$('#row"+rownum+"').append(insert);");
                            lastfounddate=toplist[listnum].founddateint;
                           }
@@ -287,12 +285,12 @@ head
                           if(yy===0)
                           {var listnum = xx*2;
                             console.log('breakpoint 5');
-                            greatInsert += "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a class='animsition-link' href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
+                            greatInsert += "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' data-animation='2' class='list-group-item'><a href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
                            }
                           else {
                             var listnum = xx*2+1;
                             console.log('breakpoint 7');
-                            greatInsert += "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a class='animsition-link' href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
+                            greatInsert += "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' data-animation='2' class='list-group-item'><a href='http://recentones.com/places/"+toplist[listnum].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
                            eval("$('#row"+rownum+"').append(insert);");
                            console.log('breakpoint 8');
                            lastfounddate=toplist[listnum].founddateint;
@@ -304,7 +302,7 @@ head
                          insert = "<div class='row' style='margin-top:15px;margin-bottom:15px;display:none' id='row"+modrownum+"'></div>";
                         $('#inserts').append(insert);
                         console.log('breakpoint 2');
-                         insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a class='animsition-link' href='http://recentones.com/places/"+toplist[xx].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
+                         insert = "<div class='col-xs-6'><ul class='list-group'><li style='padding:0px;' data-animation='2' class='list-group-item'><a href='http://recentones.com/places/"+toplist[xx].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
                           eval("$('#row"+rownum+"').append(insert);");
                         lastfounddate=toplist[xx].founddateint;
                         $('#morebutton').css('display','none');
