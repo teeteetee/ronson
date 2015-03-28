@@ -127,15 +127,12 @@ app.get('/',function(req,res) {
         {
           console.log('PLACE ID: '+doc[yy].pid+', FOUNDDATE: '+doc[yy].founddateint);
         }
-        var months = ["Январь","Февраль","Март","Апрель","Июнь","Июль","Август","Сентябрь","Октыбрь","Ноябрь","Декабрь"];
-        var mnum = d.getMonth();
-        var monthinsert = months[mnum]+year;
         if(doc.length === 5)
         {doc = doc.splice(0, 4);
           console.log('SENDING '+doc.length+'DOCUMENTS');
-                res.render('index',{'doc':JSON.stringify(doc),'more':1,'month':monthinsert});}
+                res.render('index',{'doc':JSON.stringify(doc),'more':1});}
         else {
-         res.render('index',{'doc':JSON.stringify(doc),'more':0,'month':monthinsert}); 
+         res.render('index',{'doc':JSON.stringify(doc),'more':0}); 
         }
       }
       else{
