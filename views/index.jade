@@ -88,42 +88,42 @@ head
       if(screen.width < 414){
       window.location='http://m.recentones.com/';
       }
-    .animisition
-      nav(class="navbar navbar-inverse navbar-fixed-top",style='z-index:3001')
+    
+    nav(class="navbar navbar-inverse navbar-fixed-top",style='z-index:3001')
+      .container
+        .navbar-header
+          a(class="navbar-brand" style='padding:5px;' href="/")
+            img(alt="Logo",id='logo',src="/bootstrap/images/rl.png",height='40',width='40')
+        .collapse.navbar-collapse#navbar-collapse-9
+          ul(class='nav navbar-nav')
+            li(class='active')
+              a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
+            li
+              a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
+            li
+              a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
+          form(class="navbar-form navbar-right" id='srch' role="search")
+           .input-group
+              input(type="text" class="form-control" id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
+              span(class='input-group-btn')
+                button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
+                  span(class='glyphicon glyphicon-search') 
+    #wrap 
+      #welcome
+        .container(style='margin-bottom:60px;')
+          .row  
+            .col-xs-12(style='text-align:center;')
+              h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
+              button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close') Пропустите !  
+      .main.container(style='margin-top:50px;z-index:2;',id='main')  
+        .row
+          #inserts.col-xs-12(style='text-align:center;')
+      footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
         .container
-          .navbar-header
-            a(class="navbar-brand" style='padding:5px;' href="/")
-              img(alt="Logo",id='logo',src="/bootstrap/images/rl.png",height='40',width='40')
-          .collapse.navbar-collapse#navbar-collapse-9
-            ul(class='nav navbar-nav')
-              li(class='active')
-                a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
-              li
-                a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
-              li
-                a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
-            form(class="navbar-form navbar-right" id='srch' role="search")
-             .input-group
-                input(type="text" class="form-control" id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
-                span(class='input-group-btn')
-                  button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
-                    span(class='glyphicon glyphicon-search') 
-      #wrap 
-        #welcome
-          .container(style='margin-bottom:60px;')
-            .row  
-              .col-xs-12(style='text-align:center;')
-                h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
-                button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close') Пропустите !  
-        .main.container(style='margin-top:50px;z-index:2;',id='main')  
-          .row
-            #inserts.col-xs-12(style='text-align:center;')
-        footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
-          .container
-              nav
-                ul(class='pager') 
-                  li 
-                    a(id='more',style='font-family:roboto-thin;') Еще
+            nav
+              ul(class='pager') 
+                li 
+                  a(id='more',style='font-family:roboto-thin;') Еще
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         var rownum = 0;

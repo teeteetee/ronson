@@ -103,8 +103,9 @@ app.get('*', function(req,res,next) {   var d = new Date();
     next();}
    });
  
- 
-
+app.get('/transitions',function(req,res){
+  res.render('transitions');
+});
 
 
 app.get('/',function(req,res) {
