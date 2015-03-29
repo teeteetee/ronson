@@ -115,7 +115,7 @@ head
       script(src='/transitions/modernizr.custom.js')
       script(src='/transitions/pagetransitions.js')
       script.
-        $('#letsgo').click(function(){$('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop'); $('.pt-page-current').removeClass('pt-page-current'); $('.pt-page-2').addClass('pt-page-current');});
+        $('#letsgo').click(function(){$('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop');$('.pt-page-2').addClass('pt-page-current');$('.pt-page-current').removeClass('pt-page-current'); });
         $('#getbackhere').click(function(){$('.pt-page-1').addClass('pt-page-moveFromLeft pt-page-delay200 pt-page-ontop'); $('.pt-page-current').removeClass('pt-page-current'); $('.pt-page-1').addClass('pt-page-current');});
         $('#dcurrent').click(function(){$('.pt-page-current').removeClass('pt-page-current'); });
         $('#slide').click(function(){$('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop');});
