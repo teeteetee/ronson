@@ -74,6 +74,9 @@ head
                 button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                   span(class='glyphicon glyphicon-search') 
     #wrap 
+      .panel(style='position:fixed;height:200px;width:500px;')
+        button(class='btn btn-primary' id='dcurrent') Dcurrent
+        button(class='btn btn-primary' id='slide') Slide
       .pt-perspective(id='pt-main')
         .pt-page.pt-page-1(style='background-color:teal;')
           .container(id='dl-menu' style='margin-top:60px;')
@@ -114,6 +117,8 @@ head
       script.
         $('#letsgo').click(function(){$('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop'); $('.pt-page-current').removeClass('pt-page-current'); $('.pt-page-2').addClass('pt-page-current');});
         $('#getbackhere').click(function(){$('.pt-page-1').addClass('pt-page-moveFromLeft pt-page-delay200 pt-page-ontop'); $('.pt-page-current').removeClass('pt-page-current'); $('.pt-page-1').addClass('pt-page-current');});
+        $('#dcurrent').click(function(){$('.pt-page-current').removeClass('pt-page-current'); $('.pt-page-2').addClass('pt-page-current');});
+        $('#slide').click(function(){$('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop');});
 
       
       
