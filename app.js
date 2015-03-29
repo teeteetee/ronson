@@ -191,6 +191,32 @@ app.get('/',function(req,res) {
   });
   });
 
+app.post('/openpanel',function(req,res){ 
+  var vpid = parseInt(req.body.pid);
+  ms = {};
+  ms.trouble=1;
+  ms.mtext='db';
+  if(typeof vpid != 'number')
+  { res.send(ms);}
+  else
+  { places.findOne({pid:vpid},function (err,doc){
+     if(err) {
+      console.log('DB TROUBLE');
+      res.send(ms);
+     }
+     else {
+        if(doc){
+          ms.trouble=0;
+          ms.place=doc;
+          res.send(ms);
+        }
+          else {
+           res.send(ms);
+          }
+     }
+    });}
+});
+
 app.post('/m/keepintouch',function(req,res,next){
   req.url='/keepintouch';
   next();

@@ -79,10 +79,40 @@ head
       .list-group-item:last-child {
       border-bottom: 2px solid #c2c2c2;
       }
-      .loadwrap {
-        width:100%;
-        display:none;
-      }
+      .pt-perspective {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+    
+    .pt-page {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index:100;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      overflow: hidden;
+      backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
+    }
+    
+    .pt-page-current,
+    .no-js .pt-page {
+      visibility: visible;
+      z-index:200;
+    }
+    
+    .no-js body {
+      overflow: auto;
+    }
+    
+    .pt-page-ontop {
+      z-index: 999;
+    }
   body
     script.
       if(screen.width < 414){
@@ -115,16 +145,20 @@ head
             .col-xs-12(style='text-align:center;')
               h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
               button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close') Пропустите !  
-      .main.container(style='margin-top:50px;z-index:2;',id='main')  
-        .row
-          #inserts.col-xs-12(style='text-align:center;')
-      footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
-        .container
-            nav
-              ul(class='pager') 
-                li 
-                  a(id='more',style='font-family:roboto-thin;') Еще
+      .pt-perspective(id='pt-main')
+        .pt-page.pt-page-1(style='background-color:teal;visibility:visible;')
+          .main.container(style='margin-top:50px;z-index:2;',id='main')  
+            .row
+              #inserts.col-xs-12(style='text-align:center;')
+          footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
+            .container
+                nav
+                  ul(class='pager') 
+                    li 
+                      a(id='more',style='font-family:roboto-thin;') Еще
+        .pt-page.pt-page-2.pt-page-delay200(style='background-color:tan;' id='panel')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script( async, type='text/javascript', src='/js/pano2vr_player.js')
       script.
         var rownum = 0;
         var lastfounddate;
@@ -307,6 +341,64 @@ head
                     }
           }
         }
+
+        function openpanel(pid) {
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        switch (parsed.mtext){
+        case('db'):
+        alert('Sorry, our database is being updated');
+        break;
+        case('empty'):
+        alert('EMPTY');
+        break;
+        }}
+        else {
+        //trouble === 0
+         
+        if(!parsed.place.pano){
+          var placename = place.placenameru;
+          var www = place.contacts.phone;
+          var adressru = place.adressru;
+          var phone = place.contacts.phone;
+          var insert = "<div class='container' style='min-height:100vh;background-color:#eee;' ><div class='row'><col-xs-12><h5 id='back' >Назад</h5></div></div><div id='timeperiod' class='row'><div style='text-align:center;' class='col-xs-12'><h2 style='color:gray;'>"+placename+"</h2></div></div><div class='row'><div style='text-align:center;padding-top:1vw;padding-bottom:1vw;' class='col-xs-12'><h5 style='color:gray;background-color:white;border-radius:8px;padding-top:5vw;padding-bottom:5vw;margin-bottom:3vw;'><span> <a href='http://recentones.com'><img src='/bootstrap/images/bl.png' style='width:10vw;margin-bottom:2vw;'/></a></span><br/>Мы еще не сделали панораму<br/><span style='font-size:2.5vw;'>но собрали немного информации</span></h5><a href='"+www+"'><h5 style='color:#fc6d6d;font-size:2vw;font-weight:bold;'>Перейти на сайт заведения</h5></a><h5 style='color:black;font-size:2vw;font-weight:bold;'>"+adressru+"</h5><h5 style='color:black;font-size:2vw;font-weight:bold;'>"+phone+"</h5></div></div></div>";
+          $('#panel').empty().append(insert);
+          $('.pt-page-2').addClass('pt-page-moveFromRight');
+        }
+        else {
+          var placename = place.placenameru;
+          var adressru = place.adressru;
+          var adressen = place.adressen;
+          var www = place.contacts.www;
+          var phone = place.contacts.phone
+          var day = place.founddate.day;
+          var month = place.founddate.month;
+          var year = place.founddate.year;
+          var xml = place.xml;
+          var insert = "<div style='background-color:#f7f7f7;min-height:100vh;margin-top:50px;' class='container'><div id='text' class='row'><div style='text-align:center;' class='col-xs-10 col-xs-offset-1'><h1 style='margin-bottom:20px;margin-top:20px;font-family:high;font-size:45px;'>"+placename+"</h1><ul style='margin-bottom:20px;text-align:left;' class='list-group'><li style='padding:0px;' class='list-group-item'><div id='pano' style='height:400px;'></div></li><li class='list-group-item'><div role='alert' style='margin-top:10px;margin-bottom:10px;' class='alert alert-success alert-dismissible'><button type='button' data-dismiss='alert' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button><strong>Двойной щелчок для перехода в полноэкранный режим</strong></div><h5>"+adressru+"</h5><h5 style='color:lightgray;'>"+adressen+"</h5><a href='"+www+"'><h5>Перейти на сайт заведения</h5></a><a href='tel:"+phone+"'><h5>"+phone+"</h5></a><h5>Заведение открылось "+day+"."+month+"."+year+"</h5></li></ul></div></div></div>";
+          $('#panel').empty().append(insert);
+          $('.pt-page-2').addClass('pt-page-moveFromRight');
+        }
+        }
+        }
+        };
+        request.open('POST', '/openpanel', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        request.send('pid='+pid);
+        };
+        
+        $('#back').click(function(){
+           $('.pt-page-2').removeClass('pt-page-moveFromRight ').addClass('pt-page-moveToRight');
+          });
 
         $('#more').click(function(){
         request = new XMLHttpRequest();
