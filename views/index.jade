@@ -85,9 +85,8 @@ head
       height: 100%;
       perspective: 1200px;
       transform-style: preserve-3d;
-    }
-    
-    .pt-page {
+      }
+      .pt-page {
       width: 100%;
       height: 100%;
       position: absolute;
@@ -98,21 +97,18 @@ head
       overflow: hidden;
       backface-visibility: hidden;
       transform: translate3d(0, 0, 0);
-    }
-    
-    .pt-page-current,
-    .no-js .pt-page {
+      }
+      .pt-page-current,
+      .no-js .pt-page {
       visibility: visible;
       z-index:200;
-    }
-    
-    .no-js body {
+      }
+      .no-js body {
       overflow: auto;
-    }
-    
-    .pt-page-ontop {
+      }
+      .pt-page-ontop {
       z-index: 999;
-    }
+      }
   body
     script.
       if(screen.width < 414){
