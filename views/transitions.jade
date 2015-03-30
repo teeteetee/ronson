@@ -97,6 +97,15 @@ head
     .list-group-item:last-child {
     border-bottom: 2px solid #c2c2c2;
     }
+    .pager li>a, .pager li>span {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #4F4F4F;
+    border-radius: 15px;
+    }
+    a{
+      color:white;
+    }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top",style='z-index:3001')
       .container
@@ -179,8 +188,7 @@ head
                 ul(class="pager")
                   li(class="previous")
                     a(href="#")
-                      span(aria-hidden="true") &larr;
-                      | Older
+                      | Назад
             .row
               .col-xs-12(style='text-align:center;padding-top:1vw;padding-bottom:1vw;')
                 h5(style='color:gray;background-color:white;border-radius:8px;padding-top:5vw;padding-bottom:5vw;margin-bottom:3vw;')
