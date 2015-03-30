@@ -110,6 +110,15 @@ head
       .pt-page-ontop {
       z-index: 999;
       }
+      .pager li>a, .pager li>span {
+      display: inline-block;
+      padding: 5px 14px;
+      background-color: #4F4F4F;
+      border-radius: 15px;
+      }
+      a{
+        color:white;
+      }
   body
     script.
       if(screen.width < 414){
@@ -368,8 +377,9 @@ head
           var placename = place.placenameru;
           var www = place.contacts.phone;
           var adressru = place.adressru;
+          var adressen = place.adressen;
           var phone = place.contacts.phone;
-          var insert = "<div class='container' style='background-color:#eee;margin-top:50px;' ><div class='row'><div class='col-xs-12'><h5 onclick='back()' >Назад</h5></div></div><div id='timeperiod' class='row'><div style='text-align:center;' class='col-xs-12'><h2 style='color:gray;'>"+placename+"</h2></div></div><div class='row'><div style='text-align:center;padding-top:1vw;padding-bottom:1vw;' class='col-xs-12'><h5 style='color:gray;background-color:white;border-radius:8px;padding-top:5vw;padding-bottom:5vw;margin-bottom:3vw;'><span> <a href='http://recentones.com'><img src='/bootstrap/images/bl.png' style='width:10vw;margin-bottom:2vw;'/></a></span><br/>Мы еще не сделали панораму<br/><span style='font-size:2.5vw;'>но собрали немного информации</span></h5><a href='"+www+"'><h5 style='color:#fc6d6d;font-size:2vw;font-weight:bold;'>Перейти на сайт заведения</h5></a><h5 style='color:black;font-size:2vw;font-weight:bold;'>"+adressru+"</h5><h5 style='color:black;font-size:2vw;font-weight:bold;'>"+phone+"</h5></div></div></div>";
+          var insert = "<div style='margin-top:60px;' class='container'><div class='row'><div class='col-xs-12'><nav><ul class='pager'><li style='background-color: #4F4F4F;' class='previous'><a href='#' style='color:#999999;'>Назад</a></li></ul></nav></div></div><div class='row'><div class='col-xs-12'><ul class='list-group'><li style='padding:100px;text-align:center;background-color:inherit;border: 1px solid #4f4f4f;border-top-left-radius: 8px;border-top-right-radius: 8px;' class='list-group-item'><img src='/bootstrap/images/bl.png' style='width:10vw;margin-bottom:20px;'/><h5>Мы еще не сделали панораму &#40&#45&#58</h5></li><li style='padding:20px;border:1px solid #4f4f4f;border-bottom:1px solid #4f4f4f;background-color:inherit;border-bottom-right-radius:8px;border-bottom-left-radius:8px;' class='list-group-item'><a href='"+www+"' style='display: inline-block;padding: 5px 14px;background-color: #4F4F4F;border:1px solid #fc6d6d; color:#fc6d6d;border-radius: 15px;'>На сайт</a><h5 style='color:#999999;font-size:2vw;font-weight:bold;'>"+adressru+"</h5><h5 style='color:#747474;font-size:2vw;font-weight:bold;margin-bottom:5px;'>"+adressen+"</h5><a href='tel:+"+phone+"'><h5 style='color:#999999;font-size:2vw;font-weight:bold;'>"+phone+"</h5></a></li></ul></div></div></div>";
           $('#panel').empty().append(insert);
           $('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current');
           $('.pt-page-1').removeClass('pt-page-current'); 
