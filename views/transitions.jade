@@ -107,22 +107,7 @@ head
     a{
       color:white;
     }
-    .list-group-item:first-child {
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-    }
-    .list-group-item:last-child {
-    margin-bottom: 0;
-    border-bottom-right-radius:8px;
-    border-bottom-left-radius:8px;
-    }
-    .list-group-item {
-    position: relative;
-    display: block;
-    margin-bottom: -1px;
-    border: 1px solid #4f4f4f;
-    background-color:inherit;
-    }
+    
   body
     nav(class="navbar navbar-inverse navbar-fixed-top",style='z-index:3001')
       .container
@@ -209,10 +194,10 @@ head
             .row
               .col-xs-12
                 ul(class='list-group')
-                  li(style='padding:100px;text-align:center;' class='list-group-item')
+                  li(style='padding:100px;text-align:center;background-color:inherit;border: 1px solid #4f4f4f;border-top-left-radius: 8px;border-top-right-radius: 8px;' class='list-group-item')
                     img(src='/bootstrap/images/bl.png', style='width:10vw;margin-bottom:20px;')
                     h5 Мы еще не сделали панораму
-                  li(class='list-group-item' style='border-bottom:1px solid #4f4f4f;')
+                  li(class='list-group-item' style='border-bottom:1px solid #4f4f4f;background-color:inherit;border-bottom-right-radius:8px;border-bottom-left-radius:8px;')
                     a(href='www')
                       h5(style='color:#fc6d6d;font-size:2vw;font-weight:bold;') Перейти на сайт заведения
                     h5(style='color:black;font-size:2vw;font-weight:bold;') adressru
