@@ -427,8 +427,9 @@ head
         function back() {
            console.log('get back');
            $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-current pt-page-ontop').addClass('pt-page-moveToRight').empty().css('display','none');
-           $('.pt-page-1').scrollTop(pposition);
            $('.pt-page-1').addClass('pt-page-current').css('overflow','visible');
+           console.log(pposition);
+           $('.pt-page-1').scrollTop(pposition);
         }
 
         $('#more').click(function(){
