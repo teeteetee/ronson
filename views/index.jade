@@ -424,7 +424,7 @@ head
         function back() {
            console.log('get back');
            $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-current pt-page-ontop').addClass('pt-page-moveToRight').empty();
-           $('.pt-page-1').css('overflow','visible')
+           $('.pt-page-1').addClass('pt-page-current').css('overflow','visible')
         }
 
         $('#more').click(function(){
