@@ -77,7 +77,6 @@ head
       top: 0;
       left: 0;
       visibility: hidden;
-      overflow: hidden;
       backface-visibility: hidden;
       transform: translate3d(0, 0, 0);
     }
@@ -119,9 +118,6 @@ head
                 button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                   span(class='glyphicon glyphicon-search') 
     #wrap 
-      .panel(style='position:fixed;height:200px;width:500px;top:60px;left:300px;z-index:9999999;background-color:transparent;')
-        button(class='btn btn-primary' id='dcurrent') Dcurrent
-        button(class='btn btn-primary' id='slide') Slide
       .pt-perspective(id='pt-main')
         .pt-page.pt-page-1(style='background-color:#ddd;visibility:visible;')
           .container( style='margin-top:60px;')
