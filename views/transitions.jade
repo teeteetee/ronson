@@ -80,32 +80,53 @@ head
         button(class='btn btn-primary' id='dcurrent') Dcurrent
         button(class='btn btn-primary' id='slide') Slide
       .pt-perspective(id='pt-main')
-        .pt-page.pt-page-1(style='background-color:teal;visibility:visible;')
+        .pt-page.pt-page-1(style='background-color:#ddd;visibility:visible;')
           .container( style='margin-top:60px;')
             .row  
-              #letsgo.col-xs-4
+              #letsgo.col-xs-6
                 a(href='#' class='thumbnail')
                   img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
-              .col-xs-4
+              .col-xs-6
                 a(href='#' class='thumbnail')
                   img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
-              .col-xs-4
+            .row
+              .col-xs-6
                 a(href='#' class='thumbnail')
                   img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
-            .row  
-              .col-xs-4
+              .col-xs-6
                 a(href='#' class='thumbnail')
                   img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
-              .col-xs-4
+            .row
+              .col-xs-6
                 a(href='#' class='thumbnail')
                   img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
-              .col-xs-4
+              .col-xs-6
                 a(href='#' class='thumbnail')
                   img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
-        .pt-page.pt-page-2(style='background-color:tan;')
+        .pt-page.pt-page-2(style='background-color:#333;')
           .container(style='margin-top:60px;')
             .row
-              h1(id='getbackhere') Great success!
+              nav
+                ul(class="pager")
+                  li(class="previous")
+                    a(href="#")
+                      span(aria-hidden="true") &larr;
+                      | Older
+            .row
+              .col-xs-12(style='text-align:center;padding-top:1vw;padding-bottom:1vw;')
+                h5(style='color:gray;background-color:white;border-radius:8px;padding-top:5vw;padding-bottom:5vw;margin-bottom:3vw;')
+                  span
+                    a(href='http://recentones.com')
+                      img(src='/bootstrap/images/bl.png', style='width:10vw;margin-bottom:2vw;')
+                  br
+                  | &Mcy;&ycy; &iecy;&shchcy;&iecy; &ncy;&iecy; &scy;&dcy;&iecy;&lcy;&acy;&lcy;&icy; &pcy;&acy;&ncy;&ocy;&rcy;&acy;&mcy;&ucy;
+                  br
+                  span(style='font-size:2.5vw;') &ncy;&ocy; &scy;&ocy;&bcy;&rcy;&acy;&lcy;&icy; &ncy;&iecy;&mcy;&ncy;&ocy;&gcy;&ocy; &icy;&ncy;&fcy;&ocy;&rcy;&mcy;&acy;&tscy;&icy;&icy;
+                a(href='www')
+                  h5(style='color:#fc6d6d;font-size:2vw;font-weight:bold;') &Pcy;&iecy;&rcy;&iecy;&jcy;&tcy;&icy; &ncy;&acy; &scy;&acy;&jcy;&tcy; &zcy;&acy;&vcy;&iecy;&dcy;&iecy;&ncy;&icy;&yacy;
+                h5(style='color:black;font-size:2vw;font-weight:bold;') adressru
+                h5(style='color:black;font-size:2vw;font-weight:bold;') phone
+         
 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/transitions/modernizr.custom.js')
@@ -114,14 +135,13 @@ head
         $('#letsgo').click(function(){
           $('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current');
           $('.pt-page-1').removeClass('pt-page-current'); });
-        $('#getbackhere').click(function(){
+        $('.previous').click(function(){
           //$('.pt-page-2').removeClass('pt-page-moveFromRight ');
           //$('.pt-page-2').removeClass('pt-page-current');
           $('.pt-page-2').removeClass('pt-page-moveFromRight ').addClass('pt-page-moveToRight');
           ///$('.pt-page-current').removeClass('pt-page-current'); 
         });
-        $('#dcurrent').click(function(){$('.pt-page-current').removeClass('pt-page-current'); });
-        $('#slide').click(function(){$('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop');});
+        
 
       
       
