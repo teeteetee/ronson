@@ -144,7 +144,7 @@ head
       .pt-perspective(id='pt-main')
         .pt-page.pt-page-1(style='visibility:visible;')
           .main.container(style='margin-top:50px;z-index:2;',id='main')  
-            .row(id='dl-menu')
+            .row
               #inserts.col-xs-12(style='text-align:center;')
           footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
             .container
@@ -152,7 +152,7 @@ head
                   ul(class='pager') 
                     li 
                       a(id='more',style='font-family:roboto-thin;') Еще
-        .pt-page.pt-page-2.pt-page-delay200(id='panel')
+        .pt-page.pt-page-2(id='panel')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/transitions/modernizr.custom.js')
       script( async, src='/transitions/pagetransitions.js')
@@ -370,7 +370,7 @@ head
           var phone = place.contacts.phone;
           var insert = "<div class='container' style='background-color:#eee;margin-top:50px;' ><div class='row'><div class='col-xs-12'><h5 onclick='back()' >Назад</h5></div></div><div id='timeperiod' class='row'><div style='text-align:center;' class='col-xs-12'><h2 style='color:gray;'>"+placename+"</h2></div></div><div class='row'><div style='text-align:center;padding-top:1vw;padding-bottom:1vw;' class='col-xs-12'><h5 style='color:gray;background-color:white;border-radius:8px;padding-top:5vw;padding-bottom:5vw;margin-bottom:3vw;'><span> <a href='http://recentones.com'><img src='/bootstrap/images/bl.png' style='width:10vw;margin-bottom:2vw;'/></a></span><br/>Мы еще не сделали панораму<br/><span style='font-size:2.5vw;'>но собрали немного информации</span></h5><a href='"+www+"'><h5 style='color:#fc6d6d;font-size:2vw;font-weight:bold;'>Перейти на сайт заведения</h5></a><h5 style='color:black;font-size:2vw;font-weight:bold;'>"+adressru+"</h5><h5 style='color:black;font-size:2vw;font-weight:bold;'>"+phone+"</h5></div></div></div>";
           $('#panel').empty().append(insert);
-          $('.pt-page-2').addClass('pt-page-moveFromRight pt-page-ontop pt-page-current');
+          $('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current');
           $('.pt-page-1').removeClass('pt-page-current'); 
           console.log('did output');
         }
@@ -387,7 +387,7 @@ head
           var xml = place.xml;
           var insert = "<div style='margin-top:50px;background-color:#eee;' class='container'><div class='row'><div class='col-xs-12'><h5 onclick='back'>Назад</h5></div></div><div id='text' class='row'><div style='text-align:center;' class='col-xs-10 col-xs-offset-1'><h1 style='margin-bottom:20px;margin-top:20px;font-family:high;font-size:45px;'>"+placename+"</h1><ul style='margin-bottom:20px;text-align:left;' class='list-group'><li style='padding:0px;' class='list-group-item'><div id='pano' style='height:400px;'></div></li><li class='list-group-item'><div role='alert' style='margin-top:10px;margin-bottom:10px;' class='alert alert-success alert-dismissible'><button type='button' data-dismiss='alert' aria-label='Close' class='close'><span aria-hidden='true'>&times;</span></button><strong>Двойной щелчок для перехода в полноэкранный режим</strong></div><h5>"+adressru+"</h5><h5 style='color:lightgray;'>"+adressen+"</h5><a href='"+www+"'><h5>Перейти на сайт заведения</h5></a><a href='tel:"+phone+"'><h5>"+phone+"</h5></a><h5>Заведение открылось "+day+"."+month+"."+year+"</h5></li></ul></div></div></div>";
           $('#panel').empty().append(insert);
-          $('.pt-page-2').addClass('pt-page-moveFromRight pt-page-ontop pt-page-current');
+          $('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current');
           $('.pt-page-1').removeClass('pt-page-current'); 
         }
         }
