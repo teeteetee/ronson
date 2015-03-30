@@ -359,9 +359,11 @@ head
         break;
         }}
         else {
+        console.log('choice');
         //trouble === 0
-         var place = parsed.place;
+        var place = parsed.place;
         if(!parsed.place.pano){
+          console.log('empty');
           var placename = place.placenameru;
           var www = place.contacts.phone;
           var adressru = place.adressru;
@@ -369,8 +371,10 @@ head
           var insert = "<div class='container' style='background-color:#eee;margin-top:50px;' ><div class='row'><div class='col-xs-12'><h5 id='back' >Назад</h5></div></div><div id='timeperiod' class='row'><div style='text-align:center;' class='col-xs-12'><h2 style='color:gray;'>"+placename+"</h2></div></div><div class='row'><div style='text-align:center;padding-top:1vw;padding-bottom:1vw;' class='col-xs-12'><h5 style='color:gray;background-color:white;border-radius:8px;padding-top:5vw;padding-bottom:5vw;margin-bottom:3vw;'><span> <a href='http://recentones.com'><img src='/bootstrap/images/bl.png' style='width:10vw;margin-bottom:2vw;'/></a></span><br/>Мы еще не сделали панораму<br/><span style='font-size:2.5vw;'>но собрали немного информации</span></h5><a href='"+www+"'><h5 style='color:#fc6d6d;font-size:2vw;font-weight:bold;'>Перейти на сайт заведения</h5></a><h5 style='color:black;font-size:2vw;font-weight:bold;'>"+adressru+"</h5><h5 style='color:black;font-size:2vw;font-weight:bold;'>"+phone+"</h5></div></div></div>";
           $('#panel').empty().append(insert);
           $('.pt-page-2').addClass('pt-page-moveFromRight');
+          console.log('did output');
         }
         else {
+          console.log('haspano');
           var placename = place.placenameru;
           var adressru = place.adressru;
           var adressen = place.adressen;
