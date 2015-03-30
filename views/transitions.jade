@@ -18,8 +18,48 @@ head
     script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')   
 
   style.
+    @font-face {
+    font-family:roboto-thin;
+    src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+    }
+    @font-face {
+    font-family:high;
+    src: url('/bootstrap/fonts/Attentica.ttf');
+    }
+    @font-face {
+    font-family:br;
+    src: url('/bootstrap/fonts/bebasneue_regular.ttf');
+    }
+    @font-face {
+    font-family:bt;
+    src: url('/bootstrap/fonts/bebasneue_thin.ttf');
+    }
     body {
-      background-color:steelblue;
+    min-width:768px;
+    background-color:#ddd;
+    }
+    h5{
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:0px;
+    color:white;
+    font-family:roboto-thin;
+    font-size:30px;
+    margin-top:0px;
+    }
+    h2 {
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-family:high;
+    margin-bottom:0px;
+    }
+    h6{
+    font-family:roboto-thin; 
+    text-transform:uppercase;
+    margin-top:0px;
+    color:lightgrey;
+    margin-bottom:0px;
+    letter-spacing:2px;
     }
     .pt-perspective {
       position: relative;
@@ -55,6 +95,9 @@ head
     .pt-page-ontop {
       z-index: 999;
     }
+    .list-group-item:last-child {
+    border-bottom: 2px solid #c2c2c2;
+    }
   body
     nav(class="navbar navbar-inverse navbar-fixed-top",style='z-index:3001')
       .container
@@ -84,25 +127,55 @@ head
           .container( style='margin-top:60px;')
             .row  
               #letsgo.col-xs-6
-                a(href='#' class='thumbnail')
-                  img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
+                ul(class='list-group')
+                  li(style='padding:0px;' class='list-group-item')
+                    a
+                      img(style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='/bootstrap/images/sample6.jpg')
+                        li(class='list-group-item')
+                          h2(style='margin-top:0px;') Карлсон
+                          h6 12.03.2015
               .col-xs-6
-                a(href='#' class='thumbnail')
-                  img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
-            .row
+                ul(class='list-group')
+                  li(style='padding:0px;' class='list-group-item')
+                    a
+                      img(style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='/bootstrap/images/sample6.jpg')
+                        li(class='list-group-item')
+                          h2(style='margin-top:0px;') Карлсон
+                          h6 12.03.2015
+            .row  
               .col-xs-6
-                a(href='#' class='thumbnail')
-                  img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
+                ul(class='list-group')
+                  li(style='padding:0px;' class='list-group-item')
+                    a
+                      img(style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='/bootstrap/images/sample6.jpg')
+                        li(class='list-group-item')
+                          h2(style='margin-top:0px;') Карлсон
+                          h6 12.03.2015
               .col-xs-6
-                a(href='#' class='thumbnail')
-                  img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
-            .row
+                ul(class='list-group')
+                  li(style='padding:0px;' class='list-group-item')
+                    a
+                      img(style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='/bootstrap/images/sample6.jpg')
+                        li(class='list-group-item')
+                          h2(style='margin-top:0px;') Карлсон
+                          h6 12.03.2015
+            .row  
               .col-xs-6
-                a(href='#' class='thumbnail')
-                  img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
+                ul(class='list-group')
+                  li(style='padding:0px;' class='list-group-item')
+                    a
+                      img(style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='/bootstrap/images/sample6.jpg')
+                        li(class='list-group-item')
+                          h2(style='margin-top:0px;') Карлсон
+                          h6 12.03.2015
               .col-xs-6
-                a(href='#' class='thumbnail')
-                  img(src='/bootstrap/images/sample6.jpg' width='171' height='180')
+                ul(class='list-group')
+                  li(style='padding:0px;' class='list-group-item')
+                    a
+                      img(style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='/bootstrap/images/sample6.jpg')
+                        li(class='list-group-item')
+                          h2(style='margin-top:0px;') Карлсон
+                          h6 12.03.2015
         .pt-page.pt-page-2(style='background-color:#333;')
           .container(style='margin-top:60px;')
             .row
