@@ -203,9 +203,10 @@ head
       script.
         $('#letsgo').click(function(){
           $('.pt-page-2').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current');
-          $('.pt-page-1').removeClass('pt-page-current'); });
+          $('.pt-page-1').removeClass('pt-page-current'); 
           console.log($('.pt-page').css('overflow'));
           $('.pt-page').css('overflow','hidden');
+        });
         $('.previous').click(function(){
           //$('.pt-page-2').removeClass('pt-page-moveFromRight ');
           //$('.pt-page-2').removeClass('pt-page-current');
