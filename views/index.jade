@@ -423,8 +423,8 @@ head
 
         function back() {
            console.log('get back');
-           $('.pt-page-2').removeClass('pt-page-moveFromRight ').addClass('pt-page-moveToRight');
-           $('.pt-page-1').css('overflow','hidden')
+           $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-current').addClass('pt-page-moveToRight');
+           $('.pt-page-1').css('overflow','visible')
         }
 
         $('#more').click(function(){
