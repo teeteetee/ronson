@@ -115,6 +115,12 @@ app.get('/',function(req,res) {
   var d = new Date();
   var year = d.getUTCFullYear().toString();;
   year = "'"+year.substr(2);
+  //welcome filters
+  var fone = 'filter: blur(20px) brightness(0.5);';
+  var ftwo = '-webkit-filter: blur(20px) brightness(0.5);';
+  var fthree = '-moz-filter: blur(20px) brightness(0.5);';
+  var ffour = '-o-filter: blur(20px) brightness(0.5);';
+  var blank = '';
   //res.send('UNDER CONSTRUCTION');
   places.find({},{ limit:5,sort : { founddateint : -1 } },function(err,doc){
     if(err)
@@ -131,10 +137,19 @@ app.get('/',function(req,res) {
         if(doc.length === 5)
         {doc = doc.splice(0, 4);
           console.log('SENDING '+doc.length+'DOCUMENTS');
-                res.render('index',{'doc':JSON.stringify(doc),'more':1});}
+             if(req.session.visited)
+                res.render('index',{'doc':JSON.stringify(doc),'more':1,'filterfirst': blank,'filtersecond': blank,'filterthird': blank,'filterthird': blank,'display':'none'});}
+              else {
+                req.session.visited =1;
+                res.render('index',{'doc':JSON.stringify(doc),'more':1,'filterfirst': fone,'filtersecond': ftwo,'filterthird': fthree,'filterthird': ffour,'display':'block'});}
+              }
         else {
-         res.render('index',{'doc':JSON.stringify(doc),'more':0}); 
-        }
+         if(req.session.visited)
+                res.render('index',{'doc':JSON.stringify(doc),'more':0,'filterfirst': blank,'filtersecond': blank,'filterthird': blank,'filterthird': blank,'display':'none'});}
+              else {
+                req.session.visited =1;
+                res.render('index',{'doc':JSON.stringify(doc),'more':0,'filterfirst': fone,'filtersecond': ftwo,'filterthird': fthree,'filterthird': ffour,'display':'block'});}
+              }
       }
       else{
         res.render('emptyindex');
