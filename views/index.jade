@@ -129,6 +129,17 @@ head
       .back {
         background-color:#4F4F4F !important;
       }
+      #close {
+      padding: 10px 16px;
+      font-size: 18px;
+      line-height: 1.3333333;
+      margin-top:50px;
+      margin-bottom:50px;
+      border-radius:30px;
+      background-color:transparent;
+      border-color:white;
+      color:white;
+      }
   body
     script.
       if(screen.width < 414){
@@ -160,7 +171,7 @@ head
           .row  
             .col-xs-12(style='text-align:center;')
               h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
-              button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close') Пропустите !  
+              a(id='close') Пропустите !  
       .pt-perspective(id='pt-main')
         .pt-page.pt-page-1(style='visibility:visible;')
           .main.container(style='margin-top:50px;z-index:2;',id='main')  
