@@ -103,8 +103,40 @@ head
       .pt-page-ontop {
       z-index: 999;
       }
+      .away {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: #4F4F4F; 
+        border-radius:15px;
+        margin-bottom:10px;
+        color:#999999;
+      }
+      .away:hover {
+      text-decoration: none;
+      color:#09BCFD;
+      }
+      .back:hover {
+        color:#09BCFD !important;
+        cursor:pointer !important;
+      }
+      .back {
+        background-color:#4F4F4F !important;
+      }
+      #close {
+      padding: 10px 16px;
+      font-size: 18px;
+      line-height: 1.3333333;
+      border-radius:30px;
+      background-color:rgba(225,225,225,0.25);
+      border-color:white;
+      color:white;
+      }
+      #close:hover{
+        text-decoration:none;
+        color:#09BCFD;
+        border:1px solid #09BCFD;
+      }
       .main{
-      #{filters}
       }
   body
     script.
