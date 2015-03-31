@@ -433,7 +433,7 @@ head
         function back() {
            console.log('get back');
            $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop').addClass('pt-page-moveToRight').empty().css('display','none');
-           $('.pt-page-1').addClass('pt-page-current').css('overflow','visible');
+           setTimeout(function(){$('.pt-page-2').removeClass('pt-page-current')},2000);
            console.log(pposition);
            $('#main').scrollTop(400);
            //$('pt-page').css('overflow','visible');
