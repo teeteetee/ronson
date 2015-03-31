@@ -138,9 +138,8 @@ app.get('/',function(req,res) {
         if(doc.length === 5)
         {doc = doc.splice(0, 4);
           console.log('SENDING '+doc.length+'DOCUMENTS');
-          console.log(filter);
              if(req.session.visited)
-                {res.render('index',{'doc':JSON.stringify(doc),'more':1,'filters':filter,'display':'block'});}
+                {res.render('index',{'doc':JSON.stringify(doc),'more':1,'filters':blank,'display':'none'});}
               else {
                 req.session.visited =1;
                 res.render('index',{'doc':JSON.stringify(doc),'more':1,'filters':filter,'display':'block'});}
