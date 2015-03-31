@@ -138,14 +138,14 @@ app.get('/',function(req,res) {
         {doc = doc.splice(0, 4);
           console.log('SENDING '+doc.length+'DOCUMENTS');
              if(req.session.visited)
-                res.render('index',{'doc':JSON.stringify(doc),'more':1,'filterfirst': blank,'filtersecond': blank,'filterthird': blank,'filterthird': blank,'display':'none'});}
+                {res.render('index',{'doc':JSON.stringify(doc),'more':1,'filterfirst': blank,'filtersecond': blank,'filterthird': blank,'filterthird': blank,'display':'none'});}
               else {
                 req.session.visited =1;
                 res.render('index',{'doc':JSON.stringify(doc),'more':1,'filterfirst': fone,'filtersecond': ftwo,'filterthird': fthree,'filterthird': ffour,'display':'block'});}
               }
         else {
          if(req.session.visited)
-                res.render('index',{'doc':JSON.stringify(doc),'more':0,'filterfirst': blank,'filtersecond': blank,'filterthird': blank,'filterthird': blank,'display':'none'});}
+                {res.render('index',{'doc':JSON.stringify(doc),'more':0,'filterfirst': blank,'filtersecond': blank,'filterthird': blank,'filterthird': blank,'display':'none'});}
               else {
                 req.session.visited =1;
                 res.render('index',{'doc':JSON.stringify(doc),'more':0,'filterfirst': fone,'filtersecond': ftwo,'filterthird': fthree,'filterthird': ffour,'display':'block'});}
