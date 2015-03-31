@@ -67,6 +67,12 @@ head
       height:100%;
       -ms-background-color:lightblue;
       }
+      .main{
+      filter: blur(20px) brightness(0.5);
+      -webkit-filter: blur(20px) brightness(0.5);
+      -moz-filter: blur(20px) brightness(0.5);
+      -o-filter: blur(20px) brightness(0.5);
+      }
       .col-lg-4 {
       margin-bottom: 20px;
       text-align: center;
@@ -106,38 +112,22 @@ head
       .away {
         display: inline-block;
         padding: 5px 14px;
-        background-color: #4F4F4F; 
+        background-color: inherit;
+        border:1px solid #fc6d6d; 
+        color:#fc6d6d;
         border-radius:15px;
         margin-bottom:10px;
-        color:#999999;
       }
       .away:hover {
       text-decoration: none;
-      color:#09BCFD;
+      background-color: #5c3a3a;
+      color:#fc6d6d;
       }
       .back:hover {
-        color:#09BCFD !important;
-        cursor:pointer !important;
+        background-color:#6e6e6e;
       }
       .back {
         background-color:#4F4F4F !important;
-      }
-      #close {
-      padding: 10px 16px;
-      font-size: 18px;
-      line-height: 1.3333333;
-      border-radius:30px;
-      background-color:rgba(225,225,225,0.25);
-      border-color:white;
-      color:white;
-      }
-      #close:hover{
-        text-decoration:none;
-        color:#09BCFD;
-        border:1px solid #09BCFD;
-      }
-      .main{
-      #{filters}
       }
   body
     script.
@@ -165,12 +155,12 @@ head
                 button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                   span(class='glyphicon glyphicon-search') 
     #wrap 
-      #welcome(style='display:#{display}')
+      #welcome
         .container(style='margin-bottom:60px;')
           .row  
             .col-xs-12(style='text-align:center;')
-              h1(style='color:white;margin-top:35vh;margin-bottom:50px;font-size:45px;font-family:high;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
-              a(id='close') Пропустите !  
+              h1(style='color:white;margin-top:35vh;font-size:45px;font-family:high;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
+              button(type='button',class='btn btn-lg',style='margin-top:50px;margin-bottom:50px;border-radius:30px;background-color:transparent;border-color:white;color:white',id='close') Пропустите !  
       .pt-perspective(id='pt-main')
         .pt-page.pt-page-1(style='visibility:visible;')
           .main.container(style='margin-top:50px;z-index:2;',id='main')  
@@ -436,10 +426,10 @@ head
 
         function back() {
            console.log('get back');
-           $('.pt-page-2').removeClass('pt-page-moveFromRight').addClass('pt-page-moveToRight').removeClass('pt-page-current pt-page-ontop');
+           $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-current pt-page-ontop').addClass('pt-page-moveToRight').empty().css('display','none');
            $('.pt-page-1').addClass('pt-page-current').css('overflow','visible');
-           //$('.pt-page-2').empty().css('display','none');
-      
+           console.log(pposition);
+           $('#main').scrollTop(400);
         }
 
         $('#more').click(function(){
