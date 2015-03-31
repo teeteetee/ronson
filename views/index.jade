@@ -68,10 +68,7 @@ head
       -ms-background-color:lightblue;
       }
       .main{
-      #{filterfirst}
-      #{filtersecond}
-      #{filterothird}
-      #{filterfourth}
+      #{filters}
       }
       .col-lg-4 {
       margin-bottom: 20px;
@@ -168,8 +165,8 @@ head
               span(class='input-group-btn')
                 button(class="btn btn-default" type="button" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
                   span(class='glyphicon glyphicon-search') 
-    #wrap(style='display:#{display}') 
-      #welcome
+    #wrap 
+      #welcome(style='display:#{display}')
         .container(style='margin-bottom:60px;')
           .row  
             .col-xs-12(style='text-align:center;')
