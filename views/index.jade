@@ -432,7 +432,8 @@ head
 
         function back() {
            console.log('get back');
-           $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop').addClass('pt-page-moveToRight').empty().css('display','none');
+           $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop').addClass('pt-page-moveToRight');
+           setTimeout(function(){$('.pt-page-2').removeClass('pt-page-current').empty().css('display','none');},2000);
            console.log(pposition);
            $('#main').scrollTop(400);
            //$('pt-page').css('overflow','visible');
