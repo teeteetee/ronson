@@ -106,21 +106,6 @@ head
       .pt-page-ontop {
       z-index: 999;
       }
-      .away {
-        display: inline-block;
-        padding: 5px 14px;
-        background-color: #4F4F4F; 
-        border-radius:15px;
-        margin-bottom:10px;
-        color:#999999;
-      }
-      .away:hover {
-      text-decoration: none;
-      color:#09BCFD;
-      }
-      .back {
-        background-color:#4F4F4F !important;
-      }
       #close {
       padding: 10px 16px;
       font-size: 18px;
@@ -134,6 +119,12 @@ head
         text-decoration:none;
         color:#09BCFD;
         border:1px solid #09BCFD;
+      }
+      .pager li {
+      background-color:#4F4F4F !important;
+      }
+      .pager li:hover {
+      color:#09BCFD;
       }
   body
     script.
@@ -272,7 +263,7 @@ head
           var settings = $.extend({
             scrollTarget  : target,
             offsetTop     : 50,
-            duration      : 10,
+            duration      : 500,
             easing        : 'swing'
           }, options);
           return this.each(function(){
@@ -414,7 +405,7 @@ head
           var adressru = place.adressru;
           var adressen = place.adressen;
           var phone = place.contacts.phone;
-          var insert = "<div style='margin-top:60px;' class='container'><div class='row'><div class='col-xs-12'><nav><ul class='pager'><li class='previous'><a onclick='back("+pid+")' style='color:#999999;border:0px;' class='back'>Назад</a></li></ul></nav></div></div><div class='row'><div class='col-xs-12'><ul class='list-group'><li style='padding:100px;text-align:center;background-color:inherit;border: 1px solid #4f4f4f;border-top-left-radius: 8px;border-top-right-radius: 8px;' class='list-group-item'><img src='/bootstrap/images/bl.png' style='width:10vw;margin-bottom:20px;'/><h5>Мы тур еще не отсняли &#40&#45&#58</h5></li><li style='padding-bottom:15px;border:1px solid #4f4f4f;border-bottom:1px solid #4f4f4f;background-color:inherit;border-bottom-right-radius:8px;border-bottom-left-radius:8px;' class='list-group-item'><a class='away' href='"+www+"'>На сайт</a><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+adressru+"</h5><h5 style='color:#747474;font-size:15px;font-weight:bold;margin-bottom:5px;'>"+adressen+"</h5><a href='tel:"+phone+"'><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+phone+"</h5></a></li></ul></div></div></div>";
+          var insert = "<div style='margin-top:60px;' class='container'><div class='row'><div class='col-xs-12'><nav><ul class='pager'><li class='previous'><a onclick='back("+pid+")' style='color:#999999;border:0px;'>Назад</a></li><li class='next><a href='"+www+"' style='color:#999999;border:0px;' class='back'>Назад</a></li></ul></nav></div></div><div class='row'><div class='col-xs-12'><ul class='list-group'><li style='padding:100px;text-align:center;background-color:inherit;border: 1px solid #4f4f4f;border-top-left-radius: 8px;border-top-right-radius: 8px;' class='list-group-item'><img src='/bootstrap/images/bl.png' style='width:10vw;margin-bottom:20px;'/><h5>Мы тур еще не отсняли &#40&#45&#58</h5></li><li style='padding-bottom:15px;border:1px solid #4f4f4f;border-bottom:1px solid #4f4f4f;background-color:inherit;border-bottom-right-radius:8px;border-bottom-left-radius:8px;' class='list-group-item'><a class='away' href='"+www+"'>На сайт</a><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+adressru+"</h5><h5 style='color:#747474;font-size:15px;font-weight:bold;margin-bottom:5px;'>"+adressen+"</h5><a href='tel:"+phone+"'><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+phone+"</h5></a></li></ul></div></div></div>";
           $('#panel').append(insert);
           $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current');
           $('.pt-page-1').removeClass('pt-page-current').css('overflow','hidden'); 
