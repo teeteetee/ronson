@@ -460,7 +460,7 @@ head
         function back(pid) {
            console.log('get back');
            $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop').addClass('pt-page-moveToRight');
-           setTimeout(function(){eval("$('body').scrollTo('#p"+pid+"')");$('.pt-page-2').removeClass('pt-page-current').empty().css('display','none');$('.pt-page').css('overflow','visible');},1000);
+           setTimeout(function(){eval("$('body').scrollTo('#p"+pid+"')");$('.pt-page-2').removeClass('pt-page-current').empty().css('display','none');$('.pt-page').css('overflow','visible');},500);
            //eval("$('body').scrollTo('#p"+pid+"')");
            //$('.pt-page').css('overflow','visible');
            //$('pt-page').css('overflow','visible');
