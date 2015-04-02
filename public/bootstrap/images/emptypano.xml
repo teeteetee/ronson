@@ -14,5 +14,5 @@
   <input tile0url="/bootstrap/images/emptypano.jpg" prev5url="/bootstrap/images/emptypano.jpg" prev4url="/bootstrap/images/emptypano.jpg" prev3url="/bootstrap/images/emptypano.jpg" prev2url="/bootstrap/images/emptypano.jpg" prev1url="/bootstrap/images/emptypano.jpg" prev0url="/bootstrap/images/emptypano.jpg" tile5url="/bootstrap/images/emptypano.jpg" tilesize="789" tile4url="/bootstrap/images/emptypano.jpg" tile3url="/bootstrap/images/emptypano.jpg" tilescale="1.012674271229404" tile2url="/bootstrap/images/emptypano.jpg" tile1url="/bootstrap/images/emptypano.jpg">
     <preview color="0x808080"/>
   </input>
-  <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="1" invertwheel="0" lockedwheel="0" invertcontrol="0" speedwheel="1" sensitivity="8"/>
+  <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="1" invertwheel="0" lockedwheel="1" invertcontrol="0" speedwheel="1" sensitivity="8"/>
 </panorama>
