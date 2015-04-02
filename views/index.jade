@@ -418,6 +418,8 @@ head
           $('#panel').append(insert);
           $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current');
           $('.pt-page-1').removeClass('pt-page-current').css('overflow','hidden'); 
+          var pano = new pano2vrPlayer('pano');
+          eval("pano.readConfigUrl("+xml+");");
           console.log('did output');
         }
         else {
