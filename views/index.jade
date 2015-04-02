@@ -177,15 +177,16 @@ head
               a(id='close') Пропустите !  
       .pt-perspective(id='pt-main')
         .pt-page.pt-page-1(style='visibility:visible;')
-          .main.container(style='margin-top:50px;z-index:2;overflow:auto;height:100vh;',id='main')  
-            .row
-              #inserts.col-xs-12
-          footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
-            .container
-                nav
-                  ul(class='pager') 
-                    li 
-                      a(id='more',style='font-family:roboto-thin;') Еще
+          .wrap(style='overflow:auto;height:100vh;')
+            .main.container(style='margin-top:50px;z-index:2;',id='main')  
+              .row
+                #inserts.col-xs-12
+            footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
+              .container
+                  nav
+                    ul(class='pager') 
+                      li 
+                        a(id='more',style='font-family:roboto-thin;') Еще
         .pt-page.pt-page-2(id='panel' style='background-color:#333;height:100%;overflow:auto;')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/transitions/modernizr.custom.js')
