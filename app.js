@@ -1289,7 +1289,7 @@ app.post('/admin/simulateemptyplace',function(req,res){
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          contacts:{phone:'+7XXXXXXXXXX',www:'http://recentones.com/bobo'},
          pid: newid,
-         pano:0,
+         pano:1,
          mainpreview:'/bootstrap/images/sample1.jpg',
          xml:'/bootstrap/images/emptypano.xml'
          });
@@ -1308,7 +1308,7 @@ app.post('/admin/simulateemptyplace',function(req,res){
          adressen: 'Somefucking emb. 10 bld.3 flat 12',
          contacts:{phone:'+7XXXXXXXXXX',www:'http://recentones.com/bobo'},
          pid: 1,
-         pano:0,
+         pano:1,
          mainpreview:'/bootstrap/images/sample1.jpg',
          xml:'/bootstrap/images/emptypano.xml'
          });
