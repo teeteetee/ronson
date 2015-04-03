@@ -143,6 +143,9 @@ head
         border-top-right-radius:8px;
         z-index:600;
       }
+      :-webkit-full-screen-ancestor:not(iframe) {
+       z-index: 3000;
+      }
   body
     script.
       if(screen.width < 414){
