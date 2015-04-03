@@ -295,17 +295,21 @@ head
           });
         }
         //end of scrollto plugin
-        // another scrolling plugin
-        function scrollfn (element) {
-          var elem = $(element);
-          if(elem)
-          {
-          var main = $("#inserts"),
-          t = main.offset().top;
-          main.scrollTop(elem.offset().top - t);
-             }
-           }
-        //enf of scrolling plugin
+
+        //another scroll fn
+        function scrollfn (element){
+        $('.page-pt-1').animate({
+            scrollTop: $(element).parent().scrollTop() + $(element).offset().top - $(element).parent().offset().top}, {
+            duration: 1000,
+            specialEasing: {
+                width: 'linear',
+                height: 'easeOutBounce'
+            },
+            complete: function (e) {
+                console.log("animation completed");
+            }
+        });}
+        //and of the scroll fn
 
         function populate(toplist,funcmore) {
           var left = toplist.length%2;
