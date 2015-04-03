@@ -379,7 +379,7 @@ head
                                    rownum++;
                                    console.log('MORE rownum is: '+rownum);
                                  }//for main cycle
-                                 $('.pt-page-1').animate({ scrollTop: $(rowName).offset().top }, 1000);
+                                 $('.wrap').animate({ scrollTop: $(rowName).offset().top }, 1000);
                                }
                     else {
                       var greatInsert ="<div class='row' style='margin-top:15px;margin-bottom:15px;display:none;' id='row"+rownum+"'>";
@@ -387,7 +387,7 @@ head
                       greatInsert += '</div>';
                       $(greatInsert).hide().appendTo('#inserts').fadeIn('slow');
                       var rowName = '#row'+rownum;
-                      $('.pt-page-1').animate({ scrollTop: $(rowName).offset().top }, 1000);
+                      $('.wrap').animate({ scrollTop: $(rowName).offset().top }, 1000);
                       rownum++;
                       console.log('MORE rownum is: '+rownum);
 
