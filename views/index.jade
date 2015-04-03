@@ -449,7 +449,7 @@ head
           $('#panel').append(insert);
           $('.pt-page-2').removeClass('pt-page-moveToRight');
           $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
-          $('.pt-page-1').removeClass('pt-page-current').css('overflow','hidden'); 
+          $('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'}); 
           console.log('did output');
         }
         else {
@@ -469,7 +469,7 @@ head
           eval("pano.readConfigUrl('"+xml+"');");
           $('.pt-page-2').removeClass('pt-page-moveToRight');
           $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
-          $('.pt-page-1').removeClass('pt-page-current').css('overflow','hidden'); 
+          $('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'}); 
         }
         }
         }
@@ -483,8 +483,9 @@ head
 
         function back(pid) {
            console.log('get back');
+           $('.pt-page-1').css('visibility':'visible');
            $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop').addClass('pt-page-moveToRight');
-           setTimeout(function(){eval("$('body').scrollTo('#p"+pid+"')");$('.pt-page-2').removeClass('pt-page-current').empty().css('display','none');$('.pt-page').css('overflow','visible');},500);
+           setTimeout(function(){$('.pt-page-2').removeClass('pt-page-current').empty().css('display','none');$('.pt-page').css('overflow','visible');},500);
            //eval("$('body').scrollTo('#p"+pid+"')");
            //$('.pt-page').css('overflow','visible');
            //$('pt-page').css('overflow','visible');
