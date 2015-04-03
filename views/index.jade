@@ -295,6 +295,18 @@ head
           });
         }
         //end of scrollto plugin
+        // another scrolling plugin
+        function scrollfn (element) {
+          var elem = $(element);
+          if(elem)
+          {
+          var main = $("#inserts"),
+          t = main.offset().top;
+          main.scrollTop(elem.offset().top - t);
+             }
+           }
+        //enf of scrolling plugin
+
         function populate(toplist,funcmore) {
           var left = toplist.length%2;
           var cycles = (toplist.length-left)/2;
@@ -380,7 +392,7 @@ head
                                    console.log('MORE rownum is: '+rownum);
                                  }//for main cycle
                                  //$('#wrap').animate({ scrollTop: $(rowName).offset().top }, 1000);
-                                 $(rowName).scrollIntoView(true);
+                                 scrollfn(rowName);
                                }
                     else {
                       var greatInsert ="<div class='row' style='margin-top:15px;margin-bottom:15px;display:none;' id='row"+rownum+"'>";
@@ -389,7 +401,7 @@ head
                       $(greatInsert).hide().appendTo('#inserts').fadeIn('slow');
                       var rowName = '#row'+rownum;
                       //$('#wrap').animate({ scrollTop: $(rowName).offset().top }, 1000);
-                      $(rowName).scrollIntoView(true);
+                      scrollfn(rowName);
                       rownum++;
                       console.log('MORE rownum is: '+rownum);
 
