@@ -1780,3 +1780,11 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 app.listen(80,'188.166.52.72');
+// zero downtime with naught
+if (process.send) process.send('online');
+process.on('message', function(message) {
+  if (message === 'shutdown') {
+    //Do whatever you need to do before shutdown (cleanup, saving stuff, etc.)
+    process.exit(0);
+  }
+});
