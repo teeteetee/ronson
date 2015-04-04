@@ -428,7 +428,7 @@ head
                         rownum++;
                     }//for main cycle
                     $(greatInsert).hide().appendTo('#inserts').fadeIn('slow');
-                      var rowName = '#row'+rownum;
+                      var rowName = '#row'+(rownum-3);
                       console.log(rowName);
                       scrollfn(rowName);
                   }
