@@ -123,7 +123,7 @@ app.get('/transitions',function(req,res){
 });
 
 
-app.get('/',function mainpage (req,res) {
+function mainpage (req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
@@ -172,7 +172,8 @@ app.get('/',function mainpage (req,res) {
       }
     }
   });
-});
+
+app.get('/',mainpage(req,res));
 
   app.post('/more',function(req,res){
     var lastfounddate = parseInt(req.body.lastfounddate);
