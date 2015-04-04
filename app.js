@@ -35,6 +35,10 @@ app.use(sessions({
 }));
 
 var devtime = 1;
+if(devtime)
+{
+  console.log('--------------DEVTIME--------------');
+}
 
 //var lguser = {};
 //app.use(function(req,res,next){
@@ -105,11 +109,12 @@ app.get('*', function(req,res,next) {   var d = new Date();
     next();}
    });
 
-if(devtime) {
+if(devtime ===1) {
+  console.log('devtime');
 app.get('*',function(req,res){
  if(req.url === '/' || req.url === '/emptyindex' )
  {
-   app.get('/', mainpage(req,res));
+   app.get('/', mainpage);
    app.get('/emptyindex',function(req,res){res.render('emptyindex');});
  }
   else {
