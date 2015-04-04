@@ -174,7 +174,7 @@ function mainpage (req,res) {
   });
 }
 
-app.get('/',mainpage(req,res));
+app.get('/',mainpage);
 
   app.post('/more',function(req,res){
     var lastfounddate = parseInt(req.body.lastfounddate);
