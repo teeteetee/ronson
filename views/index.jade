@@ -450,7 +450,7 @@ head
           $('#panel').append(insert);
           $('.pt-page-2').removeClass('pt-page-moveToRight');
           $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
-          $('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'}); 
+          setTimeout(function(){$('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'});},1000);
           console.log('did output');
         }
         else {
@@ -470,7 +470,7 @@ head
           eval("pano.readConfigUrl('"+xml+"');");
           $('.pt-page-2').removeClass('pt-page-moveToRight');
           $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
-          $('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'}); 
+          setTimeout(function(){$('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'});},1000);
         }
         }
         }
