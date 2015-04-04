@@ -172,6 +172,7 @@ function mainpage (req,res) {
       }
     }
   });
+}
 
 app.get('/',mainpage(req,res));
 
