@@ -34,6 +34,8 @@ app.use(sessions({
   httpOnly: true
 }));
 
+var devtime = 1;
+
 //var lguser = {};
 //app.use(function(req,res,next){
 //  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
@@ -102,13 +104,24 @@ app.get('*', function(req,res,next) {   var d = new Date();
    console.log(req.ip);
     next();}
    });
+
+if(devtime) {
+ if(req.url === '/' || req.url === '/emptyindex' )
+ {
+   app.get('/', mainpage(req,res));
+   app.get('/emptyindex',function(req,res){res.render('emptyindex');});
+ }
+  else {
+    res.render('devtime');
+  }
+}
  
 app.get('/transitions',function(req,res){
   res.render('transitions');
 });
 
 
-app.get('/',function(req,res) {
+app.get('/',function mainpage (req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
