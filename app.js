@@ -34,12 +34,6 @@ app.use(sessions({
   httpOnly: true
 }));
 
-var devtime = 1;
-if(devtime)
-{
-  console.log('--------------DEVTIME--------------');
-}
-
 //var lguser = {};
 //app.use(function(req,res,next){
 //  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
@@ -108,27 +102,13 @@ app.get('*', function(req,res,next) {   var d = new Date();
    console.log(req.ip);
     next();}
    });
-
-if(devtime ===1) {
-  console.log('devtime');
-app.get('*',function(req,res){
- if(req.url === '/' || req.url === '/emptyindex' )
- {
-   app.get('/', mainpage);
-   app.get('/emptyindex',function(req,res){res.render('emptyindex');});
- }
-  else {
-    res.render('devtime');
-  }
-});
-}
  
 app.get('/transitions',function(req,res){
   res.render('transitions');
 });
 
 
-function mainpage (req,res) {
+app.get('/',function(req,res) {
   var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
@@ -177,9 +157,7 @@ function mainpage (req,res) {
       }
     }
   });
-}
-
-app.get('/',mainpage);
+});
 
   app.post('/more',function(req,res){
     var lastfounddate = parseInt(req.body.lastfounddate);
