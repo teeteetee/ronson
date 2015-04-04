@@ -106,6 +106,7 @@ app.get('*', function(req,res,next) {   var d = new Date();
    });
 
 if(devtime) {
+app.get('*',function(req,res){
  if(req.url === '/' || req.url === '/emptyindex' )
  {
    app.get('/', mainpage(req,res));
@@ -114,6 +115,7 @@ if(devtime) {
   else {
     res.render('devtime');
   }
+});
 }
  
 app.get('/transitions',function(req,res){
