@@ -217,10 +217,10 @@ app.get('/out/:place',function(req,res){
        if(doc!=null) {
           var xml = doc.xml;
           // RECONFIGURE FOR CROSS DOMAIN, DOUBLE XML CREATION NEEDED
-          res.send("<div id='pano' style='height:400px;'></div><script src='/js/pano2vr_player.js'></script><script>var pano = new pano2vrPlayer('pano');pano.readConfigUrl('"+xml+"');</script>");
+          res.send("<div id='pano' style='height:100%;'></div><script src='/js/pano2vr_player.js'></script><script>var pano = new pano2vrPlayer('pano');pano.readConfigUrl('"+xml+"');</script>");
        }
        else {
-         //make it an empty iframe
+         //make it an empty iframe, send an emptyxml with  R letter
        }
     }
   });
