@@ -208,13 +208,13 @@ app.get('/',function(req,res) {
   });
 
 app.get('/out/:place',function(req,res){
-  var vpid = req.params.place;
+  var vpid = parseInt(req.params.place);
   places.findOne({pid:vpid},function (err,doc){
     if(err) {
       // FIX THIS
     }
     else {
-       if(doc.length>0) {
+       if(doc!=null) {
           var xml = doc.xml;
           // RECONFIGURE FOR CROSS DOMAIN, DOUBLE XML CREATION NEEDED
           res.send("<div id='pano' style='height:400px;'></div><script src='/js/pano2vr_player.js></script><script>var pano = new pano2vrPlayer('pano');pano.readConfigUrl('"+xml+"');</script>");
