@@ -783,6 +783,7 @@ app.get('/admin/simap',function(req,res){
          adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          pid: 1,
          });
+         var ms = {};
          ms.trouble=0;
          res.send(ms);
 });
