@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('places'),top = db.get('top'),clientmail = db.get('clientmail'),clients = db.get('clients');
+  , places = db.get('places'),adminplaces = db.get('adminplaces'),top = db.get('top'),clientmail = db.get('clientmail'),clients = db.get('clients');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -750,7 +750,13 @@ app.get('/admax',function(req,res){
     {}
   else {
     vaccepts= c;
-    res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts});
+    adminplaces.find({},function(err,c){
+      if(err)
+      {}
+      else
+     {res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts,'doc':c});
+ }
+    });
   }
   });
   }
@@ -763,6 +769,94 @@ app.get('/admax',function(req,res){
    res.render('auth');
  }
 
+});
+
+app.post('/admin/apadd',function(req,res){
+  var ms={};
+  ms.trouble=1;
+  ms.mtext='db';
+  var vplacename=req.body.placename;
+  var vfday=parseInt(req.body.day);
+  var vfmonth=parseInt(req.body.month);
+  var vfyear=parseInt(req.body.year);
+  var vkind=req.body.kind;
+  var vgroup=req.body.group;
+  var vadress=req.body.adress;
+  var vcomments=req.body.comments;
+  adminplaces.find({},{limit:1,sort:{pid:-1}},function(err,doc){
+     if(err){
+      res.send(ms);
+     }
+     else {
+       console.log('DOC LENGTH: '+doc.length)
+       var d = new Date();
+       var vday = d.getDate().toString();
+       var vmonth = d.getMonth()+1;
+       var vyear = d.getUTCFullYear();
+       if (vday.length===1){
+         vday='0'+vday;
+         vday=parseInt(vday);
+       }
+       vmonth = vmonth.toString();
+       if (vmonth.length===1){
+         vmonth='0'+vmonth;
+       }
+       vmonth=parseInt(vmonth);
+       if(doc.length>0){
+         var newid = doc[0].pid;
+         newid++;
+         adminplaces.insert({
+         placename:'',
+         group:'',
+         kind:'',
+         comments:'',
+         placeclass:'',
+         regdate:{day:vday,month:vmonth,year:vyear},
+         founddate:{day:vfday,month:vfmonth,year:vfyear},
+         adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         pid: newid,
+         });
+         ms.trouble=0;
+         res.send(ms);
+       }
+       else{
+         adminplaces.insert({
+         placename:'',
+         kind:'',
+         comments:'',
+         group:'',
+         placeclass:'',
+         regdate:{day:vday,month:vmonth,year:vyear},
+         founddate:{day:vfday,month:vfmonth,year:vfyear},
+         adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         pid: 1,
+         });
+         ms.trouble=0;
+         res.send(ms);
+       }
+     }
+   });
+});
+
+app.post('/admin/removeap/:pid',function(req,res){
+  var pas = req.body.uu;
+  var vpid = parseInt(req.params.pid);
+  if (pas != 'withoutthesecurity' || !vpid) {
+    res.redirect('http://recentones.com');
+  }
+  else 
+  { var ms={};
+    ms.trouble=1;
+    ms.mtext = 'db';
+    adminplaces.remove({pid:vpid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    });}
 });
 
 ban=[];

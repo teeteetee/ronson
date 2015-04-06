@@ -9,6 +9,7 @@ head
     title Recent ones
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/transitions/animations.css', rel='stylesheet')
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
@@ -82,6 +83,41 @@ head
       .lightup:hover{
        background-color:#C8E4E5;
       }
+      .pt-perspective {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      perspective: 1200px;
+      transform-style: preserve-3d;
+      }
+      .pt-page {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index:100;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
+      }
+      .pt-page-current,
+      .no-js .pt-page {
+      visibility: visible;
+      z-index:200;
+      }
+      .no-js body {
+      overflow: auto;
+      }
+      .pt-page-ontop {
+      z-index: 300;
+      }
+      .pt-page-2 input {
+        background-color:#333;
+        border-color:#999999;
+        color:#ddd;
+      }
   body
     nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
           .container
@@ -92,22 +128,177 @@ head
               ul(class='nav navbar-nav')
                 li(class='active')
                   a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
-    .container(style='min-height:100vh;background-color:#eee;')  
-      .row
-        .col-xs-6
-          .list-group(style='margin-top:10px;margin-bottom:10px;')
-            a(href="#",class="list-group-item active") Главная панель 
-            a(href="http://recentones.com/admin/ratinglist",class="list-group-item") Список рейтингов
-              span(class="badge") #{ratingnum}
-            a(href="http://recentones.com/admin/addrating",class="list-group-item") Добавить рейтинг
-            a(href="http://recentones.com/admin/placelist",class="list-group-item") Список заведений
-              span(class="badge") #{placenum}
-            a(href="http://recentones.com/admin/addplace",class="list-group-item") Добавить место
-            a(href="http://recentones.com/admin/cmlist",class="list-group-item") Адреса
-              span(class="badge") #{interested}
-            a(href="http://recentones.com/admin/clientlist",class="list-group-item") Подтверждения
-              span(class="badge") #{accepts} 
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')      
+    .pt-perspective(id='pt-main')
+      .pt-page.pt-page-1(style='visibility:visible;')
+        .wrap(style='overflow:auto;height:100vh;')
+          .container(style='min-height:100vh;background-color:#eee;')  
+            .row
+              .col-xs-6
+                .list-group(style='margin-top:10px;margin-bottom:10px;')
+                  a(href="#",class="list-group-item active") Главная панель 
+                  a(href="http://recentones.com/admin/ratinglist",class="list-group-item") Список рейтингов
+                    span(class="badge") #{ratingnum}
+                  a(href="http://recentones.com/admin/addrating",class="list-group-item") Добавить рейтинг
+                  a(href="http://recentones.com/admin/placelist",class="list-group-item") Список заведений
+                    span(class="badge") #{placenum}
+                  a(href="http://recentones.com/admin/addplace",class="list-group-item") Добавить место
+                  a(href="http://recentones.com/admin/cmlist",class="list-group-item") Адреса
+                    span(class="badge") #{interested}
+                  a(href="http://recentones.com/admin/clientlist",class="list-group-item") Подтверждения
+                    span(class="badge") #{accepts} 
+            .row(style='padding-top:10px;padding-bottom:10px;text-align:center;') 
+              .col-xs-12 
+                button(class='btn btn-default',type='button', style='border-radius:15px;',id='addplace') Добавить заведение        
+            .row
+              .col-xs-12
+                .panel.panel-default">
+                  .panel-heading 
+                    | Информация по заведениям
+                  table(class="table table-stripped")
+                    tbody
+                      each place, i in doc
+                        tr(class='#{place.placeclass}' id='#row{place.pid}') 
+                          td
+                            | #{place.placename}
+                          td
+                            | #{place.kind}
+                          td
+                            | #{place.founddate.day}.#{place.founddate.month}.#{place.founddate.year}
+                          td
+                            | #{place.regdate.day}.#{place.regdate.month}.#{place.regdate.year}
+                          td 
+                            button(class='btn btn-default',type='button',onclick="function(){$('#comments#{place.pid}').slideToggle();}") Com
+                          td
+                            button(onclick='removeplace(#{place.pid})',class='btn btn-danger',type='button') Rem 
+                        tr(id='comments#{place.pid}' style='display:none;')
+                          td
+                            | #{place.comments}
+                          td
+                            | #{place.adress}
+      .pt-page.pt-page-2(id='panel' style='background-color:#333;height:100vh;overflow:auto;')
+        .container(style='background-color:#333;')
+          .row
+            .col-xs-12
+              h1(style='color:white;') Добавить заведение
+          .row(style='padding-top:10px;padding-bottom:10px;text-align:center;') 
+            .col-xs-12
+              form(role='form')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") Название 
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='placename')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") День основания 
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='day')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") Месяц основания 
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='month')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") Год основания 
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='year')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") Ресторанная группа 
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='group')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") Статус
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='placeclass')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") Адрес
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='adress')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") Комментарии
+                    textarea(type="text",class="form-control",aria-describedby="sizing-addon1",id='comments',rows='3') 
+                .form-group(style='text-align:center;')   
+                  button(class='btn btn-success',type='button',style='margin-top:20px;border-radius:30px;',id='submitplace') Создать 
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
+      script(src='/transitions/modernizr.custom.js')
+      script(src='/transitions/pagetransitions.js')
+      script.
+        $('#addplace').click(function(){
+          $('.pt-page-2').removeClass('pt-page-moveToRight');
+          $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
+          setTimeout(function(){$('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'});},1000);
+          });
+        $('#submitplace').click(function(){
+        request = new XMLHttpRequest();
+        $.valHooks.textarea = {
+          get: function( elem ) {
+            return elem.value.replace( /\r?\n/g, "\r\n" );
+          }
+        };
+        var placename= $('#placename').val();
+        var day= $('#day').val();
+        var month= $('#month').val();
+        var year= $('#year').val();
+        var group= $('#group').val();
+        var placeclass= $('#placeclass').val();
+        var adress= $('#adress').val();
+        var comments= $('#comments').val();
+        var vars = ['placename','day','month','year','group','placeclass','adress','comments'];
+        for(var xx =0;xx<8;xx++){
+          eval("if(!"+vars[xx]+"){"+vars[xx]+"='--'}");
+        }
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        alert('DB ERROR');
+        }
+        else {
+        //trouble === 0
+        back();
+        for(var xx =0;xx<8;xx++){
+          eval("$('#"+vars[xx]+"'').val('');");
+        }
+        }
+        }
+        };
+        request.open('POST', '/admin/apadd', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        request.send('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&=group'+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments);
+        });
+
+        function back() {
+           console.log('get back');
+           $('.pt-page-1').css('visibility','visible');
+           $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop').addClass('pt-page-moveToRight');
+           setTimeout(function(){$('.pt-page-2').removeClass('pt-page-current').empty().css('display','none');$('.pt-page').css('overflow','visible');},500);
+        }
+
+        function removeplace(id) {
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        var parsed = JSON.parse(request.responseText);
+        if (parsed.trouble === 1)
+        {alert('DB ERROR');}
+        else {
+          alert('Place deleted !');
+         eval("$('#row"+id+"').remove();");
+         eval("$('#comments"+id+"').remove();");
+        }}
+        };
+        var dest = '/admin/removeap/'+id;
+        request.open('POST', dest, true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
+        request.send("uu=withoutthesecurity");  
+        }  
       
         
 
