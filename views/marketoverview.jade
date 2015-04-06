@@ -312,8 +312,8 @@ head
         else {
           alert('Place deleted !');
           console.log('delete start');
-         eval("$('#row"+id+"').remove();");
-         eval("$('#comments"+id+"').remove();");
+         eval("$('#row"+id+"').css('display','none');");
+         eval("$('#comments"+id+"').css('display','none');");
          console.log('deleteend');
         }}
         };
