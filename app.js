@@ -778,7 +778,7 @@ app.get('/admin/simap',function(req,res){
          comments:'koko',
          group:'ko',
          placeclass:'danger',
-         regdate:{day:vday,month:vmonth,year:vyear},
+         regdate:{day:07,month:04,year:2015},
          founddate:{day:01,month:01,year:2015},
          adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
          pid: 1,
