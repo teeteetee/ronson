@@ -771,6 +771,22 @@ app.get('/admax',function(req,res){
 
 });
 
+app.get('/admin/simap',function(req,res){
+  adminplaces.insert({
+         placename:'koko',
+         kind:'lplp',
+         comments:'koko',
+         group:'ko',
+         placeclass:'danger',
+         regdate:{day:vday,month:vmonth,year:vyear},
+         founddate:{day:01,month:01,year:2015},
+         adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         pid: 1,
+         });
+         ms.trouble=0;
+         res.send(ms);
+});
+
 app.post('/admin/apadd',function(req,res){
   var ms={};
   ms.trouble=1;
