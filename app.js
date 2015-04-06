@@ -913,7 +913,7 @@ app.post('/admax',function(req,res){
 //---------------admin cookies-------------------
 
           req.session.sKK76d = 'porC6S78x0XZP1b2p08zGlq';
-          res.render('admin');
+          res.redirect('http://recentones.com/admax');
 //---------------admin cookies end-----------------
   }
   else {
