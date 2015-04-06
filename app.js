@@ -845,14 +845,14 @@ app.post('/admin/apadd',function(req,res){
          var newid = doc[0].pid;
          newid++;
          adminplaces.insert({
-         placename:'',
-         group:'',
-         kind:'',
-         comments:'',
-         placeclass:'',
+         placename:vplacename,
+         group:vgroup,
+         kind:vkind,
+         comments:vcomments,
+         placeclass:placeclass,
          regdate:{day:vday,month:vmonth,year:vyear},
          founddate:{day:vfday,month:vfmonth,year:vfyear},
-         adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         adress: vadress,
          pid: newid,
          });
          ms.trouble=0;
@@ -860,14 +860,14 @@ app.post('/admin/apadd',function(req,res){
        }
        else{
          adminplaces.insert({
-         placename:'',
-         kind:'',
-         comments:'',
-         group:'',
-         placeclass:'',
+         placename:vplacename,
+         kind:vkind,
+         comments:vcomments,
+         group:vgroup,
+         placeclass:placeclass,
          regdate:{day:vday,month:vmonth,year:vyear},
          founddate:{day:vfday,month:vfmonth,year:vfyear},
-         adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         adress: vadress,
          pid: 1,
          });
          ms.trouble=0;
