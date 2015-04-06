@@ -81,30 +81,31 @@ head
       .lightup:hover{
        background-color:#C8E4E5;
       }
-      body
-        nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
-              .container
-                .navbar-header
-                  a(class="navbar-brand" style='padding:5px;' href="/")
-                    img(alt="Logo",src="/bootstrap/images/rl.png",height='40',width='40')
-                .collapse.navbar-collapse#navbar-collapse-9
-                  ul(class='nav navbar-nav')
-                    li(class='active')
-                      a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
-        .container(style='min-height:100vh;')  
-          .row
-            .col-xs-6
-              .list-group(style='margin-top:10px;margin-bottom:10px;')
-                a(href="#",class="list-group-item active") Главная панель 
-                a(href="http://recentones.com/admin/ratinglist",class="list-group-item") Список рейтингов
-                  span(class="badge") #{ratingnum}
-                a(href="http://recentones.com/admin/addrating",class="list-group-item") Добавить рейтинг
-                a(href="http://recentones.com/admin/placelist",class="list-group-item") Список заведений
-                  span(class="badge") #{placenum}
-                a(href="http://recentones.com/admin/addplace",class="list-group-item") Добавить место
-                a(href="http://recentones.com/admin/cmlist",class="list-group-item") Адреса
-                  span(class="badge") #{interested}
-                a(href="http://recentones.com/admin/clientlist",class="list-group-item") Подтверждения
-                  span(class="badge") #{accepts} 
-                a(href="http://recentones.com/admin/market",class="list-group-item") Рынок
-                  span(class="badge") #{market} 
+
+  body
+    nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
+          .container
+            .navbar-header
+              a(class="navbar-brand" style='padding:5px;' href="/")
+                img(alt="Logo",src="/bootstrap/images/rl.png",height='40',width='40')
+            .collapse.navbar-collapse#navbar-collapse-9
+              ul(class='nav navbar-nav')
+                li(class='active')
+                  a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
+    .container(style='min-height:100vh;')  
+      .row
+        .col-xs-6
+          .list-group(style='margin-top:10px;margin-bottom:10px;')
+            a(href="#",class="list-group-item active") Главная панель 
+            a(href="http://recentones.com/admin/ratinglist",class="list-group-item") Список рейтингов
+              span(class="badge") #{ratingnum}
+            a(href="http://recentones.com/admin/addrating",class="list-group-item") Добавить рейтинг
+            a(href="http://recentones.com/admin/placelist",class="list-group-item") Список заведений
+              span(class="badge") #{placenum}
+            a(href="http://recentones.com/admin/addplace",class="list-group-item") Добавить место
+            a(href="http://recentones.com/admin/cmlist",class="list-group-item") Адреса
+              span(class="badge") #{interested}
+            a(href="http://recentones.com/admin/clientlist",class="list-group-item") Подтверждения
+              span(class="badge") #{accepts} 
+            a(href="http://recentones.com/admin/market",class="list-group-item") Рынок
+              span(class="badge") #{market} 
