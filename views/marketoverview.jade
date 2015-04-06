@@ -141,48 +141,45 @@ head
                 button(class='btn btn-default',type='button',id='addplace') Добавить заведение        
             .row
               .col-xs-12
-                .panel.panel-default
-                  .panel-heading 
-                    | Информация по заведениям
-                  table(class="table table-condensed")
-                    thead
-                      tr
+                table(class="table table-condensed")
+                  thead
+                    tr
+                      th
+                        | id
+                      th
+                        | Название
+                      th
+                        | Тип
+                      th
+                        | Открылось
+                      th
+                        | Внесли
+                      th
+                        | Ком.
+                      th
+                        | Удалить
+                  tbody
+                    each place, i in doc
+                      tr(class='#{place.placeclass}' id='#row#{place.pid}') 
                         td
-                          | id
+                          | #{place.pid}
                         td
-                          | Название
+                          | #{place.placename}
                         td
-                          | Тип
+                          | #{place.kind}
                         td
-                          | Открылось
+                          | #{place.founddate.day}.#{place.founddate.month}.#{place.founddate.year}
                         td
-                          | Внесли
+                          | #{place.regdate.day}.#{place.regdate.month}.#{place.regdate.year}
+                        td 
+                          button(class='btn btn-default',type='button',onclick="openup(#{place.pid});") Com
                         td
-                          | Ком.
+                          button(onclick='removeplace(#{place.pid})',class='btn btn-danger',type='button') Rem 
+                      tr(id='comments#{place.pid}' style='display:none;')
                         td
-                          | Удалить
-                    tbody
-                      each place, i in doc
-                        tr(class='#{place.placeclass}' id='#row#{place.pid}') 
-                          td
-                            | #{place.pid}
-                          td
-                            | #{place.placename}
-                          td
-                            | #{place.kind}
-                          td
-                            | #{place.founddate.day}.#{place.founddate.month}.#{place.founddate.year}
-                          td
-                            | #{place.regdate.day}.#{place.regdate.month}.#{place.regdate.year}
-                          td 
-                            button(class='btn btn-default',type='button',onclick="openup(#{place.pid});") Com
-                          td
-                            button(onclick='removeplace(#{place.pid})',class='btn btn-danger',type='button') Rem 
-                        tr(id='comments#{place.pid}' style='display:none;')
-                          td
-                            | #{place.comments}
-                          td
-                            | #{place.adress}
+                          | #{place.comments}
+                        td
+                          | #{place.adress}
       .pt-page.pt-page-2(id='panel' style='background-color:#999;height:100vh;overflow:auto;padding-top:50px;')
         .container
           .row
@@ -293,8 +290,8 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         //Most libraries like jQuery/Prototype/Dojo do this
-        console.log('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&group='+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments+'&city='+city+'&country='+country);
-        request.send('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&group='+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments+'&city='+city+'&country='+country);
+        console.log('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&group='+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments+'&city='+city+'&country='+country+'&kind='+kind);
+        request.send('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&group='+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments+'&city='+city+'&country='+country+'&kind='+kind);
         });
 
         function back() {
@@ -314,8 +311,10 @@ head
         {alert('DB ERROR');}
         else {
           alert('Place deleted !');
-         eval("$('#row"+id+"').remove();");
-         eval("$('#comments"+id+"').remove();");
+          console.log('delete start');
+         console.log("$('#row"+id+"').remove();");
+         console.log("$('#comments"+id+"').remove();");
+         console.log('deleteend');
         }}
         };
         var dest = '/admin/removeap/'+id;
