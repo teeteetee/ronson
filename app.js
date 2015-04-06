@@ -811,9 +811,9 @@ app.post('/admin/apadd',function(req,res){
   ms.trouble=1;
   ms.mtext='db';
   var vplacename=req.body.placename;
-  var vfday=parseInt(req.body.day);
-  var vfmonth=parseInt(req.body.month);
-  var vfyear=parseInt(req.body.year);
+  var vfday=req.body.day;
+  var vfmonth=req.body.month;
+  var vfyear=req.body.year;
   var vkind=req.body.kind;
   var vgroup=req.body.group;
   var vadress=req.body.adress;
