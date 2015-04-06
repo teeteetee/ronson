@@ -856,7 +856,7 @@ app.post('/admin/apadd',function(req,res){
          regdate:{day:vday,month:vmonth,year:vyear},
          founddate:{day:vfday,month:vfmonth,year:vfyear},
          adress: vadress,
-         city: vcity;
+         city: vcity,
          country: vcountry,
          pid: newid,
          });
@@ -873,7 +873,7 @@ app.post('/admin/apadd',function(req,res){
          regdate:{day:vday,month:vmonth,year:vyear},
          founddate:{day:vfday,month:vfmonth,year:vfyear},
          adress: vadress,
-         city: vcity;
+         city: vcity,
          country: vcountry,
          pid: 1,
          });
