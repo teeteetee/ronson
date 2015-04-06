@@ -750,12 +750,12 @@ app.get('/admax',function(req,res){
     {}
   else {
     vaccepts= c;
-    adminplaces.find({},function(err,c){
+    adminplaces.count({},function(err,c){
       if(err)
       {}
       else
      {console.log(c);
-      res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts,'doc':c});
+      res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts,'market':c});
  }
     });
   }
@@ -772,22 +772,39 @@ app.get('/admax',function(req,res){
 
 });
 
-app.get('/admin/simap',function(req,res){
-  adminplaces.insert({
-         placename:'koko',
-         kind:'lplp',
-         comments:'koko',
-         group:'ko',
-         placeclass:'danger',
-         regdate:{day:07,month:04,year:2015},
-         founddate:{day:01,month:01,year:2015},
-         adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
-         pid: 1,
-         });
-         var ms = {};
-         ms.trouble=0;
-         res.send(ms);
+app.get('/admin/market',function(req,res){
+  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
+  {
+    adminplaces.find({},function(err,doc){
+      if(err)
+        {//clap your hands
+        }
+      else {
+        res.render('marketoverview',{'doc':doc});
+      }
+    });
+  }
+  else{
+    res.redirect('http://ya.ru');
+  }
 });
+
+//app.get('/admin/simap',function(req,res){
+//  adminplaces.insert({
+//         placename:'koko',
+//         kind:'lplp',
+//         comments:'koko',
+//         group:'ko',
+//         placeclass:'danger',
+//         regdate:{day:07,month:04,year:2015},
+//         founddate:{day:01,month:01,year:2015},
+//         adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+//         pid: 1,
+//         });
+//         var ms = {};
+//         ms.trouble=0;
+//         res.send(ms);
+//});
 
 app.post('/admin/apadd',function(req,res){
   var ms={};
