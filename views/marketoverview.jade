@@ -148,6 +148,8 @@ head
                     thead
                       tr
                         td
+                          | id
+                        td
                           | Название
                         td
                           | Тип
@@ -161,7 +163,9 @@ head
                           | Удалить
                     tbody
                       each place, i in doc
-                        tr(class='#{place.placeclass}' id='#row{place.pid}') 
+                        tr(class='#{place.placeclass}' id='#row#{place.pid}') 
+                          td
+                            | #{place.pid}
                           td
                             | #{place.placename}
                           td
