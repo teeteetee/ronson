@@ -129,6 +129,12 @@ head
       .pt-page.pt-page-1(style='visibility:visible;')
         .wrap(style='overflow:auto;height:100vh;')
           .container(style='min-height:100vh;')  
+            .row
+              .col-xs-12
+                ol(class="breadcrumb",style='margin-top:10px;margin-bottom:10px;')
+                  li
+                    a(href="/admax") Главная
+                  li(class="active") Рынок  
             .row(style='padding-top:10px;padding-bottom:10px;text-align:center;') 
               .col-xs-12 
                 button(class='btn btn-default',type='button',id='addplace') Добавить заведение        
@@ -265,6 +271,7 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         //Most libraries like jQuery/Prototype/Dojo do this
+        console.log('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&=group'+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments);
         request.send('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&=group'+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments);
         });
 

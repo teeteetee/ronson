@@ -818,6 +818,10 @@ app.post('/admin/apadd',function(req,res){
   var vgroup=req.body.group;
   var vadress=req.body.adress;
   var vcomments=req.body.comments;
+  var vars = ['vplacename','vfday','vfmonth','vfyear','vgroup','vplaceclass','vadress','vcomments'];
+        for(var xx =0;xx<8;xx++){
+          eval("console.log("+vars[xx]+");");
+        }
   adminplaces.find({},{limit:1,sort:{pid:-1}},function(err,doc){
      if(err){
       res.send(ms);
