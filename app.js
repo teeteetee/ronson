@@ -819,8 +819,10 @@ app.post('/admin/apadd',function(req,res){
   var vgroup=req.body.group;
   var vadress=req.body.adress;
   var vcomments=req.body.comments;
-  var vars = ['vplacename','vfday','vfmonth','vfyear','vgroup','vkind','vplaceclass','vadress','vcomments'];
-        for(var xx =0;xx<8;xx++){
+  var vcity=req.body.city;
+  var vcountry=req.body.country;
+  var vars = ['vplacename','vfday','vfmonth','vfyear','vgroup','vkind','vplaceclass','vadress','vcomments','vcity','vcountry'];
+        for(var xx =0;xx<10;xx++){
           eval("console.log("+vars[xx]+");");
         }
   adminplaces.find({},{limit:1,sort:{pid:-1}},function(err,doc){

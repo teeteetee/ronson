@@ -179,11 +179,11 @@ head
                             | #{place.comments}
                           td
                             | #{place.adress}
-      .pt-page.pt-page-2(id='panel' style='background-color:#999;height:100vh;overflow:auto;')
+      .pt-page.pt-page-2(id='panel' style='background-color:#999;height:100vh;overflow:auto;padding-top:50px;')
         .container
           .row
             .col-xs-12
-              h1(style='color:white;') Добавить заведение
+              h1 Добавить заведение
           .row(style='padding-top:10px;padding-bottom:10px;text-align:center;') 
             .col-xs-12
               form(role='form')
@@ -191,6 +191,14 @@ head
                   .input-group
                     span(class="input-group-addon") Название 
                     input(type="text",class="form-control",aria-describedby="sizing-addon1",id='placename')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") Город 
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='city')
+                .form-group
+                  .input-group
+                    span(class="input-group-addon") Страна
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='country')
                 .form-group
                   .input-group
                     span(class="input-group-addon") Тип
@@ -233,6 +241,8 @@ head
           $('.pt-page-2').removeClass('pt-page-moveToRight');
           $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
           setTimeout(function(){$('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'});},1000);
+          $('#city').val('moscow');
+          $('#country').val('russia');
           });
         $('#submitplace').click(function(){
         request = new XMLHttpRequest();
@@ -250,8 +260,10 @@ head
         var adress= $('#adress').val();
         var comments= $('#comments').val();
         var kind= $('#kind').val();
-        var vars = ['placename','day','month','year','group','placeclass','adress','comments','kind'];
-        for(var xx =0;xx<9;xx++){
+        var city= $('#city').val();
+        var country= $('#country').val();
+        var vars = ['placename','day','month','year','group','placeclass','adress','comments','kind','city','country'];
+        for(var xx =0;xx<10;xx++){
           eval("if(!"+vars[xx]+"){"+vars[xx]+"='--'}");
         }
         request.onreadystatechange = function () {
@@ -277,8 +289,8 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         //Most libraries like jQuery/Prototype/Dojo do this
-        console.log('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&group='+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments);
-        request.send('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&group='+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments);
+        console.log('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&group='+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments+'&city='+city'&country='+country);
+        request.send('placename='+placename+'&day='+day+'&month='+month+'&year='+year+'&group='+group+'&placeclass='+placeclass+'&adress='+adress+'&comments='+comments+'&city='+city'&country='+country);
         });
 
         function back() {
