@@ -178,7 +178,7 @@ head
                           td
                             | #{place.regdate.day}.#{place.regdate.month}.#{place.regdate.year}
                           td 
-                            button(class='btn btn-default',type='button',onclick="function(){$('#comments#{place.pid}').slideToggle();}") Com
+                            button(class='btn btn-default',type='button',onclick="openup(#{place.pid});") Com
                           td
                             button(onclick='removeplace(#{place.pid})',class='btn btn-danger',type='button') Rem 
                         tr(id='comments#{place.pid}' style='display:none;')
@@ -310,7 +310,10 @@ head
         // THAT NEEDS TO BE CORRECTED. IT SUPPOSED TO CHECK FOR ALL THE OFFERS BUT SERVER SIDE DOESNT SUPPORT IT YET. AT LEAST CHANGE TO 'CALENDAR'
         request.send("uu=withoutthesecurity");  
         }  
-      
+        
+        function openup (id){
+          eval("$('#comments"+id+"').slideToggle();");
+        }
         
 
 
