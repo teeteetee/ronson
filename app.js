@@ -754,7 +754,8 @@ app.get('/admax',function(req,res){
       if(err)
       {}
       else
-     {res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts,'doc':c});
+     {console.log(c);
+      res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts,'doc':c});
  }
     });
   }
