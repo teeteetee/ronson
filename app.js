@@ -815,10 +815,11 @@ app.post('/admin/apadd',function(req,res){
   var vfmonth=req.body.month;
   var vfyear=req.body.year;
   var vkind=req.body.kind;
+  var vplaceclass=req.body.placeclass;
   var vgroup=req.body.group;
   var vadress=req.body.adress;
   var vcomments=req.body.comments;
-  var vars = ['vplacename','vfday','vfmonth','vfyear','vgroup','vplaceclass','vadress','vcomments'];
+  var vars = ['vplacename','vfday','vfmonth','vfyear','vgroup','vkind','vplaceclass','vadress','vcomments'];
         for(var xx =0;xx<8;xx++){
           eval("console.log("+vars[xx]+");");
         }
