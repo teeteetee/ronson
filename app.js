@@ -852,10 +852,12 @@ app.post('/admin/apadd',function(req,res){
          group:vgroup,
          kind:vkind,
          comments:vcomments,
-         placeclass:placeclass,
+         placeclass:vplaceclass,
          regdate:{day:vday,month:vmonth,year:vyear},
          founddate:{day:vfday,month:vfmonth,year:vfyear},
          adress: vadress,
+         city: vcity;
+         country: vcountry,
          pid: newid,
          });
          ms.trouble=0;
@@ -867,10 +869,12 @@ app.post('/admin/apadd',function(req,res){
          kind:vkind,
          comments:vcomments,
          group:vgroup,
-         placeclass:placeclass,
+         placeclass:vplaceclass,
          regdate:{day:vday,month:vmonth,year:vyear},
          founddate:{day:vfday,month:vfmonth,year:vfyear},
          adress: vadress,
+         city: vcity;
+         country: vcountry,
          pid: 1,
          });
          ms.trouble=0;
