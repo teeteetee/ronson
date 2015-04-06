@@ -193,6 +193,10 @@ head
                     input(type="text",class="form-control",aria-describedby="sizing-addon1",id='placename')
                 .form-group
                   .input-group
+                    span(class="input-group-addon") Тип
+                    input(type="text",class="form-control",aria-describedby="sizing-addon1",id='kind')
+                .form-group
+                  .input-group
                     span(class="input-group-addon") День основания 
                     input(type="text",class="form-control",aria-describedby="sizing-addon1",id='day')
                 .form-group
@@ -245,8 +249,9 @@ head
         var placeclass= $('#placeclass').val();
         var adress= $('#adress').val();
         var comments= $('#comments').val();
-        var vars = ['placename','day','month','year','group','placeclass','adress','comments'];
-        for(var xx =0;xx<8;xx++){
+        var kind= $('#kind').val();
+        var vars = ['placename','day','month','year','group','placeclass','adress','comments','kind'];
+        for(var xx =0;xx<9;xx++){
           eval("if(!"+vars[xx]+"){"+vars[xx]+"='--'}");
         }
         request.onreadystatechange = function () {
