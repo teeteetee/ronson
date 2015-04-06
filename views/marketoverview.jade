@@ -281,7 +281,7 @@ head
         //trouble === 0
         back();
         for(var xx =0;xx<8;xx++){
-          eval("$('#"+vars[xx]+"'').val('');");
+          eval("$('#"+vars[xx]+"').val('');");
         }
         }
         }
@@ -312,8 +312,8 @@ head
         else {
           alert('Place deleted !');
           console.log('delete start');
-         console.log("$('#row"+id+"').remove();");
-         console.log("$('#comments"+id+"').remove();");
+         eval("$('#row"+id+"').remove();");
+         eval("$('#comments"+id+"').remove();");
          console.log('deleteend');
         }}
         };
