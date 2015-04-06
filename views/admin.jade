@@ -112,6 +112,9 @@ head
       .pt-page-ontop {
       z-index: 300;
       }
+      btn {
+        border-radius:15px;
+      }
   body
     nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
           .container
@@ -142,8 +145,8 @@ head
                     span(class="badge") #{accepts} 
             .row(style='padding-top:10px;padding-bottom:10px;text-align:center;') 
               .col-xs-12 
-                button(class='btn btn-default',type='button', style='border-radius:15px;',id='addplace') Добавить заведение        
-            .row(style='background-color:#fff;')
+                button(class='btn btn-default',type='button',id='addplace') Добавить заведение        
+            .row
               .col-xs-12
                 .panel.panel-default
                   .panel-heading 
