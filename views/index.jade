@@ -215,13 +215,14 @@ head
           $('.main').css({'filter':' brightness(1)','-o-filter':' brightness(1)','-moz-filter':' brightness(1)','-ms-filter':' brightness(1)','-webkit-filter':' brightness(1)'});
         });
 
-        //$(document).keypress(function(event){
-        //var keycode = (event.keyCode ? event.keyCode : event.which);
-        //if(keycode == '13' && $('#searchfield').val()){
-        //  alert('going to performsearch');
-        //  performsearch();  
-        //}
-        //});
+        $(document).keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13' && $('#searchfield').val()){
+          event.preventDefault();
+          alert('going to performsearch');
+          performsearch();  
+        }
+        });
 
         var toplist = !{doc};
 
