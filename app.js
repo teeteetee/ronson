@@ -717,7 +717,51 @@ app.post('/admin/insidemsg/remove',function(req,res){
 
 });
 
-
+app.post('/admin/insidemsg',function(req,res){
+  console.log('creating message;');
+  var vheading = req.body.heading;
+  var vtextbody = req.body.textbody;
+  var d = new Date();
+  var vday = d.getDate().toString();
+  var vmonth = d.getMonth()+1;
+  vmonth = vmonth.toString();
+  var vyear = d.getUTCFullYear().toString();
+  console.log('beginning');
+  if (vday.length===1){
+         vday='0'+vday;
+       }
+  if (vmonth.length===1){
+         vmonth='0'+vmonth;
+       }
+  var vregdateint= vyear+vmonth+vday;
+  vregdateint = parseInt(vregdateint);
+  var ms = {};
+  ms.trouble=1;
+  ms.mtext = 'db';
+  console.log('middle');
+  insidemsg.find({},{limit:1,sort:{pid:-1}},function(err,doc){
+    if(err)
+    {
+      //clap your hands
+      res.send(ms);
+    }
+   else {
+    if(doc.length>0){
+      console.log('end');
+         var newid = doc[0].mid;
+         newid++;
+         insidemsg.insert({mid: newid,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
+      ms.trouble=0;
+      res.send(ms);
+       }
+       else {
+         insidemsg.insert({mid: 1,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
+         ms.trouble=0;
+      res.send(ms);
+       }
+   }
+  });
+});
 
 app.post('/srch',function(req,res){
   var query = req.body.query;
