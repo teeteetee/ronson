@@ -86,8 +86,9 @@ head
             li(class='list-group-item active', style='background-color:#b0b0b0;border-color:#999999;') На повестке
             each message,i in doc
               li(class='list-group-item' id='msg#{message.mid}' onclick="$('#removeblock#{message.mid}').slideToggle();") 
-                h4(сlass="list-group-item-heading") #{message.heading}
-                  small #{message.regdate.day}.#{message.regdate.month}.#{message.regdate.year}
+                h4(сlass="list-group-item-heading")
+                  small #{message.regdate.day}.#{message.regdate.month}.#{message.regdate.year} 
+                  | #{message.heading}
                 p(class="list-group-item-text") #{message.textbody}
               li(class='list-group-item' id='removeblock#{message.mid}' style='borer-top:0px;text-align:center;display:none;')
                 button(class='btn btn-danger' style='border-radius:30px;' type='button' onclick='removefn(#{message.mid})') Удалить
