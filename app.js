@@ -718,6 +718,7 @@ app.post('/admin/insidemsg/remove',function(req,res){
 });
 
 app.post('/admin/insidemsg',function(req,res){
+  console.log('creating message;');
   var vheading = req.body.heading;
   var vtextbody = req.body.textbody;
   var d = new Date();
