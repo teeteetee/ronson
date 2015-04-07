@@ -93,9 +93,9 @@ head
                 li(class='active')
                   a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Админка
     .container(style='min-height:100vh;')  
-      .row
+      .row(style='margin-top:10px;margin-bottom:10px;')
         .col-xs-6
-          .list-group(style='margin-top:10px;margin-bottom:10px;')
+          .list-group
             a(href="#",class="list-group-item active") Главная панель 
             a(href="http://recentones.com/admin/ratinglist",class="list-group-item") Список рейтингов
               span(class="badge") #{ratingnum}
@@ -111,7 +111,7 @@ head
               span(class="badge") #{market} 
         .col-xs-6(style='max-height:340px;overflow:auto;')
           ul(class='list-group', id='insertmessages')
-            li(class='list-group-item active') На повестке
+            li(class='list-group-item active', style='background-color:#b0b0b0;border-color:#999999;') На повестке
             each message,i in doc
               li(class='list-group-item') 
                 h4(сlass="list-group-item-heading") #{message.heading}
@@ -141,7 +141,7 @@ head
       console.log(parsed);
       if(parsed.trouble === 1)
       {
-      alert('На сервере проблемы, звоните айтишнику')ж
+      alert('На сервере проблемы, звоните айтишнику');
       }
       else {
       //trouble === 0
