@@ -573,6 +573,7 @@ head
 
         function performsearch(){
         var query = $('#searchfield').val();
+        console.log(query);
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;
