@@ -85,12 +85,12 @@ head
           ul(class='list-group', id='insertmessages')
             li(class='list-group-item active', style='background-color:#b0b0b0;border-color:#999999;') На повестке
             each message,i in doc
-              li(class='list-group-item' id='msg#{message.mid}' onclick='rmblock(#{message.mid});alert("hey");') 
+              li(class='list-group-item' id='msg#{message.mid}' onclick='rmblock(#{message.mid})') 
                 h4(сlass="list-group-item-heading") #{message.heading}
                   small #{message.regdate.day}.#{message.regdate.month}.#{message.regdate.year}
                 p(class="list-group-item-text") #{message.textbody}
                 p(class="list-group-item-text removeblock" id='removeblock#{message.mid}' style='display:none;')
-                  button(style='btn btn-danger' type='button' onclick='remove(#{message.mid)') Удалить
+                  button(style='btn btn-danger' type='button' onclick='remove(#{message.mid})') Удалить
       .row
         .col-xs-8
           h3 Добавить пункт в повестку
