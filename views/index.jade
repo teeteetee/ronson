@@ -183,12 +183,12 @@ head
         .pt-page.pt-page-1(style='visibility:visible;')
           .wrap(style='overflow:auto;height:100vh;')
             .main.container(style='margin-top:50px;z-index:2;',id='main')  
-              .row(style='display:none;box-shadow:inset 0px 0px 20px 10px black;',id='sr')
+              .row(style='display:none;box-shadow:inset 0px 0px 10px 2px gray;background-color:#ccc',id='sr')
                 #searchresults.col-xs-12(style='overflow:auto;')
                 nav
                   ul(class="pager")
                     li
-                      a(onclick="$('#sr').slideToggle();$('#searchresults').empty();") Закрыть
+                      a(onclick="$('#sr').slideToggle();$('#searchresults').empty();",style='font-family:roboto-thin;') Закрыть
               .row
                 #inserts.col-xs-12
             footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
@@ -214,12 +214,15 @@ head
           $("#welcome").css("display","none");
           $('.main').css({'filter':' brightness(1)','-o-filter':' brightness(1)','-moz-filter':' brightness(1)','-ms-filter':' brightness(1)','-webkit-filter':' brightness(1)'});
         });
+
         $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13' && $('#searchfield').val()){
+          alert('going to performsearch');
           performsearch();  
         }
         });
+
         var toplist = !{doc};
 
         $('#searchbutton').click(function(){
