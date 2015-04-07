@@ -739,7 +739,7 @@ app.post('/admin/insidemsg',function(req,res){
   ms.trouble=1;
   ms.mtext = 'db';
   console.log('middle');
-  insidemsg.find({},{limit:1,sort:{pid:1}},function(err,doc){
+  insidemsg.find({},{limit:1,sort:{pid:-1}},function(err,doc){
     if(err)
     {
       //clap your hands
@@ -750,6 +750,7 @@ app.post('/admin/insidemsg',function(req,res){
       console.log('end');
          var newid = doc[0].mid;
          newid++;
+         consle.log(newid);
          insidemsg.insert({mid: newid,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
       ms.trouble=0;
       res.send(ms);
