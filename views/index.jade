@@ -214,7 +214,12 @@ head
           $("#welcome").css("display","none");
           $('.main').css({'filter':' brightness(1)','-o-filter':' brightness(1)','-moz-filter':' brightness(1)','-ms-filter':' brightness(1)','-webkit-filter':' brightness(1)'});
         });
-        
+        $(document).keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13' && $('#searchfield').val()){
+          performsearch();  
+        }
+        });
         var toplist = !{doc};
 
         $('#searchbutton').click(function(){
