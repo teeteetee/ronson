@@ -693,7 +693,28 @@ app.get('/search',function(req,res){
   res.render('search');
 });
 
-app.post('/insidemsg',function(req,res){
+app.post('/admin/insidemsg/remove',function(req,res){
+  var vmid = parseInt(req.body.mid);
+  if (pas != 'withoutthesecurity' || !vpid) {
+    res.redirect('http://recentones.com');
+  }
+  else 
+  { var ms={};
+    ms.trouble=1;
+    ms.mtext = 'db';
+    insidemsg.remove({mid:vmid},function(err,done){
+      if(err){
+        res.send(ms);
+      }
+      else {
+        ms.trouble=0;
+        res.send(ms);
+      }
+    });}
+
+});
+
+app.post('/admin/insidemsg',function(req,res){
   var vheading = req.body.heading;
   var vtextbody = req.body.textbody;
   var d = new Date();

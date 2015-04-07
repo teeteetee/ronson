@@ -85,10 +85,12 @@ head
           ul(class='list-group', id='insertmessages')
             li(class='list-group-item active', style='background-color:#b0b0b0;border-color:#999999;') На повестке
             each message,i in doc
-              li(class='list-group-item') 
+              li(class='list-group-item' id='msg#{message.mid}' onclick='rmblock(#{message.mid})') 
                 h4(сlass="list-group-item-heading") #{message.heading}
                   small #{message.regdate.day}.#{message.regdate.month}.#{message.regdate.year}
                 p(class="list-group-item-text") #{message.textbody}
+                p(class="list-group-item-text removeblock" id='removeblock#{message.mid}' style='display:none;')
+                  button(style='btn btn-danger' type='button' onclick='remove(#{message.mid)') Удалить
       .row
         .col-xs-8
           h3 Добавить пункт в повестку
@@ -128,6 +130,30 @@ head
       request.send('heading='+heading+"&textbody="+textbody);
       }
 
+      function remove(mid){
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      alert('На сервере проблемы, звоните айтишнику');
+      }
+      else {
+      //trouble === 0
+      eval("$('#msg"+id+"'').remove();");
+      }
+      }
+      };
+      request.open('POST', '/admin/insidemsg/remove', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send('mid='+id+"&pas=withoutthesecurity");
+      }
+
       $(document).keypress(function(event){
       var keycode = (event.keyCode ? event.keyCode : event.which);
       if(keycode == '13' && $('#heading').val() && $('#textbody').val()){
@@ -141,3 +167,8 @@ head
           postmessage();
       }
       });
+
+      function rmblock(mid) {
+        $('.removeblock').css('display','none');
+        eval("$('#rmblock"+mid+"').slideToggle();");
+      }
