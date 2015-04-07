@@ -85,11 +85,12 @@ head
           ul(class='list-group', id='insertmessages')
             li(class='list-group-item active', style='background-color:#b0b0b0;border-color:#999999;') На повестке
             each message,i in doc
-              li(class='list-group-item' id='msg#{message.mid}' onclick='rmblock(#{message.mid})') 
+              li(class='list-group-item' id='msg#{message.mid}' onclick="$('#removeblock#{message.mid}').slideToggle();") 
                 h4(сlass="list-group-item-heading") #{message.heading}
                   small #{message.regdate.day}.#{message.regdate.month}.#{message.regdate.year}
                 p(class="list-group-item-text") #{message.textbody}
-                p(class="list-group-item-text removeblock" id='removeblock#{message.mid}' style='display:none;')
+              li(class='list-group-item' id='removeblock#{message.mid}' style='borer-top:0px;text-align:center;')
+                p(class="list-group-item-text removeblock" style='display:none;')
                   button(class='btn btn-danger' style='border-radius:30px;' type='button' onclick='remove(#{message.mid})') Удалить
       .row
         .col-xs-8
@@ -168,8 +169,3 @@ head
           postmessage();
       }
       });
-
-      function rmblock(mid) {
-        $('.removeblock').css('display','none');
-        eval("$('#removeblock"+mid+"').slideToggle();");
-      }
