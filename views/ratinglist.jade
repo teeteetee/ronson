@@ -131,6 +131,7 @@ head
         var vyear = dd.getUTCFullYear().toString();
         var fulldate = vday+vmonth+vyear;
         $('.updateneeded').each(function(){
+          alert(fulldate-parseInt($(this).text()));
           if(fulldate-parseInt($(this).text())>7){
             $(this).css({'background-color':'#c35','color':'white'});
           }
