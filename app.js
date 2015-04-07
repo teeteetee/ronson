@@ -747,7 +747,7 @@ app.post('/admin/insidemsg',function(req,res){
     }
    else {
     if(doc.length>0){
-      console.log('end');
+      console.log(doc[0]);
          var newid = doc[0].mid;
          newid++;
          console.log(newid);
