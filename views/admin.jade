@@ -53,6 +53,9 @@ head
       .lightup:hover{
        background-color:#C8E4E5;
       }
+      button {
+        border-radius:30px;
+      }
 
   body
     nav(class="navbar navbar-inverse navbar-static-top",style='margin-bottom:0px;')
@@ -91,7 +94,7 @@ head
                   | #{message.heading}
                 p(class="list-group-item-text") #{message.textbody}
               li(class='list-group-item' id='removeblock#{message.mid}' style='borer-top:0px;text-align:center;display:none;')
-                button(class='btn btn-danger' style='border-radius:30px;' type='button' onclick='removefn(#{message.mid})') Удалить
+                button(class='btn btn-danger' type='button' onclick='removefn(#{message.mid})') Удалить
       .row
         .col-xs-8
           h3 Добавить пункт в повестку
@@ -101,7 +104,7 @@ head
           .form-group
             label(for="textbody") Сообщение
             textarea(class="form-control" id="textbody")
-          button(type="button" id='send' class="btn btn-default") Отправить
+          button(type="button" id='send' class="btn btn-default") добавить
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
     script.
