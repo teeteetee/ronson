@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('places'),adminplaces = db.get('adminplaces'),top = db.get('top'),clientmail = db.get('clientmail'),clients = db.get('clients');
+  , places = db.get('places'),adminplaces = db.get('adminplaces'),top = db.get('top'),clientmail = db.get('clientmail'),clients = db.get('clients'),insidemsg = db.get('insidemsg');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -693,6 +693,47 @@ app.get('/search',function(req,res){
   res.render('search');
 });
 
+app.post('/insidemsg',function(req,res){
+  var vheading = req.body.heading;
+  var vtextbody = req.body.textbody;
+  var d = new Date();
+  var vday = d.getDate().toString();
+  var vmonth = d.getMonth()+1.toString();
+  var vyear = d.getUTCFullYear().toString();
+  if (vday.length===1){
+         vday='0'+vday;
+       }
+  if (vmonth.length===1){
+         vmonth='0'+vmonth;
+       }
+  var vregdateint= vyear+vmonth+vday;
+  vregdateint = parseInt(vregdateint);
+  var ms = {};
+  ms.trouble=1;
+  ms.mtext = 'db';
+  insidemsg.find({},{limit:1,sort:{pid:-1}},function(err,doc){
+    if(err)
+    {
+      //clap your hands
+      res.send(ms);
+    }
+   else {
+    if(doc.length>0){
+         var newid = doc[0].mid;
+         newid++;
+         insidemsg.insert({mid: newid,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
+      ms.trouble=0;
+      res.send(ms);
+       }
+       else {
+         insidemsg.insert({mid: 1,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
+         ms.trouble=0;
+      res.send(ms);
+       }
+   }
+  });
+});
+
 app.post('/srch',function(req,res){
   var query = req.body.query;
   console.log(query);
@@ -751,12 +792,21 @@ app.get('/admax',function(req,res){
     {}
   else {
     vaccepts= c;
+    var market;
     adminplaces.count({},function(err,c){
       if(err)
       {}
       else
+        market = c;
      {console.log(c);
-      res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts,'market':c});
+      insidemsg.find({},{sort:{mid:-1}},function(err,c){
+        if(err)
+      {}
+      else{
+              res.render('admin',{'ratingnum':vratingnum,'placenum':vplacenum,'interested':vinterested,'accepts':vaccepts,'market':market,'doc':c});
+
+      }
+      });
  }
     });
   }
@@ -1380,6 +1430,7 @@ app.post('/admin/simulateplace',function(req,res){
          vmonth='0'+vmonth;
        }
        vmonth=parseInt(vmonth);
+       // parseInt will turn '01' into '1', therefore this is useless
        if(doc.length>0){
          var newid = doc[0].pid;
          newid++;

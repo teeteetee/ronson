@@ -109,3 +109,65 @@ head
               span(class="badge") #{accepts} 
             a(href="http://recentones.com/admin/market",class="list-group-item") Рынок
               span(class="badge") #{market} 
+        .col-xs-6(style='max-height:340px;overflow:auto;')
+          ul(class='list-group', id='insertmessages')
+            li(class='list-group-item active') На повестке
+            each message,i in doc
+              li(class='list-group-item') 
+                h4(сlass="list-group-item-heading") #{message.heading}
+                  small #{message.regdate}
+                p(class="list-group-item-text") #{message.textbody}
+      .row
+        .col-xs-8
+          h3 Добавить пункт в повестку
+          .form-group
+            label(for="heading") Заголовок
+            input( class="form-control" id="heading" placeholder="Ударные темпы труда")
+          .form-group
+            label(for="textbody") Сообщение
+            textarea(class="form-control" id="textbody")
+          button(type="button" id='send' class="btn btn-default") Отправить
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
+    function postmessage(){
+        var heading = $('#heading').val();
+        var textbody = $('#textbody').val();
+        console.log(query);
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        alert('На сервере проблемы, звоните айтишнику')ж
+        }
+        else {
+        //trouble === 0
+        
+        }
+        }
+        };
+        request.open('POST', '/insidemsg', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        request.send('heading='+heading+"textbody="+textbody);
+        }
+
+        $(document).keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13' && $('#heading').val() && $('#textbody').val()){
+          event.preventDefault();
+          postmessage();  
+        }
+        });
+
+        var toplist = !{doc};
+
+        $('#ssend').click(function(){
+          if ( $('#heading').val() && $('#textbody').val()) {
+            postmessage();
+          }
+          });
