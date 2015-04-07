@@ -736,6 +736,7 @@ app.post('/admin/insidemsg',function(req,res){
   var ms = {};
   ms.trouble=1;
   ms.mtext = 'db';
+  console.log('middle');
   insidemsg.find({},{limit:1,sort:{pid:-1}},function(err,doc){
     if(err)
     {
@@ -744,6 +745,7 @@ app.post('/admin/insidemsg',function(req,res){
     }
    else {
     if(doc.length>0){
+      console.log('end');
          var newid = doc[0].mid;
          newid++;
          insidemsg.insert({mid: newid,heading: vheading,textbody: vtextbody,regdateint: vregdateint,regdate:{day:vday,month:vmonth,year:vyear}});
