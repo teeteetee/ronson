@@ -717,9 +717,7 @@ app.post('/admin/insidemsg/remove',function(req,res){
 
 });
 
-app.post('/admin/insidemsg',function(req,res){
- console.log('jojojojo');
-});
+
 
 app.post('/srch',function(req,res){
   var query = req.body.query;
