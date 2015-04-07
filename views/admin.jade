@@ -130,44 +130,42 @@ head
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
       function postmessage(){
-        var heading = $('#heading').val();
-        var textbody = $('#textbody').val();
-        console.log(heading+", "+textbody);
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        parsed = JSON.parse(request.responseText);
-        console.log(parsed);
-        if(parsed.trouble === 1)
-        {
-        alert('На сервере проблемы, звоните айтишнику')ж
-        }
-        else {
-        //trouble === 0
-        
-        }
-        }
-        };
-        request.open('POST', '/insidemsg', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //Most libraries like jQuery/Prototype/Dojo do this
-        request.send('heading='+heading+"textbody="+textbody);
-        }
+      var heading = $('#heading').val();
+      var textbody = $('#textbody').val();
+      console.log(heading+", "+textbody);
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      alert('На сервере проблемы, звоните айтишнику')ж
+      }
+      else {
+      //trouble === 0
+      
+      }
+      }
+      };
+      request.open('POST', '/insidemsg', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send('heading='+heading+"textbody="+textbody);
+      }
 
-        $(document).keypress(function(event){
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if(keycode == '13' && $('#heading').val() && $('#textbody').val()){
-          event.preventDefault();
-          postmessage();  
-        }
-        });
+      $(document).keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13' && $('#heading').val() && $('#textbody').val()){
+        event.preventDefault();
+        postmessage();  
+      }
+      });
 
-        var toplist = !{doc};
-
-        $('#ssend').click(function(){
-          if ( $('#heading').val() && $('#textbody').val()) {
-            postmessage();
-          }
-          });
+      $('#ssend').click(function(){
+      if ( $('#heading').val() && $('#textbody').val()) {
+          postmessage();
+      }
+      });
