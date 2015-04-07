@@ -183,7 +183,7 @@ head
         .pt-page.pt-page-1(style='visibility:visible;')
           .wrap(style='overflow:auto;height:100vh;')
             .main.container(style='margin-top:50px;z-index:2;',id='main')  
-              .row(style='display:none;box-shadow:inset 0px 0px 10px 2px gray;background-color:#ccc',id='sr')
+              .row(style='display:none;box-shadow:inset 0px 0px 10px 2px gray;background-color:#ccc;border-bottom-left-radius: 15px;border-bottom-right-radius: 15px;',id='sr')
                 #searchresults.col-xs-12(style='overflow:auto;padding-top:20px;')
                 nav
                   ul(class="pager")
@@ -587,7 +587,7 @@ head
         if(parsed.trouble === 1)
         {
         console.log('TROUBLE === 1');
-        $('#searchresults').append("<div class='row'><div class='col-xs-12'><h2>Ничего не нашли</h2></div></div>");
+        $('#searchresults').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h2 style='margin-bottom:20px;'>Ничего не нашли</h2></div></div>");
         $('#sr').slideToggle();
         }
         else {
