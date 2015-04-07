@@ -147,18 +147,23 @@ head
               span(class="input-group-addon" id="sizing-addon1") Адрес на английском
               input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
             .row(style='text-align:center;padding-top:10px;padding-bottom:10px;')
-              .col-xs-4
-                .input-group(style='margin-bottom:5px;')
-                  span(class="input-group-addon" id="sizing-addon1") День
-                  input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
-              .col-xs-4
-                .input-group(style='margin-bottom:5px;')
-                  span(class="input-group-addon" id="sizing-addon1") Месяц
-                  input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru')
-              .col-xs-4
-                .input-group(style='margin-bottom:5px;')
-                  span(class="input-group-addon" id="sizing-addon1") Год
-                  input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
+              .col-xs-12
+                .panel.panel-default
+                  .panel-heading
+                    h3(class="panel-title") Дата открытия
+                  .panel-body
+                    .col-xs-4
+                      .input-group(style='margin-bottom:5px;')
+                        span(class="input-group-addon" id="sizing-addon1") День
+                        input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
+                    .col-xs-4
+                      .input-group(style='margin-bottom:5px;')
+                        span(class="input-group-addon" id="sizing-addon1") Месяц
+                        input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru')
+                    .col-xs-4
+                      .input-group(style='margin-bottom:5px;')
+                        span(class="input-group-addon" id="sizing-addon1") Год
+                        input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
             .row
               .col-xs-12(style='text-align:center;margin-top:10px;margin-bottom:10px;')
                 .btn-group.btn-group-justified(role="group",aria-label="...")
