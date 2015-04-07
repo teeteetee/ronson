@@ -97,14 +97,17 @@ head
                 button(class='btn btn-danger' type='button' onclick='removefn(#{message.mid})') Удалить
       .row
         .col-xs-8
-          h3 Добавить пункт в повестку
-          .form-group
-            label(for="heading") Заголовок
-            input( class="form-control" id="heading" placeholder="Ударные темпы труда")
-          .form-group
-            label(for="textbody") Сообщение
-            textarea(class="form-control" id="textbody")
-          button(type="button" id='send' class="btn btn-default") добавить
+          .panel.panel-default
+            .panel-heading
+              h3(class="panel-title") Добавить пункт в повестку
+            .panel-body
+              .form-group
+                label(for="heading") Заголовок
+                input( class="form-control" id="heading" placeholder="Ударные темпы труда")
+              .form-group
+                label(for="textbody") Сообщение
+                textarea(class="form-control" id="textbody")
+              button(type="button" id='send' class="btn btn-default") Добавить
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') 
     script.
