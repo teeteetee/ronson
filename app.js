@@ -707,8 +707,9 @@ app.post('/srch',function(req,res){
     console.log('doc is: '+doc);
     if(doc.length>0)
     { 
+      ms.mdata = doc;
       ms.trouble = 0;
-      res.send(JSON.stringify(doc));
+      res.send(ms);
     }
     else {
       ms.mtext='empty';
