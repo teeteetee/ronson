@@ -184,7 +184,7 @@ head
           .wrap(style='overflow:auto;height:100vh;')
             .main.container(style='margin-top:50px;z-index:2;',id='main')  
               .row(style='display:none;box-shadow:inset 0px 0px 10px 2px gray;background-color:#ccc',id='sr')
-                #searchresults.col-xs-12(style='overflow:auto;')
+                #searchresults.col-xs-12(style='overflow:auto;padding-top:20px;')
                 nav
                   ul(class="pager")
                     li
@@ -595,7 +595,8 @@ head
         //populate is modified , check if suitable
         $('#searchresults').empty();
         for (var xx = 0;xx<toplist.length;xx++){
-        var insert = "<div class='srrow"+xx+"'><div class='col-xs-12' id='srp"+toplist[xx].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[xx].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div><div>";
+        var pinsert = "<div class='srrow"+xx+"'><div class='col-xs-12' id='srp"+toplist[xx].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[xx].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div><div>";
+        var insert = "<div class='srrow"+xx+"' onclick='openpanel("+toplist[xx].pid+")'><div class='col-xs-4' id='srp"+toplist[xx].pid+"'><div class='thumbnail'><img src='"+toplist[xx].mainpreview+"'></div></div><div class='col-xs-8'><h2>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></div></div>" 
          $('#searchresults').append(insert);
           }
         $('#sr').slideToggle();
