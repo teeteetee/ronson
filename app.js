@@ -739,7 +739,7 @@ app.post('/admin/insidemsg',function(req,res){
   ms.trouble=1;
   ms.mtext = 'db';
   console.log('middle');
-  insidemsg.find({},{limit:1,sort:{pid:-1}},function(err,doc){
+  insidemsg.find({},{limit:1,sort:{mid:-1}},function(err,doc){
     if(err)
     {
       //clap your hands
@@ -747,7 +747,7 @@ app.post('/admin/insidemsg',function(req,res){
     }
    else {
     if(doc.length>0){
-      console.log(doc[0]);
+      console.log('end');
          var newid = doc[0].mid;
          newid++;
          console.log(newid);
@@ -906,7 +906,7 @@ app.post('/admin/apadd',function(req,res){
         for(var xx =0;xx<10;xx++){
           eval("console.log("+vars[xx]+");");
         }
-  adminplaces.find({},{limit:1,sort:{mid:-1}},function(err,doc){
+  adminplaces.find({},{limit:1,sort:{pid:-1}},function(err,doc){
      if(err){
       res.send(ms);
      }
