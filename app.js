@@ -694,6 +694,7 @@ app.get('/search',function(req,res){
 });
 
 app.post('/admin/insidemsg/remove',function(req,res){
+  console.log('removing a message');
   var vmid = parseInt(req.body.mid);
   if (pas != 'withoutthesecurity' || !vpid) {
     res.redirect('http://recentones.com');
