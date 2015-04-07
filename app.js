@@ -698,7 +698,8 @@ app.post('/insidemsg',function(req,res){
   var vtextbody = req.body.textbody;
   var d = new Date();
   var vday = d.getDate().toString();
-  var vmonth = d.getMonth()+1.toString();
+  var vmonth = d.getMonth()+1;
+  vmonth = vmonth.toString();
   var vyear = d.getUTCFullYear().toString();
   if (vday.length===1){
          vday='0'+vday;
