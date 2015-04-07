@@ -725,6 +725,7 @@ app.post('/admin/insidemsg',function(req,res){
   var vmonth = d.getMonth()+1;
   vmonth = vmonth.toString();
   var vyear = d.getUTCFullYear().toString();
+  console.log('beginning');
   if (vday.length===1){
          vday='0'+vday;
        }
