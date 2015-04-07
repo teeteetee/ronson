@@ -90,7 +90,7 @@ head
                   small #{message.regdate.day}.#{message.regdate.month}.#{message.regdate.year}
                 p(class="list-group-item-text") #{message.textbody}
               li(class='list-group-item' id='removeblock#{message.mid}' style='borer-top:0px;text-align:center;display:none;')
-                button(class='btn btn-danger' style='border-radius:30px;' type='button' onclick='remove(#{message.mid})') Удалить
+                button(class='btn btn-danger' style='border-radius:30px;' type='button' onclick='removefn(#{message.mid})') Удалить
       .row
         .col-xs-8
           h3 Добавить пункт в повестку
@@ -130,7 +130,7 @@ head
       request.send('heading='+heading+"&textbody="+textbody);
       }
 
-      function remove(mid){
+      function removefn(mid){
         console.log('in remove');
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
