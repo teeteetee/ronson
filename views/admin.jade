@@ -32,37 +32,9 @@ head
       font-family:bt;
       src: url('/bootstrap/fonts/bebasneue_thin.ttf');
       }
-      h1 {
-      font-family:high;
-      font-size:3vw;
-      display:inline;
-      color:white;
-      }
       body {
       min-width:768px;
       background-color:#eee;
-      }
-      h2 {
-      font-size:6vw;
-      font-family:br;
-      letter-spacing:7px;
-      }
-      h3 {
-      font-size:3vw;
-      }
-      h4 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:white;
-      }
-      h5 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:black;
       }
       #header {
       padding-top:0.5vw;
@@ -115,7 +87,7 @@ head
             each message,i in doc
               li(class='list-group-item') 
                 h4(сlass="list-group-item-heading") #{message.heading}
-                  small #{message.regdate}
+                  small #{message.regdate.day}.#{message.regdate.month}.#{message.regdate.year}
                 p(class="list-group-item-text") #{message.textbody}
       .row
         .col-xs-8
@@ -164,7 +136,7 @@ head
       }
       });
 
-      $('#ssend').click(function(){
+      $('#send').click(function(){
       if ( $('#heading').val() && $('#textbody').val()) {
           postmessage();
       }
