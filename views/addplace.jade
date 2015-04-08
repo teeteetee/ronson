@@ -134,24 +134,28 @@ head
       .row
         form(action='/admin/addplace',method='post',role='form', enctype='multipart/form-data')
           .col-xs-12(style='text-align:center;padding-top:10px;padding-bottom:10px;')
-            .input-group(style='margin-bottom:5px;')
-              span(class="input-group-addon" id="sizing-addon1") Английское название заведения
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameen')
-            .input-group(style='margin-bottom:5px;')
-              span(class="input-group-addon" id="sizing-addon1") Русское название заведения
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameru') 
-            .input-group(style='margin-bottom:5px;')
-              span(class="input-group-addon" id="sizing-addon1") Адрес на русском
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressen')
-            .input-group(style='margin-bottom:5px;')
-              span(class="input-group-addon" id="sizing-addon1") Адрес на английском
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
-            .input-group(style='margin-bottom:5px;')
-              span(class="input-group-addon" id="sizing-addon1") Номер курирующего сотрудника
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='mid')
-            .input-group(style='margin-bottom:5px;')
-              span(class="input-group-addon" id="sizing-addon1") Номер фотографа
-              input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid')
+            .panel.panel-default
+              .panel-heading
+                h3(class="panel-title") Информация о заведении
+              .panel-body
+                .input-group(style='margin-bottom:5px;')
+                  span(class="input-group-addon" id="sizing-addon1") Английское название заведения
+                  input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameen')
+                .input-group(style='margin-bottom:5px;')
+                  span(class="input-group-addon" id="sizing-addon1") Русское название заведения
+                  input(type="text" class="form-control" aria-describedby="sizing-addon1" name='placenameru') 
+                .input-group(style='margin-bottom:5px;')
+                  span(class="input-group-addon" id="sizing-addon1") Адрес на русском
+                  input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressen')
+                .input-group(style='margin-bottom:5px;')
+                  span(class="input-group-addon" id="sizing-addon1") Адрес на английском
+                  input(type="text" class="form-control" aria-describedby="sizing-addon1" name='adressru') 
+                .input-group(style='margin-bottom:5px;')
+                  span(class="input-group-addon" id="sizing-addon1") Номер курирующего сотрудника
+                  input(type="text" class="form-control" aria-describedby="sizing-addon1" name='mid')
+                .input-group(style='margin-bottom:5px;')
+                  span(class="input-group-addon" id="sizing-addon1") Номер фотографа
+                  input(type="text" class="form-control" aria-describedby="sizing-addon1" name='pid')
             .row(style='text-align:center;padding-top:10px;padding-bottom:10px;')
               .col-xs-12
                 .panel.panel-default
