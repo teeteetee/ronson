@@ -170,50 +170,39 @@ head
                       .input-group(style='margin-bottom:5px;')
                         span(class="input-group-addon" id="sizing-addon1") Год
                         input(type="text" class="form-control" aria-describedby="sizing-addon1" name='year') 
-            .row
-              .col-xs-12(style='text-align:center;margin-top:10px;margin-bottom:10px;')
-                .btn-group.btn-group-justified(role="group",aria-label="...")
-                  .btn-group(role="group")
-                    button#addfield.btn.btn-default(type='button') Добавить фото
-                  .btn-group(role="group")
-                    button#addxmlfield.btn.btn-default(type='button') Добавить XML
-                  .btn-group(role="group")
-                    button#reset.btn.btn-default(type='button') Убрать все поля
-                  .btn-group(role="group")
-                    button#rmlast.btn.btn-default(type='button') Убрать фото
-                  .btn-group(role="group")
-                    button#rmlastxml.btn.btn-default(type='button') Убрать XML
-  
-                //  
-                  #labels.col-xs-4.zerop
-                    p
-                      label  MAINPREVIEW 
-                    p
-                      label  XML 
-                    //  
-                      p
-                        label  NUMBER OF IMAGES (DONT TOUCH) 
-                    //
-                      p
-                        label  NUMBER OF XML FILES (DONT TOUCH)
-                    p
-                      label  Панораму загружаем ?
-            .row
-              #inputs.col-xs-12.zerop
-                .input-group.input-group-lg(style='margin-bottom:5px;')
-                  span(class="input-group-addon" id="sizing-addon1") MAINPREVIEW
-                  input(type="file" id='mainpreview' class="form-control" aria-describedby="sizing-addon1" name='mainpreview')
-                .input-group.input-group-lg(style='margin-bottom:5px;')
-                  span(class="input-group-addon" id="sizing-addon1") XML
-                  input(type="file" id='xml' class="form-control" aria-describedby="sizing-addon1" name='xml')
-                .input-group.input-group-lg(style='margin-bottom:5px;')
-                  span(class="input-group-addon" id="sizing-addon1") XML OUT
-                  input(type="file" id='xmlout' class="form-control" aria-describedby="sizing-addon1" name='xmlout')
-                input#imgqntt.form-control(style='display:none;',type='text', name='imgqnnt')
-                input#xmlqntt.form-control(style='display:none;',type='text', name='xmlqntt')
-                label(for='pano')  Панораму загружаем ?
-                input#pano.form-control(type='checkbox', name='pano')           
-                button(class='btn btn-primary',type='submit',style='margin-top:10px;margin-bottom:10px;border-radius:30px;') Добавить 
+            .panel.panel-default
+              .panel-heading
+                h3(class="panel-title") Файлы
+              .panel-body
+                .row
+                  .col-xs-12(style='text-align:center;margin-top:10px;margin-bottom:10px;')
+                    .btn-group.btn-group-justified(role="group",aria-label="...")
+                      .btn-group(role="group")
+                        button#addfield.btn.btn-default(type='button') Добавить фото
+                      .btn-group(role="group")
+                        button#addxmlfield.btn.btn-default(type='button') Добавить XML
+                      .btn-group(role="group")
+                        button#reset.btn.btn-default(type='button') Убрать все поля
+                      .btn-group(role="group")
+                        button#rmlast.btn.btn-default(type='button') Убрать фото
+                      .btn-group(role="group")
+                        button#rmlastxml.btn.btn-default(type='button') Убрать XML
+                .row
+                  #inputs.col-xs-12.zerop
+                    .input-group.input-group-lg(style='margin-bottom:5px;')
+                      span(class="input-group-addon" id="sizing-addon1") MAINPREVIEW
+                      input(type="file" id='mainpreview' class="form-control" aria-describedby="sizing-addon1" name='mainpreview')
+                    .input-group.input-group-lg(style='margin-bottom:5px;')
+                      span(class="input-group-addon" id="sizing-addon1") XML
+                      input(type="file" id='xml' class="form-control" aria-describedby="sizing-addon1" name='xml')
+                    .input-group.input-group-lg(style='margin-bottom:5px;')
+                      span(class="input-group-addon" id="sizing-addon1") XML OUT
+                      input(type="file" id='xmlout' class="form-control" aria-describedby="sizing-addon1" name='xmlout')
+                  input#imgqntt.form-control(style='display:none;',type='text', name='imgqnnt')
+                  input#xmlqntt.form-control(style='display:none;',type='text', name='xmlqntt')
+                  label(for='pano')  Панораму загружаем ?
+                  input#pano.form-control(type='checkbox', name='pano')           
+                  button(class='btn btn-primary',type='submit',style='margin-top:10px;margin-bottom:10px;border-radius:30px;') Добавить 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')       
       script.
         $('#new3').click(function(){$('#withdate').slideToggle();})
