@@ -217,11 +217,12 @@ head
         var xmlcount = 0;
         var imgcount = 0;
         $('#addfield').click(function(){
-        imgcount++;
-        $('#imgqntt').val(imgcount);
-        //$('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" IMAGE</label></p>")
-        //$('#inputs').append("<label for='"+imgcount+"sidelabel'>"+imgcount+" IMAGE</label><input type='file' class='form-control'  id='"+imgcount+"side' name='images[]'>")
-        $('#inputs').append("<div class='input-group' id='"+xmlcount+"xmllabel' style='margin-bottom:5px;'><span class='input-group-addon' id='sizing-addon1'>"+imgcount+" IMAGE</span><input type='file' id='xml' class='form-control' aria-describedby='sizing-addon1' id='"+imgcount+"side' name='images[]'></div>");
+          for (var xx = 0;xx<6;xx++)
+        {imgcount++;
+                $('#imgqntt').val(imgcount);
+                //$('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" IMAGE</label></p>")
+                //$('#inputs').append("<label for='"+imgcount+"sidelabel'>"+imgcount+" IMAGE</label><input type='file' class='form-control'  id='"+imgcount+"side' name='images[]'>")
+                $('#inputs').append("<div class='input-group' id='"+xmlcount+"xmllabel' style='margin-bottom:5px;'><span class='input-group-addon' id='sizing-addon1'>"+imgcount+" IMAGE</span><input type='file' id='xml' class='form-control' aria-describedby='sizing-addon1' id='"+imgcount+"side' name='images[]'></div>");}
         });
         $('#addxmlfield').click(function(){
         xmlcount++;
