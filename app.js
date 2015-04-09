@@ -1901,14 +1901,13 @@ else
         adressru: vadressru,
         adressen: vadressen,
         founddateint:vfounddateint,
-        founddate:{day:vday,month:vmonth,year:vyear},
-        regdate:{day:,month:,year:},
+        founddate:{day:vfday,month:vfmonth,year:vfyear},
+        regdate:{day:vday,month:vmonth,year:vyear},
          pano : 1,
          mainpreview : vmainpreview,
          xml : vxml,
          imgqntt : photonum,
-         xmlqntt : vxmlqntt,
-
+         xmlqntt : vxmlqntt
          });
          
           
