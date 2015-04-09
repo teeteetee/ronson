@@ -24,20 +24,12 @@ head
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
-      @font-face {
-      font-family:br;
-      src: url('/bootstrap/fonts/bebasneue_regular.ttf');
-      }
-      @font-face {
-      font-family:bt;
-      src: url('/bootstrap/fonts/bebasneue_thin.ttf');
-      }
       body {
       min-width:768px;
       background-color:#333;
       }
   body
-    nav(class="navbar navbar-inverse navbar-fixed-top",style='z-index:500;')
+    nav(class="navbar navbar-inverse navbar-fixed-top")
       .container
         .navbar-header
           a(class="navbar-brand" style='padding:5px;' href="/")
@@ -45,10 +37,10 @@ head
         .collapse.navbar-collapse#navbar-collapse-9
           ul(class='nav navbar-nav')
             li
-              a(href='/',style='font-family:high;font-size:20px;letter-spacing:2px;') Настройки
+              a(href='/') Настройки
             li
-              a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Выйти
-    .container(style='margin-top:70px;')  
+              a(href='/top') Выйти
+    .container(style='margin-top:70px;margin-bottom:30px;')  
       .row
         .media
           .media-left
@@ -56,7 +48,7 @@ head
              img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='width:64px;height:64px;' alt="...")
           .media-body
             h4(class="media-heading" style='color:white;') Cильва
-             small 10 книг | 20 фильмов
+            h5(style='color:#777;') 10 книг | 20 фильмов
       .row
         .col-xs-6
           .row
