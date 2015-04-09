@@ -55,9 +55,16 @@ head
         .col-xs-12
           .panel.panel-default
             .panel-heading
-              h3(class="panel-title") Загрузить новый аватар
+              h3(class="panel-title") Пользователь
             .panel-body
-              .input(type='file')
+              .form-group
+                label(for="exampleInputPassword1") Изменить ник
+                input(type="password" class="form-control" id="exampleInputPassword1" placeholder="Password")
+                button(type="submit" style='border-radius:30px;' class="btn btn-default") Submit
+              .form-group
+                label(for="exampleInputFile") Загрузить аватар
+                input(type="file" id="exampleInputFile")
+                p(class="help-block") Хуйню всякую не посылайте пожалуйста
 
       .row(style='background-color:#eee;border-radius:10px;')
         .panel.panel-danger
