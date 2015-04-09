@@ -1729,7 +1729,7 @@ app.post('/upload',function(req,res) {
     req.body.month  === undefined||
     req.body.year  === undefined||
     req.body.adressru === undefined||
-    req.body.adressen === undefined||
+    req.body.adressen === undefined
     )
       
     {
