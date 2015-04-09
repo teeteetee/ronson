@@ -1744,11 +1744,6 @@ app.post('/upload',function(req,res) {
          return 0;
         }
         else {
-          console.log('DOC LENGTH: '+doc.length)
-          var d = new Date();
-          var vday = d.getDate();
-          var vmonth = d.getMonth()+1;
-          var vyear = d.getUTCFullYear();
           if(doc.length>0){
             var newid = doc[0].pid;
                 newid++;
@@ -1769,13 +1764,13 @@ app.post('/upload',function(req,res) {
     vmid = req.body.mid  ,
     vcity = req.body.city  ,
     vcountry = req.body.country ,
-    vday = req.body.day  ,
-    vmonth = req.body.month  ,
-    vyear = req.body.year  ,
+    vfday = req.body.day  ,
+    vfmonth = req.body.month  ,
+    vfyear = req.body.year  ,
     vadressru = req.body.adressru ,
     vadressen = req.body.adressen;
 
-    var vfounddateint = vyear+vmonth+vday;
+    var vfounddateint = vfyear+vfmonth+vfday;
     vfounddateint=parseInt(vfounddateint);
 
     var vpid = generateId();
@@ -1800,8 +1795,8 @@ app.post('/upload',function(req,res) {
         adressru: vadressru,
         adressen: vadressen,
         founddateint:vfounddateint,
-        founddate:{day:vday,month:vmonth,year:vyear},
-        regdate:{day:,month:,year:},
+        founddate:{day:vfday,month:vfmonth,year:vfyear},
+        regdate:{day:vday,month:vmonth,year:vyear},
          pano : 0
          });
         res.redirect('http://recentones.com/admax');
