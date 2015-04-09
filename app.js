@@ -765,11 +765,8 @@ app.post('/admin/insidemsg',function(req,res){
 });
 
 app.post('/srch',function(req,res){
-  var query = req.body.query;
+  var query = req.body.searchfield;
   console.log(query);
-  var ms = {};
-  ms.trouble = 1;
-  ms.mtext = 'db'
   places.find({placename:query},function(err,doc){
    if(err){
      res.send(ms);
