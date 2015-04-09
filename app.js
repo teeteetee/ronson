@@ -781,7 +781,7 @@ app.post('/srch',function(req,res){
       res.render('sr',{'doc':doc});
     }
     else {
-      res.ernder('emptysr');
+      res.render('emptysr');
     }
    }
   });
