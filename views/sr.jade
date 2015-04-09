@@ -199,42 +199,8 @@ head
       script(async src='/js/bootstrap.min.js')
       script( async, type='text/javascript', src='/js/pano2vr_player.js')
       script.
-        
         // LOGO COLOURING
-        var logocount=0;
-        $('#logo').mouseenter(function(){
-          if(logocount<3)
-           {switch(logocount) {
-                       case(0):
-                        $('#logo').attr('src','/bootstrap/images/gl.png');
-                        logocount++;
-                       break;
-                       case(1):
-                        $('#logo').attr('src','/bootstrap/images/bl.png');
-                        logocount++;
-                       break;
-                       case(2):
-                         $('#logo').attr('src','/bootstrap/images/rl.png');
-                        logocount++;
-                       break;
-                      }
-                    }
-            else {
-              switch(logocount%3)
-              {         case(0):
-                         $('#logo').attr('src','/bootstrap/images/gl.png');
-                         logocount++;
-                        break;
-                        case(1):
-                         $('#logo').attr('src','/bootstrap/images/bl.png');
-                         logocount++;
-                        break;
-                        case(2):
-                         $('#logo').attr('src','/bootstrap/images/rl.png');
-                         logocount++;
-                        break;}
-            }
-          }); 
+        
 
         //scrolltoplaugin
         $.fn.scrollTo = function( target, options, callback ){
@@ -268,7 +234,8 @@ head
             complete: function (e) {
                 console.log("animation completed");
             }
-        });}
+         });
+        }
         //and of the scroll fn
 
         function openpanel(pid) {
