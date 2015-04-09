@@ -186,7 +186,7 @@ head
                     .col-xs-6.col-xs-offset-3
                       ul(class='list-group')
                         li(style='padding:0px;' class='list-group-item')
-                          a(onclick='openpanel(#{place.pid}')
+                          a(onclick='openpanel(#{place.pid})')
                             img(style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='#{place.mainpreview}')
                         li(class='list-group-item')
                           h2(style='margin-top:0px;') #{place.placenameru}
@@ -233,4 +233,118 @@ head
                          logocount++;
                         break;}
             }
+          }); 
+
+        //scrolltoplaugin
+        $.fn.scrollTo = function( target, options, callback ){
+          if(typeof options == 'function' && arguments.length == 2){ callback = options; options = target; }
+          var settings = $.extend({
+            scrollTarget  : target,
+            offsetTop     : 50,
+            duration      : 500,
+            easing        : 'swing'
+          }, options);
+          return this.each(function(){
+            var scrollPane = $(this);
+            var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
+            var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
+            scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
+              if (typeof callback == 'function') { callback.call(this); }
+            });
           });
+        }
+        //end of scrollto plugin
+
+        //another scroll fn
+        function scrollfn (element){
+        $('.wrap').animate({
+            scrollTop: $(element).parent().scrollTop() + $(element).offset().top - $(element).parent().offset().top}, {
+            duration: 1000,
+            specialEasing: {
+                width: 'linear',
+                height: 'easeOutBounce'
+            },
+            complete: function (e) {
+                console.log("animation completed");
+            }
+         });
+        }
+        //and of the scroll fn
+
+        function openpanel(pid) {
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        parsed = JSON.parse(request.responseText);
+        console.log(parsed);
+        if(parsed.trouble === 1)
+        {
+        console.log('TROUBLE === 1');
+        switch (parsed.mtext){
+        case('db'):
+        alert('Sorry, our database is being updated');
+        break;
+        case('empty'):
+        alert('EMPTY');
+        break;
+        }}
+        else {
+        console.log('choice');
+        //trouble === 0
+        var place = parsed.place;
+        if(!parsed.place.pano){
+          console.log('empty');
+          var placename = place.placenameru;
+          var www = place.contacts.www;
+          var adressru = place.adressru;
+          var adressen = place.adressen;
+          var phone = place.contacts.phone;
+          var insert = "<div style='margin-top:60px;' class='container'><div class='row'><div class='col-xs-12'><nav><ul class='pager'><li class='previous'><a onclick='back("+pid+")' style='color:#999999;border:0px;' class='back'>Назад</a></li><li style='text-align:center;'><h3 style='color:#999999;display:inline;font-family:roboto-thin;'>"+placename+"</h3></li><li class='next' style='visibility:hidden;'><a>Назад</a></li></ul></nav></div></div><div class='row'><div class='col-xs-12'><ul class='list-group'><li style='padding:100px;text-align:center;background-color:inherit;border: 1px solid #4f4f4f;border-top-left-radius: 8px;border-top-right-radius: 8px;' class='list-group-item'><img src='/bootstrap/images/bl.png' style='width:10vw;margin-bottom:20px;'/><h5>Мы тур еще не отсняли &#40&#45&#58</h5></li><li style='padding-bottom:15px;border:1px solid #4f4f4f;border-bottom:1px solid #4f4f4f;background-color:inherit;border-bottom-right-radius:8px;border-bottom-left-radius:8px;' class='list-group-item'><a class='away' href='"+www+"'>На сайт</a><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+adressru+"</h5><h5 style='color:#747474;font-size:15px;font-weight:bold;margin-bottom:5px;'>"+adressen+"</h5><a href='tel:"+phone+"'><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+phone+"</h5></a></li></ul></div></div></div>";
+          $('#panel').append(insert);
+          $('.pt-page-2').removeClass('pt-page-moveToRight');
+          $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
+          setTimeout(function(){$('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'});},1000);
+          console.log('did output');
+        }
+        else {
+          console.log('haspano');
+          var placename = place.placenameru;
+          var adressru = place.adressru;
+          var adressen = place.adressen;
+          var www = place.contacts.www;
+          var phone = place.contacts.phone
+          var day = place.founddate.day;
+          var month = place.founddate.month;
+          var year = place.founddate.year;
+          var xml = place.xml;
+          var insert = "<div style='margin-top:60px;' class='container'><div class='row'><div class='col-xs-12'><nav><ul class='pager'><li class='previous'><a onclick='back("+pid+")' style='color:#999999;border:0px;' class='back'>Назад</a></li><li style='text-align:center;'><h3 style='color:#999999;display:inline;font-family:roboto-thin;'>"+placename+"</h3></li><li class='next' style='visibility:hidden;'><a>Назад</a></li></ul></nav></div></div><div class='row'><div class='col-xs-12'><ul class='list-group' ><li style='padding:0px;text-align:center;background-color:inherit;border: 1px solid #4f4f4f;border-top-left-radius: 8px;border-top-right-radius: 8px;' class='list-group-item'><div id='pano' style='height:400px;'></div></li><li style='padding-bottom:15px;border:1px solid #4f4f4f;border-bottom:1px solid #4f4f4f;background-color:inherit;border-bottom-right-radius:8px;border-bottom-left-radius:8px;' class='list-group-item'><div class='alert alert-warning alert-dismissible' role='alert' style='margin-top:10px;margin-bottom:10px;color:#09bcf5;background-color:inherit;border-color:#09bcf5;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Двойной щелчок для перехода в полноэкранный режим</strong></div><a class='away' href='"+www+"'>На сайт</a><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+adressru+"</h5><h5 style='color:#747474;font-size:15px;font-weight:bold;margin-bottom:5px;'>"+adressen+"</h5><a href='tel:"+phone+"'><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+phone+"</h5></a></li></ul></div></div></div>";
+          $('#panel').append(insert);
+          var pano = new pano2vrPlayer('pano');
+          eval("pano.readConfigUrl('"+xml+"');");
+          $('.pt-page-2').removeClass('pt-page-moveToRight');
+          $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
+          setTimeout(function(){$('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'});},1000);
+        }
+        }
+        }
+        };
+        request.open('POST', '/openpanel', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        request.send('pid='+pid);
+        };
+
+        function back(pid) {
+           console.log('get back');
+           $('.pt-page-1').css('visibility','visible');
+           $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop').addClass('pt-page-moveToRight');
+           setTimeout(function(){$('.pt-page-2').removeClass('pt-page-current').empty().css('display','none');$('.pt-page').css('overflow','visible');},500);
+           //eval("$('body').scrollTo('#p"+pid+"')");
+           //$('.pt-page').css('overflow','visible');
+           //$('pt-page').css('overflow','visible');
+           //$('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop pt-page-current').addClass('pt-page-moveToRight');
+        }
+
+        
