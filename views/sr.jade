@@ -183,10 +183,10 @@ head
               #inserts.col-xs-12
                 each place, i in doc
                   .row(style='margin-top:15px;margin-bottom:15px;')
-                    .col-xs-12
+                    .col-xs-6.col-xs-offset-3
                       ul(class='list-group')
                         li(style='padding:0px;' class='list-group-item')
-                          a onclick='openpanel(#{place.pid})
+                          a(onclick='openpanel(#{place.pid}')
                             img(style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='#{place.mainpreview}')
                         li(class='list-group-item')
                           h2(style='margin-top:0px;') #{place.placenameru}
