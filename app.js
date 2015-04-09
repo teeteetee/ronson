@@ -1716,7 +1716,7 @@ app.post('/upload',function(req,res) {
       fulldate = parseInt(fulldate);
 
 
- if(
+  if(
     req.body.placenameru === undefined||
     req.body.placenameen === undefined||
      req.body.telephone === undefined||
@@ -1735,55 +1735,53 @@ app.post('/upload',function(req,res) {
     {
       res.send('INCONSISTENT DATA');
      }
- else
-{//AUTH NEEDED HERE/ Something simple like hardcoded passphrase, can be passed through req.body
-   function generateId() {
-    places.find({},{limit:1,sort:{pid:-1}},function(err,doc){
-        if(err){
+  else
+    {//AUTH NEEDED HERE/ Something simple like hardcoded passphrase, can be passed through req.body
+    function generateId() {
+     places.find({},{limit:1,sort:{pid:-1}},function(err,doc){
+     if(err){
          console.log('DB ERR WHILE GENERATING ID')
          return 0;
         }
-        else {
-          if(doc.length>0){
+      else {
+        if(doc.length>0){
             var newid = doc[0].pid;
                 newid++;
                 return newid;
           }
-          else {
+        else {
                 return 1;
           }
             }
           });
      } // generateId declaration end
 
-   var vplacenameru =  req.body.placenameru ,
-    vplacenameen = req.body.placenameen ,
-    vphone = req.body.phone ,
-    vwww = req.body.www ,
-    vfid = req.body.fid ,
-    vmid = req.body.mid  ,
-    vcity = req.body.city  ,
-    vcountry = req.body.country ,
-    vfday = req.body.day  ,
-    vfmonth = req.body.month  ,
-    vfyear = req.body.year  ,
-    vadressru = req.body.adressru ,
-    vadressen = req.body.adressen;
+     var vplacenameru =  req.body.placenameru ,
+     vplacenameen = req.body.placenameen ,
+     vphone = req.body.phone ,
+     vwww = req.body.www ,
+     vfid = req.body.fid ,
+     vmid = req.body.mid  ,
+     vcity = req.body.city  ,
+     vcountry = req.body.country ,
+     vfday = req.body.day  ,
+     vfmonth = req.body.month  ,
+     vfyear = req.body.year  ,
+     vadressru = req.body.adressru ,
+     vadressen = req.body.adressen;
 
-    var vfounddateint = vfyear+vfmonth+vfday;
-    vfounddateint=parseInt(vfounddateint);
+     var vfounddateint = vfyear+vfmonth+vfday;
+     vfounddateint=parseInt(vfounddateint);
 
-    var vpid = generateId();
-    console.log(vpid);
-    if(!vpid) {
-      res.send('DB ERR');
-      return;
-    }
+     var vpid = generateId();
+     console.log(vpid);
+     if(!vpid) {
+       res.send('DB ERR');
+       return;
+     }
 
-   if(req.body.pano === 0){
-    
-
-      places.insert({placename : vplacename,
+      if(req.body.pano === 0){
+        places.insert({placename : vplacename,
         placenameru : vplacenameru,
         placenameen : vplacenameen,
         contacts:{www : vwww,phone :vphone},
@@ -1800,127 +1798,119 @@ app.post('/upload',function(req,res) {
          pano : 0
          });
         res.redirect('http://recentones.com/admax');
-   
-}
-else
-{
-          console.log('GOING TO CHECK IMAGES')
-         if ( imgcheck(photonum) === true )
-         
-             {var checkdir = __dirname +"/public/images/places/";
-         fs.ensureDir(checkdir, function(err) {
-         if (err === null){
-         console.log(checkdir+'exists');}
-         });
-         var photonum = req.body.imgqntt;
-         var vplacename = req.body.placename;
-         for (i=0;i<photonum;i++) {
-           eval('var vimg_'+i+';');
-           console.log(i+' VARIABLE CREATED');
          }
+      else
+        {
+          console.log('GOING TO CHECK IMAGES');
+          if ( imgcheck(photonum) === true ){
+              var checkdir = __dirname +"/public/images/places/";
+             fs.ensureDir(checkdir, function(err) {
+             if (err === null){
+             console.log(checkdir+'exists');}
+             });
+             var photonum = req.body.imgqntt;
+             var vplacename = req.body.placename;
+             for (i=0;i<photonum;i++) {
+               eval('var vimg_'+i+';');
+               console.log(i+' VARIABLE CREATED');
+             }
          
-         var vmainpreviewimg;
-         var vxmlfile;
+             var vmainpreviewimg;
+             var vxmlfile;
          
                    
-                  function upload(filepath,imageid,fieldid){
-                var oldPath = filepath;
-                console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-              var newPath = __dirname +"/public/images/places/" +vplacename+"/"+ imageid;
-                  console.log('UPLOAD 2 step, newPath:' + newPath );
-              fs.readFile(oldPath , function(err, data) {
+             function upload(filepath,imageid,fieldid){
+               var oldPath = filepath;
+               console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+               var newPath = __dirname +"/public/images/places/" +vplacename+"/"+ imageid;
+               console.log('UPLOAD 2 step, newPath:' + newPath );
+                fs.readFile(oldPath , function(err, data) {
                   fs.writeFile(newPath, data, function(err) {
                       fs.unlink(oldPath, function(){
                           if(err) throw err;
                           res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
                           fieldid = newPath;  });
                   }); 
-              }); 
-              };
+               }); 
+               }
            
-                function imgcheck (n) {
-                  var mistakes = 0;
-                  console.log('into IMAGECHECK');
-                  for (i=0;i<n;i++) {
-                    eval('if (req.files.images['+i+'].name == null) {mistakes++}');
-                    console.log('checked req.files.images['+i+'] , mistakes :'+mistakes);
-                  }
-                  if (mistakes>0) {return false;}
-             console.log('FILES:OK');}
+              function imgcheck (n) {
+                var mistakes = 0;
+                console.log('into IMAGECHECK');
+                for (i=0;i<n;i++) {
+                  eval('if (req.files.images['+i+'].name == null) {mistakes++}');
+                  console.log('checked req.files.images['+i+'] , mistakes :'+mistakes);
+                }
+                if (mistakes>0) {return false;}
+                console.log('FILES:OK');}
 
 
              
-             function uploadloop(n) {
-               console.log('UPLOADLOOP START,'+n+' images will be processed');
+              function uploadloop(n) {
+                console.log('UPLOADLOOP START,'+n+' images will be processed');
                 for(i=0;i<n;i++) {
                  eval("upload(req.files.images["+i+"].path,req.files.images["+i+"].name,vimg_"+i+");");
                 }
                 console.log('UPLOADLOOP EXIT');
-             }
-             function uploadloopxml(n) {
-               console.log('XMLUPLOADLOOP START,'+n+' files will be processed');
+                }
+
+              function uploadloopxml(n) {
+                console.log('XMLUPLOADLOOP START,'+n+' files will be processed');
                 for(i=0;i<n;i++) {
                  eval("upload(req.files.images["+i+"].path,req.files.images["+i+"].name,vimg_"+i+");");
                 }
                 console.log('UPLOADLOOP EXIT');
-             }
+                }
               
               var newplace = __dirname +"/public/images/places/" +vplacename;
-             fs.mkdirs(newplace , function(err){
-                      if (err) {return console.error(err);}
-                       console.log('NEW FOLDER CREATED , MOVING FILES');
-                       uploadloop(photonum);
-                       upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
-                       upload(req.files.xml.path,req.files.xml.name,vxmlfile);
-                       });
+              fs.mkdirs(newplace , function(err){
+              if (err) {return console.error(err);}
+              console.log('NEW FOLDER CREATED , MOVING FILES');
+              uploadloop(photonum);
+              upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
+              upload(req.files.xml.path,req.files.xml.name,vxmlfile);
+              });
          
-         
-           
-           var vmainpreview = "/images/places/"+req.body.placename+"/"+ req.files.mainpreview.name,
-           vxmlqntt = req.body.xmlqntt,
-           vxml = "/images/places/"+req.body.placename+"/" + req.files.xml.name;
-         
-            console.log(vplacename);
-            console.log(vxml);
+              var vmainpreview = "/images/places/"+req.body.placename+"/"+ req.files.mainpreview.name,
+              vxmlqntt = req.body.xmlqntt,
+              vxml = "/images/places/"+req.body.placename+"/" + req.files.xml.name;
+              console.log(vplacename);
+              console.log(vxml);
 
-             
+    
+              places.insert({
+              placename : vplacename,
+              placenameru : vplacenameru,
+              placenameen : vplacenameen,
+              contacts:{www : vwww,phone :vphone},
+              fid : vfid,
+              mid: vmid,
+              pid: vpid,
+              city : vcity,
+              country : vcountry,
+              adressru: vadressru,
+              adressen: vadressen,
+              founddateint:vfounddateint,
+              founddate:{day:vfday,month:vfmonth,year:vfyear},
+              regdate:{day:vday,month:vmonth,year:vyear},
+              pano : 1,
+              mainpreview : vmainpreview,
+              xml : vxml,
+              imgqntt : photonum,
+              xmlqntt : vxmlqntt
+              });
          
-           
-          // CTYPE MUST BE ADDED - TELLS DISTANCE FROM THE CENTER
-         
-          places.insert({
-         placename : vplacename,
-        placenameru : vplacenameru,
-        placenameen : vplacenameen,
-        contacts:{www : vwww,phone :vphone},
-        fid : vfid,
-        mid: vmid,
-        pid: vpid,
-        city : vcity,
-        country : vcountry,
-        adressru: vadressru,
-        adressen: vadressen,
-        founddateint:vfounddateint,
-        founddate:{day:vfday,month:vfmonth,year:vfyear},
-        regdate:{day:vday,month:vmonth,year:vyear},
-         pano : 1,
-         mainpreview : vmainpreview,
-         xml : vxml,
-         imgqntt : photonum,
-         xmlqntt : vxmlqntt
-         });
-         
-          
-          console.log('UPLOAD DONE! REDIRECTING TO PP')
-          res.redirect('http://recentones.com/admax');
-         }
-         
+              console.log('UPLOAD DONE! REDIRECTING TO PP');
+              res.redirect('http://recentones.com/admax');
+           }
+
           else { 
          
             console.log('SHITTY FILES, UPLOAD ABORTED');
             res.send('SHITTY FILES, UPLOAD ABORTED')
-         };
+         }
   }//ELSE OF (pano===0)}
+ }//ELSE OF inconsistent data
 });
 
 
