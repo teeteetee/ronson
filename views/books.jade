@@ -39,9 +39,9 @@ head
         .collapse.navbar-collapse#navbar-collapse-9
           ul(class='nav navbar-nav')
             li
-              a(href='/') Настройки
+              a(href='/settings') Настройки
             li
-              a(href='/top') Выйти
+              a Выйти
     .container(style='margin-top:50px;')  
       .row(style='margin-bottom:30px;')
         .media
@@ -56,84 +56,88 @@ head
               button(type="button" class="btn btn-success") Добавить фильм
 
       .row(style='background-color:#eee;border-radius:10px;')
-        .col-xs-6
-          .row
-            .col-xs-3
-              h5(style='color:gray;') 12.05.2015
-            .col-xs-9
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-star' style='color:#ff0000;margin-left:10px;')
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-3
-              h5(style='color:gray;') 12.05.2015
-            .col-xs-9
-              h5 Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-star' style='color:#ff0000;margin-left:10px;')
-          .row
-            .col-xs-3
-              h5(style='color:gray;') 12.05.2015
-            .col-xs-9
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-        .col-xs-6
-          .row
-            .col-xs-3
-              h5(style='color:gray;') 12.05.2015
-            .col-xs-9
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-star' style='color:#ff0000;margin-left:10px;')
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-3
-              h5(style='color:gray;') 12.05.2015
-            .col-xs-9
-              h5 Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-star' style='color:#ff0000;margin-left:10px;')
-          .row
-            .col-xs-3
-              h5(style='color:gray;') 12.05.2015
-            .col-xs-9
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
-          .row
-            .col-xs-9.col-xs-offset-3
-              h5 Ф.М. Достоевский "Идиот"
+        .panel.panel-default
+            .panel-heading
+              h3(class="panel-title") Книги и фильмы
+            .panel-body
+              .col-xs-6
+                .row
+                  .col-xs-3
+                    h5(style='color:gray;') 12.05.2015
+                  .col-xs-9
+                    h5 Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5 Ф.М. Достоевский "Идиот"
+                      span(class='glyphicon glyphicon-star' style='color:#ff0000;margin-left:10px;')
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5 Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-3
+                    h5(style='color:gray;') 12.05.2015
+                  .col-xs-9
+                    h5 Ф.М. Достоевский "Идиот"
+                      span(class='glyphicon glyphicon-star' style='color:#ff0000;margin-left:10px;')
+                .row
+                  .col-xs-3
+                    h5(style='color:gray;') 12.05.2015
+                  .col-xs-9
+                    h5 Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
+              .col-xs-6
+                .row
+                  .col-xs-3
+                    h5(style='color:gray;') 12.05.2015
+                  .col-xs-9
+                    h5 Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5 Ф.М. Достоевский "Идиот"
+                      span(class='glyphicon glyphicon-star' style='color:#ff0000;margin-left:10px;')
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5 Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-3
+                    h5(style='color:gray;') 12.05.2015
+                  .col-xs-9
+                    h5 Ф.М. Достоевский "Идиот"
+                      span(class='glyphicon glyphicon-star' style='color:#ff0000;margin-left:10px;')
+                .row
+                  .col-xs-3
+                    h5(style='color:gray;') 12.05.2015
+                  .col-xs-9
+                    h5 Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
+                .row
+                  .col-xs-9.col-xs-offset-3
+                    h5(style='color:#bbb;') Ф.М. Достоевский "Идиот"
 
              
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')

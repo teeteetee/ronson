@@ -163,6 +163,10 @@ app.get('/books',function(req,res){
 res.render('books');
 });
 
+app.get('/settings',function(req,res){
+res.render('settings');
+});
+
   app.post('/more',function(req,res){
     var lastfounddate = parseInt(req.body.lastfounddate);
     console.log(lastfounddate);
