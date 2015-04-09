@@ -159,6 +159,10 @@ app.get('/',function(req,res) {
   });
 });
 
+app.get('/books',function(req,res){
+res.render('books');
+});
+
   app.post('/more',function(req,res){
     var lastfounddate = parseInt(req.body.lastfounddate);
     console.log(lastfounddate);
