@@ -169,7 +169,7 @@ head
               a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
             li
               a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
-          form(class="navbar-form navbar-right" id='srch' role="search")
+          form(class="navbar-form navbar-right" action='/srch' method='post' id='srch' role="search")
            .input-group
               input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
               span(class='input-group-btn')
@@ -180,8 +180,8 @@ head
         .wrap(style='overflow:auto;height:100vh;')
           .main.container(style='margin-top:50px;z-index:2;',id='main')  
             .row
-              #inserts.col-xs-12
-                h2 Ничего не нашли
+              #inserts.col-xs-12(style='text-align:center;padding-top:20%;')
+                h1 Ничего не нашли
 
       .pt-page.pt-page-2(id='panel' style='background-color:#333;height:100vh;overflow:auto;')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')

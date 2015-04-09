@@ -169,7 +169,7 @@ head
               a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
             li
               a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
-          form(class="navbar-form navbar-right" id='srch' role="search")
+          form(class="navbar-form navbar-right" action='/srch' method='post' id='srch' role="search")
            .input-group
               input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
               span(class='input-group-btn')
