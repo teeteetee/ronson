@@ -185,6 +185,19 @@ head
                 h3(class="panel-title") Файлы
               .panel-body
                 .row
+                  .col-xs-4
+                    .checkbox
+                      label
+                        input(type="checkbox" value="")
+                        | Загружаем снимки для тура
+                    .checkbox
+                      label
+                        input(type="checkbox" value="")
+                        | Превьюшка снята не нами 
+                    .input-group(style='margin-bottom:5px;')
+                        span(class="input-group-addon" id="sizing-addon1") Автор
+                        input(type="text" class="form-control" aria-describedby="sizing-addon1" name='previewauthor') 
+                .row
                   .col-xs-12(style='text-align:center;margin-top:10px;margin-bottom:10px;')
                     .btn-group.btn-group-justified(role="group",aria-label="...")
                       .btn-group(role="group")
