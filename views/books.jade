@@ -301,33 +301,6 @@ head
           classie.toggle( menuLeft, 'cbp-spmenu-open' );
           disableOther( 'showLeft' );
         };
-        showRight.onclick = function() {
-          classie.toggle( this, 'active' );
-          classie.toggle( menuRight, 'cbp-spmenu-open' );
-          disableOther( 'showRight' );
-        };
-        showTop.onclick = function() {
-          classie.toggle( this, 'active' );
-          classie.toggle( menuTop, 'cbp-spmenu-open' );
-          disableOther( 'showTop' );
-        };
-        showBottom.onclick = function() {
-          classie.toggle( this, 'active' );
-          classie.toggle( menuBottom, 'cbp-spmenu-open' );
-          disableOther( 'showBottom' );
-        };
-        showLeftPush.onclick = function() {
-          classie.toggle( this, 'active' );
-          classie.toggle( body, 'cbp-spmenu-push-toright' );
-          classie.toggle( menuLeft, 'cbp-spmenu-open' );
-          disableOther( 'showLeftPush' );
-        };
-        showRightPush.onclick = function() {
-          classie.toggle( this, 'active' );
-          classie.toggle( body, 'cbp-spmenu-push-toleft' );
-          classie.toggle( menuRight, 'cbp-spmenu-open' );
-          disableOther( 'showRightPush' );
-        };
         
         function disableOther( button ) {
           if( button !== 'showLeft' ) {
