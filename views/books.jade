@@ -53,18 +53,19 @@ head
       }
 
   body
-    nav(class="navbar navbar-default")
-      .container
-        .navbar-header
-          a(class="navbar-brand" href="/")
-            | People & Books
-        .collapse.navbar-collapse#navbar-collapse-9
-          ul(class='nav navbar-nav')
-            li
-              a(href='/settings') Настройки
-            li
-              a Выйти
-    .container(style='padding-top:60px;padding-bottom:20px;')  
+    //
+      nav(class="navbar navbar-default")
+        .container
+          .navbar-header
+            a(class="navbar-brand" href="/")
+              | People & Books
+          .collapse.navbar-collapse#navbar-collapse-9
+            ul(class='nav navbar-nav')
+              li
+                a(href='/settings') Настройки
+              li
+                a Выйти
+    .container(style='padding-top:20px;padding-bottom:20px;')  
       .row(style='margin-bottom:30px;')
         .media
           .media-left
@@ -161,12 +162,13 @@ head
           .row
             .col-xs-9.col-xs-offset-3
               h5(style='color:rgba(255, 255, 255, 0.21);') Ф.М. Достоевский "Идиот"
-    footer(class='footer' style='background-color:#333;')
-      .container 
-        a link
-        a link
-        a link
-        a link
+        //
+          footer(class='footer' style='background-color:#333;')
+            .container 
+              a link
+              a link
+              a link
+              a link
 
              
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
