@@ -284,6 +284,7 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
       script.
+        var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
             showLeft = document.getElementById( 'showLeft' ),
@@ -293,9 +294,19 @@ head
             body = document.body;
         
         showLeft.onclick = function() {
-          classie.toggle( this, 'active' );
-          classie.toggle( menuLeft, 'cbp-spmenu-open' );
-          disableOther( 'showLeft' );
+          switch(counter)
+            {case(1):
+                         counter=0;
+                         this.removeClass('active' );
+                         $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
+                         disableOther( 'showLeft' );
+                        break;
+                        case(0):
+                          counter=1;
+                          this.addClass('active' );
+                          $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
+                          disableOther( 'showLeft' );
+                        break;}
         };
         
         function disableOther( button ) {
