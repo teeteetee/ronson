@@ -65,16 +65,18 @@ head
                 a(href='/settings') Настройки
               li
                 a Выйти
-    .sidebar(style='width:74px;position:fixed;height:100%;')
+    .sidebar(style='width:74px;position:fixed;height:100%;background-color:#333;')
       img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
+      span(class='glyphicon glyphicon-menu-hamburger' style='color:white;margin-top:20px;')
     .container(style='padding-top:20px;padding-bottom:20px;')  
-      .row(style='margin-bottom:30px;')
-        .media
-          .media-left
-            a
-             img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='width:64px;height:64px;' alt="...")
-          .media-body
-            h4(class="media-heading") Cильва
+      //
+        .row(style='margin-bottom:30px;')
+          .media
+            .media-left
+              a
+               img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='width:64px;height:64px;' alt="...")
+            .media-body
+              h4(class="media-heading") Cильва
       .row
         .col-xs-6(style='background-color:rgba(255, 255, 255, 0.39);min-height:700px;border-top-left-radius:10px;border-bottom-left-radius:10px;')
           .row
