@@ -192,7 +192,7 @@ head
               h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 30 
                span(style='color:rgba(0, 0, 0, 0.15);') | 20
               button(class='btn btn-default' id='addbookbutton' style='border-radius:30px;margin-bottom:20px;border:0px;color:white;background-color:rgba(255, 255, 255, 0.38);' type='button') Добавить книгу
-          .row(id='addbook' style='display:none;')
+          .row(id='addbook' style='display:none;padding-bottom:20px;padding-top:20px;background-color:white;')
             .col-xs-12
               .form-group
                 label(for="exampleInputEmail1") Email address
@@ -244,7 +244,16 @@ head
             .col-xs-12(style='text-align:center;')
               h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 45 
                span(style='color:rgba(255, 255, 255, 0.21);') | 10
-              button(class='btn btn-default' style='border-radius:30px;margin-bottom:20px;border:0px;background-color:rgba(255, 255, 255, 0.38);color:white;' type='button') Добавить фильм
+              button(class='btn btn-default' id='addmoviebutton' style='border-radius:30px;margin-bottom:20px;border:0px;background-color:rgba(255, 255, 255, 0.38);color:white;' type='button') Добавить фильм
+           .row(id='addmovie' style='display:none;padding-bottom:20px;padding-top:20px;background-color:white;')
+            .col-xs-12
+              .form-group
+                label(for="exampleInputEmail1") Email address
+                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email")
+              .form-group
+                label(for="exampleInputEmail1") Something else
+                input(type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email")
+              button(class='btn btn-primary' style='border-radius:30px;') Добавить
           .row
             .col-xs-3
               h5(style='color:white;') 12.05.2015
@@ -297,6 +306,9 @@ head
       script.
         $('#addbookbutton').click(function(){
           $('#addbook').slideToggle();
+          });
+        $('#addmoviebutton').click(function(){
+          $('#addmovie').slideToggle();
           });
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
