@@ -51,9 +51,105 @@ head
       h6{
         font-family:roboto-thin;
       }
-      #menulink:hover {
+      #showleft {
        color:white;
       }
+      .cbp-spmenu {
+        background: #47a3da;
+        position: fixed;
+      }
+      
+      .cbp-spmenu h3 {
+        color: #afdefa;
+        font-size: 1.9em;
+        padding: 20px;
+        margin: 0;
+        font-weight: 300;
+        background: #0d77b6;
+      }
+      
+      .cbp-spmenu a {
+        display: block;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: 300;
+      }
+      
+      .cbp-spmenu a:hover {
+        background: #258ecd;
+      }
+      
+      .cbp-spmenu a:active {
+        background: #afdefa;
+        color: #47a3da;
+      }
+      .cbp-spmenu-vertical {
+        width: 240px;
+        height: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      
+      .cbp-spmenu-vertical a {
+        border-bottom: 1px solid #258ecd;
+        padding: 1em;
+      }
+      
+      .cbp-spmenu-horizontal {
+        width: 100%;
+        height: 150px;
+        left: 0;
+        z-index: 1000;
+        overflow: hidden;
+      }
+      
+      .cbp-spmenu-horizontal h3 {
+        height: 100%;
+        width: 20%;
+        float: left;
+      }
+      
+      .cbp-spmenu-horizontal a {
+        float: left;
+        width: 20%;
+        padding: 0.8em;
+        border-left: 1px solid #258ecd;
+      }
+      .cbp-spmenu-left {
+        left: -240px;
+      }
+      
+      .cbp-spmenu-right {
+        right: -240px;
+      }
+      
+      .cbp-spmenu-left.cbp-spmenu-open {
+        left: 0px;
+      }
+      
+      .cbp-spmenu-right.cbp-spmenu-open {
+        right: 0px;
+      }
+      .cbp-spmenu-push {
+        overflow-x: hidden;
+        position: relative;
+        left: 0;
+      }
+      
+      .cbp-spmenu-push-toright {
+        left: 240px;
+      }
+      
+      .cbp-spmenu-push-toleft {
+        left: -240px;
+      }
+      .cbp-spmenu,
+      .cbp-spmenu-push {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+      
   body
     //
       nav(class="navbar navbar-default")
@@ -67,9 +163,17 @@ head
                 a(href='/settings') Настройки
               li
                 a Выйти
+    nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
+      h3 Menu
+      a(href="#") Celery seakale
+      a(href="#") Dulse daikon
+      a(href="#") Zucchini garlic
+      a(href="#") Catsear azuki bean
+      a(href="#") Dandelion bunya
+      a(href="#") Rutabaga
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;')
       img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
-      span(class='glyphicon glyphicon-align-justify' id='menulink' style='color:#999;font-size:30px;margin-top:20px;')
+      span(class='glyphicon glyphicon-align-justify' id='showleft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-top:20px;padding-bottom:20px;')  
       //
         .row(style='margin-bottom:30px;')
@@ -179,4 +283,70 @@ head
              
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
+      script.
+        var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+            menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+            menuTop = document.getElementById( 'cbp-spmenu-s3' ),
+            menuBottom = document.getElementById( 'cbp-spmenu-s4' ),
+            showLeft = document.getElementById( 'showLeft' ),
+            showRight = document.getElementById( 'showRight' ),
+            showTop = document.getElementById( 'showTop' ),
+            showBottom = document.getElementById( 'showBottom' ),
+            showLeftPush = document.getElementById( 'showLeftPush' ),
+            showRightPush = document.getElementById( 'showRightPush' ),
+            body = document.body;
+        
+        showLeft.onclick = function() {
+          classie.toggle( this, 'active' );
+          classie.toggle( menuLeft, 'cbp-spmenu-open' );
+          disableOther( 'showLeft' );
+        };
+        showRight.onclick = function() {
+          classie.toggle( this, 'active' );
+          classie.toggle( menuRight, 'cbp-spmenu-open' );
+          disableOther( 'showRight' );
+        };
+        showTop.onclick = function() {
+          classie.toggle( this, 'active' );
+          classie.toggle( menuTop, 'cbp-spmenu-open' );
+          disableOther( 'showTop' );
+        };
+        showBottom.onclick = function() {
+          classie.toggle( this, 'active' );
+          classie.toggle( menuBottom, 'cbp-spmenu-open' );
+          disableOther( 'showBottom' );
+        };
+        showLeftPush.onclick = function() {
+          classie.toggle( this, 'active' );
+          classie.toggle( body, 'cbp-spmenu-push-toright' );
+          classie.toggle( menuLeft, 'cbp-spmenu-open' );
+          disableOther( 'showLeftPush' );
+        };
+        showRightPush.onclick = function() {
+          classie.toggle( this, 'active' );
+          classie.toggle( body, 'cbp-spmenu-push-toleft' );
+          classie.toggle( menuRight, 'cbp-spmenu-open' );
+          disableOther( 'showRightPush' );
+        };
+        
+        function disableOther( button ) {
+          if( button !== 'showLeft' ) {
+            classie.toggle( showLeft, 'disabled' );
+          }
+          if( button !== 'showRight' ) {
+            classie.toggle( showRight, 'disabled' );
+          }
+          if( button !== 'showTop' ) {
+            classie.toggle( showTop, 'disabled' );
+          }
+          if( button !== 'showBottom' ) {
+            classie.toggle( showBottom, 'disabled' );
+          }
+          if( button !== 'showLeftPush' ) {
+            classie.toggle( showLeftPush, 'disabled' );
+          }
+          if( button !== 'showRightPush' ) {
+            classie.toggle( showRightPush, 'disabled' );
+          }
+        }
       
