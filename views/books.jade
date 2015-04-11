@@ -226,7 +226,7 @@ head
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:84px;width:100% !important;')  
       .row
-        .col-xs-6(style='background-color:rgba(108, 166, 149, 1);min-height:700px;border-top-left-radius:10px;border-bottom-left-radius:10px;')
+        .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);min-height:700px;border-top-left-radius:10px;border-bottom-left-radius:10px;')
           .row
             .col-xs-12(style='text-align:center;')
               h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 30 
@@ -294,7 +294,7 @@ head
           .row.leftPaddingExtended
             .col-xs-9.col-xs-offset-3
               h4(class='yet') Ф.М. Достоевский "Идиот"
-        .col-xs-6(style='background-color:rgba(0, 0, 0, 0.1);min-height:700px;border-top-right-radius:10px;border-bottom-right-radius:10px;')
+        .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);min-height:700px;border-top-right-radius:10px;border-bottom-right-radius:10px;')
           .row
             .col-xs-12(style='text-align:center;')
               h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 45 
@@ -352,19 +352,20 @@ head
               h4(class='datecl') 12.05.2015
             .col-xs-9
               h4(class='yet') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='alreadym') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='yet') Ф.М. Достоевский "Идиот"
-                span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='alreadym') Ф.М. Достоевский "Идиот"
-          .row.leftPaddingExtended
-            .col-xs-9.col-xs-offset-3
-              h4(class='alreadym') Ф.М. Достоевский "Идиот"
+          //
+            .row.leftPaddingExtended
+              .col-xs-9.col-xs-offset-3
+                h4(class='alreadym') Ф.М. Достоевский "Идиот"
+            .row.leftPaddingExtended
+              .col-xs-9.col-xs-offset-3
+                h4(class='yet') Ф.М. Достоевский "Идиот"
+                  span(class='glyphicon glyphicon-exclamation-sign' style='color:rgba(255, 255, 255, 0.65);margin-left:10px;')
+            .row.leftPaddingExtended
+              .col-xs-9.col-xs-offset-3
+                h4(class='alreadym') Ф.М. Достоевский "Идиот"
+            .row.leftPaddingExtended
+              .col-xs-9.col-xs-offset-3
+                h4(class='alreadym') Ф.М. Достоевский "Идиот"
              
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(async src='/js/bootstrap.min.js')
@@ -375,6 +376,13 @@ head
         $('.addmoviebutton').click(function(){
           $('#addmovie').slideToggle();
           });
+
+        if($('#books').height() > $('#movies').height){
+          $('#movies').height($('#books').height());
+        }
+        else {
+          $('#books').height($('#movies').height());
+        }
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
             menuRight = document.getElementById( 'cbp-spmenu-s2' ),
