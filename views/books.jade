@@ -367,35 +367,15 @@ head
                          $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
                          $('.container').css('-webkit-filter','brightness(0.7)');
-                         disableOther( 'showLeft' );
                         break;
                         case(0):
                           counter=1;
                           $('#showLeft').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
                           $('.container').css('-webkit-filter','brightness(1)');
-                          disableOther( 'showLeft' );
-                        break;}
+                        break;
+                      }
         };
         
-        function disableOther( button ) {
-          if( button !== 'showLeft' ) {
-            classie.toggle( showLeft, 'disabled' );
-          }
-          if( button !== 'showRight' ) {
-            classie.toggle( showRight, 'disabled' );
-          }
-          if( button !== 'showTop' ) {
-            classie.toggle( showTop, 'disabled' );
-          }
-          if( button !== 'showBottom' ) {
-            classie.toggle( showBottom, 'disabled' );
-          }
-          if( button !== 'showLeftPush' ) {
-            classie.toggle( showLeftPush, 'disabled' );
-          }
-          if( button !== 'showRightPush' ) {
-            classie.toggle( showRightPush, 'disabled' );
-          }
-        }
+        
       
