@@ -124,7 +124,7 @@ head
         transition: all 0.3s ease;
       }
       .adding{
-        box-shadow: inset 0px 0px 30px 1px black;
+        box-shadow: inset 0px 0px 10px 1px #181818;
         background-color:#333;
         color:#999;
       }
@@ -165,12 +165,9 @@ head
                 a Выйти
     nav(class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1")
       h3 Menu
-      a(href="#") Celery seakale
-      a(href="#") Dulse daikon
-      a(href="#") Zucchini garlic
-      a(href="#") Catsear azuki bean
-      a(href="#") Dandelion bunya
-      a(href="#") Rutabaga
+      a(href="#") Насторйки
+      a(href='#') О проекте
+      a(href="#") Выйти
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
@@ -207,6 +204,12 @@ head
                   input(type="checkbox") 
                   | Выделить звездочкой
               button(class='btn addbutton' style='border-radius:30px;') Добавить
+              nav
+                ul(class="pager")
+    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+    <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>
           .row
             .col-xs-3
               h5(style='color:white;') 12.05.2015
