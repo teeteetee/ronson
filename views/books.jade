@@ -224,7 +224,7 @@ head
     .sidebar(style='width:74px;position:fixed;height:100%;background-color:#1d1d1d;text-align:center;z-index:2000;')
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
-    .container(style='padding-left:84px;width:100% !important;')  
+    .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
       .row
         .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);min-height:700px;border-top-left-radius:10px;border-bottom-left-radius:10px;')
           .row
@@ -378,9 +378,11 @@ head
 
         if($('#books').height() > $('#movies').height){
           $('#movies').height($('#books').height());
+          console.log('movies modified '+$('#movies').height);
         }
         else {
           $('#books').height($('#movies').height());
+          console.log('movies modified '+$('#books').height);
         }
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
