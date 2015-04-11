@@ -376,10 +376,10 @@ head
         //  $('#addmovie').slideToggle();
         //  });
         $('.addmoviebutton').click(function(){$('#movies').height(941);});
-        if($('#books').height() > $('#heightcheck').height()){
+        if($('#books').height() < $('#heightcheck').height()){
           $('#books').height($('#heightcheck').height());
         }
-        if($('#movies').height() > $('#heightcheck').height()) {
+        if($('#movies').height() < $('#heightcheck').height()) {
           $('#movies').height($('#heightcheck').height());
         }
         var counter =0;
