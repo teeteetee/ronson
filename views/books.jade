@@ -225,8 +225,8 @@ head
       //img(class="media-object img-circle" src="/bootstrap/images/seo.jpg" style='margin-left:5px;margin-top:30px;width:64px;height:64px;' alt="...")
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
-      .row
-        .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);min-height:700px;border-top-left-radius:10px;border-bottom-left-radius:10px;')
+      #heightcheck.row
+        .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);min-height:100vh;border-top-left-radius:10px;border-bottom-left-radius:10px;')
           .row
             .col-xs-12(style='text-align:center;')
               h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 30 
@@ -294,7 +294,7 @@ head
           .row.leftPaddingExtended
             .col-xs-9.col-xs-offset-3
               h4(class='yet') Ф.М. Достоевский "Идиот"
-        .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);min-height:700px;border-top-right-radius:10px;border-bottom-right-radius:10px;')
+        .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);min-height:100vh;border-top-right-radius:10px;border-bottom-right-radius:10px;')
           .row
             .col-xs-12(style='text-align:center;')
               h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 45 
@@ -376,15 +376,11 @@ head
         //  $('#addmovie').slideToggle();
         //  });
         $('.addmoviebutton').click(function(){$('#movies').height(941);});
-        if($('#books').height() > $('#movies').height()){
-          //$('#movies').height($('#books').height());
-          console.log($('#books').height());
-          console.log($('#movies').height());
+        if($('#books').height() > $('#heightcheck').height()){
+          $('#books').height($('#heightcheck').height());
         }
-        else {
-          //$('#books').height($('#movies').height());
-          console.log($('#books').height());
-          console.log($('#movies').height());
+        if($('#movies').height() > $('#heightcheck').height()) {
+          $('#movies').height($('#heightcheck').height());
         }
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
