@@ -377,12 +377,14 @@ head
           });
 
         if($('#books').height() > $('#movies').height){
-          $('#movies').height($('#books').height());
-          console.log('movies modified '+$('#movies').height);
+          //$('#movies').height($('#books').height());
+          //console.log('movies modified '+$('#movies').height);
+          console.log('books taller than movies');
         }
         else {
-          $('#books').height($('#movies').height());
-          console.log('movies modified '+$('#books').height);
+          //$('#books').height($('#movies').height());
+          //console.log('movies modified '+$('#books').height);
+          console.log('movies taller than books');
         }
         var counter =0;
         var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
