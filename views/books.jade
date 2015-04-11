@@ -132,21 +132,21 @@ head
         background-color:#333;
         color:white;
       }
-      .addbutton {
+      .previous {
         background-color:#EFAF4F;
         border:0px;
         border-radius:30px;
         color:white;
       }
-      .addbutton:hover {
+      .previous:hover {
         background-color:#DA8403;
         color:white;
       }
-      .addbutton:active {
+      .previous:active {
         background-color:#DA8403;
         color:white;
       }
-      .addbutton:focus {
+      .previous:focus {
         background-color:#DA8403;
         color:white;
       }
@@ -207,6 +207,10 @@ head
                   input(type="checkbox") 
                   | Выделить звездочкой
               button(class='btn addbutton' style='border-radius:30px;') Добавить
+              nav
+                ul(class="pager")
+                  li(class="previous") Add
+                  li(class="next") Close
           .row
             .col-xs-3
               h5(style='color:white;') 12.05.2015
