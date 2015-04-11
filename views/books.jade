@@ -168,7 +168,15 @@ head
       .container {
         transition: 0.5s -webkit-filter linear;
       }
-  body
+      @media (min-width: 768px)
+      .navbar-right {
+        float: none !important; 
+      }
+      @media (min-width: 768px)
+      .navbar-form {
+        padding-top: 6;
+      }
+        body
     //
       nav(class="navbar navbar-default")
         .container
