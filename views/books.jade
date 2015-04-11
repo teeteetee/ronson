@@ -214,9 +214,9 @@ head
       h3(style='text-align:center;color:orange;') People & Books
       form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
         .input-group
-           input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;') 
+           input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;order-top-left-radius:30px;border-bottom-left-radius:30px;') 
            span(class='input-group-btn')
-             button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;')
+             button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;order-top-right-radius:30px;border-bottom-right-radius:30px;')
                span(class='glyphicon glyphicon-search') 
       a(href="#") Настройки
       a(href='#') О проекте
@@ -226,7 +226,7 @@ head
       span(class='glyphicon glyphicon-align-justify' id='showLeft' style='color:#333;font-size:30px;margin-top:20px;')
     .container(style='padding-left:84px;width:100% !important;padding-right:none;')  
       #heightcheck.row
-        .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;border-top-left-radius:10px;border-bottom-left-radius:10px;')
+        .col-xs-6(id='books' style='background-color:rgba(108, 166, 149, 1);height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
               h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 30 
@@ -294,7 +294,7 @@ head
           .row.leftPaddingExtended
             .col-xs-9.col-xs-offset-3
               h4(class='yet') Ф.М. Достоевский "Идиот"
-        .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;border-top-right-radius:10px;border-bottom-right-radius:10px;')
+        .col-xs-6(id='movies' style='background-color:rgba(0, 0, 0, 0.1);height:100%;overflow:auto;')
           .row
             .col-xs-12(style='text-align:center;')
               h1(style='font-family:high;font-size:200px;font-weight:bold;color:white;') 45 
