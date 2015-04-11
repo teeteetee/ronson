@@ -165,6 +165,9 @@ head
       a {
         color:white !important;
       }
+      .container {
+        transition: 2s -webkit-filter linear;
+      }
   body
     //
       nav(class="navbar navbar-default")
@@ -363,14 +366,14 @@ head
                          counter=0;
                          $('#showLeft').removeClass('active' );
                          $('#cbp-spmenu-s1').removeClass('cbp-spmenu-open' );
-                         $('.container').css('-webkit-filter','brightness 0.7');
+                         $('.container').css('-webkit-filter','brightness(0.7)');
                          disableOther( 'showLeft' );
                         break;
                         case(0):
                           counter=1;
                           $('#showLeft').addClass('active' );
                           $('#cbp-spmenu-s1').addClass('cbp-spmenu-open' );
-                          $('.container').css('-webkit-filter','brightness 1');
+                          $('.container').css('-webkit-filter','brightness(1)');
                           disableOther( 'showLeft' );
                         break;}
         };
