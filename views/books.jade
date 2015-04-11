@@ -131,6 +131,15 @@ head
         background-color:#333;
         color:white;
       }
+      .addbutton {
+        background-color:#EFAF4F;
+        border:0px;
+        border-radius:30px;
+        color:white;
+      }
+      .addbutton:hover:active:focus {
+        background-color:#DA8403;
+      }
   body
     //
       nav(class="navbar navbar-default")
@@ -187,7 +196,7 @@ head
                 label
                   input(type="checkbox") 
                   | Выделить звездочкой
-              button(class='btn btn-primary' style='border-radius:30px;') Добавить
+              button(class='btn addbutton' style='border-radius:30px;') Добавить
           .row
             .col-xs-3
               h5(style='color:white;') 12.05.2015
@@ -248,7 +257,7 @@ head
                 label
                   input(type="checkbox") 
                   | Выделить звездочкой
-              button(class='btn btn-primary' style='border-radius:30px;') Добавить
+              button(class='btn addbutton' style='border-radius:30px;') Добавить
           .row
             .col-xs-3
               h5(style='color:white;') 12.05.2015
