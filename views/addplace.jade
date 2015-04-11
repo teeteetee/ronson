@@ -258,13 +258,14 @@ head
         //$('#inputs').append("<input type='file' class='form-control'  id='mainpreview' name='mainpreview'> <input type='file' class='form-control'  id='xml' name='xml'> <input type='text' class='form-control' id='imgqntt' name='imgqnnt'>");
         });
         $('#rmlast').click(function(){
-        console.log(imgcount);
-        if (imgcount > 0) {
-        var x = imgcount;
-        eval("$('#"+x+"img').remove(); ");
-        imgcount--;
-        $('#imgqntt').val(imgcount);}
-        else {}
+        for(var xx= 0;xx<6;xx++)
+        {console.log(imgcount);
+                if (imgcount > 0) {
+                var x = imgcount;
+                eval("$('#"+x+"img').remove(); ");
+                imgcount--;
+                $('#imgqntt').val(imgcount);}
+                else {}}
         });
         $('#rmlastxml').click(function(){
         if (xmlcount > 0) {
