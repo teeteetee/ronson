@@ -23,44 +23,51 @@ head
       font-family:roboto-thin;
       src:url('/bootstrap/fonts/Roboto-Thin.ttf');
       }
-      @font-face {
-      font-family:attentica;
-      src:url('/bootstrap/fonts/Attentica.ttf');
+      h1{
+        font-family:roboto-thin;
       }
-      @font-face {
-      font-family:br;
-      src:url('/bootstrap/fonts/bebasneue_regular.ttf');
+      h2{
+        font-family:roboto-thin;
       }
-      h2 {
-      font-size:2vw;
-      font-family:roboto-thin;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:black;
+      h3{
+        font-family:roboto-thin;
       }
-      h5 {
-      font-size:1vw;
-      font-family:arial;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:black;
+      h4{
+        font-family:roboto-thin;
+      }
+      h5{
+        font-family:roboto-thin;
+      }
+      h6{
+        font-family:roboto-thin;
+      }
+      btn {
+        font-family:roboto-thin;
       }
       #header {
       text-align:center;
       margin-top:15vh;
       }
       input{
-      font-family:arial;
-      letter-spacing:1px;
-      font-size:1.5vw;
-      }
-      .col-xs-6 {
-      padding-right:0px;
+      font-family:roboto-thin;
       }
       #message {
       margin-bottom:7vh;
       margin-top:7vh;
       text-align:center;
+      }
+      textarea:hover, 
+      input:hover, 
+      textarea:active, 
+      input:active, 
+      textarea:focus, 
+      input:focus,
+      button:focus,
+      button:active,
+      button:hover
+      {
+          outline:0px !important;
+          -webkit-appearance:none;
       }
   body
     .container
@@ -69,23 +76,16 @@ head
           h2  Авторизация
       .row
         #message.col-xs-12
-          !{message}
       .row
-        .col-xs-6.col-xs-offset-3
+        .col-xs-4.col-xs-offset-4
           form#entform(role='form', action='/admax', method='post')
-            .row
-              .col-xs-6
-                h5 Логин
-              .col-xs-6
-                input(type='text',id='log', name='ll', style='margin-bottom:1vh;')
-            .row
-              .col-xs-6
-                h5 Пароль
-              .col-xs-6
-                input(type='password',id='pass', name='pass')
-            .row(style='text-align: right; margin-top: 2vh;')
+            .form-group
+              input(type='text',class='form-control', name='ll', style='margin-bottom:5px;',placeholder='логин')
+            .form-group
+              input(type='password', name='pass',class='form-control',placeholder='пароль',style='margin-bottom:20px;')
+            .row(style='text-align:center;')
               .col-xs-12
-                button#loginb.btn.btn-default(type='submit') Войти
+                button#loginb(type='submit' style='border-radius:30px;' class='btn btn-default') Войти
 
 
       
