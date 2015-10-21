@@ -6,10 +6,9 @@ head
     |     
     meta(name='viewport', content='width=device-width, initial-scale=1')
     |     
-    title Recent ones
+    title R
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
-    link(href='/transitions/animations.css', rel='stylesheet')
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
@@ -151,50 +150,18 @@ head
         cursor:pointer;
       }
   body
-    script.
-      if(screen.width < 414){
-      window.location='http://m.recentones.com/';
-      }
-    
-    nav(class="navbar navbar-inverse navbar-fixed-top",style='z-index:500;')
-      .container
-        .navbar-header
-          a(class="navbar-brand" style='padding:5px;' href="/")
-            img(alt="Logo",id='logo',src="/bootstrap/images/rl.png",height='40',width='40')
-        .collapse.navbar-collapse#navbar-collapse-9
-          ul(class='nav navbar-nav')
-            li(class='active')
-              a(href='#',style='font-family:high;font-size:20px;letter-spacing:2px;') Лента 
-            li
-              a(href='/top',style='font-family:high;font-size:20px;letter-spacing:2px;') Рейтинги 
-            li
-              a(href='/misc/1',style='font-family:high;font-size:20px;letter-spacing:2px;') Инфо 
-          form(class="navbar-form navbar-right" method='post' action='/srch' id='srch' role="search")
-           .input-group
-              input(type="text" class="form-control" name='searchfield' id='searchfield' style='background-color:#333;color:white;border-color:#333;border-top-left-radius:20px;border-bottom-left-radius:20px;') 
-              span(class='input-group-btn')
-                button(class="btn btn-default" type="submit" id='searchbutton' style='padding-top:9px;padding-bottom:9px;background-color:#333;color:gray;border-color:#333;border-top-right-radius:20px;border-bottom-right-radius:20px;')
-                  span(class='glyphicon glyphicon-search') 
-    #wrap 
-      #welcome(style='display:#{display}')
-        .container(style='margin-bottom:60px;')
-          .row  
-            .col-xs-12(style='text-align:center;')
-              h1(style='color:white;margin-top:35vh;margin-bottom:50px;font-size:45px;font-family:high;') Добро пожаловать, все дела, сайт о новых заведениях Москвы, пиу-пиу.
-              a(id='close') Пропустите !  
-      .pt-perspective(id='pt-main')
-        .pt-page.pt-page-1(style='visibility:visible;')
-          .wrap(style='overflow:auto;height:100vh;')
-            .main.container(style='margin-top:50px;z-index:2;',id='main')  
-              .row
-                #inserts.col-xs-12
-            footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
-              .container
-                  nav
-                    ul(class='pager') 
-                      li 
-                        a(id='more',style='font-family:roboto-thin;') Еще
-        .pt-page.pt-page-2(id='panel' style='background-color:#333;height:100vh;overflow:auto;')
+    .main.container(style='margin-top:50px;z-index:2;',id='main') 
+      .row(style='text-align:center;')
+        h2(style='text-transform:uppercase;font-weight:600;letter-spacing:2px;') Recent ones
+        h4(style='text-transform:uppercase;letter-spacing:1px;') медиа проект - новые участники ресторанного рынка
+      .row
+        #inserts.col-xs-12
+      footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
+        .container
+            nav
+              ul(class='pager') 
+                li 
+                  a(id='more',style='font-family:roboto-thin;') Еще
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/transitions/modernizr.custom.js')
       script(src='/transitions/pagetransitions.js')
@@ -212,58 +179,7 @@ head
           $('.main').css({'filter':' brightness(1)','-o-filter':' brightness(1)','-moz-filter':' brightness(1)','-ms-filter':' brightness(1)','-webkit-filter':' brightness(1)'});
         });
 
-        //$(document).keypress(function(event){
-        //var keycode = (event.keyCode ? event.keyCode : event.which);
-        //if(keycode == '13' && $('#searchfield').val()){
-        //  event.preventDefault();
-        //  alert('going to performsearch');
-        //  performsearch();  
-        //}
-        //});
-
         var toplist = !{doc};
-
-        //$('#searchbutton').click(function(){
-        //  if ($('#searchfield').val()) {
-        //    performsearch();
-        //  }
-        //  });
-        
-        // LOGO COLOURING
-        var logocount=0;
-        $('#logo').mouseenter(function(){
-          if(logocount<3)
-           {switch(logocount) {
-                       case(0):
-                        $('#logo').attr('src','/bootstrap/images/gl.png');
-                        logocount++;
-                       break;
-                       case(1):
-                        $('#logo').attr('src','/bootstrap/images/bl.png');
-                        logocount++;
-                       break;
-                       case(2):
-                         $('#logo').attr('src','/bootstrap/images/rl.png');
-                        logocount++;
-                       break;
-                      }
-                    }
-            else {
-              switch(logocount%3)
-              {         case(0):
-                         $('#logo').attr('src','/bootstrap/images/gl.png');
-                         logocount++;
-                        break;
-                        case(1):
-                         $('#logo').attr('src','/bootstrap/images/bl.png');
-                         logocount++;
-                        break;
-                        case(2):
-                         $('#logo').attr('src','/bootstrap/images/rl.png');
-                         logocount++;
-                        break;}
-            }
-          }); 
 
         //scrolltoplaugin
         $.fn.scrollTo = function( target, options, callback ){
@@ -544,42 +460,6 @@ head
         populate(toplist,0);
         }
 
-        //function performsearch(){
-        //var query = $('#searchfield').val();
-        //console.log(query);
-        //request = new XMLHttpRequest();
-        //request.onreadystatechange = function () {
-        //var DONE = this.DONE || 4;
-        //if (this.readyState === DONE){
-        //parsed = JSON.parse(request.responseText);
-        //console.log(parsed);
-        //if(parsed.trouble === 1)
-        //{
-        //console.log('TROUBLE === 1');
-        //$('#searchresults').append("<div class='row'><div class='col-xs-12' style='text-align:center;'><h2 style='margin-bottom:20px;'>Ничего не нашли</h2></div></div>");
-        //$('#sr').slideToggle();
-        //}
-        //else {
-        ////trouble === 0
-        //toplist = parsed.mdata;
-        ////populate is modified , check if suitable
-        //$('#searchresults').empty();
-        //for (var xx = 0;xx<toplist.length;xx++){
-        //var pinsert = "<div class='srrow"+xx+"'><div class='col-xs-12' id='srp"+toplist[xx].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[xx].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div><div>";
-        //var yy = xx+1;
-        //var insert = "<div style='border-bottom:1px solid #999999;' class='row srrow"+xx+"' onclick='openpanel("+toplist[xx].pid+")'><div class='col-xs-12' id='srp"+toplist[xx].pid+"'><h2>"+yy+". "+toplist[xx].placenameru+"</h2><h6 style='margin-left:20px; '>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6><h4 style='margin-left:20px;'>"+toplist[xx].adressru+"</h3></div></div>" ;
-        // $('#searchresults').append(insert);
-        //  }
-        //$('#sr').slideToggle();
-        //}
-        //}
-        //};
-        //request.open('POST', '/srch', true);
-        //request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        //request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        ////Most libraries like jQuery/Prototype/Dojo do this
-        //request.send('query='+query);
-        //}
 
 
            
