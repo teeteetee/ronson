@@ -93,10 +93,11 @@ app.get('/',function(req,res) {
         if(doc.length === 5)
         {doc = doc.splice(0, 4);
           res.render('index',{'doc':JSON.stringify(doc),'more':1});
-          
+          }
         else {
          res.render('index',{'doc':JSON.stringify(doc),'more':0});
       }
+    }
       else{
         res.render('emptyindex');
       }
