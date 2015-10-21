@@ -17,24 +17,16 @@ head
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
     style.
       @font-face {
-      font-family:roboto-thin;
-      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
-      }
-      @font-face {
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
-      @font-face {
-      font-family:br;
-      src: url('/bootstrap/fonts/bebasneue_regular.ttf');
+      @font-face{
+      font-family:proxima;
+      src:url('/bootstrap/fonts/ProximaNova-Reg-webfont.woff');
       }
-      @font-face {
-      font-family:bt;
-      src: url('/bootstrap/fonts/bebasneue_thin.ttf');
-      }
-      body {
-      min-width:768px;
-      background-color:#ddd;
+      @font-face{
+      font-family:boldproxima;
+      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
       }
       #inserts h5{
       letter-spacing:2px;
@@ -102,7 +94,7 @@ head
       }
   body
     .main.container(style='margin-top:50px;z-index:2;',id='main') 
-      .row(style='text-align:center;')
+      .row(style='text-align:center;margin-bottom:50px;')
         h2(style='text-transform:uppercase;font-weight:600;letter-spacing:2px;') Recent ones
         h4(style='text-transform:uppercase;letter-spacing:1px;') медиа проект - новые участники ресторанного рынка
       .row
