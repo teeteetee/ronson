@@ -90,12 +90,11 @@ head
         list-style:none;
       }
       .menu-section-list a {
-        font-family:boldproxima;
         text-transform: uppercase;
         color: #85888d;
         font-weight: 200 !important;
         font-size: 20px !important;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
         display: block;
         padding: 20px 20px;
       }
@@ -197,15 +196,11 @@ head
       section.menu-section
         ul.menu-section-list    
           li
-            a(href="/" ) My lists
+            a(href="/" ) На сегодня
           li
-            a(href="/people" ) People
+            a(href="/rate" ) 238 Лучших
           li 
-            a(href='/messages' ) Messages
-          li
-            a(href="/settings" ) Settings
-          li
-            a(href="/logout") Logout
+            a(href='/about' ) О проекте
     .container-fluid#panel.main(style='padding-top:50px;min-height:100vh;background-color:white;')
       button(type='button' ,id='menu-toggle')
         span.glyphicon.glyphicon-menu-hamburger
@@ -221,10 +216,7 @@ head
                 li 
                   a(id='more',style='font-family:roboto-thin;') Еще
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-      script(src='/transitions/modernizr.custom.js')
-      script(src='/transitions/pagetransitions.js')
-      script(async src='/js/bootstrap.min.js')
-      script( async, type='text/javascript', src='/js/pano2vr_player.js')
+      script(src='/js/bootstrap.min.js')
       script.
         var slideout = new Slideout({
         'panel': document.getElementById('panel'),
