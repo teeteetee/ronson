@@ -104,9 +104,6 @@ app.get('/',function(req,res) {
   });
 });
 
-app.get('/rate',function (req,res){
-  res.render('rating');
-});
 
 app.get('/books',function(req,res){
 res.render('books');
@@ -271,93 +268,8 @@ app.get('/admin/simulateclient',function(req,res){
  });
 });
 
-app.get('/conf/:cid',function(req,res){
-  var cid = parseInt(req.params.cid);
-  clients.findOne({clid:cid},function(err,client){
-   if(err)
-   {
-    // HANDLE ERROR
-   }
-   else {
-    if(client){
-      res.render('confirmation',{'doc':client});
-    }
-    else {
-      res.render('404');
-    }
-   }
-  });
-}); 
 
 
-app.post('/conf/:cid',function(req,res){
-  console.log('going to insert message');
-  var cid = parseInt(req.params.cid);
-  clients.findOne({clid:cid},function(err,client){
-    if(err)
-   {
-     // HANDLE ERROR
-   }
-   else {
-    if(client){
-      //GET DATA
-      //PUSH IT  TO DB
-      var ms = {};
-      ms.trouble = 1;
-      console.log(req.body);
-      var cdate = req.body.cdate;
-      var ctime = req.body.ctime;
-      var ccontact = req.body.contact;
-      var ccomment = req.body.comments;
-      var newmsnum = client.msnum+1;
-      // -- date --
-      var dd= new Date();
-      var vday = dd.getDate().toString();
-      if (vday.length===1){
-        vday='0'+vday;
-      }
-      var vmonth = dd.getMonth()+1;
-      vmonth = vmonth.toString();
-      if (vmonth.length===1){
-        vmonth='0'+vmonth;
-      }
-      var vyear = dd.getUTCFullYear().toString();
-      var fulldate = vyear+vmonth+vday;
-      fulldate = parseInt(fulldate)
-      // -- date --
-      console.log(ccontact);
-      if(!cdate || !ctime || !ccontact)
-      {
-        ms.mtext('data');
-        res.send(ms);
-      }
-      else {
-        //eval("clients.update({clid:cid},{$set:{msnum:newmsnum,ms"+newmsnum+":{regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact}});");
-        var tempobj = {regdate:fulldate,shdate:cdate,shtime:ctime,comment:ccomment,contact:ccontact};
-        if(newmsnum>1){
-          var updmessages = client.messages;
-          updmessages.push(tempobj);
-          console.log(updmessages);
-                    clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
-                    ms.trouble = 0;
-                    res.send(ms);
-        }
-        else
-          {        var updmessages = [];
-                   updmessages.push(tempobj);
-                    clients.update({clid:cid},{$set:{msnum:newmsnum,messages:updmessages}});
-                    ms.trouble = 0;
-                    res.send(ms);}
-    }
-  }
-    else {
-      console.log('CONFIRMATION POST ERROR');
-      ms.mtext = 'db';
-      res.send(ms);
-    }
-   }
-  })
-});
 
 app.get('/msg/:cid',function(req,res){
   if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
@@ -379,83 +291,6 @@ app.get('/msg/:cid',function(req,res){
 });
 
 
-app.get('/m',function(req,res){
-  places.find({},{ limit:9,sort : { founddateint: -1 } },function(err,doc){
-    if(err)
-    {
-      res.render('memptyindex');
-    }
-    else {
-      if(doc.length>0)
-      {
-        //res.render('index',{'places':doc});
-        res.render('mindex',{'doc':JSON.stringify(doc)});
-      }
-      else{
-        res.render('memptyindex');
-      }
-    }
-  });
-});
-
-app.get('/m/top',function(req,res){
-  top.find({},function(err,doc){
-    if(err)
-    {
-      res.redirect('http://recentones.com');
-    }
-    else
-    { 
-      if(doc.length>0)
-      { 
-        res.render('mtop',{'doc': JSON.stringify(doc)});}
-      else {
-        res.render('emptytop');
-      }
-    }
-
-  });
-});
-
-app.get('/m/search',function(req,res){
-  res.render('msearch');
-});
-
-app.get('/m/misc/:mid',function(req,res){
-  var id = parseInt(req.params.mid);
-  switch (id) {
-    case(1):
-    res.render('mcontacts');
-    break
-    case(2):
-    res.render('mcontacts');
-    break
-    case(3):
-    res.render('mcontacts');
-    break
-    default:
-    res.render('mindex');
-    break
-  }
-});
-
-app.get('/m/places/:id',function(req,res){
-  var vpid = parseInt(req.params.id);
-  places.findOne({pid:vpid},function(err,doc){
-    if(err){
-      res.render('404');
-    }
-    else {
-      if(doc)
-      {
-        res.render('apiplace',{'doc':doc});
-      }
-      else {
-        res.render('404')
-      }
-    }
-  });
-});
 
 app.get('/api/places/:id',function(req,res){
   var vpid = parseInt(req.params.id);
@@ -563,46 +398,12 @@ app.post('/removecl',function(req,res){
       }
   });
 
-//app.get('/droptop',function(req,res){
-//  if(req.ip === '188.226.189.180' || req.session.sKK76d === 'porC6S78x0XZP1b2p08zGlq')
-//    {top.remove({},function(err,done){
-//        if(err)
-//        {
-//          res.send('98');
-//        }
-//        else {
-//          res.send('SUCCESS');
-//        }
-//        });}
-//    else {
-//      res.redirect('http://yandex.ru');
-//    }
-//  });
-
-app.get('/example',function(req,res){
-  res.render('examples');
-});
 
 app.get('/about',function(req,res){
   res.render('about');
 });
 app.get('/top',function(req,res){
-  top.find({},function(err,doc){
-    if(err)
-    {
-      res.redirect('http://recentones.com');
-    }
-    else
-    { 
-      if(doc.length>0)
-      { 
-        res.render('top',{'doc': JSON.stringify(doc)});}
-      else {
-        res.render('emptytop');
-      }
-    }
-
-  });
+  res.render('rating');
 });
 
 app.get('/misc/:mid',function(req,res){
