@@ -104,6 +104,10 @@ app.get('/',function(req,res) {
   });
 });
 
+app.get('/rate',function (req,res){
+  res.render('rating');
+});
+
 app.get('/books',function(req,res){
 res.render('books');
 });
@@ -160,11 +164,8 @@ res.render('settings');
   });
   });
 
-app.get('/rate',function (req,res){
-  res.render('rating');
-});
 
-app.get('/out/:place',function(req,res){
+app.get('/out/:place',function (req,res){
   var vpid = parseInt(req.params.place);
   places.findOne({pid:vpid},function (err,doc){
     if(err) {
