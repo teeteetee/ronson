@@ -34,51 +34,6 @@ app.use(sessions({
   httpOnly: true
 }));
 
-//var lguser = {};
-//app.use(function(req,res,next){
-//  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
-//   if(req.session.admin === 1){
-//    lguser = req.session;
-//    next();}
-//   else if(req.session.hostel === 1) 
-//    {lguser = req.session;
-//      next();}
-//   else {
-//   if(req.session && req.session.lgn){
-//     users.findOne({mail:req.session.mail},function(err,user){
-//      console.log('found user: '+JSON.stringify(user));
-//      if(err){
-//        next();
-//      }
-//      else {
-//        if(user.length>0 && user.hostel != 1){
-//        lguser = user;
-//        delete lguser.phr;
-//        delete lguser._id;
-//        delete lguser.enquiries;
-//        delete lguser.regdate;
-//        req.session = lguser;
-//        console.log('USER WITH COOOOOKIEES !');
-//        next();}
-//      else {next();}
-//      } 
-//     });
-//   }
-//   else {
-//    next();
-//   }
-// }
-//});
-
-//app.get('/logout',function(req,res){
-//  console.log('trying to logout');
-//  req.session.reset();
-//  console.log(JSON.stringify(req.session));
-//  res.redirect('/');
-//});
-
-
-//SUBDOMAIN MAGIC 
 
 
 app.get('*', function(req,res,next) {   var d = new Date();
@@ -204,6 +159,10 @@ res.render('settings');
     }
   });
   });
+
+app.get('/rate',function (req,res){
+  res.render('rating');
+});
 
 app.get('/out/:place',function(req,res){
   var vpid = parseInt(req.params.place);
