@@ -137,20 +137,10 @@ app.get('/',function(req,res) {
         }
         if(doc.length === 5)
         {doc = doc.splice(0, 4);
-          console.log('SENDING '+doc.length+'DOCUMENTS');
-             if(req.session.visited)
-                {res.render('index',{'doc':JSON.stringify(doc),'more':1,'filters':blank,'display':'none'});}
-              else {
-                req.session.visited =1;
-                res.render('index',{'doc':JSON.stringify(doc),'more':1,'filters':filter,'display':'block'});}
-              }
+          res.render('index',{'doc':JSON.stringify(doc),'more':1});
+          
         else {
-         if(req.session.visited)
-                {res.render('index',{'doc':JSON.stringify(doc),'more':0,'filters':blank,'display':'none'});}
-              else {
-                req.session.visited =1;
-                res.render('index',{'doc':JSON.stringify(doc),'more':0,'filters':filter,'display':'block'});}
-              }
+         res.render('index',{'doc':JSON.stringify(doc),'more':0});
       }
       else{
         res.render('emptyindex');
