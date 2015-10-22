@@ -252,7 +252,7 @@ head
         
           $.getJSON('/r.json', function(data) {
               var address_insert;
-              $.each(data.place, function(i, f) {
+              $.each(data, function(i, f) {
                 console.log('printing');
                 f.address.forEach(function(element){
                   address_insert +="<div class='row address'><div class='col-xs-12'><p>"+element+"<p></div></div>";
