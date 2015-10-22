@@ -206,8 +206,7 @@ head
       .row(style='text-align:center;margin-bottom:50px;')
         h1(style='text-transform:uppercase;font-weight:600;letter-spacing:2px;') Recent ones
         h5(style='text-transform:uppercase;letter-spacing:1px;font-weight:200;') медиа проект: новые участники ресторанного рынка москвы
-        h5#today(style='text-transform:uppercase;letter-spacing:1px;font-weight:400;color:#c35;') 
-        h5#day(style='text-transform:uppercase;letter-spacing:1px;font-weight:400;color:#c35;') 
+        h5#today(style='font-family:times;text-transform:uppercase;letter-spacing:1px;font-weight:400;color:#c35;') 
       .row
         #inserts.col-xs-12
       footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
@@ -234,7 +233,6 @@ head
         today = dd+'/'+mm+'/'+yyyy;
         day = days[day];
         $('#today').append(today);
-        $('#day').append(day);
         var slideout = new Slideout({
         'panel': document.getElementById('panel'),
         'menu': document.getElementById('menu'),
