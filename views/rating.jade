@@ -252,6 +252,8 @@ head
         
           $.getJSON('/r.json', function(data) {
               var address_insert;
+              console.log(typeof data);
+              console.log(JSON.stringify(data));
               data.forEach(function(base_element){
                 console.log('printing');
                 f.address.forEach(function(element){
