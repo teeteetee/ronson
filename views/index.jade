@@ -216,10 +216,10 @@ head
       
       .socialbtns .fa {
         width: 40px;
-          height: 28px;
-        color: #000;
+          height: 40px;
+        color: #ddd;
         background-color: #FFF;
-        border: 1px solid #000;
+        border: 1px solid #ddd;
         padding-top: 12px;
         border-radius: 22px;
         -moz-border-radius: 22px;
@@ -245,19 +245,19 @@ head
     .container-fluid#panel.main(style='padding-top:50px;min-height:100vh;background-color:white;')
       button(type='button' ,id='menu-toggle')
         span.glyphicon.glyphicon-menu-hamburger
-      .row(style='text-align:center;margin-bottom:50px;')
+      .row(style='text-align:center;')
         h1(style='text-transform:uppercase;font-weight:600;letter-spacing:2px;') Recent ones
         h5(style='text-transform:uppercase;letter-spacing:1px;font-weight:200;') медиа проект: новые участники ресторанного рынка москвы
-      .row.socialbtns(align='center') 
+      .row.socialbtns(style='text-align:center;margin-bottom:50px;')
         ul
           li
-            a(href="#" class="fa fa-lg fa-vk")
+            a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
           li
-            a(href="#" class="fa fa-lg fa-facebook")
+            a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
           li
-            a(href="#" class="fa fa-lg fa-twitter")
+            a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
           li
-            a(href="#" class="fa fa-lg fa-google-plus")
+            a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
       .row
         #inserts.col-xs-12
       footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
