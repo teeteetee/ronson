@@ -103,7 +103,13 @@ head
         color:#fff !important;
         text-decoration: none;
       }
+      .menu-section-list .active a {
+        background-color: rgba(255, 255, 255, 0.1);
+        color:#fff !important;
+        text-decoration: none;
+      }
         @font-face {
+      }
       font-family:high;
       src: url('/bootstrap/fonts/Attentica.ttf');
       }
@@ -237,7 +243,7 @@ head
       section.menu-section
         ul.menu-section-list    
           li
-            a(href="/" ) На сегодня
+            a.active(href="/" ) На сегодня
           li
             a(href="/top" ) 238 Лучших
           li 
@@ -265,7 +271,7 @@ head
             nav
               ul(class='pager') 
                 li 
-                  a(id='more',style='font-family:roboto-thin;') Еще
+                  a(id='more') Еще
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/bootstrap.min.js')
       script.
@@ -287,10 +293,6 @@ head
         if(more===1){
          $('#morebutton').css('display','block');
         }
-        $('#close').click(function(){
-          $("#welcome").css("display","none");
-          $('.main').css({'filter':' brightness(1)','-o-filter':' brightness(1)','-moz-filter':' brightness(1)','-ms-filter':' brightness(1)','-webkit-filter':' brightness(1)'});
-        });
         var toplist = !{doc};
         //scrolltoplaugin
         $.fn.scrollTo = function( target, options, callback ){
@@ -334,196 +336,7 @@ head
         if(funcmore===0){
           $('#morebutton').css('display','none');
         }
-        }
-        function populate2(toplist,funcmore) {
-          var left = toplist.length%2;
-          var cycles = (toplist.length-left)/2;
-          console.log('cycles: '+cycles+', left: '+left);
-          //functionality for a single item array must be implemented
-          if(funcmore===0)
-          {for(var xx=0;xx<cycles;xx++){
-                      console.log('rownum is: '+rownum);
-                      $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rownum+"'></div>");
-                      //branch for outputting left
-                      if(xx+1 === cycles && left) {
-                        var modrownum = rownum+1;
-                        $('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+modrownum+"'></div>");
-                        var insert = "<div class='col-xs-6' id='p"+toplist[xx].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[xx].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
-                          eval("$('#row"+rownum+"').append(insert);");
-                        lastfounddate=toplist[xx].founddateint;
-                        $('#morebutton').css('display','none');
-                      }
-                      else {
-                        
-                          for(var yy=0;yy<2;yy++){
-                          if(yy===0)
-                          {var listnum = xx*2;
-                           var insert = "<div class='col-xs-6' id='p"+toplist[listnum].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[listnum].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
-                           eval("$('#row"+rownum+"').append(insert);");}
-                          else {
-                            var listnum = xx*2+1;
-                           var insert = "<div class='col-xs-6' id='p"+toplist[listnum].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[listnum].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
-                           eval("$('#row"+rownum+"').append(insert);");
-                           lastfounddate=toplist[listnum].founddateint;
-                          }
-                          }//for populating row
-                      
-                      }//else from outputting left
-                      rownum++;
-                      console.log('rownum is: '+rownum);
-                    }//for main cycle
-                
-                  }
-          else {
-             if(toplist.length>1){for(var xx=0;xx<cycles;xx++){
-                                   console.log('MORE rownum is: '+rownum);
-                                   var greatInsert ="<div class='row' style='margin-top:15px;margin-bottom:15px;display:none;' id='row"+rownum+"'>";
-                                   
-                                   //branch for outputting left
-                                   console.log('breakpoint 1')
-                                   
-                                       
-                                       for(var yy=0;yy<2;yy++){
-                                       if(yy===0)
-                                       {var listnum = xx*2;
-                                         console.log('breakpoint 5');
-                                         greatInsert += "<div class='col-xs-6' id='p"+toplist[listnum].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[listnum].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
-                                        }
-                                       else {
-                                         var listnum = xx*2+1;
-                                         console.log('breakpoint 7');
-                                         greatInsert += "<div class='col-xs-6' id='p"+toplist[listnum].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[listnum].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[listnum].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[listnum].placenameru+"</h2><h6>"+toplist[listnum].founddate.day+"."+toplist[listnum].founddate.month+"."+toplist[listnum].founddate.year+"</h6></li></ul></div>";
-                                        eval("$('#row"+rownum+"').append(insert);");
-                                        console.log('breakpoint 8');
-                                        lastfounddate=toplist[listnum].founddateint;
-                                       }
-                                       }//for populating row
-                                   
-                                   if(xx+1 === cycles && left) {
-                                     var modrownum = rownum+1;
-                                      insert = "<div class='row' style='margin-top:15px;margin-bottom:15px;display:none' id='row"+modrownum+"'></div>";
-                                     $('#inserts').append(insert);
-                                     console.log('breakpoint 2');
-                                      insert = "<div class='col-xs-6' id='p"+toplist[xx].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[xx].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div>";
-                                       eval("$('#row"+rownum+"').append(insert);");
-                                     lastfounddate=toplist[xx].founddateint;
-                                     $('#morebutton').css('display','none');
-                                     console.log('breakpoint 3');
-                                   }//if which populates with left ones
-                                   
-                                   console.log('breakpoint 9');
-                                   //eval("$('#row"+rownum+"').fadeIn('slow');")
-                                   greatInsert += '</div>';
-                                   $(greatInsert).hide().appendTo('#inserts').fadeIn('slow');
-                                   var rowName = '#row'+rownum;
-                                   rownum++;
-                                   console.log('MORE rownum is: '+rownum);
-                                 }//for main cycle
-                                 //$('#wrap').animate({ scrollTop: $(rowName).offset().top }, 1000);
-                                 scrollfn(rowName);
-                               }
-                    else {
-                      var greatInsert ="<div class='row' style='margin-top:15px;margin-bottom:15px;display:none;' id='row"+rownum+"'>";
-                      greatInsert += "<div class='col-xs-6' id='p"+toplist[0].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a href='http://recentones.com/places/"+toplist[0].pid+"'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[0].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[0].placenameru+"</h2><h6>"+toplist[0].founddate.day+"."+toplist[0].founddate.month+"."+toplist[0].founddate.year+"</h6></li></ul></div>";
-                      greatInsert += '</div>';
-                      $(greatInsert).hide().appendTo('#inserts').fadeIn('slow');
-                      var rowName = '#row'+rownum;
-                      //$('#wrap').animate({ scrollTop: $(rowName).offset().top }, 1000);
-                      scrollfn(rowName);
-                      rownum++;
-                      console.log('MORE rownum is: '+rownum);
-                    }
-          }
-        }
-        function ipadpopulate (toplist,funcmore) {
-          var cycles = toplist.length;
-          console.log('cycles: '+cycles);
-          var greatInsert='';
-          for(var xx=0;xx<cycles;xx++){
-                      console.log('rownum is: '+rownum);
-                      greatInsert+="<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+rownum+"'><div class='col-xs-12' id='p"+toplist[xx].pid+"'><ul class='list-group'><li style='padding:0px;' class='list-group-item'><a onclick='openpanel("+toplist[xx].pid+")'><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a></li><li class='list-group-item'><h2 style='margin-top:0px;'>"+toplist[xx].placenameru+"</h2><h6 style='color:gray;'>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></li></ul></div></div>";
-                        lastfounddate=toplist[xx].founddateint;
-                        rownum++;
-                    }//for main cycle
-                    $(greatInsert).hide().appendTo('#inserts').fadeIn('slow');
-                      var rowName = '#row'+(rownum-3);
-                      console.log(rowName);
-                      scrollfn(rowName);
-                  }
-        function openpanel(pid) {
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        parsed = JSON.parse(request.responseText);
-        console.log(parsed);
-        if(parsed.trouble === 1)
-        {
-        console.log('TROUBLE === 1');
-        switch (parsed.mtext){
-        case('db'):
-        alert('Sorry, our database is being updated');
-        break;
-        case('empty'):
-        alert('EMPTY');
-        break;
-        }}
-        else {
-        console.log('choice');
-        //trouble === 0
-        var place = parsed.place;
-        if(!parsed.place.pano){
-          console.log('empty');
-          var placename = place.placenameru;
-          var www = place.contacts.www;
-          var adressru = place.adressru;
-          var adressen = place.adressen;
-          var phone = place.contacts.phone;
-          var insert = "<div style='margin-top:60px;' class='container'><div class='row'><div class='col-xs-12'><nav><ul class='pager'><li class='previous'><a onclick='back("+pid+")' style='color:#999999;border:0px;' class='back'>Назад</a></li><li style='text-align:center;'><h3 style='color:#999999;display:inline;font-family:roboto-thin;'>"+placename+"</h3></li><li class='next' style='visibility:hidden;'><a>Назад</a></li></ul></nav></div></div><div class='row'><div class='col-xs-12'><ul class='list-group'><li style='padding:100px;text-align:center;background-color:inherit;border: 1px solid #4f4f4f;border-top-left-radius: 8px;border-top-right-radius: 8px;' class='list-group-item'><img src='/bootstrap/images/bl.png' style='width:10vw;margin-bottom:20px;'/><h5>Мы тур еще не отсняли &#40&#45&#58</h5></li><li style='padding-bottom:15px;border:1px solid #4f4f4f;border-bottom:1px solid #4f4f4f;background-color:inherit;border-bottom-right-radius:8px;border-bottom-left-radius:8px;' class='list-group-item'><a class='away' href='"+www+"'>На сайт</a><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+adressru+"</h5><h5 style='color:#747474;font-size:15px;font-weight:bold;margin-bottom:5px;'>"+adressen+"</h5><a href='tel:"+phone+"'><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+phone+"</h5></a></li></ul></div></div></div>";
-          $('#panel').append(insert);
-          $('.pt-page-2').removeClass('pt-page-moveToRight');
-          $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
-          setTimeout(function(){$('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'});},1000);
-          console.log('did output');
-        }
-        else {
-          console.log('haspano');
-          var placename = place.placenameru;
-          var adressru = place.adressru;
-          var adressen = place.adressen;
-          var www = place.contacts.www;
-          var phone = place.contacts.phone
-          var day = place.founddate.day;
-          var month = place.founddate.month;
-          var year = place.founddate.year;
-          var xml = place.xml;
-          var insert = "<div style='margin-top:60px;' class='container'><div class='row'><div class='col-xs-12'><nav><ul class='pager'><li class='previous'><a onclick='back("+pid+")' style='color:#999999;border:0px;' class='back'>Назад</a></li><li style='text-align:center;'><h3 style='color:#999999;display:inline;font-family:roboto-thin;'>"+placename+"</h3></li><li class='next' style='visibility:hidden;'><a>Назад</a></li></ul></nav></div></div><div class='row'><div class='col-xs-12'><ul class='list-group' ><li style='padding:0px;text-align:center;background-color:inherit;border: 1px solid #4f4f4f;border-top-left-radius: 8px;border-top-right-radius: 8px;' class='list-group-item'><div id='pano' style='height:400px;'></div></li><li style='padding-bottom:15px;border:1px solid #4f4f4f;border-bottom:1px solid #4f4f4f;background-color:inherit;border-bottom-right-radius:8px;border-bottom-left-radius:8px;' class='list-group-item'><div class='alert alert-warning alert-dismissible' role='alert' style='margin-top:10px;margin-bottom:10px;color:#09bcf5;background-color:inherit;border-color:#09bcf5;'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Двойной щелчок для перехода в полноэкранный режим</strong></div><a class='away' href='"+www+"'>На сайт</a><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+adressru+"</h5><h5 style='color:#747474;font-size:15px;font-weight:bold;margin-bottom:5px;'>"+adressen+"</h5><a href='tel:"+phone+"'><h5 style='color:#999999;font-size:15px;font-weight:bold;'>"+phone+"</h5></a></li></ul></div></div></div>";
-          $('#panel').append(insert);
-          var pano = new pano2vrPlayer('pano');
-          eval("pano.readConfigUrl('"+xml+"');");
-          $('.pt-page-2').removeClass('pt-page-moveToRight');
-          $('.pt-page-2').css('display','block').addClass('pt-page-moveFromRight pt-page-delay200 pt-page-ontop pt-page-current').css('overflow','auto');
-          setTimeout(function(){$('.pt-page-1').removeClass('pt-page-current').css({'overflow':'hidden','visibility':'hidden'});},1000);
-        }
-        }
-        }
-        };
-        request.open('POST', '/openpanel', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //Most libraries like jQuery/Prototype/Dojo do this
-        request.send('pid='+pid);
-        };
-        function back(pid) {
-           console.log('get back');
-           $('.pt-page-1').css('visibility','visible');
-           $('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop').addClass('pt-page-moveToRight');
-           setTimeout(function(){$('.pt-page-2').removeClass('pt-page-current').empty().css('display','none');$('.pt-page').css('overflow','visible');},500);
-           //eval("$('body').scrollTo('#p"+pid+"')");
-           //$('.pt-page').css('overflow','visible');
-           //$('pt-page').css('overflow','visible');
-           //$('.pt-page-2').removeClass('pt-page-moveFromRight pt-page-ontop pt-page-current').addClass('pt-page-moveToRight');
-        }
+        }   
         $('#more').click(function(){
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
