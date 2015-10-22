@@ -250,19 +250,27 @@ head
             Share.go(this);
         });
         
-          $.getJSON('/r.js', function(data) {
-            console.log('!!!');
-              var address_insert;
-              console.log(typeof data);
-              console.log(JSON.stringify(data));
-              data.forEach(function(base_element){
-                console.log('printing');
-                f.address.forEach(function(element){
-                  address_insert +="<div class='row address'><div class='col-xs-12'><p>"+element+"<p></div></div>";
-                  });
-               $('#placesinsert').append("<div class='row'><div class='col-xs-6><h5>"+base_element.name+"</h5></div><div class='col-xs-6'>"+address_insert+"</div></div>");
-            });
+        $.ajax({
+          dataType: "json",
+          url: '/r.json',
+          data: data,
+          success: success
+        }).done(function (json){
+           console.log(json);
           });
+          //$.getJSON('/r.json', function(data) {
+          //  console.log('!!!');
+          //    var address_insert;
+          //    console.log(typeof data);
+          //    console.log(JSON.stringify(data));
+          //    data.forEach(function(base_element){
+          //      console.log('printing');
+          //      f.address.forEach(function(element){
+          //        address_insert +="<div class='row address'><div class='col-xs-12'><p>"+element+"<p></div></div>";
+          //        });
+          //     $('#placesinsert').append("<div class='row'><div class='col-xs-6><h5>"+base_element.name+"</h5></div><div class='col-xs-6'>"+address_insert+"</div></div>");
+          //  });
+          //});
       
 
            
