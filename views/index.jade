@@ -193,7 +193,6 @@ head
       .info-abs {
         padding:20px;
         position:absolute;
-        height:50px;
         bottom:0px;
         width:94%;
         background-color:rgba(0, 0, 0, 0.45);
@@ -301,7 +300,7 @@ head
         function populate (toplist,funcmore) {
         for(var xx= 0;xx<toplist.length;xx++)
          {$('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
-                   var insert = "<div class='col-md-6 col-md-offset-3' id='p"+toplist[xx].pid+"'><a><img style='width:100%;border-top-left-radius:4px;border-top-right-radius:4px;' src='"+toplist[xx].mainpreview+"' ></a><div class='info-abs'><h2>"+toplist[xx].placenameru+"</h2><h6>Открылось: "+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></div></div>";
+                   var insert = "<div class='col-md-6 col-md-offset-3' id='p"+toplist[xx].pid+"'><a><img style='width:100%;' src='"+toplist[xx].mainpreview+"' ></a><div class='info-abs'><h2>"+toplist[xx].placenameru+"</h2><h6>Открылось: "+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></div></div>";
                      eval("$('#row"+xx+"').append(insert);");
                    lastfounddate=toplist[xx].founddateint;}
         if(funcmore===0){
