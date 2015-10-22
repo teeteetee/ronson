@@ -128,6 +128,7 @@ head
       text-transform:uppercase;
       font-family:high;
       margin-bottom:0px;
+      margin-top:0px;
       }
       #inserts h6{
       font-family:roboto-thin; 
@@ -191,12 +192,45 @@ head
        outline: none !important;
       }
       .info-abs {
-        padding:20px;
+        padding:15px;
         position:absolute;
         bottom:0px;
         width:94%;
         background-color:rgba(0, 0, 0, 0.45);
         color:white;
+      }
+      @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+      a, a:hover {
+        text-decoration: none;
+      }
+      
+      .socialbtns, .socialbtns ul, .socialbtns li {
+        margin: 0;
+        padding: 5px;
+      }
+      
+      .socialbtns li {
+          list-style: none outside none;
+          display: inline-block;
+      }
+      
+      .socialbtns .fa {
+        width: 40px;
+          height: 28px;
+        color: #000;
+        background-color: #FFF;
+        border: 1px solid #000;
+        padding-top: 12px;
+        border-radius: 22px;
+        -moz-border-radius: 22px;
+        -webkit-border-radius: 22px;
+        -o-border-radius: 22px;
+      }
+      
+      .socialbtns .fa:hover {
+        color: #FFF;
+        background-color: #000;
+        border: 1px solid #000;
       }
   body
     nav#menu.menu 
@@ -214,7 +248,16 @@ head
       .row(style='text-align:center;margin-bottom:50px;')
         h1(style='text-transform:uppercase;font-weight:600;letter-spacing:2px;') Recent ones
         h5(style='text-transform:uppercase;letter-spacing:1px;font-weight:200;') медиа проект: новые участники ресторанного рынка москвы
-        h5#today(style='font-family:times;text-transform:uppercase;letter-spacing:1px;font-weight:400;') 
+      .row.socialbtns(align='center') 
+        ul
+          li
+            a(href="#" class="fa fa-lg fa-vk")
+          li
+            a(href="#" class="fa fa-lg fa-facebook")
+          li
+            a(href="#" class="fa fa-lg fa-twitter")
+          li
+            a(href="#" class="fa fa-lg fa-google-plus")
       .row
         #inserts.col-xs-12
       footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
@@ -226,21 +269,6 @@ head
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/bootstrap.min.js')
       script.
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear();
-        var day = today.getDay();
-        var days = ['понедельник','вторник','среда','четверг','пятница','суббота','воскресенье']
-        if(dd<10) {
-            dd='0'+dd
-        } 
-        if(mm<10) {
-            mm='0'+mm
-        } 
-        today = dd+'/'+mm+'/'+yyyy;
-        day = days[day];
-        $('#today').append(today);
         var slideout = new Slideout({
         'panel': document.getElementById('panel'),
         'menu': document.getElementById('menu'),
