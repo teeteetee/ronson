@@ -196,7 +196,7 @@ var rst=[{'name':'Азия Холл','address':['Кутузовский прос
 {'name':'Maradona','address':['Б.Саввинский пер., 12, стр.8']},
 {'name':'Meat&Fish','address':['Пресненская наб., 2, ТЦ "Афимол сити"']},
 {'name':'Marani','address':['МО, д.Жуковка, Рублево-Успенское ш., 69']},
-{'name':'Mr.Lee','address':['']},
+{'name':'Mr.Lee','address':['Неглинная ул., 7']},
 {'name':'Osteria della Piazza Bianca','address':['Бутырский Вал ул., 10']},
 {'name':'Osteria di Campagna ','address':['МО, д.Жуковка, Рублево-Успенское ш., 74, стр.1']},
 {'name':'OSTERIA MONTIROLI','address':['Б.Никитская ул., 60, стр.2']},
