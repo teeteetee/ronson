@@ -182,79 +182,13 @@ app.get('/out/:place',function (req,res){
   });
 });
 
-app.post('/openpanel',function(req,res){ 
-  var vpid = parseInt(req.body.pid);
-  ms = {};
-  ms.trouble=1;
-  ms.mtext='db';
-  if(typeof vpid != 'number')
-  { res.send(ms);}
-  else
-  { places.findOne({pid:vpid},function (err,doc){
-     if(err) {
-      console.log('DB TROUBLE');
-      res.send(ms);
-     }
-     else {
-        if(doc){
-          ms.trouble=0;
-          ms.place=doc;
-          res.send(ms);
-        }
-          else {
-           res.send(ms);
-          }
-     }
-    });}
-});
 
 app.post('/m/keepintouch',function(req,res,next){
   req.url='/keepintouch';
   next();
 });
 
-app.post('/keepintouch',function(req,res){
-  var cmail = req.body.cm;
-  function validateEmail(email) { 
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
- }  
-    var ms = {};
-    ms.trouble = 1;
-    ms.mtext = 'spelling';
-    if (validateEmail(cmail) === true) {
-      var dd= new Date();
-      var vday = dd.getDate().toString();
-      if (vday.length===1){
-        vday='0'+vday;
-      }
-      var vmonth = dd.getMonth()+1;
-      vmonth = vmonth.toString();
-      if (vmonth.length===1){
-        vmonth='0'+vmonth;
-      }
-      var vyear = dd.getUTCFullYear().toString();
-      var fulldate = vyear+vmonth+vday;
-      fulldate = parseInt(fulldate);
-     clientmail.find({},{ limit:1,sort : { cid : -1 } },function(err,doc){
-      if(doc.length>0)
-      { 
-        var newid = doc[0].cid+1;
-        clientmail.insert({cid:newid,mail:cmail,regdate:fulldate});
-        ms.trouble=0;
-        res.send(ms);
-      }
-      else {
-        clientmail.insert({cid:1,mail:cmail,regdate:fulldate});
-        ms.trouble=0;
-        res.send(ms);
-      }
-    });
-}
-    else {
-      res.send(ms);
-    }
-});
+
 
 app.get('/admin/simulateclient',function(req,res){
  clients.insert({clid:1,nameru:'Одесса-мама',msnum:0});
@@ -407,23 +341,6 @@ app.get('/top',function(req,res){
   res.render('rating');
 });
 
-app.get('/misc/:mid',function(req,res){
-  var id = parseInt(req.params.mid);
-  switch (id) {
-    case(1):
-    res.render('contacts');
-    break
-    case(2):
-    res.render('manifesto');
-    break
-    case(3):
-    res.render('partnership');
-    break
-    default:
-    res.render('index');
-    break
-  }
-});
 
 app.get('/places/:id',function(req,res){
   var vpid = parseInt(req.params.id);
@@ -447,10 +364,6 @@ app.get('/places/:id',function(req,res){
       }
     }
   });
-});
-
-app.get('/search',function(req,res){
-  res.render('search');
 });
 
 app.post('/admin/insidemsg/remove',function(req,res){
@@ -623,23 +536,6 @@ app.get('/admin/market',function(req,res){
     res.redirect('http://ya.ru');
   }
 });
-
-//app.get('/admin/simap',function(req,res){
-//  adminplaces.insert({
-//         placename:'koko',
-//         kind:'lplp',
-//         comments:'koko',
-//         group:'ko',
-//         placeclass:'danger',
-//         regdate:{day:07,month:04,year:2015},
-//         founddate:{day:01,month:01,year:2015},
-//         adress: 'Какаятосраная наб. дом 10 к.3 кв. 12',
-//         pid: 1,
-//         });
-//         var ms = {};
-//         ms.trouble=0;
-//         res.send(ms);
-//});
 
 app.post('/admin/apadd',function(req,res){
   var ms={};

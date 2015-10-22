@@ -242,11 +242,11 @@ head
     nav#menu.menu 
       section.menu-section
         ul.menu-section-list    
-          li.active
+          li
             a(href="/" ) На сегодня
           li
             a(href="/top" ) 238 Лучших
-          li 
+          li.active 
             a(href='/about' ) О проекте
     .container-fluid#panel.main(style='padding-top:50px;min-height:100vh;background-color:white;')
       button(type='button' ,id='menu-toggle')
@@ -265,13 +265,11 @@ head
           li
             a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
       .row
-        #inserts.col-xs-12
-      footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
-        .container
-            nav
-              ul(class='pager') 
-                li 
-                  a(id='more') Еще
+        .col-xs-12
+          h3 Пишите нам, если открыли новое заведение
+            strong main@recentones.com
+          h3 Мы бесплатно снимем вам виртуальный тур.
+          h3 Если вы СМИ - покупайте наш контент!
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script(src='/js/bootstrap.min.js')
       script.
@@ -287,101 +285,7 @@ head
         $(document).on('click', '.social_share', function(){
             Share.go(this);
         });
-        var rownum = 0;
-        var lastfounddate;
-        var more = #{more};
-        if(more===1){
-         $('#morebutton').css('display','block');
-        }
-        var toplist = !{doc};
-        //scrolltoplaugin
-        $.fn.scrollTo = function( target, options, callback ){
-          if(typeof options == 'function' && arguments.length == 2){ callback = options; options = target; }
-          var settings = $.extend({
-            scrollTarget  : target,
-            offsetTop     : 50,
-            duration      : 500,
-            easing        : 'swing'
-          }, options);
-          return this.each(function(){
-            var scrollPane = $(this);
-            var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
-            var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
-            scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
-              if (typeof callback == 'function') { callback.call(this); }
-            });
-          });
-        }
-        //end of scrollto plugin
-        //another scroll fn
-        function scrollfn (element){
-        $('.wrap').animate({
-            scrollTop: $(element).parent().scrollTop() + $(element).offset().top - $(element).parent().offset().top}, {
-            duration: 1000,
-            specialEasing: {
-                width: 'linear',
-                height: 'easeOutBounce'
-            },
-            complete: function (e) {
-                console.log("animation completed");
-            }
-        });}
-        //and of the scroll fn
-        function populate (toplist,funcmore) {
-        for(var xx= 0;xx<toplist.length;xx++)
-         {$('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
-                   var insert = "<div class='col-md-6 col-md-offset-3' id='p"+toplist[xx].pid+"'><a><img style='width:100%;' src='"+toplist[xx].mainpreview+"' ></a><div class='info-abs'><h2>"+toplist[xx].placenameru+"</h2><h6>Открылось: "+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></div></div>";
-                     eval("$('#row"+xx+"').append(insert);");
-                   lastfounddate=toplist[xx].founddateint;}
-        if(funcmore===0){
-          $('#morebutton').css('display','none');
-        }
-        }   
-        $('#more').click(function(){
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        parsed = JSON.parse(request.responseText);
-        console.log(parsed);
-        if(parsed.trouble === 1)
-        {
-        console.log('TROUBLE === 1');
-        switch (parsed.mtext){
-        case('db'):
-        alert('Sorry, our database is being updated');
-        break;
-        case('empty'):
-        alert('EMPTY');
-        break;
-        }}
-        else {
-        //trouble === 0
-        toplist = parsed.mdata.reverse();
-        //populate is modified , check if suitable
-        populate(toplist,1);
-        //$("html, body").animate({ scrollTop: $("#morebutton").scrollTop() }, 1000);
-        if(parsed.more === 0){
-        $('#morebutton').css('display','none');
-        }
-        }
-        }
-        };
-        request.open('POST', '/more', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //Most libraries like jQuery/Prototype/Dojo do this
-        console.log('lastfounddate='+lastfounddate);
-        request.send('lastfounddate='+lastfounddate);
-        });
-        if(screen.width < 769){
-          console.log(toplist);
-        ipadpopulate(toplist,0);
-        }
-        else {
-        populate(toplist,0);
-        }
-
-
+        
+        
 
            
