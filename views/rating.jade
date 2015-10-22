@@ -194,6 +194,7 @@ head
         border-top:1px solid #333;
       }
       .place h5{
+        line-height:1;
         margin-top:5px;
         margin-bottom:5px;
         font-weight:600;
@@ -254,7 +255,7 @@ head
             var address_insert='';
             console.log(base_element);
             base_element.address.forEach(function(element){
-              address_insert +="<div class='row address'><div class='col-xs-12'><p>"+element+"<p></div></div>";
+              address_insert +="<div class='row address'><div class='col-xs-12'><p>"+element+"</p></div></div>";
               });
            $('#placesinsert').append("<div class='row place'><div class='col-xs-6'><h5>"+base_element.name+"</h5></div><div class='col-xs-6'>"+address_insert+"</div></div>");
         });
