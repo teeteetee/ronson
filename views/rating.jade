@@ -226,21 +226,6 @@ head
         h5(style='text-transform:uppercase;letter-spacing:1px;font-weight:200;') На чем стоит ресторанный рынок москвы:
       .row
         .col-md-6.col-md-offset-3#placesinsert
-          .row.place
-            .col-xs-6
-              h5 "Азия Холл"
-            .col-xs-6
-              p Кутузовский просп., 48, 3-й этаж
-          .row.place
-            .col-xs-6
-              h5 "Азия Холл"
-            .col-xs-6
-              p Кутузовский просп., 48, 3-й этаж
-          .row.place
-            .col-xs-6
-              h5 "Азия Холл"
-            .col-xs-6
-              p Кутузовский просп., 48, 3-й этаж
 
 
       footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
@@ -264,8 +249,6 @@ head
         $(document).on('click', '.social_share', function(){
             Share.go(this);
         });
-        $(function() {
-          var people = [];
         
           $.getJSON('/r.json', function(data) {
               var address_insert;
@@ -273,9 +256,9 @@ head
                 f.address.forEach(function(element){
                   address_insert +="<div class='row address'><div class='col-xs-12'><p>"+element+"<p></div></div>";
                   });
-               $('#placesinsert').append("<div class='row'><div class='col-xs-6><h5>"+f.name+"</h5></div><div class='col-xs-6'>"+address_insert+"</div></div>")
+               $('#placesinsert').append("<div class='row'><div class='col-xs-6><h5>"+f.name+"</h5></div><div class='col-xs-6'>"+address_insert+"</div></div>");
             });
           });
-       });
+      
 
            
