@@ -228,6 +228,18 @@ head
         background-color: #000;
         border: 1px solid #000;
       }
+      .placerow{
+        border-top:1px solid #ddd;
+      }
+      .time_tell{
+        position:absolute;
+        margin-auto:
+        top:-20;
+        background-color:white;
+        border:1px solid #ddd;
+        border-radius:30px;
+        color:#ddd;
+      }
   body
     .container-fluid#panel.main(style='padding-top:5vh;min-height:100vh;background-color:white;')
       .row(style='text-align:center;')
@@ -299,7 +311,7 @@ head
         //and of the scroll fn
         function populate (toplist,funcmore) {
         for(var xx= 0;xx<toplist.length;xx++)
-         {$('#inserts').append("<div class='row' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
+         {$('#inserts').append("<div class='row placerow' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'><div class='time_tell'>12.03.2015</div></div>");
                    var insert = "<div class='col-md-6 col-md-offset-3' id='p"+toplist[xx].pid+"'><a><img style='width:100%;' src='"+toplist[xx].mainpreview+"' ></a><div class='info-abs'><h2>"+toplist[xx].placenameru+"</h2><h6>Открылось: "+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</h6></div></div>";
                      eval("$('#row"+xx+"').append(insert);");
                    lastfounddate=toplist[xx].founddateint;}
