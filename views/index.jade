@@ -29,84 +29,6 @@ head
         font: 100%/1.4em 'Calibre Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-size:14;
       }
-      .slideout-menu {
-        background-color: #1D1F20;
-        background-image: linear-gradient(145deg, #1D1F20, #404348);
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        z-index: 0;
-        width: 256px;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        display: none;
-      }
-      .slideout-panel {
-        position:relative;
-        z-index: 1;
-      }
-      .slideout-open,
-      .slideout-open body,
-      .slideout-open .slideout-panel {
-        overflow: hidden;
-      }
-      .slideout-open .slideout-menu {
-        display: block;
-      }
-      .menu a {
-        color: #fff;
-      }
-      .menu a:hover {
-        text-decoration: underline;
-      }
-      .menu-header {
-        border-bottom: 1px solid #2a2d2f;
-        padding: 20px 0 20px 60px;
-        background-size: 32px;
-      }
-      .menu-header-title {
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        margin: 0;
-        font-size:18;
-      }
-      .menu-section {
-        margin: 25px 0;
-      }
-      .menu-section-title {
-        text-transform: uppercase;
-        color: #85888d;
-        font-weight: 200;
-        font-size: 13px;
-        letter-spacing: 1px;
-        padding: 0 20px;
-        margin:0;
-      }
-      .menu-section-list {
-        padding:0;
-        margin: 10px 0;
-        list-style:none;
-      }
-      .menu-section-list a {
-        text-transform: uppercase;
-        color: #85888d;
-        font-weight: 200 !important;
-        letter-spacing: 2px;
-        display: block;
-        padding: 20px 20px;
-      }
-      .menu-section-list a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        color:#fff !important;
-        text-decoration: none;
-      }
-      .menu-section-list .active a {
-        background-color: rgba(255, 255, 255, 0.1);
-        color:#fff !important;
-        text-decoration: none;
-      }
         @font-face {
       }
       font-family:high;
@@ -232,7 +154,7 @@ head
         border-top:1px solid #ddd;
         padding-top:30px;
       }
-      .time_tell{
+      .tell_time{
         position:absolute;
         padding: 3px;
         padding-left: 10px;
@@ -245,7 +167,7 @@ head
         color:#ddd;
       }
   body
-    .container-fluid#panel.main(style='padding-top:5vh;min-height:100vh;background-color:white;')
+    .container.main(style='padding-top:5vh;min-height:100vh;background-color:white;')
       .row(style='text-align:center;')
         h1(style='text-transform:uppercase;font-weight:600;letter-spacing:2px;') Recent ones
         h5(style='text-transform:uppercase;letter-spacing:1px;font-weight:200;') медиа проект: новые участники ресторанного рынка москвы
@@ -313,10 +235,11 @@ head
             }
         });}
         //and of the scroll fn
+        // background: url(bgimage.jpg) no-repeat;background-size: 100%;
         function populate (toplist,funcmore) {
         for(var xx= 0;xx<toplist.length;xx++)
          {$('#inserts').append("<div class='row placerow' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
-                   var insert = "<div class='tell_time'>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</div><div class='col-md-6 col-md-offset-3' id='p"+toplist[xx].pid+"'><a><img style='width:100%;' src='"+toplist[xx].mainpreview+"' ></a><div class='info-abs'><h2>"+toplist[xx].placenameru+"</h2></div></div>";
+                   var insert = "<div class='tell_time'>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</div><div class='col-xs-12' id='p"+toplist[xx].pid+"' style=' background: url("+toplist[xx].mainpreview+") no-repeat;background-size: 100%;'><div class='info-abs'><h2>"+toplist[xx].placenameru+"</h2></div></div>";
                      eval("$('#row"+xx+"').append(insert);");
                    lastfounddate=toplist[xx].founddateint;}
         if(funcmore===0){
