@@ -151,8 +151,7 @@ head
         border: 1px solid #000;
       }
       .placerow{
-        border-top:1px solid #ddd;
-        padding-top:30px;
+        border-top:1px solid #white;
       }
       .tell_time{
         position:absolute;
@@ -238,7 +237,7 @@ head
         // background: url(bgimage.jpg) no-repeat;background-size: 100%;
         function populate (toplist,funcmore) {
         for(var xx= 0;xx<toplist.length;xx++)
-         {$('#inserts').append("<div class='row placerow' style='margin-top:15px;margin-bottom:15px;' id='row"+xx+"'></div>");
+         {$('#inserts').append("<div class='row placerow' id='row"+xx+"'></div>");
                    var insert = "<div class='tell_time'>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</div><div class='col-xs-12' id='p"+toplist[xx].pid+"' style='height:400px; background: url("+toplist[xx].mainpreview+") no-repeat;background-size: 100%;'><div class='info-abs'><h2>"+toplist[xx].placenameru+"</h2></div></div>";
                      eval("$('#row"+xx+"').append(insert);");
                    lastfounddate=toplist[xx].founddateint;}
