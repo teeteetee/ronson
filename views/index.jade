@@ -1,289 +1,302 @@
-doctype html(lang='en')
-head
+doctype html
+html(lang='en')
+  head
     meta(charset='utf-8')
-    |     
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    |     
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    |     
-    title R
+    // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+    title INTP Love
     // Bootstrap
-    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
-    link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet')
-    meta(liber de amicitia est)
-    meta(property="og:url"           content="http://recentones.com")
-    meta(property="og:type"          content="website")
-    meta(property="og:title"         content="Recent ones")
-    meta(property="og:description"   content="New restaurants in Moscow")
-    meta(property="og:image"         content="http://recentones.com/bootstrap/images/rl.png")
-    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    link(href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext', rel='stylesheet', type='text/css')
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
-    script(src='/js/share.js')
-    script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')     
-    script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')     
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
     style.
-      body {
-        width: 100%;
-        height: 100%;
-        font: 100%/1.4em 'Calibre Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-size:14;
+      body{
+      background-color:#333;
       }
-        @font-face {
+      .header {
+      text-align:center;
       }
-      font-family:high;
-      src: url('/bootstrap/fonts/Attentica.ttf');
+      .header h1 {
+      margin-top:50px;
+      text-transform: uppercase;
       }
-      @font-face{
-      font-family:proxima;
-      src:url('/bootstrap/fonts/ProximaNova-Reg-webfont.woff');
+      .header h4 {
+      margin-top:20px;
+      margin-bottom:30px;
+      text-transform: uppercase;
+      font-weight: 200;
+      color: #bbb;
       }
-      @font-face{
-      font-family:boldproxima;
-      src:url('/bootstrap/fonts/ProximaNova-Sbold-webfont.woff');
+      .footer {
+      text-align:center;
+      bottom: 0;
+      width: 100%;
       }
-      #inserts h5{
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:0px;
-      color:white;
-      font-family:roboto-thin;
-      font-size:30px;
+      .participate {
+      text-align:center;
+      margin-top:50px;
+      margin-bottom:70px;
+      }
+      .language {
+      position:absolute;
+      top:20px;
+      right:20px;
+      }
+      #apply {
+      display:none;
+      }
+      #ru_cont {
+      display:none;
+      }
+      .user {
+      border-bottom:1px solid #eee;
+      padding-top:20px;
+      padding-bottom:15px;
+      padding-left:10px;
+      }
+      .user h5 {
       margin-top:0px;
       }
-      #inserts h2 {
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-family:high;
-      margin-bottom:0px;
-      margin-top:0px;
+      .user:last-child {
+      border-bottom:none;
       }
-      #inserts h6{
-      font-family:roboto-thin; 
-      text-transform:uppercase;
-      margin-top:0px;
-      color:lightgray;
-      margin-bottom:0px;
-      letter-spacing:2px;
+      .emptyavatar {
+      /*margin:30px;
+      margin-left:50px;
+      margin-right:50px;*/
+      margin:auto;
+      width:90px;
+      height:90px;
+      background-color:#eee;
+      border-radius:50%;
       }
-      .col-lg-4 {
-      margin-bottom: 20px;
-      text-align: center;
+      @media (max-width: 767px) {
+      #main{
       }
-      .list-group-item:last-child {
-      border-bottom: 2px solid #c2c2c2;
       }
-      .away {
-        display: inline-block;
-        padding: 5px 14px;
-        background-color: #4F4F4F; 
-        border-radius:15px;
-        margin-bottom:10px;
-        color:#999999;
+      h6 {
+      color:#ddd;
       }
-      .away:hover {
-      text-decoration: none;
-      color:#09BCFD;
+      #head .btn-default,#head .btn-default:hover,#head .btn-default:focus {
+      border-color:teal;
+      background-color:#333;
+      color:teal;
       }
-      .back {
-        background-color:#4F4F4F !important;
+      #head .btn-default.active,#head .btn-default.active:active {
+      border-color:teal;
+      background-color:teal;
+      color:#333;
       }
-      .previous:hover{
-        border:1 px solid #09bcf5
-        color:#09bcf5;
+      #head {
+      border: 1px solid #232323;
+      padding-bottom:30px;
+      text-align:center;
+      border-top-left-radius:6px;
+      border-top-right-radius:6px;
+      background-color:#222;
       }
-      #wrap a:hover{
-        text-decoration:none;
-        color:#09BCFD !important;
+      .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+      background-color:teal;
+      border-color:teal;
+      color:#333;
       }
-      #pano canvas {
-        border-top-left-radius:8px;
-        border-top-right-radius:8px;
-        z-index:600;
+      .pagination>li>a, .pagination>li>span {
+      background-color:#333;
+      border-color:teal;
+      color:teal;
       }
-      :-webkit-full-screen-ancestor:not(iframe) {
-       z-index: 5000 !important;
+      .btn-send {
+      margin-top:20px;
+      margin-bottom:5px;
       }
-      .list-group {
-        cursor:pointer;
+      .user .col-xs-9 {
+      padding-left:10px;
       }
-      button:focus,button:active {
-       outline: none !important;
+      .modal input {
+      max-width:400px;
       }
-      .info-abs {
-        padding:15px;
-        position:absolute;
-        bottom:0px;
-        width:94%;
-        background-color:rgba(0, 0, 0, 0.45);
-        color:white;
-      }
-      a, a:hover {
-        text-decoration: none;
-      }
-      
-      .socialbtns, .socialbtns ul, .socialbtns li {
-        margin: 0;
-        padding: 5px;
-      }
-      
-      .socialbtns li {
-          list-style: none outside none;
-          display: inline-block;
-      }
-      
-      .socialbtns .fa {
-        width: 40px;
-          height: 40px;
-        color: #ddd;
-        background-color: #FFF;
-        border: 1px solid #ddd;
-        padding-top: 12px;
-        border-radius: 22px;
-        -moz-border-radius: 22px;
-        -webkit-border-radius: 22px;
-        -o-border-radius: 22px;
-      }
-      
-      .socialbtns .fa:hover {
-        color: #FFF;
-        background-color: #000;
-        border: 1px solid #000;
-      }
-      .placerow{
-        border-top:1px solid white;
-      }
-      .tell_time{
-        position:absolute;
-        padding: 3px;
-        padding-left: 10px;
-        padding-right: 11px;
-        left: 46%;
-        top: 1;
-        background-color:white;
-        border:1px solid #ddd;
-        border-radius:30px;
-        color:#ddd;
+      .user .col-xs-3 {
+      text-align:center;
       }
   body
-    .container.main(style='padding-top:5vh;min-height:100vh;background-color:white;')
-      .row(style='text-align:center;')
-        h1(style='text-transform:uppercase;font-weight:600;letter-spacing:2px;') Recent ones
-        h5(style='text-transform:uppercase;letter-spacing:1px;font-weight:200;') медиа проект: новые участники ресторанного рынка москвы
-      .row.socialbtns(style='text-align:center;margin-bottom:50px;')
-        ul
-          li
-            a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-          li
-            a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-          li
-            a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-          li
-            a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
+    //
+      <div class='language'>
+      <a id='eng' class='active'>ENG</a>
+      <span style='color:#ddd;'>|</span>
+      <a id='ru'>RU</a>
+      </div>
+    #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true')  ×
+            h4.modal-title(style='color:#ddd;')  Регистрация 
+          .modal-body
+            form
+              .form-group
+                label(for='pagetitle')  Имя
+                input#article_title.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
+              .form-group
+                label(for='pagetitle')  Email
+                input#article_title.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
+              .form-group
+                label(for='pagetitle')  Пароль
+                input#article_title.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
+          .modal-footer
+            button#submitarticle.btn.btn-primary  Submit
+    #eng_cont.container(style='padding-top:60px;')
+      //
+        <div class='language'>
+        <a class='active eng'>ENG</a>
+        <span style='color:#ddd;'>|</span>
+        <a class='ru'>RU</a>
+        </div>
+      //
+        <div class='page-header header'>
+        <h1><span><img src='images/cfrp.png' width='40'></span></h1>
+        <h1>Consciousness:<br> essential components & infrastructure</h1>
+        <h4 > Research project</h4>
+        </div>
       .row
-        #inserts.col-xs-12
-      footer(class='footer main' id='morebutton' style='display:none;background-color:white;')
-        .container
-            nav
-              ul(class='pager') 
-                li 
-                  a(id='more') Еще
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-      script(src='/js/bootstrap.min.js')
-      script.
-        $(document).on('click', '.social_share', function(){
-            Share.go(this);
-        });
-        var rownum = 0;
-        var lastfounddate;
-        var more = #{more};
-        if(more===1){
-         $('#morebutton').css('display','block');
-        }
-        var toplist = !{doc};
-        //scrolltoplaugin
-        $.fn.scrollTo = function( target, options, callback ){
-          if(typeof options == 'function' && arguments.length == 2){ callback = options; options = target; }
-          var settings = $.extend({
-            scrollTarget  : target,
-            offsetTop     : 50,
-            duration      : 500,
-            easing        : 'swing'
-          }, options);
-          return this.each(function(){
-            var scrollPane = $(this);
-            var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
-            var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
-            scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
-              if (typeof callback == 'function') { callback.call(this); }
-            });
-          });
-        }
-        //end of scrollto plugin
-        //another scroll fn
-        function scrollfn (element){
-        $('.wrap').animate({
-            scrollTop: $(element).parent().scrollTop() + $(element).offset().top - $(element).parent().offset().top}, {
-            duration: 1000,
-            specialEasing: {
-                width: 'linear',
-                height: 'easeOutBounce'
-            },
-            complete: function (e) {
-                console.log("animation completed");
-            }
-        });}
-        //and of the scroll fn
-        // background: url(bgimage.jpg) no-repeat;background-size: 100%;
-        function populate (toplist,funcmore) {
-        for(var xx= 0;xx<toplist.length;xx++)
-         {$('#inserts').append("<div class='row placerow' id='row"+xx+"'></div>");
-                   var insert = "<div class='tell_time'>"+toplist[xx].founddate.day+"."+toplist[xx].founddate.month+"."+toplist[xx].founddate.year+"</div><div class='col-xs-12' id='p"+toplist[xx].pid+"' style='background: url("+toplist[xx].mainpreview+") no-repeat;background-size: 100%;text-align:center;'><h1 style='margin-top:150px;margin-bottom:150px;color:white;font-weight:100;'>"+toplist[xx].placenameru+"</h1></div>";
-                     eval("$('#row"+xx+"').append(insert);");
-                   lastfounddate=toplist[xx].founddateint;}
-        if(funcmore===0){
-          $('#morebutton').css('display','none');
-        }
-        }   
-        $('#more').click(function(){
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-        var DONE = this.DONE || 4;
-        if (this.readyState === DONE){
-        parsed = JSON.parse(request.responseText);
-        console.log(parsed);
-        if(parsed.trouble === 1)
-        {
-        console.log('TROUBLE === 1');
-        switch (parsed.mtext){
-        case('db'):
-        alert('Sorry, our database is being updated');
-        break;
-        case('empty'):
-        alert('EMPTY');
-        break;
-        }}
-        else {
-        //trouble === 0
-        toplist = parsed.mdata.reverse();
-        //populate is modified , check if suitable
-        populate(toplist,1);
-        //$("html, body").animate({ scrollTop: $("#morebutton").scrollTop() }, 1000);
-        if(parsed.more === 0){
-        $('#morebutton').css('display','none');
-        }
-        }
-        }
-        };
-        request.open('POST', '/more', true);
-        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //Most libraries like jQuery/Prototype/Dojo do this
-        console.log('lastfounddate='+lastfounddate);
-        request.send('lastfounddate='+lastfounddate);
-        });
-        populate(toplist,more);
-
-
-
-           
+        .col-xs-12
+          h1(style='font-family:Josefin Sans;text-align:center;margin-bottom:40px;letter-spacing: 12px;color: #B1EDFF;text-shadow: 1px 1px 10px #6DB7dc') INTPLOVE
+      //
+        <div class='row ' style='padding-top:30px;padding-bottom:30px;text-align:center;'>
+        <div class='col-xs-12'>
+        <div class='btn-group'>
+        <button class='btn btn-default active'>Анкеты</button>
+        <button class='btn btn-default'>Войти</button>
+        </div>
+        </div>
+        </div>
+      .row(style='border-radius:6px;')
+        #main.col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3(style='background-color:white;border-radius:6px;')
+          #head.row
+            .col-xs-12
+              h4(style='text-align:center;margin-bottom:20px;margin-top:30px') Я ищу
+              .btn-group.btn-group-sm
+                button.btn.btn-default Парня
+                button.btn.btn-default Девушку
+                button.btn.btn-default.active Всех
+              h5(style='color:gray;margin-top:20px;')
+                | от 
+                select
+                  option 1 
+                  option 2 
+                  option 3 
+                |            до
+                select
+                  option 1 
+                  option 2 
+                  option 3 
+                |             лет
+              select
+                option Москва 
+                option Питербург 
+                option Новгород 
+            //
+              <nav>
+              <ul class="pagination" style='margin-bottom:0px;'>
+              <li>
+              <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              </a>
+              </li>
+              <li class='active'><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li>
+              <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              </a>
+              </li>
+              </ul>
+              </nav>
+          .row.user
+            .col-xs-3
+              .emptyavatar
+              a.btn.btn-sm.btn-send.btn-default Написать
+            .col-xs-9
+              h5 Dima, 24
+              h6
+                span.glyphicon.glyphicon-map-marker(style='margin-right:5px;')
+                | Москва
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
+          .row.user
+            .col-xs-3
+              .emptyavatar
+              a.btn.btn-sm.btn-send.btn-default Написать
+            .col-xs-9
+              h5 Dima, 24
+              h6
+                span.glyphicon.glyphicon-map-marker(style='margin-right:5px;')
+                | Москва
+          .row.user
+            .col-xs-3
+              .emptyavatar
+              a.btn.btn-sm.btn-send.btn-default Написать
+            .col-xs-9
+              h5 Dima, 24
+              h6
+                span.glyphicon.glyphicon-map-marker(style='margin-right:5px;')
+                | Москва
+          .row.user
+            .col-xs-3
+              .emptyavatar
+              a.btn.btn-sm.btn-send.btn-default Написать
+            .col-xs-9
+              h5 Dima, 24
+              h6
+                span.glyphicon.glyphicon-map-marker(style='margin-right:5px;')
+                | Москва
+    #ru_cont.container(style='display:none;')
+    footer.footer
+      .container
+        .row
+          .col-xs-12
+            h6(style='color:#c35;font-weight:200;margin-top:40px;') INTP Love 2015
+            a(style='margin-bottom:30px;font-weight:200;color:#c35;', href='mailto:feedback@intplove.ru') Contact us
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='js/jquery.min.js')
+    script(src='js/bootstrap.min.js')
+    script.
+      $('.btn-send').click(function(){
+      $('#register').modal('show');
+      });
+      $('#applybutton_eng').click(function(){
+      $('#apply_eng').modal('show');
+      });
+      $('#applybutton_ru').click(function(){
+      $('#apply_ru').modal('show');
+      });
+      $('#ru').click(function(){
+      console.log('hey');
+      if(!$('#ru').hasClass('active')){
+      console.log('double hey');
+      $('#eng_cont').css('display','none');
+      $('#ru_cont').css('display','block');
+      $('#eng').removeClass('active');
+      $('#ru').addClass('active');
+      }
+      });
+      $('#eng').click(function(){
+      console.log('hey');
+      if(!$('#eng').hasClass('active')){
+      console.log('double hey');
+      $('#ru_cont').css('display','none');
+      $('#eng_cont').css('display','block');
+      $('#ru').removeClass('active');
+      $('#eng').addClass('active');
+      }
+      });
