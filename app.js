@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
 var bcrypt = require('bcrypt');
-var mongoose = require("mongoose");
 var nodemailer = require("nodemailer");
 
 var mongo = require('mongodb');
