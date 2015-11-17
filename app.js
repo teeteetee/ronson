@@ -6,12 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
 var bcrypt = require('bcrypt');
+var mongoose = require("mongoose");
+var nodemailer = require("nodemailer");
 
 var mongo = require('mongodb');
-var db = require('monk')('localhost/tav')
-  , places = db.get('places'),adminplaces = db.get('adminplaces'),top = db.get('top'),clientmail = db.get('clientmail'),clients = db.get('clients'),insidemsg = db.get('insidemsg');
+var db = require('monk')('localhost/tav'),insidemsg = db.get('insidemsg'),temp_users = db.get('temp_user'),users = db.get('users');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
+
 
 var app = express();
 
@@ -33,6 +35,38 @@ app.use(sessions({
   activeduration:1440 * 60 * 1000,
   httpOnly: true
 }));
+
+var smtpTransport = nodemailer.createTransport("SMTP",{
+    service: "Yandex",
+    auth: {
+        user: "testtrialtest@gyandex.ru",
+        pass: "testingstuff"
+    }
+});
+
+app.get('/sendit/:email',function (req,res){
+  var mailOptions = {
+    from: "Fred Foo ✔ <foo@blurdybloop.com>", // sender address 
+    to: req.params.email, // list of receivers 
+    subject: "Hello ✔", // Subject line 
+    text: "Hello world ✔", // plaintext body 
+    html: "<b>Hello world ✔</b>" // html body 
+}
+ 
+// send mail with defined transport object 
+smtpTransport.sendMail(mailOptions, function(error, response){
+    if(error){
+        console.log(error);
+        res.send(0);
+    }else{
+        console.log("Message sent: " + response.message);
+        res.send("Message sent: " + response.message);
+    }
+ 
+    // if you don't want to use this transport object anymore, uncomment following line 
+    //smtpTransport.close(); // shut down the connection pool, no more messages 
+});
+});
 
 
 
