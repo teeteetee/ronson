@@ -96,6 +96,20 @@ app.get('*', function(req,res,next) {   var d = new Date();
 
 app.get('/',function(req,res) {
   res.render('index');
+  var ms={};
+  users.find({},{limit:20,sort: {regdate: 1}}, function (err,done) {
+    if(err) {
+     res.render('index',{'done':0});
+    }
+    else if(!done.length){
+     res.render('index',{'done':0});
+    }
+    }
+      else {
+     res.render('index',{'done':JSON.stringify(done)});
+    }
+      }
+  });
 });
 
 app.get('/verify/:token',function (req,res){

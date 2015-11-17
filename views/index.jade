@@ -123,6 +123,9 @@ html(lang='en')
       .user .col-xs-3 {
       text-align:center;
       }
+      .glyphicon-map-marker {
+        margin-right:5px
+      }
   body
     //
       <div class='language'>
@@ -231,33 +234,6 @@ html(lang='en')
                 | Москва
               p
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
-          .row.user
-            .col-xs-3
-              .emptyavatar
-              a.btn.btn-sm.btn-send.btn-default Написать
-            .col-xs-9
-              h5 Dima, 24
-              h6
-                span.glyphicon.glyphicon-map-marker(style='margin-right:5px;')
-                | Москва
-          .row.user
-            .col-xs-3
-              .emptyavatar
-              a.btn.btn-sm.btn-send.btn-default Написать
-            .col-xs-9
-              h5 Dima, 24
-              h6
-                span.glyphicon.glyphicon-map-marker(style='margin-right:5px;')
-                | Москва
-          .row.user
-            .col-xs-3
-              .emptyavatar
-              a.btn.btn-sm.btn-send.btn-default Написать
-            .col-xs-9
-              h5 Dima, 24
-              h6
-                span.glyphicon.glyphicon-map-marker(style='margin-right:5px;')
-                | Москва
     #ru_cont.container(style='display:none;')
     footer.footer
       .container
@@ -271,6 +247,13 @@ html(lang='en')
     script(src='/js/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script.
+      var userlist = !{JSON.stringify(done)};
+      if(userlist) {
+        userlist.forEach(function(element,index){
+          var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default>Написать</a></div><div class='col-xs-9'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6></div></div>";
+          $('#main').append(insert);
+          });
+      }
       $('.btn-send').click(function(){
       $('#register').modal('show');
       });
