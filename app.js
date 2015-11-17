@@ -45,7 +45,7 @@ var smtpTransport = nodemailer.createTransport({
 
 app.get('/sendit/:email',function (req,res){
   var mailOptions = {
-    from: "Fred Foo ✔ <foo@blurdybloop.com>", // sender address 
+    from: "Fred Foo ✔ <testtrialtest@yandex.ru>", // sender address 
     to: req.params.email, // list of receivers 
     subject: "Hello ✔", // Subject line 
     text: "Hello world ✔", // plaintext body 
