@@ -35,7 +35,7 @@ app.use(sessions({
   httpOnly: true
 }));
 
-var smtpTransport = nodemailer.createTransport("SMTP",{
+var smtpTransport = nodemailer.createTransport({
     service: "Yandex",
     auth: {
         user: "testtrialtest@gyandex.ru",
