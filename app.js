@@ -38,7 +38,7 @@ app.use(sessions({
 var smtpTransport = nodemailer.createTransport({
     service: "Yandex",
     auth: {
-        user: "testtrialtest@gyandex.ru",
+        user: "testtrialtest@yandex.ru",
         pass: "testingstuff"
     }
 });
