@@ -339,6 +339,9 @@ html(lang='en')
       $('#showregbutton').click(function(){
       $('#register').modal('show');
       });
+      $('#regbutton').click(function(){
+        runreg();
+        });
       var userlist = !{JSON.stringify(done)};
       if(userlist) {
         userlist.forEach( function (element,index){
