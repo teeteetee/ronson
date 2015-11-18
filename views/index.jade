@@ -251,7 +251,7 @@ html(lang='en')
         .col-xs-12
           h1(style='font-family:Josefin Sans;text-align:center;margin-bottom:40px;letter-spacing: 12px;color: #B1EDFF;text-shadow: 1px 1px 10px #6DB7dc') INTPLOVE
 
-      .row(style='padding-top:30px;padding-bottom:30px;text-align:center;')
+      .row#regrow(style='padding-top:30px;padding-bottom:30px;text-align:center;')
         .col-xs-12
           .btn-group
             button#showregbutton(class='btn btn-danger') Регистрация
@@ -348,7 +348,7 @@ html(lang='en')
       }
       var user = !{JSON.stringify(user)};
       if(user.length){
-        alert('welcome back !');
+        $('#regrow').css('display','none');
       }
       $('.btn-send').click(function(){
       $('#register').modal('show');
