@@ -189,7 +189,7 @@ var rand = function() {
                      smtpTransport.close(); // shut down the connection pool, no more messages 
                  });
 
-          req.session.mail=vmail;
+          req.session.mail=req.body.uemail;
           req.session._id=done._id;
           ms.trouble =0;
           ms.mtext='success';
