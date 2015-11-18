@@ -420,7 +420,7 @@ html(lang='en')
          google.maps.event.addListener(autocomplete, 'place_changed', function(){
            //# $('.your-input').val() to get the value from your input
            var place = autocomplete.getPlace();
-           console.log(JSON.stringify(place))
+           console.log(place.place_id);
            
          });
         }
