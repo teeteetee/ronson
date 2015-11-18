@@ -417,13 +417,13 @@ html(lang='en')
          };
          var input = document.getElementById('location');
          var autocomplete = new google.maps.places.Autocomplete(input, options);
-         google.maps.event.addListener(autocomplete, 'place_changed', ->
+         google.maps.event.addListener(autocomplete, 'place_changed', function(){
            # Here you can use:
            # $('.your-input').val() to get the value from your input
            var place = autocomplete.getPlace();
            console.log(JSONstringify(place))
            
-         )
+         });
         }
        
         //google.maps.event.addListener(input, 'places_changed', function() {
