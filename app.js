@@ -96,7 +96,6 @@ app.get('*', function(req,res,next) {   var d = new Date();
  
 
 app.get('/',function(req,res) {
-  res.render('index');
   var ms={};
   var usr = 0;
   if(req.session) {
