@@ -236,9 +236,9 @@ html(lang='en')
             .col-xs-12
               h4(style='text-align:center;margin-bottom:20px;margin-top:30px') Я ищу
               .btn-group.btn-group-sm
-                button.btn.btn-default Парня
-                button.btn.btn-default Девушку
-                button.btn.btn-default.active Всех
+                button.btn.btn-primary Парня
+                button.btn.btn-primary Девушку
+                button.btn.btn-primary.active Всех
               h5(style='color:gray;margin-top:20px;')
                 | от 
                 select
@@ -251,7 +251,7 @@ html(lang='en')
                   option 2 
                   option 3 
                 |             лет
-              input#location(type='text' style='width:500px;')
+              input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
             //
               select
                 option Москва 
