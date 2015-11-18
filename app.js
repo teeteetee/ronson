@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 var nodemailer = require("nodemailer");
 
 var mongo = require('mongodb');
-var db = require('monk')('localhost/tav'),temp_users = db.get('temp_user'),users = db.get('users');
+var db = require('monk')('localhost/tav'),users = db.get('users');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -99,34 +99,46 @@ app.get('/',function(req,res) {
   var ms={};
   var usr = 0;
   if(req.session) {
-    usr = req.session;
-  }
-  users.find({},{limit:20,sort: {regdate: 1}}, function (err,done) {
+  usr = req.session;
+  users.findOne({email:req.session.email}, function (err,done) {
     if(err) {
-     res.render('index',{'done':0,'user':usr});
+     res.render('index',{'user':0});
     }
     else if(!done.length){
-     res.render('index',{'done':0,'user':usr});
+      res.render('index',{'user':0});
     }
       else {
-     res.render('index',{'done':JSON.stringify(done),'user':usr});
+     res.render('index',{'user':usr});
     }
   });
+ }
+ else {
+  res.render('index',{'user':0});
+ }
+});
+
+app.post('/getusers',function (err,done){
+  users.find({},{limit:20,sort:{regdate:1}} function (err,done) { 
+        if(err) {
+         res.render('index',{'user':0});
+        }
+        else {}
+      }):
 });
 
 app.get('/verify/:token',function (req,res){
-  temp_users.findOne({token:req.params.token},function (err,done){
+  users.findOne({token:req.params.token},function (err,done){
     if(err){}
       else {
         if(done.length)
-        {
+        { 
+          done.confirmed=1;
           users.insert(done,function (err,done){
            if(err)
             {
               //TO DO ERROR
             }
           else {
-            temp_users.remove({token:req.params.token});
             res.redirect('/');
           }
           });
@@ -154,18 +166,22 @@ var rand = function() {
 //-------------------------------//
      var ms = {};
     if (is_email(req.body.uemail) === true) {
-    temp_users.find({email:req.body.uemail},{fields:{email:1}},function(err,doc){
+      console.log('checked email');
+    users.findOne({email:req.body.uemail},{fields:{email:1}},function(err,doc){
       if (err)
       {
         //DO SMTH
       }
       else {
-        if(doc.length === 0)
-        { 
+        console.log('no err');
+        if(doc.length === 0 )
+        {     
+              console.log('creating token');
               var vtoken = token_gen();
               var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
-              
-              temp_users.insert({name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,password:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0});
+
+              console.log('writing to users: \n confirmed:0,\nname: '+req.body.uname+',\nage:'+req.body.uage+',\ngender:'+req.body.ugen+',\ncity: '+req.body.ucity+',\nabout:'+req.body.uabout+',\nemail:'+req.body.uemail+',\npassword: '+vp+',\nregdate: '+Date.now()+',\ntoken:'+vtoken+',\nlang:"ru",\nuserpic:0');
+              users.insert({confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,password:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0});
               
                  var mailOptions = {
                      from: "Email Verification <no-reply@intplove.com>", // sender address 
@@ -175,6 +191,7 @@ var rand = function() {
                      //,html: "<b>Hello world ✔</b>" // html body 
                  }
                  // send mail with defined transport object 
+                 console.log('sending message');
                  smtpTransport.sendMail(mailOptions, function(error, response){
                   var ms = {};
                      if(error){
@@ -188,7 +205,8 @@ var rand = function() {
                      }
                      smtpTransport.close(); // shut down the connection pool, no more messages 
                  });
-
+           
+          console.log('reporting');
           req.session.mail=req.body.uemail;
           req.session._id=done._id;
           ms.trouble =0;
@@ -214,10 +232,9 @@ app.get('/seeuser',function (req,res){
   });
 });
 
-app.get('/seetempuser',function (req,res){
-  temp_users.find({},function (err,done){
-    res.send(done);
-  });
+app.get('/dropusers',function (req,res){
+  users.remove();
+  res.redirect('/');
 });
 
 app.post('/signin',function(req,res){
@@ -233,7 +250,12 @@ app.post('/signin',function(req,res){
       {res.send(ms);}
     else 
     {
-      if (confirmed)
+      if(!confirmed.length) 
+      {
+        ms.mtext='no user';
+              res.send(ms);
+      }
+      else if (confirmed.confirmed)
       {console.log('we have found :'+JSON.stringify(confirmed));
          
           if(bcrypt.compareSync(vphr,confirmed.phr))
@@ -253,23 +275,9 @@ app.post('/signin',function(req,res){
            }
          
       }
-      else {
-        users.findOne({mail:vlgn},function(err,confirmed){
-          if (err)
-            {res.send(ms);}
-          else 
-          {
-            if (confirmed)
-            {console.log('we have found :'+JSON.stringify(confirmed));
-              ms.mtext='wronguser'
-              res.send(ms);
-            }
-            else{
-              ms.mtext='wronguser'
-              res.send(ms);
-            }
-          }
-        });
+      else if (!confirmed.confirmed) {
+        ms.mtext= 'success';
+          res.send(ms);
       }
     }
   });
