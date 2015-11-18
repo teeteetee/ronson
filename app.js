@@ -320,7 +320,7 @@ app.post('/signin',function (req,res){
          
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
-          req.session.mail = confirmed.mail;
+          req.session.email = confirmed.email;
           req.session.confirmed = confirmed.confirmed;
           req.session.name = confirmed.name;
 
