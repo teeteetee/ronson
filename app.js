@@ -208,6 +208,12 @@ var rand = function() {
     }
 });
 
+app.get('/seeuser',function (req,res){
+  users.find({},function (err,done){
+    res.send(done);
+  });
+});
+
 app.post('/signin',function(req,res){
   vphr=req.body.phr;
   vlgn=req.body.lgn; // email
