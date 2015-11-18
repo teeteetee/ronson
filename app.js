@@ -293,7 +293,7 @@ app.post('/signin',function(req,res){
   ms.trouble=1;
   ms.mtext='db';
   temp
-  users.findOne({mail:vlgn},function(err,confirmed){
+  users.findOne({email:vlgn},function(err,confirmed){
     if (err)
       {res.send(ms);}
     else 
@@ -309,8 +309,9 @@ app.post('/signin',function(req,res){
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
           
-          req.session.mail = confirmed.mail;
-          req.session._id = confirmed._id;
+          //req.session.mail = confirmed.mail;
+          //req.session._id = confirmed._id;
+          req.session = confirmed;
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
           ms.mtext= 'success';
