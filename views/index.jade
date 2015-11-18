@@ -298,7 +298,7 @@ html(lang='en')
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
-    script(src='/js/jquery.min.js')
+    //script(src='/js/jquery.min.js')
     script(src='/js/bootstrap.min.js')
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8lRm1SQ5qlhTnvAAwX5Y8mO-P9qq8HfQ&signed_in=true&libraries=places&callback=initMap" async defer)
     script.
@@ -309,7 +309,7 @@ html(lang='en')
           $('#main').append(insert);
           });
       }
-      var user = #{user};
+      var user = !{JSON.stringify(user)};
       if(user){
         alert('welcome back !');
       }
@@ -411,9 +411,7 @@ html(lang='en')
           }
 
         //sonorous-shore-113306
-        function initMap() {
-        var input = /** @type {!HTMLInputElement} */(
-            document.getElementById('location'));
+        var input = (document.getElementById('location'));
         var autocomplete = new google.maps.places.Autocomplete(input);
         //autocomplete.bindTo('bounds', map);
         //var infowindow = new google.maps.InfoWindow();
@@ -453,5 +451,5 @@ html(lang='en')
             setupClickListener('changetype-address', ['address']);
             setupClickListener('changetype-establishment', ['establishment']);
             setupClickListener('changetype-geocode', ['geocode']);
-          }
+          
 
