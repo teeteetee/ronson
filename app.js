@@ -119,7 +119,7 @@ app.get('/',function(req,res) {
  }
 });
 
-app.post('/getusers',function (err,done){
+app.post('/getusers',function (req,res){
   users.find({},{limit:20,sort:{regdate:1}}, function (err,done) { 
         if(err) {
          res.send(0);
