@@ -292,7 +292,6 @@ app.post('/signin',function(req,res){
    var  ms = {};
   ms.trouble=1;
   ms.mtext='db';
-  temp
   users.findOne({email:vlgn},function(err,confirmed){
     if (err)
       {res.send(ms);}
