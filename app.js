@@ -208,7 +208,6 @@ var rand = function() {
            
           console.log('reporting');
           req.session.mail=req.body.uemail;
-          req.session._id=done._id;
           ms.trouble =0;
           ms.mtext='success';
           res.send(ms);
