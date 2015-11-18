@@ -32,7 +32,8 @@ app.use(sessions({
   secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
   duration:4320 * 60 *1000,
   activeduration:1440 * 60 * 1000,
-  httpOnly: true
+  httpOnly: true,
+  domain:'intplove.com'
 }));
 
 var smtpTransport = nodemailer.createTransport({
@@ -97,16 +98,20 @@ app.get('*', function(req,res,next) {   var d = new Date();
 app.get('/',function(req,res) {
   res.render('index');
   var ms={};
+  var usr = 0;
+  if(req.session) {
+    usr = req.session;
+  }
   users.find({},{limit:20,sort: {regdate: 1}}, function (err,done) {
     if(err) {
-     res.render('index',{'done':0});
+     res.render('index',{'done':0,'user':usr});
     }
     else if(!done.length){
-     res.render('index',{'done':0});
+     res.render('index',{'done':0,'user':usr});
     }
     }
       else {
-     res.render('index',{'done':JSON.stringify(done)});
+     res.render('index',{'done':JSON.stringify(done),'user':usr});
     }
       }
   });
@@ -139,39 +144,76 @@ app.get('/verify/:token',function (req,res){
 
 app.post('/new',function (req,res){
 
+function is_email(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+    } 
 var rand = function() {
-    return Math.random().toString(36).substr(2); // remove `0.`
-};
-var token_gen = function() {
-    return rand() + rand(); // to make it longer
-};
-var vtoken = token_gen();
-var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+                  return Math.random().toString(36).substr(2); // remove `0.`
+              };
+              var token_gen = function() {
+                  return rand() + rand(); // to make it longer
+              };
+//-------------------------------//
+     var ms = {};
+    if (is_email(req.body.uemail) === true) {
+    temp_users.find({email:req.body.uemail},{fields:{email:1}},function(err,doc){
+      if (err)
+      {
+        //DO SMTH
+      }
+      else {
+        if(doc.length === 0)
+        { 
+              var vtoken = token_gen();
+              var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+              
+              temp_users.insert({name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,password:vp,regdate:Date.now(),token:vtoken,lang:req.body.lang,userpic:0});
+              
+                 var mailOptions = {
+                     from: "Email Verification <no-reply@intplove.com>", // sender address 
+                     to: req.body.uemail, // list of receivers 
+                     subject: "Email verification", // Subject line 
+                     text: "Click on the link to verify your email"
+                     //,html: "<b>Hello world ✔</b>" // html body 
+                 }
+                 // send mail with defined transport object 
+                 smtpTransport.sendMail(mailOptions, function(error, response){
+                  var ms = {};
+                     if(error){
+                         console.log(error);
+                         ms.trouble=1;
+                         res.send(ms);
+                     }else{
+                         console.log("Message sent");
+                         ms.trouble=0;
+                         res.send(ms);
+                     }
+                     smtpTransport.close(); // shut down the connection pool, no more messages 
+                 });
 
-temp_users.insert({name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,password:vp,regdate:Date.now(),token:vtoken,lang:req.body.lang,userpic:0});
-
-   var mailOptions = {
-       from: "Email Verification <no-reply@intplove.com>", // sender address 
-       to: req.body.uemail, // list of receivers 
-       subject: "Email verification", // Subject line 
-       text: "Click on the link to verify your email"
-       //,html: "<b>Hello world ✔</b>" // html body 
-   }
-   // send mail with defined transport object 
-   smtpTransport.sendMail(mailOptions, function(error, response){
-    var ms = {};
-       if(error){
-           console.log(error);
-           ms.trouble=1;
+          req.session.mail=vmail;
+          req.session._id=done._id;
+          ms.trouble =0;
+          ms.mtext='success';
+          res.send(ms);
+          }
+        else {
+           ms.mtext='email exists'
            res.send(ms);
-       }else{
-           console.log("Message sent");
-           ms.trouble=0;
-           res.send(ms);
-       }
-       smtpTransport.close(); // shut down the connection pool, no more messages 
-   });
+        }
+      }// end of err's else
+    });
+    }   
+    else {
+      // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
+      res.send(ms);
+    }
+});
 
+app.get('/logout',function (req,res){
+  req.session.reset();
+  res.redirect('/');
 });
 
 
