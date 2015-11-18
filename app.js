@@ -320,7 +320,6 @@ app.post('/signin',function(req,res){
          
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
-          
           //req.session.mail = confirmed.mail;
           //req.session._id = confirmed._id;
           req.session = confirmed;
@@ -330,6 +329,7 @@ app.post('/signin',function(req,res){
           res.send(ms);
            }
            else {
+            console.log('wrong pass');
             ms.mtext='wrong pas';
               res.send(ms);
               //WRONG PASSWORD
