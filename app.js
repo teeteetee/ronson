@@ -196,21 +196,21 @@ var rand = function() {
                   var ms = {};
                      if(error){
                          console.log(error);
-                         ms.trouble=1;
+                         console.log('reporting');
+                         req.session.mail=req.body.uemail;
+                         ms.trouble =0;
+                         ms.mtext='success';
                          res.send(ms);
                      }else{
                          console.log("Message sent");
-                         ms.trouble=0;
+                         console.log('reporting');
+                         req.session.mail=req.body.uemail;
+                         ms.trouble =0;
+                         ms.mtext='success';
                          res.send(ms);
                      }
                      smtpTransport.close(); // shut down the connection pool, no more messages 
                  });
-           
-          console.log('reporting');
-          req.session.mail=req.body.uemail;
-          ms.trouble =0;
-          ms.mtext='success';
-          res.send(ms);
           }
         else {
            ms.mtext='email exists'

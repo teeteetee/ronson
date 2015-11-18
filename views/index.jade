@@ -434,7 +434,7 @@ html(lang='en')
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("uemail="+$('#email').val()+"&p="+$('#pas').val()+"&gn="+male+"&uage"+$('#age').val()+"&ucity="+$('#city').val()+"&uabout="+about+"&uname="+$('#uname').val());
+        request.send("uemail="+$('#email').val()+"&p="+$('#pas').val()+"&ugen="+male+"&uage="+$('#age').val()+"&ucity="+$('#city').val()+"&uabout="+about+"&uname="+$('#uname').val());
         }
         else {
           $('#regerrtext').text('Заполните все поля');
