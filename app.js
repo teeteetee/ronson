@@ -298,7 +298,7 @@ app.get('/session',function (req,res){
   res.send(req.session);
 });
 
-app.post('/signin',function(req,res){
+app.post('/signin',function (req,res){
   vphr=req.body.phr;
   vlgn=req.body.lgn; // email
   console.log(vphr+" , "+vlgn);
@@ -323,6 +323,14 @@ app.post('/signin',function(req,res){
           //req.session.mail = confirmed.mail;
           //req.session._id = confirmed._id;
           req.session = confirmed;
+          req.session = confirmed;
+          req.session = confirmed;
+          req.session = confirmed;
+          req.session = confirmed;
+          req.session = confirmed;
+          req.session = confirmed;
+          req.session = confirmed;
+          
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
           ms.mtext= 'success';
