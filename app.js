@@ -303,7 +303,7 @@ app.post('/signin',function(req,res){
         ms.mtext='no user';
               res.send(ms);
       }
-      else if (confirmed.confirmed)
+      else if (confirmed)
       {console.log('we have found :'+JSON.stringify(confirmed));
          
           if(bcrypt.compareSync(vphr,confirmed.phr))
@@ -323,7 +323,7 @@ app.post('/signin',function(req,res){
            }
          
       }
-      else if (!confirmed.confirmed) {
+      else {
         ms.mtext= 'success';
           res.send(ms);
       }
