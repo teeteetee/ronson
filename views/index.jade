@@ -409,24 +409,21 @@ html(lang='en')
         // Most libraries like jQuery/Prototype/Dojo do this
         request.send("mail="+vmail+"&p="+vp+"&gn="+male+"&nick="+vn+"&lang="+lang);
           }
-
         //sonorous-shore-113306
         function initialize() {
          var options = {
           types: ['(cities)'],
           componentRestrictions: {}
          };
-        
          var input = document.getElementById('location');
          var autocomplete = new google.maps.places.Autocomplete(input, options);
          google.maps.event.addListener(input, 'places_changed', function() {
           var place = searchBox.getPlaces()[0];
-        
           if (!place.geometry) return;
-        
           if (place.geometry.viewport) {
             alert(place);
-          } else {
+          } 
+          else {
             alert(place);
           }
         }
