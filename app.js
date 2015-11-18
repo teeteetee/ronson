@@ -320,9 +320,9 @@ app.post('/signin',function (req,res){
          
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
-          //req.session.mail = confirmed.mail;
-          //req.session._id = confirmed._id;
-          req.session = confirmed;
+          req.session.mail = confirmed.mail;
+          req.session.confirmed = confirmed.confirmed;
+          req.session.name = confirmed.name;
 
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
