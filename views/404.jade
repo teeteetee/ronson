@@ -57,48 +57,9 @@ head
   body
     .container-fluid
       .row
-        .col-xs-4.col-xs-offset-4(style='text-align:center;margin-top:10vh;') 
-          a(href='http://recentones.com')
-            img(id='logo',src='/bootstrap/images/rl.png',style='width:100%;')
-          h5 404
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')      
-    script.
-      var logocount=0;
-        $('#logo').mouseenter(function(){
-          if(logocount<3)
-           {switch(logocount) {
-                       case(0):
-                        $('#logo').attr('src','/bootstrap/images/gl.png');
-                        logocount++;
-                       break;
-                       case(1):
-                        $('#logo').attr('src','/bootstrap/images/bl.png');
-                        logocount++;
-                       break;
-                       case(2):
-                         $('#logo').attr('src','/bootstrap/images/rl.png');
-                        logocount++;
-                       break;
-                      }
-                    }
-            else {
-              switch(logocount%3)
-              {         case(0):
-                         $('#logo').attr('src','/bootstrap/images/gl.png');
-                         logocount++;
-                        break;
-                        case(1):
-                         $('#logo').attr('src','/bootstrap/images/bl.png');
-                         logocount++;
-                        break;
-                        case(2):
-                         $('#logo').attr('src','/bootstrap/images/rl.png');
-                         logocount++;
-                        break;}
-            }
-          });
+        .col-xs-12(style='text-align:center;')
+          h1 404
         
-
-            
+    
 
       

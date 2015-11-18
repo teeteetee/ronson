@@ -131,7 +131,7 @@ app.get('/verify/:token',function (req,res){
     if(err){}
       else {
         if(done != null)
-        { 
+        { console.log('confirming'); 
           done.confirmed=1;
           users.insert(done,function (err,done){
            if(err)
@@ -139,6 +139,7 @@ app.get('/verify/:token',function (req,res){
               //TO DO ERROR
             }
           else {
+            console.log('confirmed'); 
             res.redirect('/');
           }
           });
@@ -173,7 +174,7 @@ app.post('/reveri',function (req,res){
                      to: req.body.email, // list of receivers 
                      subject: "Email verification", // Subject line 
                      //text: "Click on the link to verify your email",
-                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify"+done.token+"'>http://intplove.com/verify"+done.token+"</a>" // html body 
+                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify/"+done.token+"'>http://intplove.com/verify"+done.token+"</a>" // html body 
                  }
                  // send mail with defined transport object 
                  console.log('sending message');
@@ -237,7 +238,7 @@ var rand = function() {
                      to: req.body.uemail, // list of receivers 
                      subject: "Email verification", // Subject line 
                      //text: "Click on the link to verify your email",
-                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify"+vtoken+"'>http://intplove.com/verify"+vtoken+"</a>" // html body 
+                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify/"+vtoken+"'>http://intplove.com/verify"+vtoken+"</a>" // html body 
                  }
                  // send mail with defined transport object 
                  console.log('sending message');
