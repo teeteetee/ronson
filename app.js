@@ -109,11 +109,9 @@ app.get('/',function(req,res) {
     else if(!done.length){
      res.render('index',{'done':0,'user':usr});
     }
-    }
       else {
      res.render('index',{'done':JSON.stringify(done),'user':usr});
     }
-      }
   });
 });
 
@@ -209,6 +207,61 @@ var rand = function() {
       // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
       res.send(ms);
     }
+});
+
+pp.post('/signin',function(req,res){
+  vphr=req.body.phr;
+  vlgn=req.body.lgn; // email
+  console.log(vphr+" , "+vlgn);
+   var  ms = {};
+  ms.trouble=1;
+  ms.mtext='db';
+  temp
+  users.findOne({mail:vlgn},function(err,confirmed){
+    if (err)
+      {res.send(ms);}
+    else 
+    {
+      if (confirmed)
+      {console.log('we have found :'+JSON.stringify(confirmed));
+         
+          if(bcrypt.compareSync(vphr,confirmed.phr))
+          {
+          
+          req.session.mail = confirmed.mail;
+          req.session._id = confirmed._id;
+          console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
+          ms.trouble = 0;
+          ms.mtext= 'success';
+          res.send(ms);
+           }
+           else {
+            ms.mtext='wrong pas';
+              res.send(ms);
+              //WRONG PASSWORD
+           }
+         
+      }
+      else {
+        users.findOne({mail:vlgn},function(err,confirmed){
+          if (err)
+            {res.send(ms);}
+          else 
+          {
+            if (confirmed)
+            {console.log('we have found :'+JSON.stringify(confirmed));
+              ms.mtext='wronguser'
+              res.send(ms);
+            }
+            else{
+              ms.mtext='wronguser'
+              res.send(ms);
+            }
+          }
+        });
+      }
+    }
+  });
 });
 
 app.get('/logout',function (req,res){
