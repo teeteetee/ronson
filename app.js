@@ -123,7 +123,7 @@ app.post('/getusers',function (err,done){
          res.render('index',{'user':0});
         }
         else {}
-      }):
+      });
 });
 
 app.get('/verify/:token',function (req,res){
