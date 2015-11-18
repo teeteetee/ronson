@@ -364,6 +364,20 @@ html(lang='en')
       //    });
       //}
       console.log('gonna request users');
+      $.ajax({
+             method: "POST",
+             url: "/getusers",
+             data: 0
+           })
+             .done(function( msg ) {
+              if(msg.userlist){
+              msg.userlist.forEach( function (element,index){
+                  if(element.confirmed && element.email != usr.email)
+                 {var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default>Написать</a></div><div class='col-xs-9'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div></div>";
+                  $('#main').append(insert);}
+                 });
+            }
+               });
       var user = !{JSON.stringify(user)};
       if(user){
         console.log(1);
