@@ -104,7 +104,7 @@ app.get('/',function(req,res) {
     if(err) {
      res.render('index',{'user':0});
     }
-    else if(!done.length){
+    else if(done != null){
       res.render('index',{'user':0});
     }
       else {
@@ -130,7 +130,7 @@ app.get('/verify/:token',function (req,res){
   users.findOne({token:req.params.token},function (err,done){
     if(err){}
       else {
-        if(done.length)
+        if(done != null)
         { 
           done.confirmed=1;
           users.insert(done,function (err,done){
@@ -174,7 +174,7 @@ var rand = function() {
       }
       else {
         console.log('no err');
-        if(doc.length === 0 )
+        if(doc === null )
         {     
               console.log('creating token');
               var vtoken = token_gen();
@@ -250,7 +250,7 @@ app.post('/signin',function(req,res){
       {res.send(ms);}
     else 
     {
-      if(!confirmed.length) 
+      if(confirmed === null) 
       {
         ms.mtext='no user';
               res.send(ms);
