@@ -132,11 +132,11 @@ app.get('/verify/:token',function (req,res){
       else {
         if(done != null)
         { console.log('confirming'); 
-          done.confirmed=1;
-          users.insert(done,function (err,done){
+          users.update({_id:done._id},{$set:{confirmed:1}},function (err,done){
            if(err)
             {
               //TO DO ERROR
+              console.log(err);
             }
           else {
             console.log('confirmed'); 
