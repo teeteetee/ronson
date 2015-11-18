@@ -208,6 +208,9 @@ html(lang='en')
                 .form-group
                   label(for='pagetitle')  Возраст
                   input#age.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
+                .form-group
+                  label(for='pagetitle')  О себе
+                  textarea#about.form-control(autocomplete='off', placeholder='Neuroscience')
                 .btn-group 
                   button(type='button' class='btn btn-default active' id='female') Female
                   button(type='button' class='btn btn-default' id='male') Male
@@ -392,6 +395,11 @@ html(lang='en')
         if($('#male').hasClass('active')) {
           male=1;
         }
+        var about = 0;
+        if($('#about').val())
+        {
+          about = $('#about').val();
+        }
         $('#wait').css('display','block');
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
@@ -425,7 +433,7 @@ html(lang='en')
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // Most libraries like jQuery/Prototype/Dojo do this
-        request.send("mail="+$('#email').val()+"&p="+$('#pas').val()+"&gn="+male+"&age"+$('#age').val()+"&city="+$('#city').val()+"&uname="+$('#uname').val());
+        request.send("uemail="+$('#email').val()+"&p="+$('#pas').val()+"&gn="+male+"&uage"+$('#age').val()+"&ucity="+$('#city').val()+"&uabout="+about+"&uname="+$('#uname').val());
         }
         else {
           $('#regerrtext').text('Заполните все поля');

@@ -165,7 +165,7 @@ var rand = function() {
               var vtoken = token_gen();
               var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
               
-              temp_users.insert({name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,password:vp,regdate:Date.now(),token:vtoken,lang:req.body.lang,userpic:0});
+              temp_users.insert({name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,password:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0});
               
                  var mailOptions = {
                      from: "Email Verification <no-reply@intplove.com>", // sender address 
