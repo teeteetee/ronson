@@ -118,7 +118,7 @@ app.get('/',function(req,res) {
 });
 
 app.post('/getusers',function (err,done){
-  users.find({},{limit:20,sort:{regdate:1}} function (err,done) { 
+  users.find({},{limit:20,sort:{regdate:1}}, function (err,done) { 
         if(err) {
          res.render('index',{'user':0});
         }
