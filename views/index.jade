@@ -304,13 +304,13 @@ html(lang='en')
     script.
       var userlist = !{JSON.stringify(done)};
       if(userlist) {
-        userlist.forEach(function(element,index){
+        userlist.forEach( function (element,index){
           var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default>Написать</a></div><div class='col-xs-9'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6></div></div>";
           $('#main').append(insert);
           });
       }
       var user = !{JSON.stringify(user)};
-      if(user){
+      if(user.length){
         alert('welcome back !');
       }
       $('.btn-send').click(function(){
@@ -414,7 +414,7 @@ html(lang='en')
         function initialize() {
          var options = {
           types: ['(cities)'],
-          componentRestrictions: {country: "us"}
+          componentRestrictions: {}
          };
         
          var input = document.getElementById('location');
