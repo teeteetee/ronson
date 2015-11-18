@@ -417,11 +417,11 @@ html(lang='en')
          };
          var input = document.getElementById('location');
          var autocomplete = new google.maps.places.Autocomplete(input, options);
-         google.maps.event.addListener(input, 'places_changed', function() {
+        }
+        google.maps.event.addListener(input, 'places_changed', function() {
           var place = autocomplete.getPlace()
           alert(JSONstringify(place));
         });
-        }
        
 
           
