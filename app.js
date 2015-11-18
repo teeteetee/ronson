@@ -214,6 +214,12 @@ app.get('/seeuser',function (req,res){
   });
 });
 
+app.get('/seetempuser',function (req,res){
+  temp_users.find({},function (err,done){
+    res.send(done);
+  });
+});
+
 app.post('/signin',function(req,res){
   vphr=req.body.phr;
   vlgn=req.body.lgn; // email
