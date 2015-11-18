@@ -98,14 +98,16 @@ app.get('*', function(req,res,next) {   var d = new Date();
 app.get('/',function(req,res) {
   var ms={};
   var usr = 0;
+  console.log('SESSION? - '+req.session);
   if(req.session) {
-  usr = req.session;
   users.findOne({email:req.session.email}, function (err,done) {
     if(err) {
      res.render('index',{'user':0});
     }
     else if(done != null){
-      res.render('index',{'user':usr});
+      delete done.phr;
+      req.session = done;
+      res.render('index',{'user':done});
     }
       else {
      res.render('index',{'user':0});
@@ -139,6 +141,8 @@ app.get('/verify/:token',function (req,res){
               console.log(err);
             }
           else {
+            req.session = done;
+            delete req.session.phr;
             console.log('confirmed'); 
             res.redirect('/');
           }
@@ -174,7 +178,7 @@ app.post('/reveri',function (req,res){
                      to: req.body.email, // list of receivers 
                      subject: "Email verification", // Subject line 
                      //text: "Click on the link to verify your email",
-                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify/"+done.token+"'>http://intplove.com/verify"+done.token+"</a>" // html body 
+                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify/"+done.token+"'>http://intplove.com/verify/"+done.token+"</a>" // html body 
                  }
                  // send mail with defined transport object 
                  console.log('sending message');
@@ -238,7 +242,7 @@ var rand = function() {
                      to: req.body.uemail, // list of receivers 
                      subject: "Email verification", // Subject line 
                      //text: "Click on the link to verify your email",
-                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify/"+vtoken+"'>http://intplove.com/verify"+vtoken+"</a>" // html body 
+                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify/"+vtoken+"'>http://intplove.com/verify/"+vtoken+"</a>" // html body 
                  }
                  // send mail with defined transport object 
                  console.log('sending message');
