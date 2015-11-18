@@ -366,9 +366,11 @@ html(lang='en')
       console.log('gonna request users');
       var user = !{JSON.stringify(user)};
       if(user.length){
+        console.log(1);
         $('#regrow').css('display','none');
         if(!user.confirmed) {
-          $('#resendveri').slideToggle();
+          console.log(2);
+          $('#resendveri').css('display','block');
         }
       }
       $('.btn-send').click(function(){
