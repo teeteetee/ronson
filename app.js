@@ -246,14 +246,14 @@ var rand = function() {
                      if(error){
                          console.log(error);
                          console.log('reporting');
-                         req.session.mail=req.body.uemail;
+                         req.session={confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0};
                          ms.trouble =0;
                          ms.mtext='success';
                          res.send(ms);
                      }else{
                          console.log("Message sent");
                          console.log('reporting');
-                         req.session.mail=req.body.uemail;
+                         req.session={confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0};
                          ms.trouble =0;
                          ms.mtext='success';
                          res.send(ms);
