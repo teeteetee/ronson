@@ -411,43 +411,14 @@ html(lang='en')
           }
 
         //sonorous-shore-113306
-        var input = (document.getElementById('location'));
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        //autocomplete.bindTo('bounds', map);
-        //var infowindow = new google.maps.InfoWindow();
+        function initialize() {
+         var options = {
+          types: ['(cities)'],
+          componentRestrictions: {country: "us"}
+         };
         
-        autocomplete.addListener('place_changed', function() {
-          infowindow.close();
-          marker.setVisible(false);
-          var place = autocomplete.getPlace();
-          if (!place.geometry) {
-            window.alert("Autocomplete's returned place contains no geometry");
-            return;
-          }
-          // If the place has a geometry, then present it on a map.
-          );
-          var address = '';
-          if (place.address_components) {
-            address = [
-              (place.address_components[0] && place.address_components[0].short_name || ''),
-              (place.address_components[1] && place.address_components[1].short_name || ''),
-              (place.address_components[2] && place.address_components[2].short_name || '')
-            ].join(' ');
-          }
-               infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-               infowindow.open(map, marker);
-            });
-           // Sets a listener on a radio button to change the filter type on Places
-           // Autocomplete.
-           function setupClickListener(id, types) {
-             var radioButton = document.getElementById(id);
-             radioButton.addEventListener('click', function() {
-               autocomplete.setTypes(types);
-             });
-             }
-            setupClickListener('changetype-all', []);
-            setupClickListener('changetype-address', ['address']);
-            setupClickListener('changetype-establishment', ['establishment']);
-            setupClickListener('changetype-geocode', ['geocode']);
+         var input = document.getElementById('location');
+         var autocomplete = new google.maps.places.Autocomplete(input, options);
+        }
           
 
