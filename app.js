@@ -98,7 +98,7 @@ app.get('*', function(req,res,next) {   var d = new Date();
 app.get('/',function(req,res) {
   var ms={};
   var usr = 0;
-  console.log('SESSION? - '+req.session);
+  console.log('SESSION? - '+JSON.stringify(req.session));
   if(req.session) {
   users.findOne({email:req.session.email}, function (err,done) {
     if(err) {
