@@ -230,7 +230,7 @@ var rand = function() {
               var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
 
               console.log('writing to users: \n confirmed:0,\nname: '+req.body.uname+',\nage:'+req.body.uage+',\ngender:'+req.body.ugen+',\ncity: '+req.body.ucity+',\nabout:'+req.body.uabout+',\nemail:'+req.body.uemail+',\npassword: '+vp+',\nregdate: '+Date.now()+',\ntoken:'+vtoken+',\nlang:"ru",\nuserpic:0');
-              users.insert({confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,password:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0});
+              users.insert({confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0});
               
                  var mailOptions = {
                      from: "Email Verification <no-reply@intplove.com>", // sender address 
