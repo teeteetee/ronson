@@ -105,10 +105,10 @@ app.get('/',function(req,res) {
      res.render('index',{'user':0});
     }
     else if(done != null){
-      res.render('index',{'user':0});
+      res.render('index',{'user':usr});
     }
       else {
-     res.render('index',{'user':usr});
+     res.render('index',{'user':0});
     }
   });
  }
@@ -284,6 +284,10 @@ app.get('/seeuser',function (req,res){
 app.get('/dropusers',function (req,res){
   users.remove();
   res.redirect('/');
+});
+
+app.get('/session',function (req,res){
+  res.send(req.session);
 });
 
 app.post('/signin',function(req,res){
