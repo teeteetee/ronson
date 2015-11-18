@@ -127,7 +127,7 @@ app.post('/getusers',function (err,done){
         else {
           var ms = {};
           ms.userlist = done;
-          req.send(ms);
+          res.send(ms);
         }
       });
 });
