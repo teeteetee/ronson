@@ -418,16 +418,11 @@ html(lang='en')
          var input = document.getElementById('location');
          var autocomplete = new google.maps.places.Autocomplete(input, options);
          google.maps.event.addListener(input, 'places_changed', function() {
-          var place = searchBox.getPlaces()[0];
-          if (!place.geometry) return;
-          if (place.geometry.viewport) {
-            alert(place);
-          } 
-          else {
-            alert(place);
-          }
+          var place = autocomplete.getPlace()
+          alert(JSONstringify(place));
         });
         }
        
+
           
 
