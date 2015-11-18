@@ -201,6 +201,23 @@ html(lang='en')
                 input#age.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
           .modal-footer
             button.btn.btn-primary(onclick='runreg()')  Регистрация
+    #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true')  ×
+            h4.modal-title(style='color:#ddd;')  Регистрация 
+          .modal-body
+            form
+              .form-group
+                label(for='email')  email
+                input#email.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
+              .form-group
+                label(for='pagetitle')  Пароль
+                input#pas.form-control(type='password', autocomplete='off', placeholder='Neuroscience')
+          .modal-footer
+            button.btn.btn-primary(onclick='login()')  Войти
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
         .row(id='spin') 
           .col-xs-12(style='text-align:center;')
@@ -225,8 +242,8 @@ html(lang='en')
       .row(style='padding-top:30px;padding-bottom:30px;text-align:center;')
         .col-xs-12
           .btn-group
-            button(class='btn btn-danger') Регистрация
-            button(class='btn btn-danger') Вход
+            button#regbutton(class='btn btn-danger') Регистрация
+            button#loginbutton(class='btn btn-danger') Вход
       .row(style='border-radius:6px;')
         #main.col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3(style='background-color:white;border-radius:6px;')
           #head.row
@@ -299,6 +316,12 @@ html(lang='en')
     script(src='/js/bootstrap.min.js')
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8lRm1SQ5qlhTnvAAwX5Y8mO-P9qq8HfQ&signed_in=true&libraries=places&callback=initialize" async defer)
     script.
+      $('#loginbutton').click(function(){
+      $('#login').modal('show');
+      });
+      $('#regbutton').click(function(){
+      $('#register').modal('show');
+      });
       var userlist = !{JSON.stringify(done)};
       if(userlist) {
         userlist.forEach( function (element,index){
