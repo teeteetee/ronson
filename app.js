@@ -209,7 +209,7 @@ var rand = function() {
     }
 });
 
-pp.post('/signin',function(req,res){
+app.post('/signin',function(req,res){
   vphr=req.body.phr;
   vlgn=req.body.lgn; // email
   console.log(vphr+" , "+vlgn);
