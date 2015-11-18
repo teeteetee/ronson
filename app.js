@@ -150,6 +150,55 @@ app.get('/verify/:token',function (req,res){
   });
 });
 
+app.post('/reveri',function (req,res){
+  if(req.body.email) {
+    users.findOne({email:req.body.email},function (err,done){
+      if(err){
+        //TO DO err
+      }
+      else if(done === null) {
+         ms.trouble =1;
+         ms.mtext='no user';
+         res.send(ms);
+      }
+      else if(done.confirmed)
+      {
+        ms.trouble =0;
+         ms.mtext='success';
+         res.send(ms);
+      }
+      else if(!done.confirmed) {
+        var mailOptions = {
+                     from: "Email Verification <no-reply@intplove.com>", // sender address 
+                     to: req.body.email, // list of receivers 
+                     subject: "Email verification", // Subject line 
+                     //text: "Click on the link to verify your email",
+                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify"+done.token+"'>http://intplove.com/verify"+done.token+"</a>" // html body 
+                 }
+                 // send mail with defined transport object 
+                 console.log('sending message');
+                 smtpTransport.sendMail(mailOptions, function(error, response){
+                  var ms = {};
+                     if(error){
+                         console.log(error);
+                         console.log('reporting');
+                         ms.trouble =0;
+                         ms.mtext='success';
+                         res.send(ms);
+                     }else{
+                         console.log("Message sent");
+                         console.log('reporting');
+                         ms.trouble =0;
+                         ms.mtext='success';
+                         res.send(ms);
+                     }
+                     smtpTransport.close(); // shut down the connection pool, no more messages 
+                 });
+      }
+    });
+                  
+  }
+});
 
 app.post('/new',function (req,res){
 
@@ -187,8 +236,8 @@ var rand = function() {
                      from: "Email Verification <no-reply@intplove.com>", // sender address 
                      to: req.body.uemail, // list of receivers 
                      subject: "Email verification", // Subject line 
-                     text: "Click on the link to verify your email"
-                     //,html: "<b>Hello world ✔</b>" // html body 
+                     //text: "Click on the link to verify your email",
+                     html: "<b>Follow the link to verify your email </b> <a href='http://intplove.com/verify"+vtoken+"'>http://intplove.com/verify"+vtoken+"</a>" // html body 
                  }
                  // send mail with defined transport object 
                  console.log('sending message');
