@@ -136,9 +136,9 @@ app.get('/verify/:token',function (req,res){
   users.findOne({token:req.params.token},function (err,done1){
     if(err){}
       else {
-        if(done != null)
+        if(done1 != null)
         { console.log('confirming'); 
-          users.update({_id:done._id},{$set:{confirmed:1}},function (err,done2){
+          users.update({_id:done1._id},{$set:{confirmed:1}},function (err,done2){
            if(err)
             {
               //TO DO ERROR
