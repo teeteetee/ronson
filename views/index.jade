@@ -298,17 +298,18 @@ html(lang='en')
                 .col-xs-12
                   a(href='/profile') Профиль
                   a(href='/logout') Выйти
-              h4(style='text-align:center;margin-bottom:20px;margin-top:30px') Я ищу
+              h4(style='color:gray;text-align:center;margin-bottom:20px;margin-top:30px') Я ищу
               .btn-group.btn-group-sm
                 button.btn.btn-primary Парня
                 button.btn.btn-primary Девушку
                 button.btn.btn-primary.active Всех
               h5(style='color:gray;margin-top:20px;')
                 | от 
-                input(type='text' style='max-width:30px;')           
+                input(type='text' class='form-control' style='max-width:30px;')           
                 | до
-                input(type='text' style='max-width:30px;')
+                input(type='text' class='form-control' style='max-width:30px;')
                 |             лет
+              h5(style='color:gray;') в городе
               input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
             //
               <nav>
