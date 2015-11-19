@@ -359,6 +359,7 @@ html(lang='en')
               </li>
               </ul>
               </nav>
+        //
           .row.user
             .col-xs-3
               .emptyavatar
@@ -433,6 +434,10 @@ html(lang='en')
                   }
                   $('#main').append(insert);}
                  });
+            }
+            else {
+              var insert = "<div class='row'><div class='col-xs-12'><h3 style='color:#ddd;'>Никого еще нет, вы первый (-:</h3></div></div>";
+              $('#main').append(insert);
             }
                });
       var user = !{JSON.stringify(user)};
