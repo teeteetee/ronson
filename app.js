@@ -133,19 +133,20 @@ app.post('/getusers',function (req,res){
 });
 
 app.get('/verify/:token',function (req,res){
-  users.findOne({token:req.params.token},function (err,done){
+  users.findOne({token:req.params.token},function (err,done1){
     if(err){}
       else {
         if(done != null)
         { console.log('confirming'); 
-          users.update({_id:done._id},{$set:{confirmed:1}},function (err,done){
+          users.update({_id:done._id},{$set:{confirmed:1}},function (err,done2){
            if(err)
             {
               //TO DO ERROR
               console.log(err);
             }
           else {
-            req.session = done;
+            done1.confirmed=1;
+            req.session = done1;
             delete req.session.phr;
             console.log('confirmed'); 
             res.redirect('/');
