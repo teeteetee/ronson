@@ -116,14 +116,6 @@ html(lang='en')
       background-color:teal;
       color:#333;
       }
-      #head {
-      border: 1px solid #232323;
-      padding-bottom:30px;
-      text-align:center;
-      border-top-left-radius:6px;
-      border-top-right-radius:6px;
-      background-color:#222;
-      }
       .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
       background-color:teal;
       border-color:teal;
@@ -404,8 +396,12 @@ html(lang='en')
              .done(function( msg ) {
               if(msg.userlist){
               msg.userlist.forEach( function (element,index){
-                  if(element.confirmed && element.email != usr.email)
-                 {var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default>Написать</a></div><div class='col-xs-9'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div></div>";
+                  if(element.confirmed )
+                 {
+                  var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default>Написать</a></div><div class='col-xs-9'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div></div>";
+                  if(usr && element.email === usr.email){
+                    insert='';
+                  }
                   $('#main').append(insert);}
                  });
             }
