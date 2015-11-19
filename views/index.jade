@@ -200,6 +200,19 @@ html(lang='en')
         display:none;
         text-align:right;
       }
+      #profile a.active {
+      border-radius: 3px;
+      border: 1px solid #337AB7;
+      margin: 5px;
+      padding: 5px;
+      }
+      #profile a {
+      border-radius: 3px;
+      }
+      #profile a:hover {
+      border-radius: 3px;
+      background-color: #213F58;
+      }
   body
     //
       <div class='language'>
@@ -311,7 +324,7 @@ html(lang='en')
                 |             лет
               h5(style='color:gray;') в городе
               input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
-              h5(style='color:gray;') (просто указывайте параметры, результаты обновятся автоматически)
+              h5(style='color:gray;font-weight:200;') (просто указывайте параметры, результаты обновятся автоматически)
             //
               <nav>
               <ul class="pagination" style='margin-bottom:0px;'>
