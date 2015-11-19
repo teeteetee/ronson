@@ -219,6 +219,10 @@ html(lang='en')
       .btn-primary, btn-primary.active {
         border:none;
       }
+      .form-control {
+        border: 1px solid #555758;
+        background-color: #424242 !important;
+      }
   body
     //
       <div class='language'>
@@ -329,9 +333,9 @@ html(lang='en')
                 button.btn.btn-primary.active Всех
               h5(style='color:gray;margin-top:20px;')
                 | от 
-                input(type='text' class='form-control' style='max-width:30px;display:inline;margin-left:10px;margin-right:10px;')           
+                input(type='text' max-length='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
                 | до
-                input(type='text' class='form-control' style='max-width:30px;display:inline;margin-left:10px;margin-right:10px;')
+                input(type='text' max-length='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
                 |             лет
               h5(style='color:gray;') в городе
               input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
