@@ -216,8 +216,13 @@ html(lang='en')
       #profile a:hover {
       border-bottom:3px solid #446179;
       }
-      .btn-primary, btn-primary.active {
-        border:none;
+      .btn-primary {
+        background-color:#35687B;
+        color:#5591A7;
+      }
+      .btn-primary.active {
+        background-color:#244956;
+        border-color: #35687B;
       }
       .form-control {
         border: 1px solid #555758;
@@ -303,7 +308,7 @@ html(lang='en')
         </div>
       .row
         .col-xs-12
-          h1(style='font-family:Josefin Sans;text-align:center;margin-bottom:80px;letter-spacing: 12px;color: white;font-size:80px;') INTPLOVE
+          h1(style='font-family:Josefin Sans;text-align:center;margin-bottom:80px;letter-spacing: 12px;color: #306079;font-size:80px;') INTPLOVE
       .row(id='resendveri')
         .col-xs-12
           h4 Прислать для подтверждения email еще раз
@@ -333,9 +338,9 @@ html(lang='en')
                 button.btn.btn-primary.active Всех
               h5(style='color:gray;margin-top:20px;')
                 | от 
-                input(type='text' max-length='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
+                input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
                 | до
-                input(type='text' max-length='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
+                input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
                 |             лет
               h5(style='color:gray;') в городе
               input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
