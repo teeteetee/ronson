@@ -428,7 +428,7 @@ html(lang='en')
               msg.userlist.forEach( function (element,index){
                   if(element.confirmed )
                  {
-                  var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default>Написать</a></div><div class='col-xs-9'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div></div>";
+                  var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default'>Написать</a></div><div class='col-xs-9'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div></div>";
                   if(user && user.email && element.email === user.email){
                     insert='';
                   }
