@@ -375,7 +375,7 @@ html(lang='en')
       .container
         .row
           .col-xs-12
-            h6(style='font-weight:200;margin-top:40px;') INTPLOVE 2015
+            h6(style='font-weight:200;margin-top:40px;color:#636363;') INTPLOVE 2015
             a(style='margin-bottom:30px;font-weight:200;', href='mailto:feedback@intplove.ru') Contact us
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
@@ -428,7 +428,7 @@ html(lang='en')
                   if(element.confirmed )
                  {
                   var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default>Написать</a></div><div class='col-xs-9'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div></div>";
-                  if(usr && element.email === usr.email){
+                  if(user && user.email && element.email === user.email){
                     insert='';
                   }
                   $('#main').append(insert);}
