@@ -253,12 +253,6 @@ html(lang='en')
       color:white;
       }
   body
-    //
-      <div class='language'>
-      <a id='eng' class='active'>ENG</a>
-      <span style='color:#ddd;'>|</span>
-      <a id='ru'>RU</a>
-      </div>
     #notice(style='background-color:#ff9900;width:100%;position:absolute;top:0px; text-align:center;')
         h6(style='font-family:arial;text-transform:uppercase;letter-spacing:1px;color:#333;') Знакомства INTP INTJ.
           br 
@@ -268,77 +262,11 @@ html(lang='en')
           a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
           a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
           a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
-    #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
-      .modal-dialog(role='document')
-        .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true')  ×
-            h4.modal-title(style='color:#ddd;')  Регистрация 
-          .modal-body
-          .row.regerr
-            .col-xs-12
-              h3#regerrtext
-          .row
-            .col-xs-12
-              form
-                .form-group
-                  label(for='email')  email
-                  input#email.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  Имя
-                  input#uname.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  Пароль
-                  input#pas.form-control(type='password', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  Город
-                  input#city.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  Возраст
-                  input#age.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  О себе
-                  textarea#about.form-control(autocomplete='off', placeholder='Neuroscience')
-                .btn-group 
-                  button(type='button' class='btn btn-default active' id='female') Female
-                  button(type='button' class='btn btn-default' id='male') Male
-          .modal-footer
-            button.btn.btn-primary#regbutton  Регистрация
-    #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
-      .modal-dialog(role='document')
-        .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true')  ×
-            h4.modal-title(style='color:#ddd;')  Регистрация 
-          .modal-body
-            form
-              .form-group
-                label(for='email')  email
-                input#mail.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
-              .form-group
-                label(for='pagetitle')  Пароль
-                input#p.form-control(type='password', autocomplete='off', placeholder='Neuroscience')
-          .modal-footer
-            button.btn.btn-primary#loginbutton(type='button')  Войти
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
         .row(id='spin') 
           .col-xs-12(style='text-align:center;')
             .loader
     #eng_cont.container(style='padding-top:150px;')
-      //
-        <div class='language'>
-        <a class='active eng'>ENG</a>
-        <span style='color:#ddd;'>|</span>
-        <a class='ru'>RU</a>
-        </div>
-      //
-        <div class='page-header header'>
-        <h1><span><img src='images/cfrp.png' width='40'></span></h1>
-        <h1>Consciousness:<br> essential components & infrastructure</h1>
-        <h4 > Research project</h4>
-        </div>
       .row
         .col-xs-12
           h1(style='font-family:Josefin Sans;text-align:center;margin-bottom:80px;letter-spacing: 12px;color: #222;font-size:80px;') INTPLOVE
@@ -354,62 +282,7 @@ html(lang='en')
       #mainholder.row
         #main.col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
           #head.row
-            .col-xs-12
-              #profile.row
-                .col-xs-12
-                  a.active Поиск
-                  | &#124;
-                  a(href='/profile') Профиль
-                  | &#124;
-                  a(href='/messages') Сообщения
-                  | &#124;
-                  a(href='/logout') Выйти
-              h5(style='color:gray;text-align:center;margin-bottom:20px;margin-top:30px') Я ищу
-              .btn-group.btn-group-sm
-                button.btn.btn-primary Парня
-                button.btn.btn-primary Девушку
-                button.btn.btn-primary.active Всех
-              h5(style='color:gray;margin-top:20px;')
-                | от 
-                input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
-                | до
-                input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
-                |             лет
-              h5(style='color:gray;') в городе
-              input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
-              h5(style='color:gray;font-weight:200;') (просто указывайте параметры, результаты обновятся автоматически)
-            //
-              <nav>
-              <ul class="pagination" style='margin-bottom:0px;'>
-              <li>
-              <a href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              </a>
-              </li>
-              <li class='active'><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-              <a href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              </a>
-              </li>
-              </ul>
-              </nav>
-        //
-          .row.user
-            .col-xs-3
-              .emptyavatar
-              a.btn.btn-sm.btn-send.btn-default Написать
-            .col-xs-9
-              h5 Dima, 24
-              h6
-                span.glyphicon.glyphicon-map-marker(style='margin-right:5px;')
-                | Москва
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
+            
     #ru_cont.container(style='display:none;')
     footer.footer
       .container
@@ -470,7 +343,7 @@ html(lang='en')
               msg.userlist.forEach( function (element,index){
                   if(element.confirmed )
                  {
-                  var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default visible-xs'>Написать</a></div><div class='col-xs-9 col-md-6 '><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div><div class='col-md-3 hidden-xs'><a class='btn btn-sm btn-send btn-default'>Написать</a></div></div>";
+                  var insert="<div class='row user'><div class='col-xs-3'><div class='emptyavatar'></div></div><div class='col-xs-6'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div><div class='col-xs-3'><a class='btn btn-sm btn-send btn-default'>Написать</a></div></div>";
                   if(user && user.email && element.email === user.email){
                     insert='';
                   }
