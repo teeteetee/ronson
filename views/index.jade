@@ -485,6 +485,18 @@ html(lang='en')
       //    $('#main').append(insert);
       //    });
       //}
+      var user = !{JSON.stringify(user)};
+      if(user){
+        console.log(1);
+        $('#regrow').css('display','none');
+        if(!user.confirmed) {
+          console.log(2);
+          $('#resendveri').css('display','block');
+        }
+        else {
+          $('#profile').css('display','block');
+        }
+      }
       var user_arr = [];
       console.log('gonna request users');
       $.ajax({
@@ -501,6 +513,9 @@ html(lang='en')
                   var num = user_arr.length-1;
                   //var insert="<div class='row user'><div class='col-xs-3 col-md-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default visible-xs'>Написать</a></div><div class='col-xs-9 col-md-6 '><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div><div class='col-md-3 hidden-xs'><a class='btn btn-sm btn-send btn-default'>Написать</a></div></div>";
                   var onlick='opensend('+num+')';
+                  if(!user) {
+                  var onlick='openreg()';
+                  }
                   var insert="<div class='row user'><div class='col-sm-3'><div class='emptyavatar'></div></div><div class='col-sm-6'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p style='text-align:left;'>"+element.about+"</p></div><div class='col-sm-3'><a class='btn btn-sm btn-send btn-default' onclick='"+onlick+"' style='max-width:80px;'>Написать</a></div></div>";
                   if(user && user.email && element.email === user.email){
                     insert='';
@@ -513,18 +528,6 @@ html(lang='en')
               $('#main').append(insert);
             }
                });
-      var user = !{JSON.stringify(user)};
-      if(user){
-        console.log(1);
-        $('#regrow').css('display','none');
-        if(!user.confirmed) {
-          console.log(2);
-          $('#resendveri').css('display','block');
-        }
-        else {
-          $('#profile').css('display','block');
-        }
-      }
       $('.btn-send').click(function(){
       $('#register').modal('show');
       });
@@ -559,6 +562,9 @@ html(lang='en')
         var onclick = "sendmsg("+index+")";
         $('#submitmsg').attr('onclick',onclick);
         $('#sendmsg').modal('show');
+      }
+      function openreg (index) {
+        $('#register').modal('show');
       }
       function runreg() {
          if ($('#uname').val() && $('#pas').val() && validateEmail($('#email').val()) && $('#email').val() && $('#city').val() && $('#age').val())
