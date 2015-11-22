@@ -258,6 +258,9 @@ html(lang='en')
       background-color: #424242 !important;
       color:white;
       }
+      .badge {
+        margin-left:5px;
+      }
   body
     .modal.fade(id="show_msg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
@@ -299,7 +302,7 @@ html(lang='en')
                   | &#124;
                   a(href='/profile') Профиль
                   | &#124;
-                  a.active Сообщения
+                  a#messages.active Сообщения
                   | &#124;
                   a(href='/logout') Выйти
               
@@ -496,6 +499,16 @@ html(lang='en')
       //Most libraries like jQuery/Prototype/Dojo do this
       sndrequest.send('rcvr='+rcvr+'&txtbody='+txtbody);
       }
+      $.ajax({
+              method: "POST",
+              url: "/ntfc_m",
+              data: 0
+            }).done(function( msg ) {
+                if(msg.newmsg){
+                  console.log(msg.newmsg);
+                 $('#messages').append('<span class="badge">'+msg.newmsg+'</span>');
+                }
+               });
       
           
 
