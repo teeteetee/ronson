@@ -270,9 +270,12 @@ html(lang='en')
       }
       .message:hover {
       background-color:#eee;
+      }
+      .badge {
+      margin-left:5px;
       color:#ff9900;
       background-color: rgba(213, 136, 20, 0.3);
-       border-radius: 4px;
+      border-radius: 4px;
       }
   body
     .modal.fade(id="show_msg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -526,6 +529,7 @@ html(lang='en')
               data: 0
             }).done(function( msg ) {
                 if(msg.newmsg){
+                  //TODO if message number is to large do 99 or smth
                   console.log(msg.newmsg);
                   msgnum = msg.newmsg;
                  $('#messages').append('<span id="msgnumindicator" class="badge">+'+msg.newmsg+'</span>');
