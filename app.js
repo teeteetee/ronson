@@ -121,8 +121,6 @@ app.get('/',function(req,res) {
 
 app.get('/dropusers',function (req,res){
   users.remove({});
-  items.remove({});
-  follow.remove({});
   user_messages.remove({});
   res.redirect('/');
 });
