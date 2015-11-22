@@ -329,8 +329,13 @@ html(lang='en')
                   a(href='/logout') Выйти  
           .row(style='text-align:center;padding-top:30px;padding-bottom:30px;border-bottom:1px solid #ddd;background-color:#232323;')
             .col-xs-12
-              form(id='userpic_form' action="/usrp" method="post" enctype="multipart/form-data" style="display:none;")
+              form(id='userpic_form' action="/usrp" method="post" enctype="multipart/form-data" style="position:absolute;height:1px;width:1px;")
                 input(type="file" multiple="multiple" id='userpic' name="userpic")
+              form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
+            .input-group(style='margin-top:30px;')
+              span.input-group-btn
+                span.btn.btn-iosdark.btn-file#userpic_b(style='margin-top:0px;') Browse&hellip; 
+                  input(type="file"  id='userpic' name='userpic')
               #emptyavatar(style='margin:auto !important;' class='img-circle')
                 h4(style='color:#ff9900;margin-top:40px;') Upload an image
                 span(class='glyphicon glyphicon-save' style='color:#ff9900;')
