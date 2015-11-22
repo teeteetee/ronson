@@ -485,6 +485,7 @@ html(lang='en')
       //    $('#main').append(insert);
       //    });
       //}
+      var user_arr = [];
       console.log('gonna request users');
       $.ajax({
              method: "POST",
@@ -496,8 +497,9 @@ html(lang='en')
               msg.userlist.forEach( function (element,index){
                   if(element.confirmed )
                  {
+                  user_arr.push(element);
+                  var num = user_arr.length-1;
                   //var insert="<div class='row user'><div class='col-xs-3 col-md-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default visible-xs'>Написать</a></div><div class='col-xs-9 col-md-6 '><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div><div class='col-md-3 hidden-xs'><a class='btn btn-sm btn-send btn-default'>Написать</a></div></div>";
-                  var num = '"'+element._id+'"';
                   var onlick='opensend('+num+')';
                   var insert="<div class='row user'><div class='col-sm-3'><div class='emptyavatar'></div></div><div class='col-sm-6'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p style='text-align:left;'>"+element.about+"</p></div><div class='col-sm-3'><a class='btn btn-sm btn-send btn-default' onclick='"+onlick+"' style='max-width:80px;'>Написать</a></div></div>";
                   if(user && user.email && element.email === user.email){
@@ -552,8 +554,8 @@ html(lang='en')
       $('#eng').addClass('active');
       }
       });
-      function opensend (rcvr) {
-        var onclick = "sendmsg('"+rcvr+"')";
+      function opensend (index) {
+        var onclick = "sendmsg("+index+")";
         $('#submitmsg').attr('onclick',onclick);
         $('#sendmsg').modal('show');
       }
@@ -704,7 +706,7 @@ html(lang='en')
           }
           });
         //$('#submitmsg').click(function(){sendmsg()});
-        function sendmsg(rcvr) {
+        function sendmsg(index) {
         console.log('msg sendin'); 
         //var rcvr = #{rcvrid}; 
         var sndr = '#{user}';
@@ -734,7 +736,7 @@ html(lang='en')
         sndrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         sndrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         //Most libraries like jQuery/Prototype/Dojo do this
-        sndrequest.send('rcvr='+rcvr+'&txtbody='+txtbody);
+        sndrequest.send('rcvr='+user_arr[index]._id+'&txtbody='+txtbody);
         }
 
           
