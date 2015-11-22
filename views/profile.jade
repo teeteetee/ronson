@@ -391,9 +391,9 @@ html(lang='en')
           $('#userpic').click();
           return false;
       });
-     $("#userpic").onchange = function() {
-     $("#userpic_form").submit();
-     };
+      $("#userpic").change(function() {
+      $("#userpic_form").submit();
+      });
       $.ajax({
               method: "POST",
               url: "/ntfc_m",
