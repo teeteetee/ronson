@@ -125,6 +125,12 @@ app.get('/dropusers',function (req,res){
   res.redirect('/');
 });
 
+app.get('/showum',function (req,res){
+  user_messages.find({},function(err,done){
+    res.send(done);
+  });
+});
+
 app.get('/profile',function (req,res){
   if(req.session.email){
     users.findOne({email:req.session.email},function (err,done){
