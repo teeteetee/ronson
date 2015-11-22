@@ -306,13 +306,15 @@ html(lang='en')
     script.
       var user = !{JSON.stringify(user)};
       if(user && user.userpic) {
-      //$('#avatar').attr('src','/userpics/'+user._id+'.png');
-      //$('#avatar').css('display','block');
+      $('#avatar').attr('src','/userpics/'+user._id+'.png');
+      $('#avatar').css('display','block');
       $('#name').text(user.name);
       $('#location').text("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
       }
       else {
        $('#emptyavatar').css('display','block');
+       $('#name').text(user.name);
+       $('#location').text("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
       }
       //  //sonorous-shore-113306
       //  function initialize() {
