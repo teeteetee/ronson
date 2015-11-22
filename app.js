@@ -5,11 +5,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sessions = require('client-sessions');
+var Cookies = require('cookies');
 var bcrypt = require('bcrypt');
-var nodemailer = require("nodemailer");
+var ObjectID = require('mongodb').ObjectID;
+var http = require('http');
+//var gm = require('gm').subClass({imageMagick: true}); - crashes , no binaries found
+var gm = require('gm');
 
-var mongo = require('mongodb');
-var db = require('monk')('localhost/tav'),users = db.get('users'),user_messages = db.get('user_messages');
+
+
+var mongo = require('mongodb').MongoClient;
+var db = require('monk')('localhost/tav')
+  , users = db.get('users'),user_messages = db.get('user_messages');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -572,7 +579,6 @@ app.post('/signin',function (req,res){
 
 app.post('/usrp',function (req,res) {
   console.log('upl!');
-    console.log(req);
   if(req.session.email){
       if (req.files) 
     { 
