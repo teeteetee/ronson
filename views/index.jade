@@ -493,7 +493,7 @@ html(lang='en')
              data: 0
            })
              .done(function( msg ) {
-              if(msg.userlist){
+              if(msg.userlist && msg.userlist.length){
               msg.userlist.forEach( function (element,index){
                   if(element.confirmed )
                  {
