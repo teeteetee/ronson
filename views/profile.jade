@@ -295,8 +295,8 @@ html(lang='en')
               h5#location(style='color:#4c4c4c;')
           .row(style='padding-top:20px;padding-bottom:20px;border-bottom:1px solid #ddd;')
             .col-xs-12
-              p
-          .row(style='text-align:center;')
+              p#about
+          .row(style='text-align:center;padding-top:30px;padding-bottom:30px;')
             .col-xs-12
               a(class='btn btn-primary') Редактировать
     #ru_cont.container(style='display:none;')
@@ -320,13 +320,13 @@ html(lang='en')
       $('#avatar').css('display','block');
       $('#name').text(user.name);
       $('#location').append("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
-      $('#main').append("<div class='row' style='padding-top:20px;padding-bottom:20px;border-bottom:1px solid #ddd;'><div class='col-xs-12'><p>"+user.about+"</p></div></div>");
+      $('#about').text(user.about);
       }
       if (user && !user.userpic) {
        $('#emptyavatar').css('display','block');
        $('#name').text(user.name);
        $('#location').append("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
-       $('#main').append("<div class='row' style='padding-top:20px;padding-bottom:20px;border-bottom:1px solid #ddd;'><div class='col-xs-12'><p>"+user.about+"</p></div></div>");
+       $('#about').text(user.about);
       }
       //  //sonorous-shore-113306
       //  function initialize() {
