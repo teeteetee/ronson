@@ -305,6 +305,7 @@ html(lang='en')
     //script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8lRm1SQ5qlhTnvAAwX5Y8mO-P9qq8HfQ&signed_in=true&libraries=places&callback=initialize" async defer)
     script.
       var user = !{JSON.stringify(user)};
+      user= JSON.parse(user);
       if(user && user.userpic) {
       $('#avatar').attr('src','/userpics/'+user._id+'.png');
       $('#avatar').css('display','block');
