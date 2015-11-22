@@ -379,7 +379,7 @@ html(lang='en')
                   | &#124;
                   a(href='/profile') Профиль
                   | &#124;
-                  a(href='/messages') Сообщения
+                  a#messages(href='/messages') Сообщения
                   | &#124;
                   a(href='/logout') Выйти
               h5(style='color:gray;text-align:center;margin-bottom:20px;margin-top:30px') Я ищу
@@ -745,6 +745,15 @@ html(lang='en')
         //Most libraries like jQuery/Prototype/Dojo do this
         sndrequest.send('rcvr='+user_arr[index]._id+'&txtbody='+txtbody);
         }
+        $.ajax({
+              method: "POST",
+              url: "/ntfc_m",
+              data: 0
+            }).done(function( msg ) {
+                if(msg.newmsg){
+                 $('#messages').append('<span class="badge">'+msg.newmsg+'</span>');
+                }
+               });
 
           
 

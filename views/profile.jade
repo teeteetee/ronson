@@ -284,12 +284,15 @@ html(lang='en')
                   a(href='/messages') Сообщения
                   | &#124;
                   a(href='/logout') Выйти  
-          .row(style='text-align:center;padding-top:30px;padding-bottom:30px;')
+          .row(style='text-align:center;padding-top:30px;padding-bottom:30px;border-bottom:1px solid #ddd;background-color:#232323;')
             .col-xs-12
               #emptyavatar(style='margin:auto !important;' class='img-circle')
               img(id='avatar' class='img-circle' style='margin:auto !important;height:200px;width:200px;box-shadow: 1px 5px 10px 1px #DADADA;display:none;') 
-              h3#name(style='color:gray;')
-              h5#location(style='color:#ddd;')
+              h3#name(style='color:#ddd;')
+              h5#location(style='color:gray;')
+          .row
+            .col-xs-12
+
     #ru_cont.container(style='display:none;')
     footer.footer
       .container

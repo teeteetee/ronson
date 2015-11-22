@@ -368,7 +368,12 @@ app.post('/ntfc_m',function (req,res){
                   if(done.msgstore.length)
                   {
                    if(!done.msgstore[done.msgstore.length-1].read)
-                   {ms.newmsg=1;
+                   {
+                    var count = 0;
+                    done.msgstore.forEach(function(element){
+                        count += element.read ? 1 : 0;
+                    });
+                    ms.newmsg=count;
                     res.send(ms);}
                  else
                  {res.send(ms);}
