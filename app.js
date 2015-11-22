@@ -720,7 +720,7 @@ function make_userpic(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_
                             if(err) throw err;
                             console.log('############# 6 #############');
                             console.log('MK_USERPIC DONE;');
-                            users.update({mail:_mail},{$set:{userpic:1}});
+                            users.update({email:_mail},{$set:{userpic:1}});
                             var ms={};
                             ms.trouble=0;
                             res.send(ms);
