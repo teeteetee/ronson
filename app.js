@@ -572,7 +572,7 @@ app.post('/signin',function (req,res){
 
 app.post('/usrp',function (req,res) {
   console.log('upl!');
-    console.log(JSON.stringify(req));
+    console.log(req);
   if(req.session.email){
       if (req.files) 
     { 
