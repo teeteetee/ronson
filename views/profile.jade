@@ -329,9 +329,8 @@ html(lang='en')
                   a(href='/logout') Выйти  
           .row(style='text-align:center;padding-top:30px;padding-bottom:30px;border-bottom:1px solid #ddd;background-color:#232323;')
             .col-xs-12
-              form(id='userpic_form' action="/usrp" method="post" enctype="multipart/form-data" style="position:absolute;height:1px;width:1px;")
-                input(type="file" multiple="multiple" id='userpic' name="userpic")
-              form(method='post',action='/usrp',role='form', enctype='multipart/form-data', id='picform')
+              form(id='userpic_form' action="/usrp" method="post" enctype="multipart/form-data" style="position:absolute;height:0px;width:0px;")
+                input(type="file" multiple="multiple" id='userpic' name="userpic" style='height:0px;width:0px;')
             .input-group(style='margin-top:30px;')
               span.input-group-btn
                 span.btn.btn-iosdark.btn-file#userpic_b(style='margin-top:0px;') Browse&hellip; 
