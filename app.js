@@ -127,7 +127,7 @@ app.get('/profile',function (req,res){
         res.redirect('/');
       }
       else if(done!=null){
-        res.render('profile')
+        res.render('profile',{'user':JSON.stringify(done)})
       }
       else{
         res.redirect('/');
