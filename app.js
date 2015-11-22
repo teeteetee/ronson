@@ -119,6 +119,14 @@ app.get('/',function(req,res) {
  }
 });
 
+app.get('/dropusers',function (req,res){
+  users.remove({});
+  items.remove({});
+  follow.remove({});
+  user_messages.remove({});
+  res.redirect('/');
+});
+
 app.get('/profile',function (req,res){
   if(req.session.email){
     users.findOne({email:req.session.email},function (err,done){
