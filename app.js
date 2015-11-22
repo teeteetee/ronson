@@ -372,7 +372,7 @@ app.post('/ntfc_m',function (req,res){
                    {
                     var count = 0;
                     done.msgstore.forEach(function(element){
-                        count += element.read ? 1 : 0;
+                        count += element.read ? 0 : 1;
                     });
                     ms.newmsg=count;
                     res.send(ms);}
