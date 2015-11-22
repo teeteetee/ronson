@@ -152,7 +152,7 @@ app.get('/profile',function (req,res){
 });
 
 app.get('/messages',function (req,res){
-  if(req.session.mail){
+  if(req.session.email){
     user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
             if(err){
               //err page ?
