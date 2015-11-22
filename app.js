@@ -511,6 +511,170 @@ app.post('/signin',function (req,res){
   });
 });
 
+//------------
+
+
+app.post('/usrp',function (req,res) {
+  console.log('upl!');
+  if(req.session.email){
+    if (req.files) 
+    { 
+      function upload(filepath,imageid){
+                   console.log('into upload');
+                   var oldPath = filepath;
+                   console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+                   var newPath = __dirname +"/public/userpics/"+ imageid;
+                   console.log('UPLOAD 2 step, newPath:' + newPath );
+                    fs.readFile(oldPath , function(err, data) {
+                      fs.writeFile(newPath, data, function(err) {
+                          fs.unlink(oldPath, function(){
+                              if(err) throw err;
+                              gm(newPath).size(function (err, size) {
+                                if(err){
+                                  console.log(err);
+                                }
+                                else if(size.width>1024||size.height>1024){
+                                  console.log('image is too large, going to resize ( '+size.width+'x'+size.height+' )');
+                                  if(size.width>size.height){
+                                    gm(newPath).resize(1024).write(newPath,function (err){
+                                      if(err) {console.log(err);}
+                                      else{
+                                        var dest = '/userpics/'+imageid;
+                                         res.render('crop',{'imgsrc':dest});
+                                      }
+                                    });
+                                  }
+                                  else {
+                                    gm(newPath).resize(null,1024).write(newPath,function (err){
+                                      if(err) {console.log(err);}
+                                      else{
+                                        var dest = '/userpics/'+imageid;
+                                         res.render('crop',{'imgsrc':dest});
+                                      }
+                                    });
+                                  }
+                                }
+                                else {
+                                  var dest = '/userpics/'+imageid;
+                                  res.render('crop',{'imgsrc':dest});
+                                }
+                              });  //resize
+                          });//unlink temp
+                    }); //write new
+                 }); //read from temp
+                 }
+      upload(req.files.userpic.path,req.files.userpic.name);
+   }
+   else {
+    console.log('problem with files');
+    res.redirect('/');
+   }}
+   else {
+    console.log('somebody messing with us?');
+    res.redirect('/');
+   }
+});
+
+
+
+app.post('/userp/crop',function (req,res){
+  console.log('INTO CROP');
+  console.log(req.body);
+  if(req.session && req.session.email && is_email(req.session.email) && req.session._id && is_uid(req.session._id) && req.body.x1 && is_multiple(parseInt(req.body.x1)) && req.body.x2 && is_multiple(parseInt(req.body.x2)) && req.body.y1 && is_multiple(parseInt(req.body.y1)) && req.body.y2 && is_multiple(parseInt(req.body.y2)) && req.body.img)
+    { var imgname = req.body.img.substring(10);
+      var fullimgname = __dirname +"/public/userpics/"+ imgname;
+      var output_path = __dirname +"/public/userpics/"+req.session._id+".png"; 
+      var output_path_small = __dirname +"/public/userpics/"+req.session._id+"_small.png";
+      console.log('############# 1 #############');
+       path.exists(output_path, function(exists) { 
+        console.log('############# 2 #############');
+          if (exists) {
+            console.log('############# 3 EXISTS #############');
+            rm_images(res,req.session.email,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),output_path,fullimgname,output_path_small,make_userpic);
+            }
+            else{
+              console.log('############# 3 #############');
+               make_userpic(res,req.session.email,parseInt(req.body.x1),parseInt(req.body.y1),parseInt(req.body.x2),parseInt(req.body.y2),fullimgname,output_path,output_path_small);
+            }
+       });//PATH EXISTS USERPIC
+    }
+  else {
+    //TODO REMOVE UPLOADED PIC
+    console.log('CROP FAIL, REDIRECT');
+    res.redirect('/');
+  }
+  });
+
+function rm_images(res,_mail,x1,y1,x2,y2,output_path,fullimgname,output_path_small,callback) {
+  console.log('############# 4 #############');
+  fs.unlink(output_path, function(err){
+    if(err) throw err;
+    console.log('############# 5 #############');
+        //fs.unlink(fullimgname, function(err){
+        //  if(err) throw err;
+        //  console.log('############# 6 #############');
+                fs.unlink(output_path_small, function(err){
+                  if(err) throw err;
+                  console.log('############# 6 #############');
+                  callback(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small);
+                });
+              });
+           //});
+}
+
+function make_userpic(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_small) {
+  gm(fullimgname).size(function (err, size) {
+    console.log('############# 4 #############');
+                 if (err)
+                   {//console.log(size.width > size.height ? 'wider' : 'taller than you');
+                    console.log(err);
+                   }
+                 else if(size.width<300 || size.height<300) {
+                  console.log('USERPIC ERR: TO SMALL');
+                  var ms={};
+                  ms.trouble = 1;
+                  res.send(ms);
+                 }
+                 else {
+                  console.log('############# 5 #############');
+                  //gm(fullimgname).autoOrient().crop(x2, y2, x1, y1).resizeExact(300, 300).density(300, 300).write(output_path, function (err) {
+                   gm(fullimgname).autoOrient().crop(x2, y2, x1, y1).resizeExact(300, 300).density(300, 300).write(output_path, function (err) {
+                     if (err)
+                      { console.log(err);
+                        var ms={};
+                        ms.trouble = 1;
+                        res.send(ms);
+                      }
+                    else {
+                      console.log('############# 6 #############');
+                       gm(output_path).resizeExact(100, 100).write(output_path_small, function (err) {
+                         if (err)
+                          { console.log(err);
+                            var ms={};
+                            ms.trouble = 1;
+                             res.send(ms);
+                          }
+                        else {
+                          fs.unlink(fullimgname, function(err){
+                            if(err) throw err;
+                            console.log('############# 6 #############');
+                            console.log('MK_USERPIC DONE;');
+                            users.update({mail:_mail},{$set:{userpic:1}});
+                            var ms={};
+                            ms.trouble=0;
+                            res.send(ms);
+                          });
+                        }
+                       });//CREATE _small 
+                    }
+                   });//CROP&RESIZE UPLOADED IMAGE
+                 }
+               });
+}
+
+
+//------------
+
 app.get('/logout',function (req,res){
   req.session.reset();
   res.redirect('/');
