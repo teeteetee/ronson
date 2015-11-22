@@ -142,6 +142,9 @@ app.get('/profile',function (req,res){
       }
     });
   }
+  else {
+    res.redirect('/');
+  }
 });
 
 app.get('/messages',function (req,res){
