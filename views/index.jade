@@ -555,6 +555,7 @@ html(lang='en')
       }
       });
       function opensend (index) {
+        console.log(user_arr[index]._id);
         var onclick = "sendmsg("+index+")";
         $('#submitmsg').attr('onclick',onclick);
         $('#sendmsg').modal('show');
