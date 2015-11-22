@@ -292,10 +292,7 @@ html(lang='en')
               #emptyavatar(style='margin:auto !important;' class='img-circle')
               img(id='avatar' class='img-circle' style='margin:auto !important;height:200px;width:200px;box-shadow: 1px 5px 10px 1px #DADADA;display:none;') 
               h3#name(style='color:#ddd;')
-              h5#location(style='color:gray;')
-          .row
-            .col-xs-12
-
+              h5#location(style='color:#4c4c4c;')
     #ru_cont.container(style='display:none;')
     footer.footer
       .container
@@ -317,11 +314,13 @@ html(lang='en')
       $('#avatar').css('display','block');
       $('#name').text(user.name);
       $('#location').append("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
+      $('#main').append("<div class='row' style='padding-top:20px;padding-bottom:20px;'><div class='col-xs-12'><p>"+user.about+"</p></div></div>");
       }
       if (user && !user.userpic) {
        $('#emptyavatar').css('display','block');
        $('#name').text(user.name);
        $('#location').append("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
+       $('#main').append("<div class='row' style='padding-top:20px;padding-bottom:20px;'><div class='col-xs-12'><p>"+user.about+"</p></div></div>");
       }
       //  //sonorous-shore-113306
       //  function initialize() {
