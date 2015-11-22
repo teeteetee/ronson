@@ -274,6 +274,18 @@ html(lang='en')
           a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
           a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
           a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
+    .modal.fade(id="sendmsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+      .modal-dialog(role="document")
+        .modal-content
+          #sendmsg.modal-header
+            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true") ×
+            h4(class='modal-title' style='color:#ddd;') Sending a message
+          .modal-body
+            label Message:
+            textarea(id='gettext' rows="3" maxlength="2700" class='form-control' style='margin-bottom:15px;')
+          .modal-footer(style='text-align:center;')
+            a.btn.btn-submit(id='submitmsg') Send
     #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog(role='document')
         .modal-content
@@ -485,7 +497,8 @@ html(lang='en')
                   if(element.confirmed )
                  {
                   //var insert="<div class='row user'><div class='col-xs-3 col-md-3'><div class='emptyavatar'></div><a class='btn btn-sm btn-send btn-default visible-xs'>Написать</a></div><div class='col-xs-9 col-md-6 '><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p>"+element.about+"</p></div><div class='col-md-3 hidden-xs'><a class='btn btn-sm btn-send btn-default'>Написать</a></div></div>";
-                  var insert="<div class='row user'><div class='col-sm-3'><div class='emptyavatar'></div></div><div class='col-sm-6'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p style='text-align:left;'>"+element.about+"</p></div><div class='col-sm-3'><a class='btn btn-sm btn-send btn-default' style='max-width:80px;'>Написать</a></div></div>";
+                  var onlick="opensend('"element._id"')";
+                  var insert="<div class='row user'><div class='col-sm-3'><div class='emptyavatar'></div></div><div class='col-sm-6'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p style='text-align:left;'>"+element.about+"</p></div><div class='col-sm-3'><a class='btn btn-sm btn-send btn-default' onclick='"+onlick+"' style='max-width:80px;'>Написать</a></div></div>";
                   if(user && user.email && element.email === user.email){
                     insert='';
                   }
@@ -538,6 +551,11 @@ html(lang='en')
       $('#eng').addClass('active');
       }
       });
+      function opensend (rcvr) {
+        var onclick = "sendmsg('"+rcvr+"')";
+        $('#submitmsg').attr('onclick',onclick);
+        $('#sendmsg').modal('show');
+      }
       function runreg() {
          if ($('#uname').val() && $('#pas').val() && validateEmail($('#email').val()) && $('#email').val() && $('#city').val() && $('#age').val())
         {
@@ -684,6 +702,39 @@ html(lang='en')
                });
           }
           });
+        //$('#submitmsg').click(function(){sendmsg()});
+        function sendmsg(rcvr) {
+        console.log('msg sendin'); 
+        //var rcvr = #{rcvrid}; 
+        var sndr = '#{user}';
+        var txtbody = $('#gettext').val();
+        if(!txtbody) {
+          return 0
+        }
+        console.log(txtbody);
+        sndrequest = new XMLHttpRequest();
+        sndrequest.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if(sndrequest.readyState==4 && sndrequest.status==200){
+        $('#gettext').val('');
+        $('#sendmsg').modal('hide');
+        //if (this.readyState === DONE){
+        var parsed = JSON.parse(sndrequest.responseText);
+        if(parsed.trouble === 1)
+        {
+        // TO DO do somewthing here
+        alert('trouble');
+        }
+        else {
+        }
+        }
+        };
+        sndrequest.open('POST', '/msg', true);
+        sndrequest.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        sndrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //Most libraries like jQuery/Prototype/Dojo do this
+        sndrequest.send('rcvr='+rcvr+'&txtbody='+txtbody);
+        }
 
           
 

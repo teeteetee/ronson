@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 var nodemailer = require("nodemailer");
 
 var mongo = require('mongodb');
-var db = require('monk')('localhost/tav'),users = db.get('users');
+var db = require('monk')('localhost/tav'),users = db.get('users'),user_messages = db.get('user_messages');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -117,6 +117,56 @@ app.get('/',function(req,res) {
  else {
   res.render('index',{'user':0});
  }
+});
+
+app.get('/profile',function (req,res){
+  if(req.session.email){
+    users.findOne({email:req.session.email},function (err,done){
+      if(err){
+        console.log(err);
+        res.redirect('/');
+      }
+      else if(done!=null){
+        res.render('profile')
+      }
+      else{
+        res.redirect('/');
+      }
+    });
+  }
+});
+
+app.get('/messages',function (req,res){
+  if(req.session.mail){
+    user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
+            if(err){
+              //err page ?
+              res.redirect('/');
+              console.log('QUERY ERR');
+            }
+            else {
+              if(done){
+                  if(done.msgstore)
+                  {
+                  var more = done.msgstore.length > 10 ? 1:0;
+                  done.msgstore = done.msgstore.length > 10 ? done.msgstore.slice(done.msgstore.length-11,done.msgstore.length-1) : done.msgstore;
+                  console.log(done);
+                  res.render('messages',{'user':req.session._id,'lst_tmstmp':req.session.lst_msg,'messages':done.msgstore,'more':more,'lang':req.session.lang});
+                  }
+                  else {
+                   res.render('messages',{'user':req.session._id,'lst_tmstmp':0,'messages':0,'lang':req.session.lang});
+                  }
+              }
+              else {
+                res.redirect('/');
+                console.log('DOCUMENT ERR');
+              }
+            }
+          });
+  }
+  else {
+    res.render('404');
+  }
 });
 
 app.post('/getusers',function (req,res){
@@ -241,6 +291,7 @@ var rand = function() {
 
               console.log('writing to users: \n confirmed:0,\nname: '+req.body.uname+',\nage:'+req.body.uage+',\ngender:'+req.body.ugen+',\ncity: '+req.body.ucity+',\nabout:'+req.body.uabout+',\nemail:'+req.body.uemail+',\npassword: '+vp+',\nregdate: '+Date.now()+',\ntoken:'+vtoken+',\nlang:"ru",\nuserpic:0');
               users.insert({confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0});
+              user_messages.insert({user:done._id.toString(),msgstore:[],lst_tmstmp:Date.now(),msgcount:0});
               
                  var mailOptions = {
                      from: "Email Verification <no-reply@intplove.com>", // sender address 
@@ -282,6 +333,95 @@ var rand = function() {
       // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
       res.send(ms);
     }
+});
+
+app.post('/ntfc_m',function (req,res){
+  var ms ={};
+  ms.newmsg = 0;
+  user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
+            if(err){
+              console.log('QUERY ERR');
+              res.send(ms);
+            }
+            else {
+              if(done){
+                  if(done.msgstore.length)
+                  {
+                   if(!done.msgstore[done.msgstore.length-1].read)
+                   {ms.newmsg=1;
+                    res.send(ms);}
+                 else
+                 {res.send(ms);}
+                  }
+                  else {
+                   res.send(ms); 
+                  }
+              }
+              else {
+                res.send(ms);
+              }
+            }
+          });
+});
+
+app.post('/moremsg',function (req,res){
+  var iter = req.body.iter;
+  var ms ={};
+  ms.trouble=1;
+  user_messages.findOne({user:req.session._id},{fields:{msgstore:1}},function(err,done){
+            if(err){
+              console.log('QUERY ERR');
+              res.send(ms);
+            }
+            else {
+              if(done){
+                  if(done.msgstore)
+                  {
+                  var end = 11+10*iter>=done.msgstore.length?0:done.msgstore.length-(11+10*iter);
+                  console.log('end: '+end);
+                  var more =11+10*iter>=done.msgstore.length?0:1;
+                  console.log('more: '+more);
+                  done.msgstore = done.msgstore.slice(end,done.msgstore.length-(1+10*iter));
+                  ms.trouble = 0;
+                  ms.more = more;
+                  ms.msgstore = done.msgstore;
+                  res.send(ms);
+                  }
+                  else {
+                   res.send(ms);
+                  }
+              }
+              else {
+                console.log('DOCUMENT ERR');
+                res.send(ms);
+              }
+            }
+          });
+});
+
+app.post('/msg',function (req,res){
+ if(req.session._id) {
+  console.log(req.body.txtbody);
+  var msg ={};
+  msg.sndr = req.session._id;
+  //msg.textbody = req.body.txtbody.replace("\n","<br />");
+  msg.textbody = req.body.txtbody.length>2700?req.body.txtbody.replace(/\n/g, '<br />').slice(0,2700):req.body.txtbody.replace(/\n/g, '<br />');
+  console.log(msg.textbody);
+  msg.tmstmp = Date.now();
+  msg.read = 0;
+  msg.userpic = req.session.userpic;
+  msg.name = req.session.name;
+   user_messages.update({user:req.body.rcvr},{$push:{msgstore:msg},$inc:{msgcount:1},$set:{lst_tmstmp:msg.tmstmp}});
+  res.send('ok');
+ }
+ else {
+  res.send(0);
+ }
+});
+
+app.post('/stlstmsg',function (req,res){
+  user_messages.update({"user":req.session._id,"msgstore.tmstmp" : parseInt(req.body.tmstmp)}, {$set : {"msgstore.$.read" : 1}});
+  res.send('ok');
 });
 
 app.get('/seeuser',function (req,res){
