@@ -403,7 +403,7 @@ html(lang='en')
             }).done(function( msg ) {
                 if(msg.newmsg){
                   console.log(msg.newmsg);
-                 $('#messages').append('<span class="badge">'+msg.newmsg+'</span>');
+                 $('#messages').append('<span class="badge">+'+msg.newmsg+'</span>');
                 }
                });
         
