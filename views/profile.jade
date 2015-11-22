@@ -392,8 +392,7 @@ html(lang='en')
       //    //return false;
       //});
       $("#userpic").change(function() {
-        if($("#userpic").files.length != 0)
-      {$("#userpic_form").submit();}
+      $("#userpic_form").submit();
       });
       $.ajax({
               method: "POST",
