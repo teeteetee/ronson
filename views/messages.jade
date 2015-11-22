@@ -380,9 +380,9 @@ html(lang='en')
         }
         else if($('#respond').css('display')==='none') {
           var txt = 'Send';
-          if(lang === 'ru'){
-            txt='Отправить';
-          }
+          //if(user.lang === 'ru'){
+          //  txt='Отправить';
+          //}
          $('#openrespond').text(txt);
          $('#gettext').val('');
          $('#respond').slideToggle();
