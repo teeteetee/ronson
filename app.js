@@ -572,9 +572,9 @@ app.post('/signin',function (req,res){
 
 app.post('/usrp',function (req,res) {
   console.log('upl!');
-  if(req.session.email){
     console.log(JSON.stringify(req));
-    if (req.files) 
+  if(req.session.email){
+      if (req.files) 
     { 
       function upload(filepath,imageid){
                    console.log('into upload');
