@@ -391,9 +391,10 @@ html(lang='en')
       //    $('#userpic').click();
       //    //return false;
       //});
-      //$("#userpic").change(function() {
-      //$("#userpic_form").submit();
-      //});
+      $("#userpic").change(function() {
+        if($("#userpic").files.length != 0)
+      {$("#userpic_form").submit();}
+      });
       $.ajax({
               method: "POST",
               url: "/ntfc_m",
