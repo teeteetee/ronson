@@ -232,7 +232,6 @@ html(lang='en')
       #profile {
         border-bottom: 1px solid #323232;
         padding:20px;
-        display:none;
       }
       #profile a.active {
       border-bottom:3px solid #446179;
@@ -267,9 +266,9 @@ html(lang='en')
             .col-xs-12
               #profile.row
                 .col-xs-12
-                  a.active Поиск
+                  a(href='/') Поиск
                   | &#124;
-                  a(href='/profile') Профиль
+                  a.active Профиль
                   | &#124;
                   a(href='/messages') Сообщения
                   | &#124;
