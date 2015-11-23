@@ -390,10 +390,10 @@ html(lang='en')
                   a(href='/logout') Выйти
               h5(style='color:gray;text-align:center;margin-bottom:20px;margin-top:30px') Я ищу
               form#user_search
-                .btn-group.btn-group-sm
-                  button.btn.btn-primary Парня
-                  button.btn.btn-primary Девушку
-                  button.btn.btn-primary.active Всех
+                .btn-group.btn-group-sm#gender_search
+                  button.btn.btn-primary#male_search(type='button') Парня
+                  button.btn.btn-primary#female_search(type='button') Девушку
+                  button.btn.btn-primary.active#all_search(type='button') Всех
                 h5(style='color:gray;margin-top:20px;')
                   | от 
                   input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
@@ -460,6 +460,24 @@ html(lang='en')
       $(document).on('click', '.social_share', function(){
           Share.go(this);
       });
+      $('#male_search').click(function(){
+        if(!$('#male_search').hasClass('active')){
+         $('#gender_search btn').removeClass('active');
+         $('#male_search').addClass('active');
+        }
+        });
+      $('#female_search').click(function(){
+        if(!$('#female_search').hasClass('active')){
+         $('#gender_search btn').removeClass('active');
+         $('#female_search').addClass('active');
+        }
+        });
+      $('#all_search').click(function(){
+        if(!$('#all_search').hasClass('active')){
+         $('#gender_search btn').removeClass('active');
+         $('#all_search').addClass('active');
+        }
+        });
       $('#male').click(function(){
         if($('#male').hasClass('active')){
         }
@@ -768,8 +786,8 @@ html(lang='en')
                });
         //search
         $("#user_search").change(function() {
-      alert('something is on!');
-      });
+        alert('something is on!');
+        });
 
           
 
