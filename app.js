@@ -636,6 +636,13 @@ app.post('/usrp',function (req,res) {
    }
 });
 
+app.post('/search',function(req,res){
+  var ms={};
+  ms=req.body;
+  consle.log(ms);
+  res.send(ms);
+});
+
 
 
 app.post('/userp/crop',function (req,res){

@@ -400,9 +400,9 @@ html(lang='en')
                   button.btn.btn-primary.active#all_search(type='button') Всех
                 h5(style='color:gray;margin-top:20px;')
                   | от 
-                  input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
+                  input(type='text' maxlength='2' class='form-control' id='agefrom' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
                   | до
-                  input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
+                  input(type='text' maxlength='2' class='form-control' id='ageto' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
                   |             лет
                 h5(style='color:gray;') в городе
                 input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
@@ -453,6 +453,7 @@ html(lang='en')
     script(src='js/bootstrap.min.js')
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8lRm1SQ5qlhTnvAAwX5Y8mO-P9qq8HfQ&signed_in=true&libraries=places&callback=initialize" async defer)
     script.
+      var location=0;
       $(document).keypress(function(e) { 
           if(e.which ==13 && validateEmail($('#mail').val()) && $('#p').val() && $('#login').css('display') === 'block') {
               authsubmit();
@@ -468,18 +469,21 @@ html(lang='en')
         if(!$('#male_search').hasClass('active')){
          $('#gender_search .btn').removeClass('active');
          $('#male_search').addClass('active');
+         run_search();
         }
         });
       $('#female_search').click(function(){
         if(!$('#female_search').hasClass('active')){
          $('#gender_search .btn').removeClass('active');
          $('#female_search').addClass('active');
+         run_search();
         }
         });
       $('#all_search').click(function(){
         if(!$('#all_search').hasClass('active')){
          $('#gender_search .btn').removeClass('active');
          $('#all_search').addClass('active');
+         run_search();
         }
         });
       $('#male').click(function(){
@@ -534,7 +538,11 @@ html(lang='en')
              data: 0
            })
              .done(function( msg ) {
-              if(msg.userlist && msg.userlist.length){
+              populate(msg);
+               });
+      function populate (msg) {
+        if(msg.userlist && msg.userlist.length){
+              $('.user').remove();
               msg.userlist.forEach( function (element,index){
                   if(element.confirmed )
                  {
@@ -560,7 +568,7 @@ html(lang='en')
               var insert = "<div class='row' style='padding-top:50px;padding-bottom:50px;text-align:center;'><div class='col-xs-12'><h3 style='color:#ddd;'>Никого еще нет</h3><h5 style='color:#ddd;'>Вы первый (-:</h5></div></div>";
               $('#main').append(insert);
             }
-               });
+      }
       $('.btn-send').click(function(){
       $('#register').modal('show');
       });
@@ -666,7 +674,7 @@ html(lang='en')
            //# $('.your-input').val() to get the value from your input
            var place = autocomplete.getPlace();
            console.log(place.place_id);
-           
+           location = place.place_id ? place.place_id : 0;
          });
         }
          function validateEmail(email) { 
@@ -792,6 +800,28 @@ html(lang='en')
         $("#user_search").change(function() {
         console.log('something is on');
         });
+        function run_search() {
+          var gender;
+          if($('#male_search').hasClass('active')){
+            gender = 1;
+          }
+          else if($('#female_search').hasClass('active')){
+            gender = 2;
+          }
+          else {
+            gender =0;
+          }
+          var agefrom = $('#agefrom').val() ? $('#agefrom').val() :0;
+          var ageto = $('#ageto').val() ? $('#ageto').val() :0;
+          $.ajax({
+              method: "POST",
+              url: "/search",
+              data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&location="+location
+            }).done(function( msg ) {
+                //populate(msg)
+                console.log(msg);
+               });
+        }
 
           
 
