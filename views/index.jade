@@ -389,19 +389,20 @@ html(lang='en')
                   | &#124;
                   a(href='/logout') Выйти
               h5(style='color:gray;text-align:center;margin-bottom:20px;margin-top:30px') Я ищу
-              .btn-group.btn-group-sm
-                button.btn.btn-primary Парня
-                button.btn.btn-primary Девушку
-                button.btn.btn-primary.active Всех
-              h5(style='color:gray;margin-top:20px;')
-                | от 
-                input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
-                | до
-                input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
-                |             лет
-              h5(style='color:gray;') в городе
-              input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
-              h5(style='color:gray;font-weight:200;') (просто указывайте параметры, результаты обновятся автоматически)
+              form#user_search
+                .btn-group.btn-group-sm
+                  button.btn.btn-primary Парня
+                  button.btn.btn-primary Девушку
+                  button.btn.btn-primary.active Всех
+                h5(style='color:gray;margin-top:20px;')
+                  | от 
+                  input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
+                  | до
+                  input(type='text' maxlength='2' class='form-control' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
+                  |             лет
+                h5(style='color:gray;') в городе
+                input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
+                h5(style='color:gray;font-weight:200;') (просто указывайте параметры, результаты обновятся автоматически)
             //
               <nav>
               <ul class="pagination" style='margin-bottom:0px;'>
@@ -765,6 +766,10 @@ html(lang='en')
                  $('#messages').append('<span class="badge">+'+msg.newmsg+'</span>');
                 }
                });
+        //search
+        $("#user_search").change(function() {
+      alert('something is on!');
+      });
 
           
 
