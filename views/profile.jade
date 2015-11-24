@@ -342,14 +342,14 @@ html(lang='en')
       .row.hidden-xs
         .col-xs-12
           h1 INTPLOVE
-      .row.visible-xs(style='color:#232323;')
+      .row.visible-xs
         .col-xs-12
-          h1(style='color:white;') INTPLOVE
+          h1 INTPLOVE
       #mainholder.row
         #main.col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
-          #head.row
+          #head.row.hidden-xs
             .col-xs-12
-              #profile.row.hidden-xs
+              #profile.row
                 .col-xs-12
                   a(href='/') Поиск
                   | &#124;
@@ -369,8 +369,7 @@ html(lang='en')
               h3#name(style='color:#ddd;margin-top:40px;')
               h5#location(style='color:#4c4c4c;')
           .row(style='padding-top:20px;padding-bottom:20px;border-bottom:1px solid #ddd;')
-            .col-xs-12
-              p#about
+            .col-xs-12#about
           .row(style='text-align:center;padding-top:30px;padding-bottom:30px;')
             .col-xs-12
               a(class='btn btn-primary') Редактировать
@@ -387,23 +386,27 @@ html(lang='en')
         .col-xs-3.text-center
           a(href="/") 
             i(class="glyphicon glyphicon-search")
-            br 
-            |Поиск
+            //
+              br 
+              |Поиск
         .col-xs-3.text-center
           a(href="#/profile") 
             i(class="glyphicon glyphicon-user")
-            br 
-            |Профиль
+            //
+              br 
+              |Профиль
         .col-xs-3.text-center
           a(href="/messages") 
             i(class="glyphicon glyphicon-envelope")
-            br 
-            |Сообщения
+            //
+              br 
+              |Сообщения
         .col-xs-3.text-center
           a(href="/logout") 
             i(class="glyphicon glyphicon-log-out")
-            br 
-            |Выход
+            //
+              br 
+              |Выход
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -418,13 +421,13 @@ html(lang='en')
       $('#avatar').css('display','block');
       $('#name').text(user.name);
       $('#location').append("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
-      $('#about').text(user.about);
+      $('#about').text('<p>'+user.about+'</p>');
       }
       if (user && !user.userpic) {
        $('#emptyavatar').css('display','block');
        $('#name').text(user.name);
        $('#location').append("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
-       $('#about').text(user.about);
+       $('#about').text('<p>'+user.about+'</p>');
       }
       //  //sonorous-shore-113306
       //  function initialize() {
