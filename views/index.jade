@@ -400,9 +400,9 @@ html(lang='en')
                   button.btn.btn-primary.active#all_search(type='button') Всех
                 h5(style='color:gray;margin-top:20px;')
                   | от 
-                  input(type='text' maxlength='2' class='form-control' id='agefrom' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
+                  input(type="number" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength='2' class='form-control' id='agefrom' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')           
                   | до
-                  input(type='text' maxlength='2' class='form-control' id='ageto' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
+                  input(type="number" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength='2' class='form-control' id='ageto' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
                   |             лет
                 h5(style='color:gray;') в городе
                 input#user_location(type='text' style='max-width:500px;margin:auto;' class='form-control')
