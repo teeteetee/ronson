@@ -286,6 +286,9 @@ html(lang='en')
         text-align:center;
         display:none;
       }
+      #profile a {
+        color:#515558;
+      }
       #profile col-xs-3.active {
         background-color: #292929;
       }
@@ -477,8 +480,8 @@ html(lang='en')
                     a#messages(href='/messages') Сообщения
                     | &#124;
                     a(href='/logout') Выйти
-                .col-xs-3
-                  a.active 
+                .col-xs-3.active
+                  a(href='#')
                     span(class='glyphicon glyphicon-search' style='margin-right:5px;') 
                     | Поиск
                 .col-xs-3
