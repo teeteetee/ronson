@@ -295,12 +295,13 @@ html(lang='en')
         padding-top:20px;
         padding-bottom:20px;
         border-bottom:1px solid #eee;
+        background-color:#efefef;
       }
       .message:last-child {
         border-bottom:none;
       }
       .message.new:hover {
-       border-bottom:1px solid #ddd;
+       border-bottom:1px solid #eee;
       }
       .message:hover {
       background-color:#eee;
@@ -332,10 +333,13 @@ html(lang='en')
         border-right:none;
       }
       .new {
-        background-color:#eee;
+        background-color:white;
       }
       .new h4 {
         color:#333;
+      }
+      .new h5 {
+        color:#09f;
       }
   body
     .modal.fade(id="show_msg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
