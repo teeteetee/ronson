@@ -405,7 +405,7 @@ html(lang='en')
                   input(type='text' maxlength='2' class='form-control' id='ageto' style='max-width:50px;display:inline;margin-left:10px;margin-right:10px;')
                   |             лет
                 h5(style='color:gray;') в городе
-                input#location(type='text' style='max-width:500px;margin:auto;' class='form-control')
+                input#user_location(type='text' style='max-width:500px;margin:auto;' class='form-control')
                 h5(style='color:gray;font-weight:200;') (просто указывайте параметры, результаты обновятся автоматически)
             //
               <nav>
@@ -453,7 +453,7 @@ html(lang='en')
     script(src='js/bootstrap.min.js')
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8lRm1SQ5qlhTnvAAwX5Y8mO-P9qq8HfQ&signed_in=true&libraries=places&callback=initialize" async defer)
     script.
-      var location=0;
+      var user_location=0;
       $(document).keypress(function(e) { 
           if(e.which ==13 && validateEmail($('#mail').val()) && $('#p').val() && $('#login').css('display') === 'block') {
               authsubmit();
@@ -668,13 +668,13 @@ html(lang='en')
           types: ['(cities)'],
           componentRestrictions: {}
          };
-         var input = document.getElementById('location');
+         var input = document.getElementById('user_location');
          var autocomplete = new google.maps.places.Autocomplete(input, options);
          google.maps.event.addListener(autocomplete, 'place_changed', function(){
            //# $('.your-input').val() to get the value from your input
            var place = autocomplete.getPlace();
            console.log(place.place_id);
-           location = place.place_id ? place.place_id : 0;
+           user_location = place.place_id ? place.place_id : 0;
          });
         }
          function validateEmail(email) { 
@@ -797,10 +797,10 @@ html(lang='en')
                 }
                });
         //search
-        //$("#user_search").change(function() {
-        //console.log('something is on');
-        //run_search();
-        //});
+        $("#user_search").change(function() {
+        console.log('something is on');
+        run_search();
+        });
         function run_search() {
           var gender;
           if($('#male_search').hasClass('active')){
@@ -817,7 +817,7 @@ html(lang='en')
           $.ajax({
               method: "POST",
               url: "/search",
-              data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&location="+location
+              data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&user_location="+location
             }).done(function( msg ) {
                 //populate(msg)
                 console.log(msg);
