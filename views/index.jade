@@ -65,7 +65,7 @@ html(lang='en')
       .user {
       border-bottom:1px solid #eee;
       padding-top:20px;
-      padding-bottom:20px;
+      padding-bottom:15px;
       padding-left:10px;
       }
       .user h5 {
@@ -99,12 +99,37 @@ html(lang='en')
       border-top-right-radius:6px;
       background-color:#222;
       }
-      @media (max-width: 767px) {
-      .user h5 {
-        margin-top:20px;
+      h1{
+      font-family:Josefin Sans;
+      text-align:center;
+      margin-bottom:80px;
+      letter-spacing: 12px;
+      color: #222;
+      font-size:80px; 
       }
+      #avatars {
+      text-align:center;
+      padding-top:30px;
+      padding-bottom:30px;
+      border-bottom:1px solid #ddd;
+      background-color:#232323;
+      }
+      #eng_cont {
+      padding-top:45px;
+      }
+      @media (max-width: 767px) {
+      #eng_cont {
+      padding-top:0px;
+      }
+      #avatars {
+        background-color:#333;
+      }
+        h1 {
+          font-size:36px;
+          margin-bottom:20px
+        }
       .user {
-        text-align:center;
+        padding-left:20px;
       }
       #head {
       border: 1px solid #232323;
@@ -204,9 +229,9 @@ html(lang='en')
         height: 35px;
         margin-left:5px;
         margin-right:5px;
-        background-color: #FFF;
-        color:#158CF3;
-        border-color:#fff;
+        /*background-color: #FFF;*/
+        color:#333;
+        border-color:#333;
         padding-top: 11px;
         border-radius: 22px;
         -moz-border-radius: 22px;
@@ -216,9 +241,9 @@ html(lang='en')
         transition: border-color 0.5s ease;
         margin-bottom: 5px;
       }
-      /*.socialbtns .fa:hover {
+      .socialbtns .fa:hover {
         border:1px solid #333;
-      }*/
+      }
       .regerr {
         margin-top:30px;
         margin-bottom:30px;
@@ -238,7 +263,6 @@ html(lang='en')
       #profile {
         border-bottom: 1px solid #323232;
         padding:20px;
-        display:none;
       }
       #profile a.active {
       border-bottom:3px solid #446179;
@@ -258,6 +282,26 @@ html(lang='en')
       background-color: #424242 !important;
       color:white;
       }
+      #emptyavatar {
+      margin:30px;
+      margin-left:50px;
+      margin-right:50px;
+      width:150px;
+      height:150px;
+      border:7px dotted #404040;
+      border-radius:50%;
+      display:none;
+      transition: border-color 0.5s ease;
+      }
+      #emptyavatar:hover {
+        border-color:#ddd;
+      }
+      .badge {
+      margin-left:5px;
+      color:#ff9900;
+      background-color: rgba(213, 136, 20, 0.3);
+      border-radius: 4px;
+      }
       .badge {
       margin-left:5px;
       color:#ff9900;
@@ -267,6 +311,16 @@ html(lang='en')
       .btn:focus {
         box-shadow:none;
         outline: none !important;
+      }
+      #bottomNav {
+        font-size:20px;
+      }
+      #bottomNav .glyphicon {
+        top:17px;
+      }
+      #bottomNav .active {
+        background-color:#333;
+        height:60px;
       }
   body
     //
@@ -381,7 +435,7 @@ html(lang='en')
             button#showloginbutton(type='button' class='btn btn-danger') Вход
       #mainholder.row
         #main.col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
-          #head.row
+          #head.row.hidden-xs
             .col-xs-12
               #profile.row
                 .col-xs-12
@@ -440,12 +494,39 @@ html(lang='en')
               p
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
     #ru_cont.container(style='display:none;')
-    footer.footer
+    footer.footer.hidden-xs
       .container
         .row
           .col-xs-12
             h6(style='font-weight:200;margin-top:40px;color:#636363;') INTPLOVE 2015
             a(style='margin-bottom:30px;font-weight:200;', href='mailto:feedback@intplove.ru') Contact us
+    footer.visible-xs(style='height:60px;width:100%;position:fixed;bottom:0px;background-color:#232323;')
+      .col-xs-12.navbar-inverse.navbar-fixed-bottom
+      .row#bottomNav
+        .col-xs-3.text-center.active
+          a(href="/") 
+            i(class="glyphicon glyphicon-search")
+            //
+              br 
+              |Поиск
+        .col-xs-3.text-center
+          a(href="#/profile") 
+            i(class="glyphicon glyphicon-user")
+            //
+              br 
+              |Профиль
+        .col-xs-3.text-center
+          a(href="/messages") 
+            i(class="glyphicon glyphicon-envelope")
+            //
+              br 
+              |Сообщения
+        .col-xs-3.text-center
+          a(href="/logout") 
+            i(class="glyphicon glyphicon-log-out")
+            //
+              br 
+              |Выход
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
