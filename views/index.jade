@@ -313,6 +313,12 @@ html(lang='en')
       .user p {
         text-align:justify;
       }
+      .avatar-holder:before {    /* create a full-height inline block pseudo=element */
+          content: ' ';
+          display: inline-block;
+          vertical-align: middle;  /* vertical alignment of the inline element */
+          height: 100%;
+      }
   body
     //
       <div class='language'>
@@ -630,7 +636,7 @@ html(lang='en')
                     avatar_insert = "<img id='avatar' class='img-circle' style='margin:auto !important;height:90px;width:90px;' src='/userpics/"+element._id+".png''></img>";
                   }
                   var margin_insert = element.about ? 'margin-xs' : '';
-                  var insert="<div class='row user'><div class='col-sm-3'>"+avatar_insert+"</div><div class='col-sm-6'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p style='text-align:left;' class='"+margin_insert+"'>"+element.about+"</p></div><div class='col-sm-3'><a class='btn btn-sm btn-send btn-default' onclick='"+onlick+"' style='max-width:80px;'>Написать</a></div></div>";
+                  var insert="<div class='row user'><div class='col-sm-3 avatar-holder'>"+avatar_insert+"</div><div class='col-sm-6'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city+"</h6><p style='text-align:left;' class='"+margin_insert+"'>"+element.about+"</p></div><div class='col-sm-3'><a class='btn btn-sm btn-send btn-default' onclick='"+onlick+"' style='max-width:80px;'>Написать</a></div></div>";
                   if(user && user.email && element.email === user.email){
                     insert='';
                   }
