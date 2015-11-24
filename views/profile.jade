@@ -421,13 +421,13 @@ html(lang='en')
       $('#avatar').css('display','block');
       $('#name').text(user.name);
       $('#location').append("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
-      $('#about').text('<p>'+user.about+'</p>');
+      $('#about').append('<p>'+user.about+'</p>');
       }
       if (user && !user.userpic) {
        $('#emptyavatar').css('display','block');
        $('#name').text(user.name);
        $('#location').append("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
-       $('#about').text('<p>'+user.about+'</p>');
+       $('#about').append('<p>'+user.about+'</p>');
       }
       //  //sonorous-shore-113306
       //  function initialize() {
