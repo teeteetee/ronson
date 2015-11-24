@@ -99,7 +99,18 @@ html(lang='en')
       border-top-right-radius:6px;
       background-color:#222;
       }
+      h1{
+      font-family:Josefin Sans;
+      text-align:center;
+      margin-bottom:80px;
+      letter-spacing: 12px;
+      color: #222;
+      font-size:80px; 
+      }
       @media (max-width: 767px) {
+        h1 {
+          font-size:36px;
+        }
       .user {
         padding-left:20px;
       }
@@ -319,12 +330,12 @@ html(lang='en')
     #eng_cont.container(style='padding-top:45px;')
       .row
         .col-xs-12
-          h1(style='font-family:Josefin Sans;text-align:center;margin-bottom:80px;letter-spacing: 12px;color: #222;font-size:80px;') INTPLOVE
+          h1 INTPLOVE
       #mainholder.row
         #main.col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
           #head.row
             .col-xs-12
-              #profile.row
+              #profile.row.hidden-xs
                 .col-xs-12
                   a(href='/') Поиск
                   | &#124;
@@ -356,27 +367,27 @@ html(lang='en')
           .col-xs-12
             h6(style='font-weight:200;margin-top:40px;color:#636363;') INTPLOVE 2015
             a(style='margin-bottom:30px;font-weight:200;', href='mailto:feedback@intplove.ru') Contact us
-    footer.visible-xs(style='height:60px;width:100%;position:fixed;bottom:0px;')
+    footer.visible-xs(style='height:60px;width:100%;position:fixed;bottom:0px;background-color:#232323;')
       .col-xs-12.navbar-inverse.navbar-fixed-bottom
       .row#bottomNav
         .col-xs-3.text-center
-          a(href="#") 
-            i(class="glyphicon glyphicon-circle-arrow-left")
+          a(href="/") 
+            i(class="glyphicon glyphicon-search")
+            br 
+            |Поиск
+        .col-xs-3.text-center
+          a(href="#/profile") 
+            i(class="glyphicon glyphicon-user")
+            br 
+            |Профиль
+        .col-xs-3.text-center
+          a(href="/messages") 
+            i(class="glyphicon glyphicon-envelope")
             br 
             |Link
         .col-xs-3.text-center
-          a(href="#") 
-            i(class="glyphicon glyphicon-circle-arrow-left")
-            br 
-            |Link
-        .col-xs-3.text-center
-          a(href="#") 
-            i(class="glyphicon glyphicon-circle-arrow-left")
-            br 
-            |Link
-        .col-xs-3.text-center
-          a(href="#") 
-            i(class="glyphicon glyphicon-circle-arrow-left")
+          a(href="/logout") 
+            i(class="glyphicon glyphicon-log-out")
             br 
             |Link
     // jQuery (necessary for Bootstrap's JavaScript plugins)
