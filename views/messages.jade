@@ -294,13 +294,16 @@ html(lang='en')
       .message {
         padding-top:20px;
         padding-bottom:20px;
-        border-bottom:1px solid #ddd;
+        border-bottom:1px solid #eee;
       }
       .message:last-child {
         border-bottom:none;
       }
       .message:hover {
       background-color:#eee;
+      }
+      .message h4 {
+        color:#9a9a9a;
       }
       .badge {
       margin-left:5px;
@@ -324,6 +327,12 @@ html(lang='en')
       }
       #bottomNav .col-xs-3:last-child {
         border-right:none;
+      }
+      .new {
+        background-color:#eee;
+      }
+      .new h4 {
+        color:#333;
       }
   body
     .modal.fade(id="show_msg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
@@ -449,7 +458,7 @@ html(lang='en')
         var uid_n_qts = '"'+element.sndr+'"';
         var textbody = element.textbody.length>30?element.textbody.substring(0,30).replace(/<br \/>/g, '  ')+'...':element.textbody.replace(/<br \/>/g, '  ');
         textbody=textbody.replace('<br />',' ');
-        var insert = "<div class='row message' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'>"+avatar_insert+"</div><div class='media-body' style='color:#bfbfbf;'><h5 class='hidden-xs' style='position:absolute;right:20px;font-weight:200;top:-10;'>"+date_out(element.tmstmp)+"</h5><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'>"+element.name+"</h4><h6 class='visible-xs' style='font-weight:200;'>"+date_out(element.tmstmp)+"</h6>"+textbody+"</div></div></div></div>";
+        var insert = "<div class='row message new' id='row"+element.tmstmp+"' onclick='show_message("+uid_n_qts+","+element.tmstmp+")'><div class='col-xs-12'><div class='media' style='margin-top:0px;'><div class='media-left' id='cid"+element.tmstmp+"'>"+avatar_insert+"</div><div class='media-body' style='color:#bfbfbf;'><h5 class='hidden-xs' style='position:absolute;right:20px;font-weight:200;top:-10;'>"+date_out(element.tmstmp)+"</h5><h4 id='head"+element.tmstmp+"' class='media-heading' style='color:#333;'>"+element.name+"</h4><h6 class='visible-xs' style='font-weight:200;'>"+date_out(element.tmstmp)+"</h6>"+textbody+"</div></div></div></div>";
         //if(parseInt(#{lst_tmstmp})<parseInt(element.tmstmp) ){ 
           if(element.read ===0){
           
@@ -503,16 +512,6 @@ html(lang='en')
             }).done(function( msg ) {
                 if(msg.newmsg){
                  $('#mbutton').append('<span style="vertical-align:baseline;color:#37AFD6;font-size:20px;margin-left:10px;">•</span>');
-                 $('#menu-toggle').css('color','#37AFD6');
-                }
-               });
-      $.ajax({
-              method: "POST",
-              url: "/ntfc_p",
-              data: 0
-            }).done(function( msg ) {
-                if(msg.newp){
-                 $('#pbutton').append('<span style="vertical-align:baseline;color:#37AFD6;font-size:20px;margin-left:10px;">•</span>');
                  $('#menu-toggle').css('color','#37AFD6');
                 }
                });
