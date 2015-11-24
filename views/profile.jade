@@ -315,9 +315,6 @@ html(lang='en')
       #bottomNav {
         font-size:20px;
       }
-      #bottomNav .glyphicon {
-        top:17px;
-      }
       #bottomNav .active {
         background-color:#333;
         height:60px;
@@ -428,23 +425,27 @@ html(lang='en')
         .col-xs-3.text-center
           a(href="/") 
             i(class="glyphicon glyphicon-search")
-              br 
-              | Поиск
+              //  
+                br 
+                | Поиск
         .col-xs-3.text-center.active
           a(href="#") 
             i(class="glyphicon glyphicon-user")
-              br 
-              | Профиль
+              //  
+                br 
+                | Профиль
         .col-xs-3.text-center
           a(href="/messages") 
             i(id='envelope' class="glyphicon glyphicon-envelope")
-              br 
-              | Почта
+              //  
+                br 
+                | Почта
         .col-xs-3.text-center
           a(href="/logout") 
             i(class="glyphicon glyphicon-log-out")
-              br 
-              | Выход
+              //  
+                br 
+                | Выход
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
