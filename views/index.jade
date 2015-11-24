@@ -121,6 +121,14 @@ html(lang='en')
           display: flex;
           align-items: center;
       }
+      @media (min-width: @screen-sm-min){
+      .row {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display:         flex;
+      }
+      }
       @media (max-width: 767px) {
       .margin-xs {
         margin-top:30px;
