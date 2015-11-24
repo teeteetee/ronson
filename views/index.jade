@@ -532,7 +532,7 @@ html(lang='en')
               |Сообщения
         .col-xs-3.text-center
           a(href="/logout") 
-            i(class="glyphicon glyphicon-log-out")
+            i( id='envelope' class="glyphicon glyphicon-log-out")
             //
               br 
               |Выход
@@ -886,6 +886,7 @@ html(lang='en')
                 if(msg.newmsg){
                   console.log(msg.newmsg);
                  $('#messages').append('<span class="badge">+'+msg.newmsg+'</span>');
+                 $('#envelope').css('color','#ff9900');
                 }
                });
         //search

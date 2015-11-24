@@ -543,6 +543,7 @@ html(lang='en')
                   {$('#msgnumindicator').text('+'+msgnum);}
                   else {
                     $('#msgnumindicator').remove();
+                    $('#envelope').css('color','#337ab7');
                   }
                 }
                });
@@ -591,6 +592,7 @@ html(lang='en')
                   console.log(msg.newmsg);
                   msgnum = msg.newmsg;
                  $('#messages').append('<span id="msgnumindicator" class="badge">+'+msg.newmsg+'</span>');
+                 $('#envelope').css('color','#ff9900');
                 }
                });
       
