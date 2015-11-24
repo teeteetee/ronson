@@ -261,21 +261,32 @@ html(lang='en')
         text-decoration:none !important;
       }
       #profile {
+        margin-top:30px;
         border-bottom: 1px solid #323232;
-        padding:20px;
-      }
-      #profile a.active {
-      border-bottom:3px solid #446179;
+        border-top: 1px solid #323232;
+        text-align:center;
+        display:none;
+        transition:background-color 0.5 linear;
       }
       #profile a {
-      color:#446179;
-      margin: 5px;
-      padding: 5px;
-      border-bottom:3px solid #222;
-      transition: border-color 0.5s ease;
+        color:#515558;
       }
-      #profile a:hover {
-      border-color:#446179;
+      #profile .col-xs-3.active {
+        background-color: #292929;
+      }
+      #profile .col-xs-3.active a {
+      color:#3A6890;
+      }
+      #profile .col-xs-3:hover {
+        background-color: #292929;
+      }
+      #profile .col-xs-3 {
+        border-right:1px solid #333;
+        text-align:center;
+        padding:10px;
+      }
+      #profile .col-xs-3:last-child {
+        border-right:none;
       }
       .form-control {
       border: 1px solid #555758;
@@ -311,6 +322,16 @@ html(lang='en')
       #bottomNav .active {
         background-color:#333;
         height:60px;
+      }
+      #bottomNav .glyphicon{
+        top:0px;
+        line-height:3;
+      }
+      #bottomNav .col-xs-3 {
+        border-right:1px solid #333;
+      }
+      #bottomNav .col-xs-3:last-child {
+        border-right:none;
       }
   body
     #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
@@ -363,14 +384,22 @@ html(lang='en')
           #head.row.hidden-xs
             .col-xs-12
               #profile.row
-                .col-xs-12
-                  a(href='/') Поиск
-                  | &#124;
-                  a.active Профиль
-                  | &#124;
-                  a#messages(href='/messages') Сообщения
-                  | &#124;
-                  a(href='/logout') Выйти  
+                .col-xs-3
+                  a(href='/')
+                    span(class='glyphicon glyphicon-search' style='margin-right:5px;') 
+                    | Поиск
+                .col-xs-3.active
+                  a(href='/profile')
+                    span(class='glyphicon glyphicon-user' style='margin-right:5px;') 
+                    | Профиль
+                .col-xs-3
+                  a#messages(href='/messages') 
+                    span(class='glyphicon glyphicon-envelope' style='margin-right:5px;') 
+                    | Почта
+                .col-xs-3
+                  a(href='/logout') 
+                    span(class='glyphicon glyphicon-log-out' style='margin-right:5px;') 
+                    | Выйти  
           .row#avatars
             .col-xs-12
               form(id='userpic_form' action="/usrp" method="post" enctype="multipart/form-data" style='height:0px;width:0px;')
