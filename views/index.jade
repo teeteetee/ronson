@@ -675,6 +675,7 @@ html(lang='en')
            var place = autocomplete.getPlace();
            console.log(place.place_id);
            user_location = place.place_id ? place.place_id : 0;
+           run_search();
          });
         }
          function validateEmail(email) { 
@@ -797,10 +798,10 @@ html(lang='en')
                 }
                });
         //search
-        $("#user_search").change(function() {
-        console.log('something is on');
-        run_search();
-        });
+        //$("#user_search").change(function() {
+        //console.log('something is on');
+        //run_search();
+        //});
         function run_search() {
           var gender;
           if($('#male_search').hasClass('active')){
