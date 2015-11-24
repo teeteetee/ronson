@@ -65,7 +65,7 @@ html(lang='en')
       .user {
       border-bottom:1px solid #eee;
       padding-top:20px;
-      padding-bottom:15px;
+      padding-bottom:20px;
       padding-left:10px;
       }
       .user h5 {
@@ -128,8 +128,11 @@ html(lang='en')
           font-size:36px;
           margin-bottom:20px
         }
+      .user h5 {
+        margin-top:20px;
+      }
       .user {
-        padding-left:20px;
+        text-align:center;
       }
       #head {
       border: 1px solid #232323;
@@ -229,9 +232,9 @@ html(lang='en')
         height: 35px;
         margin-left:5px;
         margin-right:5px;
-        /*background-color: #FFF;*/
-        color:#333;
-        border-color:#333;
+        background-color: #FFF;
+        color:#158CF3;
+        border-color:#fff;
         padding-top: 11px;
         border-radius: 22px;
         -moz-border-radius: 22px;
@@ -241,9 +244,9 @@ html(lang='en')
         transition: border-color 0.5s ease;
         margin-bottom: 5px;
       }
-      .socialbtns .fa:hover {
+      /*.socialbtns .fa:hover {
         border:1px solid #333;
-      }
+      }*/
       .regerr {
         margin-top:30px;
         margin-bottom:30px;
@@ -263,6 +266,7 @@ html(lang='en')
       #profile {
         border-bottom: 1px solid #323232;
         padding:20px;
+        display:none;
       }
       #profile a.active {
       border-bottom:3px solid #446179;
@@ -281,26 +285,6 @@ html(lang='en')
       border: 1px solid #555758;
       background-color: #424242 !important;
       color:white;
-      }
-      #emptyavatar {
-      margin:30px;
-      margin-left:50px;
-      margin-right:50px;
-      width:150px;
-      height:150px;
-      border:7px dotted #404040;
-      border-radius:50%;
-      display:none;
-      transition: border-color 0.5s ease;
-      }
-      #emptyavatar:hover {
-        border-color:#ddd;
-      }
-      .badge {
-      margin-left:5px;
-      color:#ff9900;
-      background-color: rgba(213, 136, 20, 0.3);
-      border-radius: 4px;
       }
       .badge {
       margin-left:5px;
@@ -408,7 +392,7 @@ html(lang='en')
         .row(id='spin') 
           .col-xs-12(style='text-align:center;')
             .loader
-    #eng_cont.container(style='padding-top:150px;')
+    #eng_cont.container
       //
         <div class='language'>
         <a class='active eng'>ENG</a>
@@ -423,7 +407,7 @@ html(lang='en')
         </div>
       .row
         .col-xs-12
-          h1(style='font-family:Josefin Sans;text-align:center;margin-bottom:80px;letter-spacing: 12px;color: #222;font-size:80px;') INTPLOVE
+          h1 INTPLOVE
       .row(id='resendveri')
         .col-xs-12
           h4 Прислать для подтверждения email еще раз
@@ -435,7 +419,7 @@ html(lang='en')
             button#showloginbutton(type='button' class='btn btn-danger') Вход
       #mainholder.row
         #main.col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
-          #head.row.hidden-xs
+          #head.row
             .col-xs-12
               #profile.row
                 .col-xs-12
@@ -494,7 +478,7 @@ html(lang='en')
               p
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
     #ru_cont.container(style='display:none;')
-    footer.footer.hidden-xs
+    footer.footer
       .container
         .row
           .col-xs-12
@@ -504,13 +488,13 @@ html(lang='en')
       .col-xs-12.navbar-inverse.navbar-fixed-bottom
       .row#bottomNav
         .col-xs-3.text-center.active
-          a(href="/") 
+          a(href="#") 
             i(class="glyphicon glyphicon-search")
             //
               br 
               |Поиск
         .col-xs-3.text-center
-          a(href="#/profile") 
+          a(href="/profile") 
             i(class="glyphicon glyphicon-user")
             //
               br 
