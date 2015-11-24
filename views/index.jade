@@ -817,7 +817,7 @@ html(lang='en')
           $.ajax({
               method: "POST",
               url: "/search",
-              data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&user_location="+location
+              data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&user_location="+user_location
             }).done(function( msg ) {
                 //populate(msg)
                 console.log(msg);
