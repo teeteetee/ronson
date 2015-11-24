@@ -370,7 +370,7 @@ html(lang='en')
               h5#location(style='color:#4c4c4c;')
           .row(style='padding-top:20px;padding-bottom:20px;border-bottom:1px solid #ddd;')
             .col-xs-12#about
-          .row(style='text-align:center;padding-top:30px;padding-bottom:30px;')
+          .row(style='text-align:center;padding-top:30px;padding-bottom:60px;')
             .col-xs-12
               a(class='btn btn-primary') Редактировать
     #ru_cont.container(style='display:none;')
@@ -422,7 +422,7 @@ html(lang='en')
       $('#name').text(user.name);
       $('#location').append("<span class='glyphicon glyphicon-map-marker'></span>"+user.city);
       //$('#about').append('<p>'+user.about+'</p>');
-      consol.log(user.about);
+      console.log(user.about);
       }
       if (user && !user.userpic) {
        $('#emptyavatar').css('display','block');
