@@ -115,7 +115,7 @@ html(lang='en')
       background-color:#232323;
       }
       #eng_cont {
-      padding-top:45px;
+      padding-top:130px;
       }
       @media (max-width: 767px) {
       #eng_cont {
@@ -609,7 +609,7 @@ html(lang='en')
       function populate (msg) {
         if(msg.userlist && msg.userlist.length){
               $('.user').remove();
-              $('#main').append("<div class='row' style='text-align:center;padding-top:10px;padding-bottom:20px;'><div class='col-xs-12'><h5 style='color:#ddd;font-weight:200;'>нашлось"+msg.userlist.length+"</h5></div></div>");
+              $('#main').append("<div class='row' style='text-align:center;padding-top:10px;padding-bottom:20px;'><div class='col-xs-12'><h5 style='color:#ddd;font-weight:200;'>нашлось "+msg.userlist.length+"</h5></div></div>");
               msg.userlist.forEach( function (element,index){
                   if(element.confirmed )
                  {
