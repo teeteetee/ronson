@@ -342,6 +342,10 @@ html(lang='en')
         font-size:11px;
         text-transform:uppercase;
       }
+      .btn-send:hover{
+        background-color:#09f;
+        color:white;
+      }
   body
     //
       <div class='language'>
@@ -349,15 +353,16 @@ html(lang='en')
       <span style='color:#ddd;'>|</span>
       <a id='ru'>RU</a>
       </div>
-    #notice(style='background-color:#ff9900;width:100%;position:absolute;top:0px; text-align:center;')
-        h6(style='font-family:arial;text-transform:uppercase;letter-spacing:1px;color:#333;') Знакомства INTP INTJ.
-          br 
-          |Идет разработка, планируем запуститься до конца ноября 2015 года, заглядывайте на днях &#40;-:
-        .socialbtns.fxd(style='margin:auto;margin-top:5px;margin-bottom:5px;')
-          a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
-          a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
-          a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
-          a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
+
+      #notice(style='background-color:#ff9900;width:100%;position:absolute;top:0px; text-align:center;')
+          h6(style='font-family:arial;text-transform:uppercase;letter-spacing:1px;color:#333;') Знакомства INTP INTJ.
+            br 
+            |Идет разработка, планируем запуститься до конца ноября 2015 года, заглядывайте на днях &#40;-:
+          .socialbtns.fxd(style='margin:auto;margin-top:5px;margin-bottom:5px;')
+            a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+            a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+            a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+            a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
     .modal.fade(id="sendmsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
       .modal-dialog(role="document")
         .modal-content
@@ -428,6 +433,17 @@ html(lang='en')
         .row(id='spin') 
           .col-xs-12(style='text-align:center;')
             .loader
+    .alert.alert-warning.alert-dismissible(role="alert")
+      button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;
+      strong INTP INTJ знакомства
+      |Better check yourself, you're not looking too good.
+      br
+      .socialbtns.fxd(style='margin:auto;margin-top:5px;margin-bottom:5px;')
+        a(href="#" class="social_share fa fa-lg fa-vk" data-type='vk')
+        a(href="#" class="social_share fa fa-lg fa-facebook" data-type='fb')
+        a(href="#" class="social_share fa fa-lg fa-twitter" data-type='tw')
+        a(href="#" class="social_share fa fa-lg fa-google-plus" data-type='gg')
     #eng_cont.container
       //
         <div class='language'>
