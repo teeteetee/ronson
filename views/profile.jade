@@ -107,9 +107,20 @@ html(lang='en')
       color: #222;
       font-size:80px; 
       }
+      #avatars {
+      text-align:center;
+      padding-top:30px;
+      padding-bottom:30px;
+      border-bottom:1px solid #ddd;
+      background-color:#232323;
+      }
       @media (max-width: 767px) {
+      #avatars {
+        background-color:#333;
+      }
         h1 {
           font-size:36px;
+          margin-bottom:20px
         }
       .user {
         padding-left:20px;
@@ -328,9 +339,12 @@ html(lang='en')
           .col-xs-12(style='text-align:center;')
             .loader
     #eng_cont.container(style='padding-top:45px;')
-      .row
+      .row.hidden-xs
         .col-xs-12
           h1 INTPLOVE
+      .row.visible-xs(style='color:#232323;')
+        .col-xs-12
+          h1(style='color:white;') INTPLOVE
       #mainholder.row
         #main.col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
           #head.row
@@ -344,7 +358,7 @@ html(lang='en')
                   a#messages(href='/messages') Сообщения
                   | &#124;
                   a(href='/logout') Выйти  
-          .row(style='text-align:center;padding-top:30px;padding-bottom:30px;border-bottom:1px solid #ddd;background-color:#232323;')
+          .row#avatars
             .col-xs-12
               form(id='userpic_form' action="/usrp" method="post" enctype="multipart/form-data" style='height:0px;width:0px;')
                 input(type="file" id='userpic' name="userpic" style='height:0px;width:0px;')
@@ -384,12 +398,12 @@ html(lang='en')
           a(href="/messages") 
             i(class="glyphicon glyphicon-envelope")
             br 
-            |Link
+            |Сообщения
         .col-xs-3.text-center
           a(href="/logout") 
             i(class="glyphicon glyphicon-log-out")
             br 
-            |Link
+            |Выход
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
