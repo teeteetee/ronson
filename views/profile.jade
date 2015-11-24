@@ -100,6 +100,9 @@ html(lang='en')
       background-color:#222;
       }
       @media (max-width: 767px) {
+      .user {
+        padding-left:20px;
+      }
       #head {
       border: 1px solid #232323;
       border-top-left-radius:0px;
@@ -347,12 +350,35 @@ html(lang='en')
             .col-xs-12
               a(class='btn btn-primary') Редактировать
     #ru_cont.container(style='display:none;')
-    footer.footer
+    footer.footer.hidden-xs
       .container
         .row
           .col-xs-12
             h6(style='font-weight:200;margin-top:40px;color:#636363;') INTPLOVE 2015
             a(style='margin-bottom:30px;font-weight:200;', href='mailto:feedback@intplove.ru') Contact us
+    footer.visible-xs(style='height:60px;width:100%;position:fixed;bottom:0px;')
+      .col-xs-12.navbar-inverse.navbar-fixed-bottom
+      .row#bottomNav
+        .col-xs-3.text-center
+          a(href="#") 
+            i(class="glyphicon glyphicon-circle-arrow-left")
+            br 
+            |Link
+        .col-xs-3.text-center
+          a(href="#") 
+            i(class="glyphicon glyphicon-circle-arrow-left")
+            br 
+            |Link
+        .col-xs-3.text-center
+          a(href="#") 
+            i(class="glyphicon glyphicon-circle-arrow-left")
+            br 
+            |Link
+        .col-xs-3.text-center
+          a(href="#") 
+            i(class="glyphicon glyphicon-circle-arrow-left")
+            br 
+            |Link
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
