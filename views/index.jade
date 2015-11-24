@@ -346,6 +346,12 @@ html(lang='en')
         background-color:#09f;
         color:white;
       }
+      #profile .col-xs-3 {
+        border-right:1px solid #333;
+      }
+      #profile .col-xs-3:last-child {
+        border-right:none;
+      }
   body
     //
       <div class='language'>
@@ -463,14 +469,31 @@ html(lang='en')
           #head.row
             .col-xs-12
               #profile.row.hidden-xs
-                .col-xs-12
-                  a.active Поиск
-                  | &#124;
-                  a(href='/profile') Профиль
-                  | &#124;
-                  a#messages(href='/messages') Сообщения
-                  | &#124;
-                  a(href='/logout') Выйти
+                //
+                  .col-xs-12
+                    a.active Поиск
+                    | &#124;
+                    a(href='/profile') Профиль
+                    | &#124;
+                    a#messages(href='/messages') Сообщения
+                    | &#124;
+                    a(href='/logout') Выйти
+                .col-xs-3
+                  a.active 
+                    span(class='glyphicon glyphicon-search' style='margin-right:5px;') 
+                    | Поиск
+                .col-xs-3
+                  a(href='/profile')
+                    span(class='glyphicon glyphicon-user' style='margin-right:5px;') 
+                    | Профиль
+                .col-xs-3
+                  a#messages(href='/messages') 
+                    span(class='glyphicon glyphicon-envelope' style='margin-right:5px;') 
+                    | Сообщения
+                .col-xs-3
+                  a(href='/logout') 
+                    span(class='glyphicon glyphicon-logout' style='margin-right:5px;') 
+                    | Выйти
               h5(style='color:gray;text-align:center;margin-bottom:20px;margin-top:30px') Я ищу
               form#user_search
                 .btn-group.btn-group-sm#gender_search
