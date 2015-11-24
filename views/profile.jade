@@ -296,6 +296,16 @@ html(lang='en')
       background-color: rgba(213, 136, 20, 0.3);
       border-radius: 4px;
       }
+      #bottomNav {
+        font-size:20px;
+      }
+      #bottomNav .glyphicon {
+        top:17px;
+      }
+      #bottomNav .active {
+        background-color:#333;
+        height:60px;
+      }
   body
     #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog(role='document')
@@ -390,7 +400,7 @@ html(lang='en')
             //
               br 
               |Поиск
-        .col-xs-3.text-center
+        .col-xs-3.text-center.active
           a(href="#/profile") 
             i(class="glyphicon glyphicon-user")
             //
