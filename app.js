@@ -643,7 +643,7 @@ app.post('/search',function(req,res){
     query.city = req.body.user_location;
   }
   if(req.body.gender != '0') {
-    query.gender = req.body.user_location;
+    query.gender = req.body.gender;
   }
   if(req.body.ageform != '0') {
     query.age={};
