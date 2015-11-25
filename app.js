@@ -641,8 +641,17 @@ app.get('/fix',function(req,res){
   res.redirect('/');
 });
 
+app.get('/fix_add',function(req,res){
+  res.render('fix_add');
+});
+
+app.post('/fix_add',function(req,res){
+  users.insert({confirmed:1,name:req.body.uname,age:req.body.age,gender:req.body.ugen,city:req.body.city,city_name:req.body.city_name,about:req.body.about,email:"larypage@google.com",phr:"klenrlerno397dgb20847g23f234f",regdate:Date.now(),token:"24iu2h3i4uf2pi4uf32f4",lang:'ru',userpic:0});
+  res.send('ok');
+});
+
 app.post('/search',function(req,res){
-  //confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,city_name:req.body.ucity_name,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0
+  //confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.gender,city:req.body.ucity,city_name:req.body.ucity_name,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0
   console.log(req.body.agefrom+', '+req.body.ageto);
   var query ={};
   if(req.body.user_location != '0') {
