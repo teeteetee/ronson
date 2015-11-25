@@ -440,9 +440,9 @@ html(lang='en')
                     input#pas.form-control(type='password' )
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  .form-group#regautocomplete_group
+                  .form-group#reg_location_group
                     label(for='pagetitle') 4. Город
-                    input#regautocomplete.form-control(type='text' placeholder='Moscow' )
+                    input#reg_location.form-control(type='text' placeholder='Moscow' )
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#age_group
@@ -782,11 +782,11 @@ html(lang='en')
           types: ['(cities)'],
           componentRestrictions: {}
          };
-        var input2 = document.getElementById('regautocomplete');
-         var regautocomplete = new google.maps.places.Autocomplete(input2 , options);
-        google.maps.event.addListener(regautocomplete, 'place_changed', function() {
+        var input2 = document.getElementById('reg_location');
+         var reg_location = new google.maps.places.Autocomplete(input2 , options);
+        google.maps.event.addListener(reg_location, 'place_changed', function() {
           //fillInAddress();
-          var place = regautocomplete.getPlace();
+          var place = reg_location.getPlace();
           console.log(place.place_id);
           reg_location = place.place_id ? place.place_id : 0;
           reg_location_name = place.address_components[0].long_name;
@@ -870,13 +870,13 @@ html(lang='en')
              }
             
             if(!reg_location )
-            {$('#regautocomplete_group').addClass('has-feedback has-error');
-             $('#regautocomplete_group .err_indicator').removeClass('hidden');
+            {$('#reg_location_group').addClass('has-feedback has-error');
+             $('#reg_location_group .err_indicator').removeClass('hidden');
             }
             
             if(!reg_location_name )
-            {$('#regautocomplete_group').addClass('has-feedback has-error');
-             $('#regautocomplete_group .err_indicator').removeClass('hidden');
+            {$('#reg_location_group').addClass('has-feedback has-error');
+             $('#reg_location_group .err_indicator').removeClass('hidden');
             }
             
             if(!$('#age').val())
