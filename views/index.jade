@@ -880,8 +880,8 @@ html(lang='en')
           types: ['(cities)'],
           componentRestrictions: {}
          };
-         var input = document.getElementById('user_location');
-         var autocomplete = new google.maps.places.Autocomplete(input, options);
+         var input1 = document.getElementById('user_location');
+         var autocomplete = new google.maps.places.Autocomplete(input1, options);
          google.maps.event.addListener(autocomplete, 'place_changed', function(){
            //# $('.your-input').val() to get the value from your input
            var place = autocomplete.getPlace();
@@ -889,10 +889,11 @@ html(lang='en')
            user_location = place.place_id ? place.place_id : 0;
            run_search();
          });
-         var regautocomplete = new google.maps.places.Autocomplete(document.getElementById('regautocomplete'), options);
+         var input2 = document.getElementById('regautocomplete');
+         var regautocomplete = new google.maps.places.Autocomplete(input2 , options);
         google.maps.event.addListener(regautocomplete, 'place_changed', function() {
           //fillInAddress();
-          var place = autocomplete.getPlace();
+          var place = regautocomplete.getPlace();
           console.log(place.place_id);
           reg_location = place.place_id ? place.place_id : 0;
           reg_location_name = place.address_components[0].long_name;
