@@ -741,9 +741,7 @@ html(lang='en')
             }
             else {
               $('.user').remove();
-              var insert = "<div class='row emptyrow' style='padding-top:50px;padding-bottom:50px;text-align:center;'><div class='col-xs-12'><h3 style='color:#ddd;'>Никого не нашли</h3></div></div>";
-              if(!$('.emptyrow')[0])
-                {$('#main').append(insert);}
+              var insert = "<div class='row user' style='padding-top:50px;padding-bottom:50px;text-align:center;'><div class='col-xs-12'><h3 style='color:#ddd;'>Никого не нашли</h3></div></div>";
             }
       }
       $('.btn-send').click(function(){
