@@ -440,9 +440,9 @@ html(lang='en')
         google.maps.event.addListener(reg_location, 'place_changed', function() {
           //fillInAddress();
           var place = reg_location.getPlace();
-          console.log(place.place_id);
+          console.log(place);
           reg_location = place.place_id ? place.place_id : 0;
-          reg_location_name = place.address_components[0].long_name;
+          reg_location_name = place.address_components[0].short_name;
         });
         }
       function submit_user() {
