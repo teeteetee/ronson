@@ -374,7 +374,7 @@ html(lang='en')
         background-color:#00de82;
         border-color:#00de82;
       }
-      .btn-success:hover {
+      .btn-success:hover, .btn-success:active, .btn-success:focus {
         background-color:#00BF70;
         border-color:#00BF70;
       }
@@ -415,9 +415,6 @@ html(lang='en')
               span(aria-hidden='true')  ×
             h4.modal-title(style='color:#ddd;')  Регистрация 
           .modal-body
-            .row.regerr
-              .col-xs-12
-                h3#regerrtext
             .row
               .col-xs-12
                 form
@@ -442,6 +439,9 @@ html(lang='en')
                   .btn-group 
                     button(type='button' class='btn btn-default active' id='female') Female
                     button(type='button' class='btn btn-default' id='male') Male
+                  .row.regerr
+                    .col-xs-12
+                      h4#regerrtext
           .modal-footer(style='text-align:center;')
             button.btn.btn-success#regbutton  Регистрация
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
