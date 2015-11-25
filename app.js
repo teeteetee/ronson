@@ -684,7 +684,8 @@ app.post('/search',function(req,res){
       res.send(ms);
     }
     else {
-    ms =done;
+    ms.userlist=[];
+    ms.userlist=done;
     console.log(ms);
     res.send(ms);
     }
