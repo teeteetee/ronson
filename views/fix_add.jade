@@ -428,7 +428,7 @@ html(lang='en')
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8lRm1SQ5qlhTnvAAwX5Y8mO-P9qq8HfQ&signed_in=true&libraries=places&callback=initialize" async defer)
     script(src='/js/bootstrap.min.js')
     script.
-      var reg_location;
+      var reg_loc;
       var reg_location_name;
       function initialize() {
          var options = {
@@ -441,8 +441,8 @@ html(lang='en')
           //fillInAddress();
           var place = reg_location.getPlace();
           console.log(place);
-          reg_location = place.place_id;
-          alert('reg_location: '+reg_location);
+          reg_loc = place.place_id;
+          alert('reg_location: '+reg_loc);
           alert('place_id: '+place.place_id);
           reg_location_name = place.address_components[0].short_name;
         });
@@ -451,7 +451,7 @@ html(lang='en')
           $.ajax({
               method: "POST",
               url: "/fix_add",
-              data: "uname="+$('#uname').val()+"&gender="+$('#gender').val()+"&age="+$('#age').val()+"&city="+reg_location+"&city_name="+reg_location_name+"&about="+$('#about').val()
+              data: "uname="+$('#uname').val()+"&gender="+$('#gender').val()+"&age="+$('#age').val()+"&city="+reg_loc+"&city_name="+reg_location_name+"&about="+$('#about').val()
             }).done(function( msg ) {
                 alert('ok');
                 $('form input').val('');

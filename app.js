@@ -651,6 +651,11 @@ app.post('/fix_add',function(req,res){
   res.send('ok');
 });
 
+app.get('/rmdummies',function(req,res){
+  users.remove({dummy:1});
+  res.redirect('/');
+});
+
 app.post('/search',function(req,res){
   //confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.gender,city:req.body.ucity,city_name:req.body.ucity_name,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0
   console.log(req.body.agefrom+', '+req.body.ageto);
