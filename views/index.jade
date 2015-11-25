@@ -415,6 +415,10 @@ html(lang='en')
               span(aria-hidden='true')  ×
             h4.modal-title(style='color:#ddd;')  Регистрация 
           .modal-body
+            //
+              .row.regerr
+                .col-xs-12
+                  h4#regerrtext
             .row
               .col-xs-12
                 form
@@ -439,9 +443,6 @@ html(lang='en')
                   .btn-group 
                     button(type='button' class='btn btn-default active' id='female') Female
                     button(type='button' class='btn btn-default' id='male') Male
-                  .row.regerr
-                    .col-xs-12
-                      h4#regerrtext
           .modal-footer(style='text-align:center;')
             button.btn.btn-success#regbutton  Регистрация
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
@@ -769,9 +770,9 @@ html(lang='en')
       function runreg() {
          if ($('#uname').val() && $('#pas').val() && validateEmail($('#email').val()) && $('#email').val() && reg_location && reg_location_name && $('#age').val())
         {
-          if($('.regerr').css('display') === 'block') {
-            $('.regerr').slideToggle();
-          }
+          //if($('.regerr').css('display') === 'block') {
+          //  $('.regerr').slideToggle();
+          //}
         var male=0;
         if($('#male').hasClass('active')) {
           male=1;
@@ -817,37 +818,37 @@ html(lang='en')
         request.send("uemail="+$('#email').val()+"&p="+$('#pas').val()+"&ugen="+male+"&uage="+$('#age').val()+"&ucity="+$('#city').val()+"&uabout="+about+"&uname="+$('#uname').val());
         }
         else {
-          switch(false) {
-            case($('#uname').val()):
-            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваше имя </p> ');
+          switch(true) {
+            case(!$('#uname').val()):
+            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваше имя </p> ');
             $('#uname').tooltip();
             break
-            case($('#pas').val() ):
-            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите пароль </p> ');
+            case(!$('#pas').val() ):
+            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите пароль </p> ');
             $('#pas').tooltip();
             break
-            case($('#email').val() ):
-            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Введите email (будет выслано подтверждение) </p> ');
+            case(!$('#email').val() ):
+            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Введите email (будет выслано подтверждение) </p> ');
             $('#email').tooltip();
             break
-            case(validateEmail($('#email').val()) ):
-            $('#regerrtext').empty().append('<p><strong>Email</strong> <br> Некорректный email </p> ');
+            case(!validateEmail($('#email').val()) ):
+            //$('#regerrtext').empty().append('<p><strong>Email</strong> <br> Некорректный email </p> ');
             $('#email').tooltip({"title":"Некорректный email"});
             break
-            case(reg_location ):
-            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
+            case(!reg_location ):
+            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
             $('#regautocomplete').tooltip();
             break
-            case(reg_location_name ):
-            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
+            case(!reg_location_name ):
+            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
             $('#regautocomplete').tooltip();
             break
-            case($('#age').val()):
-            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваш возраст </p> ');
+            case(!$('#age').val()):
+            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваш возраст </p> ');
             $('#age').tooltip();
             break
           }
-          $('.regerr').slideToggle();
+          //$('.regerr').slideToggle();
           }
         }
         //sonorous-shore-113306
