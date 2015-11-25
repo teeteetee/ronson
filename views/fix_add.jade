@@ -283,11 +283,6 @@ html(lang='en')
       #profile .col-xs-3:last-child {
         border-right:none;
       }
-      .form-control {
-      border: 1px solid #555758;
-      background-color: #424242 !important;
-      color:white;
-      }
       .badge {
         margin-left:5px;
       }
@@ -454,7 +449,7 @@ html(lang='en')
           $.ajax({
               method: "POST",
               url: "/fix_add",
-              data: "uname="+$('#uname').val()+"&gender="+$('#gender').val()+"&age="+$('#age').val()+"&city="+reg_location+"&city_name="+reg_location_name+"&about="+$('#about').val();
+              data: "uname="+$('#uname').val()+"&gender="+$('#gender').val()+"&age="+$('#age').val()+"&city="+reg_location+"&city_name="+reg_location_name+"&about="+$('#about').val()
             }).done(function( msg ) {
                 alert('ok');
                 $('form input').val('');
