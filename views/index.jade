@@ -370,6 +370,10 @@ html(lang='en')
       form label {
         color:#555;
       }
+      .btn-success {
+        background-color:#33b780;
+        border-color:#33b780;
+      }
   body
     //
       <div class='language'>
@@ -434,8 +438,8 @@ html(lang='en')
                   .btn-group 
                     button(type='button' class='btn btn-default active' id='female') Female
                     button(type='button' class='btn btn-default' id='male') Male
-          .modal-footer
-            button.btn.btn-primary#regbutton  Регистрация
+          .modal-footer(style='text-align:center;')
+            button.btn.btn-success#regbutton  Регистрация
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog(role='document')
         .modal-content
