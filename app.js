@@ -639,17 +639,17 @@ app.post('/usrp',function (req,res) {
 app.post('/search',function(req,res){
   //confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,city_name:req.body.ucity_name,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0
   var query ={};
-  if(req.body.user_location) {
+  if(req.body.user_location != '0') {
     query.city = req.body.user_location;
   }
-  if(req.body.gender) {
+  if(req.body.gender != '0') {
     query.gender = req.body.user_location;
   }
-  if(req.body.ageform) {
+  if(req.body.ageform != '0') {
     query.age={};
     query.age['$gte']=parseInt(req.body.agefrom);
   }
-  if(req.body.ageto) {
+  if(req.body.ageto != '0') {
     if(!query.age){
       query.age ={};
     }
