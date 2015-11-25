@@ -655,6 +655,7 @@ app.post('/search',function(req,res){
     }
     query.age['$lte']=parseInt(req.body.ageto);
   }
+  console.log(JSON.stringify(query));
   var ms={};
   users.find(query,function(err,done){
     if(err){
