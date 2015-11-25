@@ -651,7 +651,7 @@ app.post('/search',function(req,res){
   if(req.body.gender != '0') {
     query.gender = req.body.gender;
   }
-  if(req.body.ageform != '0') {
+  if(req.body.agefrom != '0') {
     query.age={};
     query.age['$gte']=parseInt(req.body.agefrom);
   }
