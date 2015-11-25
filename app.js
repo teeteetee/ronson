@@ -366,7 +366,7 @@ var rand = function() {
               var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
 
               console.log('writing to users: \n confirmed:0,\nname: '+req.body.uname+',\nage:'+req.body.uage+',\ngender:'+req.body.ugen+',\ncity: '+req.body.ucity+',\nabout:'+req.body.uabout+',\nemail:'+req.body.uemail+',\npassword: '+vp+',\nregdate: '+Date.now()+',\ntoken:'+vtoken+',\nlang:"ru",\nuserpic:0');
-              users.insert({confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0},function (err,done){
+              users.insert({confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,city_name:req.body.ucity_name,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0},function (err,done){
                 if(err){
                   console.log(err);
                 }
@@ -637,10 +637,32 @@ app.post('/usrp',function (req,res) {
 });
 
 app.post('/search',function(req,res){
+  //confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,city_name:req.body.ucity_name,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0
+  var query ={};
+  if(req.body.user_location) {
+    query.city = req.body.user_location;
+  }
+  if(req.body.gender) {
+    query.gender = req.body.user_location;
+  }
+  if(req.body.ageform) {
+    query.age['$gte']=parseInt(req.body.agefrom);
+  }
+  if(req.body.ageto) {
+    query.age['$lte']=parseInt(req.body.ageto);
+  }
   var ms={};
-  ms=req.body;
-  console.log(ms);
-  res.send(ms);
+  users.find(query,function(err,done){
+    if(err){
+      console.log('query err: '+err);
+      res.send(ms);
+    }
+    else {
+    ms =done;
+    console.log(ms);
+    res.send(ms);
+    }
+  })
 });
 
 
