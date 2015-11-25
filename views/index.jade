@@ -832,7 +832,7 @@ html(lang='en')
             break
             case(validateEmail($('#email').val()) ):
             $('#regerrtext').empty().append('<p><strong>Email</strong> <br> Некорректный email </p> ');
-            $('#email').tootip({"title":"Некорректный email"});
+            $('#email').tooltip({"title":"Некорректный email"});
             break
             case(reg_location ):
             $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
