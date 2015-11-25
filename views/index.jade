@@ -753,7 +753,7 @@ html(lang='en')
         $('#register').modal('show');
       }
       function runreg() {
-         if ($('#uname').val() && $('#pas').val() && validateEmail($('#email').val()) && $('#email').val() && $('#city').val() && $('#age').val())
+         if ($('#uname').val() && $('#pas').val() && validateEmail($('#email').val()) && $('#email').val() && reg_location && reg_location_name && $('#age').val())
         {
           if($('.regerr').css('display') === 'block') {
             $('.regerr').slideToggle();
@@ -803,7 +803,29 @@ html(lang='en')
         request.send("uemail="+$('#email').val()+"&p="+$('#pas').val()+"&ugen="+male+"&uage="+$('#age').val()+"&ucity="+$('#city').val()+"&uabout="+about+"&uname="+$('#uname').val());
         }
         else {
-          $('#regerrtext').text('Заполните все поля');
+          switch(false) {
+            case($('#uname').val()):
+            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваше имя </p> ');
+            break
+            case($('#pas').val() ):
+            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите пароль </p> ');
+            break
+            case($('#email').val() ):
+            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Введите email (будет выслано подтверждение) </p> ');
+            break
+            case(validateEmail($('#email').val()) ):
+            $('#regerrtext').empty().append('<p><strong>Email</strong> <br> Некорректный email </p> ');
+            break
+            case(reg_location ):
+            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
+            break
+            case(reg_location_name ):
+            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
+            break
+            case($('#age').val()):
+            $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваш возраст </p> ');
+            break
+          }
           $('.regerr').slideToggle();
           }
         }
@@ -823,14 +845,15 @@ html(lang='en')
            run_search();
          });
         }
+        var reg_location = 0;
+        var reg_location_name = 0;
         regautocomplete = new google.maps.places.Autocomplete(document.getElementById('regautocomplete'), { types: ['(cities)'],componentRestrictions: {} });
         google.maps.event.addListener(regautocomplete, 'place_changed', function() {
           //fillInAddress();
           var place = autocomplete.getPlace();
           console.log(place.place_id);
           reg_location = place.place_id ? place.place_id : 0;
-          reg_location_name;
-          run_search();
+          reg_location_name = place.address_components[0].long_name;
         });
          function validateEmail(email) { 
         console.log('checking email');
