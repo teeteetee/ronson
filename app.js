@@ -668,13 +668,13 @@ app.post('/search',function(req,res){
   }
   if(req.body.agefrom != '0') {
     query.age={};
-    query.age['$gte']=parseInt(req.body.agefrom);
+    query.age['$gt']=parseInt(req.body.agefrom)?parseInt(req.body.agefrom)-1:0;
   }
   if(req.body.ageto != '0') {
     if(!query.age){
       query.age ={};
     }
-    query.age['$lte']=parseInt(req.body.ageto);
+    query.age['$lt']=parseInt(req.body.ageto)+1;
   }
   console.log(JSON.stringify(query));
   var ms={};
