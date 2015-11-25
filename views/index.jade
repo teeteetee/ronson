@@ -422,24 +422,36 @@ html(lang='en')
             .row
               .col-xs-12
                 form
-                  .form-group
+                  .form-group.has-feedback#uname_group
                     label(for='pagetitle') 2. Имя
-                    input#uname.form-control(type='text' placeholder='Alex' data-toggle="tooltip" title="Укажите ваше имя")
-                  .form-group
+                    input#uname.form-control(type='text' placeholder='Alex')
+                      span(class="err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                      span(class="success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                  .form-group.has-feedback#email_group
                     label(for='email') 1. email 
-                    input#email.form-control(type='email' placeholder='intplove@gmail.com' data-toggle="tooltip" title="Укажите ваш email")
-                  .form-group
+                    input#email.form-control(type='email' placeholder='intplove@gmail.com' ) 
+                      span(class="err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                      span(class="success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                  .form-group.has-feedback#pas_group
                     label(for='pagetitle') 3. Пароль
-                    input#pas.form-control(type='password' data-toggle="tooltip" title="Укажите ваш пароль")
-                  .form-group
+                    input#pas.form-control(type='password' )
+                      span(class="err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                      span(class="success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                  .form-group.has-feedback#regqutocomplete_group
                     label(for='pagetitle') 4. Город
-                    input#regautocomplete.form-control(type='text' placeholder='Moscow' data-toggle="tooltip" title="Укажите город")
-                  .form-group
+                    input#regautocomplete.form-control(type='text' placeholder='Moscow' )
+                      span(class="err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                      span(class="success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                  .form-group.has-feedback#age_group
                     label(for='pagetitle') 5. Возраст
-                    input#age.form-control(type='text' placeholder='21' data-toggle="tooltip" title="Укажите ваш возраст")
-                  .form-group
+                    input#age.form-control(type='text' placeholder='21' )
+                      span(class="err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                      span(class="success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
+                  .form-group.has-feedback#about_group
                     label(for='pagetitle') 6. О себе
                     textarea#about.form-control(autocomplete="off" placeholder='What do you do for living ? What are you interested in? Who are you looking for?')
+                      span(class="err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
+                      span(class="success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .btn-group 
                     button(type='button' class='btn btn-default active' id='female') Female
                     button(type='button' class='btn btn-default' id='male') Male
@@ -818,37 +830,29 @@ html(lang='en')
         request.send("uemail="+$('#email').val()+"&p="+$('#pas').val()+"&ugen="+male+"&uage="+$('#age').val()+"&ucity="+$('#city').val()+"&uabout="+about+"&uname="+$('#uname').val());
         }
         else {
-          console.log('making a hint');
-          switch(true) {
-            case(!$('#uname').val()):
-            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваше имя </p> ');
-            $('#uname').tooltip('show');
-            break;
-            case(!$('#pas').val() ):
-            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите пароль </p> ');
-            $('#pas').tooltip('show');
-            break;
-            case(!$('#email').val() ):
-            console.log('email');
-            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Введите email (будет выслано подтверждение) </p> ');
-            $('#email').tooltip('show');
-            break;
-            case(!validateEmail($('#email').val()) ):
-            //$('#regerrtext').empty().append('<p><strong>Email</strong> <br> Некорректный email </p> ');
-            $('#email').tooltip({"title":"Некорректный email"});
-            break;
-            case(!reg_location ):
-            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
-            $('#regautocomplete').tooltip('show');
-            break;
-            case(!reg_location_name ):
-            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
-            $('#regautocomplete').tooltip('show');
-            break;
-            case(!$('#age').val()):
-            //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваш возраст </p> ');
-            $('#age').tooltip('show');
-            break;
+            console.log('making a hint');
+            $('.form-group').removeClass('has-error');
+            if(!$('#uname').val())
+            {$('#uname-group').addClass('has-error');}
+            
+            if(!$('#pas').val() )
+            {$('#pas_group').addClass('has-error');}
+            
+            if(!$('#email').val() )
+            {$('#email_group').addClass('has-error')}
+            
+            if(!validateEmail($('#email').val()) )
+            { $('#email_group').addClass('has-error')}
+            
+            if(!reg_location )
+            {$('#regautocomplete_group').addClass('has-error')}
+            
+            if(!reg_location_name )
+            {$('#regautocomplete_group')..addClass('has-error')}
+            
+            if(!$('#age').val())
+            {$('#age_group').addClass('has-error')}
+            
           }
           //$('.regerr').slideToggle();
           }
