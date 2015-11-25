@@ -818,19 +818,20 @@ html(lang='en')
         request.send("uemail="+$('#email').val()+"&p="+$('#pas').val()+"&ugen="+male+"&uage="+$('#age').val()+"&ucity="+$('#city').val()+"&uabout="+about+"&uname="+$('#uname').val());
         }
         else {
+          console.log('making a hint');
           switch(true) {
             case(!$('#uname').val()):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваше имя </p> ');
-            $('#uname').tooltip();
+            $('#uname').tooltip('show');
             break;
             case(!$('#pas').val() ):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите пароль </p> ');
-            $('#pas').tooltip();
+            $('#pas').tooltip('show');
             break;
             case(!$('#email').val() ):
             console.log('email');
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Введите email (будет выслано подтверждение) </p> ');
-            $('#email').tooltip();
+            $('#email').tooltip('show');
             break;
             case(!validateEmail($('#email').val()) ):
             //$('#regerrtext').empty().append('<p><strong>Email</strong> <br> Некорректный email </p> ');
@@ -838,15 +839,15 @@ html(lang='en')
             break;
             case(!reg_location ):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
-            $('#regautocomplete').tooltip();
+            $('#regautocomplete').tooltip('show');
             break;
             case(!reg_location_name ):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
-            $('#regautocomplete').tooltip();
+            $('#regautocomplete').tooltip('show');
             break;
             case(!$('#age').val()):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваш возраст </p> ');
-            $('#age').tooltip();
+            $('#age').tooltip('show');
             break;
           }
           //$('.regerr').slideToggle();
