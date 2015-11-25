@@ -646,9 +646,13 @@ app.post('/search',function(req,res){
     query.gender = req.body.user_location;
   }
   if(req.body.ageform) {
+    query.age={};
     query.age['$gte']=parseInt(req.body.agefrom);
   }
   if(req.body.ageto) {
+    if(!query.age){
+      query.age ={};
+    }
     query.age['$lte']=parseInt(req.body.ageto);
   }
   var ms={};
