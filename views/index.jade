@@ -378,6 +378,19 @@ html(lang='en')
         background-color:#00BF70;
         border-color:#00BF70;
       }
+      .pac-container {
+          background-color: #FFF;
+          z-index: 20;
+          position: fixed;
+          display: inline-block;
+          float: left;
+      }
+      .modal{
+          z-index: 20;   
+      }
+      .modal-backdrop{
+          z-index: 10;        
+      }​
   body
     //
       <div class='language'>
@@ -621,9 +634,6 @@ html(lang='en')
     script(src='js/bootstrap.min.js')
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8lRm1SQ5qlhTnvAAwX5Y8mO-P9qq8HfQ&signed_in=true&libraries=places&callback=initialize" async defer)
     script.
-      $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-      })
       var user_location=0;
       $(document).keypress(function(e) { 
           if(e.which ==13 && validateEmail($('#mail').val()) && $('#p').val() && $('#login').css('display') === 'block') {
