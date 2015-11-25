@@ -732,7 +732,7 @@ html(lang='en')
                     avatar_insert = "<img id='avatar' class='img-circle' style='margin:auto !important;height:90px;width:90px;' src='/userpics/"+element._id+".png''></img>";
                   }
                   var margin_insert = element.about ? 'margin-xs' : '';
-                  var insert="<div class='row user'><div class='col-sm-3 vcenter'>"+avatar_insert+"</div><div class='col-sm-6'><h5>"+element.name+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6><p style='text-align:left;' class='"+margin_insert+"'>"+element.about+"</p></div><div class='col-sm-3' style='text-align:center;'><a class='btn btn-sm btn-send' onclick='"+onlick+"' style='max-width:85px;'>Написать</a></div></div>";
+                  var insert="<div class='row user'><div class='col-sm-3 vcenter'>"+avatar_insert+"</div><div class='col-sm-6'><h5>"+element.name+", "+element.age+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6><p style='text-align:left;' class='"+margin_insert+"'>"+element.about+"</p></div><div class='col-sm-3' style='text-align:center;'><a class='btn btn-sm btn-send' onclick='"+onlick+"' style='max-width:85px;'>Написать</a></div></div>";
                   if(user && user.email && element.email === user.email){
                     insert='';
                   }
