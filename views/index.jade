@@ -778,19 +778,6 @@ html(lang='en')
       }
       function openreg (index) {
         $('#register').modal('show');
-        var options = {
-          types: ['(cities)'],
-          componentRestrictions: {}
-         };
-        var input2 = document.getElementById('reg_location');
-         var reg_location = new google.maps.places.Autocomplete(input2 , options);
-        google.maps.event.addListener(reg_location, 'place_changed', function() {
-          //fillInAddress();
-          var place = reg_location.getPlace();
-          console.log(place.place_id);
-          reg_location = place.place_id ? place.place_id : 0;
-          reg_location_name = place.address_components[0].long_name;
-        });
       }
       function runreg() {
          if ($('#uname').val() && $('#pas').val() && validateEmail($('#email').val()) && $('#email').val() && reg_location && reg_location_name && $('#age').val())
@@ -893,15 +880,24 @@ html(lang='en')
           types: ['(cities)'],
           componentRestrictions: {}
          };
-         var input1 = document.getElementById('user_location');
-         var autocomplete = new google.maps.places.Autocomplete(input1, options);
-         google.maps.event.addListener(autocomplete, 'place_changed', function(){
-           //# $('.your-input').val() to get the value from your input
-           var place = autocomplete.getPlace();
-           console.log(place);
-           user_location = place.place_id ? place.place_id : 0;
-           run_search();
-         });
+         //var input1 = document.getElementById('user_location');
+         //var autocomplete = new google.maps.places.Autocomplete(input1, options);
+         //google.maps.event.addListener(autocomplete, 'place_changed', function(){
+         //  //# $('.your-input').val() to get the value from your input
+         //  var place = autocomplete.getPlace();
+         //  console.log(place);
+         //  user_location = place.place_id ? place.place_id : 0;
+         //  run_search();
+         //});
+         var input2 = document.getElementById('reg_location');
+         var reg_location = new google.maps.places.Autocomplete(input2 , options);
+        google.maps.event.addListener(reg_location, 'place_changed', function() {
+          //fillInAddress();
+          var place = reg_location.getPlace();
+          console.log(place.place_id);
+          reg_location = place.place_id ? place.place_id : 0;
+          reg_location_name = place.address_components[0].long_name;
+        });
         }
         var reg_location = 0;
         var reg_location_name = 0;
