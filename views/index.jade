@@ -300,7 +300,7 @@ html(lang='en')
       #profile .col-xs-3:hover {
         background-color: #292929;
       }
-      .form-control {
+      .head .form-control {
       border: 1px solid #555758;
       background-color: #424242 !important;
       color:white;
@@ -404,33 +404,33 @@ html(lang='en')
               span(aria-hidden='true')  ×
             h4.modal-title(style='color:#ddd;')  Регистрация 
           .modal-body
-          .row.regerr
-            .col-xs-12
-              h3#regerrtext
-          .row
-            .col-xs-12
-              form
-                .form-group
-                  label(for='email')  email
-                  input#email.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  Имя
-                  input#uname.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  Пароль
-                  input#pas.form-control(type='password', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  Город
-                  input#city.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  Возраст
-                  input#age.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
-                .form-group
-                  label(for='pagetitle')  О себе
-                  textarea#about.form-control(autocomplete='off', placeholder='Neuroscience')
-                .btn-group 
-                  button(type='button' class='btn btn-default active' id='female') Female
-                  button(type='button' class='btn btn-default' id='male') Male
+            .row.regerr
+              .col-xs-12
+                h3#regerrtext
+            .row
+              .col-xs-12
+                form
+                  .form-group
+                    label(for='email')  email
+                    input#email.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
+                  .form-group
+                    label(for='pagetitle')  Имя
+                    input#uname.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
+                  .form-group
+                    label(for='pagetitle')  Пароль
+                    input#pas.form-control(type='password', autocomplete='off', placeholder='Neuroscience')
+                  .form-group
+                    label(for='pagetitle')  Город
+                    input#city.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
+                  .form-group
+                    label(for='pagetitle')  Возраст
+                    input#age.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
+                  .form-group
+                    label(for='pagetitle')  О себе
+                    textarea#about.form-control(autocomplete='off', placeholder='Neuroscience')
+                  .btn-group 
+                    button(type='button' class='btn btn-default active' id='female') Female
+                    button(type='button' class='btn btn-default' id='male') Male
           .modal-footer
             button.btn.btn-primary#regbutton  Регистрация
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
