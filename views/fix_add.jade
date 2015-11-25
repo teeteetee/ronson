@@ -441,7 +441,7 @@ html(lang='en')
           //fillInAddress();
           var place = reg_location.getPlace();
           console.log(place);
-          reg_location = place.place_id ? place.place_id : 0;
+          reg_location = place.place_id;
           reg_location_name = place.address_components[0].short_name;
         });
         }

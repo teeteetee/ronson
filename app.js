@@ -647,7 +647,7 @@ app.get('/fix_add',function(req,res){
 
 app.post('/fix_add',function(req,res){
   console.log(req.body.city);
-  users.insert({confirmed:1,name:req.body.uname,age:req.body.age,gender:req.body.gender,city:req.body.city,city_name:req.body.city_name,about:req.body.about,email:"larypage@google.com",phr:"klenrlerno397dgb20847g23f234f",regdate:Date.now(),token:"24iu2h3i4uf2pi4uf32f4",lang:'ru',userpic:0});
+  users.insert({dummy:1,confirmed:1,name:req.body.uname,age:req.body.age,gender:req.body.gender,city:req.body.city,city_name:req.body.city_name,about:req.body.about,email:"larypage@google.com",phr:"klenrlerno397dgb20847g23f234f",regdate:Date.now(),token:"24iu2h3i4uf2pi4uf32f4",lang:'ru',userpic:0});
   res.send('ok');
 });
 
