@@ -643,6 +643,7 @@ app.get('/fix',function(req,res){
 
 app.post('/search',function(req,res){
   //confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,city_name:req.body.ucity_name,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0
+  console.log(req.body.agefrom+', '+req.body.ageto);
   var query ={};
   if(req.body.user_location != '0') {
     query.city = req.body.user_location;
