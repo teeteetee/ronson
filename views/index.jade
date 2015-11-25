@@ -818,11 +818,20 @@ html(lang='en')
          google.maps.event.addListener(autocomplete, 'place_changed', function(){
            //# $('.your-input').val() to get the value from your input
            var place = autocomplete.getPlace();
-           console.log(place.place_id);
+           console.log(place);
            user_location = place.place_id ? place.place_id : 0;
            run_search();
          });
         }
+        regautocomplete = new google.maps.places.Autocomplete(document.getElementById('regautocomplete'), { types: ['(cities)'],componentRestrictions: {} });
+        google.maps.event.addListener(regautocomplete, 'place_changed', function() {
+          //fillInAddress();
+          var place = autocomplete.getPlace();
+          console.log(place.place_id);
+          reg_location = place.place_id ? place.place_id : 0;
+          reg_location_name;
+          run_search();
+        });
          function validateEmail(email) { 
         console.log('checking email');
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
