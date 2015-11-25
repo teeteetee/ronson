@@ -367,6 +367,9 @@ html(lang='en')
       #profile .col-xs-3:last-child {
         border-right:none;
       }
+      form label {
+        color:#555;
+      }
   body
     //
       <div class='language'>
@@ -411,23 +414,23 @@ html(lang='en')
               .col-xs-12
                 form
                   .form-group
-                    label(for='email')  email
-                    input#email.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
+                    label(for='email') 1. email
+                    input#email.form-control(type='email', placeholder='intplove@gmail.com')
                   .form-group
-                    label(for='pagetitle')  Имя
-                    input#uname.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
+                    label(for='pagetitle') 2. Имя
+                    input#uname.form-control(type='text', placeholder='Alex')
                   .form-group
-                    label(for='pagetitle')  Пароль
-                    input#pas.form-control(type='password', autocomplete='off', placeholder='Neuroscience')
+                    label(for='pagetitle') 3. Пароль
+                    input#pas.form-control(type='password')
                   .form-group
-                    label(for='pagetitle')  Город
-                    input#regautocomplete.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
+                    label(for='pagetitle') 4. Город
+                    input#regautocomplete.form-control(type='text', placeholder='Moscow')
                   .form-group
-                    label(for='pagetitle')  Возраст
-                    input#age.form-control(type='text', autocomplete='off', placeholder='Neuroscience')
+                    label(for='pagetitle') 5. Возраст
+                    input#age.form-control(type='text', placeholder='21')
                   .form-group
-                    label(for='pagetitle')  О себе
-                    textarea#about.form-control(autocomplete='off', placeholder='Neuroscience')
+                    label(for='pagetitle') 6. О себе
+                    textarea#about.form-control(autocomplete="off",placeholder='What do you do for living ? What are you interested in? Who are you looking for?')
                   .btn-group 
                     button(type='button' class='btn btn-default active' id='female') Female
                     button(type='button' class='btn btn-default' id='male') Male
