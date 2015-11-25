@@ -380,19 +380,19 @@ html(lang='en')
           #head.row.hidden-xs
             .col-xs-12
               #profile.row
-                .col-xs-3
+                .col-xs-3(onclick="location='/';")
                   a(href='/')
                     span(class='glyphicon glyphicon-search' style='margin-right:5px;') 
                     | Поиск
                 .col-xs-3.active
-                  a(href='/profile')
+                  a(href='/#')
                     span(class='glyphicon glyphicon-user' style='margin-right:5px;') 
                     | Профиль
-                .col-xs-3
+                .col-xs-3(onclick="location='/messages';")
                   a#messages(href='/messages') 
                     span(class='glyphicon glyphicon-envelope' style='margin-right:5px;') 
                     | Почта
-                .col-xs-3
+                .col-xs-3(onclick="location='/logout';")
                   a(href='/logout') 
                     span(class='glyphicon glyphicon-log-out' style='margin-right:5px;') 
                     | Выйти  
@@ -422,7 +422,7 @@ html(lang='en')
     footer.visible-xs(style='height:60px;width:100%;position:fixed;bottom:0px;background-color:#232323;')
       .col-xs-12.navbar-inverse.navbar-fixed-bottom
       .row#bottomNav
-        .col-xs-3.text-center
+        .col-xs-3.text-center(onclick="location='/';")
           a(href="/") 
             i(class="glyphicon glyphicon-search")
               //  
@@ -434,13 +434,13 @@ html(lang='en')
               //  
                 br 
                 | Профиль
-        .col-xs-3.text-center
+        .col-xs-3.text-center(onclick="location='/messages';")
           a(href="/messages") 
             i(id='envelope' class="glyphicon glyphicon-envelope")
               //  
                 br 
                 | Почта
-        .col-xs-3.text-center
+        .col-xs-3.text-center(onclick="location='/logout';")
           a(href="/logout") 
             i(class="glyphicon glyphicon-log-out")
               //  
