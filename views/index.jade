@@ -822,31 +822,32 @@ html(lang='en')
             case(!$('#uname').val()):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваше имя </p> ');
             $('#uname').tooltip();
-            break
+            break;
             case(!$('#pas').val() ):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите пароль </p> ');
             $('#pas').tooltip();
-            break
+            break;
             case(!$('#email').val() ):
+            console.log('email');
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Введите email (будет выслано подтверждение) </p> ');
             $('#email').tooltip();
-            break
+            break;
             case(!validateEmail($('#email').val()) ):
             //$('#regerrtext').empty().append('<p><strong>Email</strong> <br> Некорректный email </p> ');
             $('#email').tooltip({"title":"Некорректный email"});
-            break
+            break;
             case(!reg_location ):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
             $('#regautocomplete').tooltip();
-            break
+            break;
             case(!reg_location_name ):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
             $('#regautocomplete').tooltip();
-            break
+            break;
             case(!$('#age').val()):
             //$('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваш возраст </p> ');
             $('#age').tooltip();
-            break
+            break;
           }
           //$('.regerr').slideToggle();
           }
