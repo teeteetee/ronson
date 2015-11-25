@@ -423,12 +423,12 @@ html(lang='en')
               .col-xs-12
                 form
                   .form-group#uname_group
-                    label(for='pagetitle') 2. Имя
+                    label(for='pagetitle') 1. Имя
                     input#uname.form-control(type='text' placeholder='Alex')
                     span(class="err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#email_group
-                    label(for='email') 1. email 
+                    label(for='email') 2. email 
                     input#email.form-control(type='email' placeholder='intplove@gmail.com' ) 
                     span(class="err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
@@ -833,25 +833,39 @@ html(lang='en')
             console.log('making a hint');
             $('.form-group').removeClass('has-feedback has-error');
             if(!$('#uname').val())
-            {$('#uname-group').addClass('has-feedback has-error');}
+            {$('#uname_group').addClass('has-feedback has-error');
+             $('#uname_group .success-indicator').css('display','none');
+            }
             
             if(!$('#pas').val() )
-            {$('#pas_group').addClass('has-feedback has-error');}
+            {$('#pas_group').addClass('has-feedback has-error');
+             $('#pas_group .success-indicator').css('display','none');
+            }
             
             if(!$('#email').val() )
-            {$('#email_group').addClass('has-feedback has-error')}
+            {$('#email_group').addClass('has-feedback has-error');
+             $('#email_group .success-indicator').css('display','none');
+             }
             
             if(!validateEmail($('#email').val()) )
-            { $('#email_group').addClass('has-feedback has-error')}
+            { $('#email_group').addClass('has-feedback has-error');
+              $('#email_group .success-indicator').css('display','none');
+             }
             
             if(!reg_location )
-            {$('#regautocomplete_group').addClass('has-feedback has-error')}
+            {$('#regautocomplete_group').addClass('has-feedback has-error');
+             $('#regautocomplete_group .success-indicator').css('display','none');
+            }
             
             if(!reg_location_name )
-            {$('#regautocomplete_group').addClass('has-feedback has-error')}
+            {$('#regautocomplete_group').addClass('has-feedback has-error');
+             $('#regautocomplete_group .success-indicator').css('display','none');
+            }
             
             if(!$('#age').val())
-            {$('#age_group').addClass('has-feedback has-error')}
+            {$('#age_group').addClass('has-feedback has-error');
+             $('#age_group .success-indicator').css('display','none');
+             }
             
           //$('.regerr').slideToggle();
           }
