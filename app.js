@@ -386,14 +386,14 @@ var rand = function() {
                      if(error){
                          console.log(error);
                          console.log('reporting');
-                         req.session={confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0};
+                         req.session={confirmed:0,name:req.body.uname,age:parseInt(req.body.uage),gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0};
                          ms.trouble =0;
                          ms.mtext='success';
                          res.send(ms);
                      }else{
                          console.log("Message sent");
                          console.log('reporting');
-                         req.session={confirmed:0,name:req.body.uname,age:req.body.uage,gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0};
+                         req.session={confirmed:0,name:req.body.uname,age:parseInt(req.body.uage),gender:req.body.ugen,city:req.body.ucity,about:req.body.uabout,email:req.body.uemail,phr:vp,regdate:Date.now(),token:vtoken,lang:'ru',userpic:0};
                          ms.trouble =0;
                          ms.mtext='success';
                          res.send(ms);
@@ -647,7 +647,7 @@ app.get('/fix_add',function(req,res){
 
 app.post('/fix_add',function(req,res){
   console.log(req.body.city);
-  users.insert({dummy:1,confirmed:1,name:req.body.uname,age:req.body.age,gender:req.body.gender,city:req.body.city,city_name:req.body.city_name,about:req.body.about,email:"larypage@google.com",phr:"klenrlerno397dgb20847g23f234f",regdate:Date.now(),token:"24iu2h3i4uf2pi4uf32f4",lang:'ru',userpic:0});
+  users.insert({dummy:1,confirmed:1,name:req.body.uname,age:parseInt(req.body.age),gender:req.body.gender,city:req.body.city,city_name:req.body.city_name,about:req.body.about,email:"larypage@google.com",phr:"klenrlerno397dgb20847g23f234f",regdate:Date.now(),token:"24iu2h3i4uf2pi4uf32f4",lang:'ru',userpic:0});
   res.send('ok');
 });
 
