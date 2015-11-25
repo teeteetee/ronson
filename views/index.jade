@@ -422,23 +422,23 @@ html(lang='en')
               .col-xs-12
                 form
                   .form-group
-                    label(for='email') 1. email
-                    input#email.form-control(type='email', placeholder='intplove@gmail.com')
-                  .form-group
                     label(for='pagetitle') 2. Имя
-                    input#uname.form-control(type='text', placeholder='Alex')
+                    input#uname.form-control(type='text' placeholder='Alex' data-toggle="tooltip" title="Укажите ваше имя")
+                  .form-group
+                    label(for='email') 1. email 
+                    input#email.form-control(type='email' placeholder='intplove@gmail.com' data-toggle="tooltip" title="Укажите ваш email")
                   .form-group
                     label(for='pagetitle') 3. Пароль
-                    input#pas.form-control(type='password')
+                    input#pas.form-control(type='password' data-toggle="tooltip" title="Укажите ваш пароль")
                   .form-group
                     label(for='pagetitle') 4. Город
-                    input#regautocomplete.form-control(type='text', placeholder='Moscow')
+                    input#regautocomplete.form-control(type='text' placeholder='Moscow' data-toggle="tooltip" title="Укажите город")
                   .form-group
                     label(for='pagetitle') 5. Возраст
-                    input#age.form-control(type='text', placeholder='21')
+                    input#age.form-control(type='text' placeholder='21' data-toggle="tooltip" title="Укажите ваш возраст")
                   .form-group
                     label(for='pagetitle') 6. О себе
-                    textarea#about.form-control(autocomplete="off",placeholder='What do you do for living ? What are you interested in? Who are you looking for?')
+                    textarea#about.form-control(autocomplete="off" placeholder='What do you do for living ? What are you interested in? Who are you looking for?')
                   .btn-group 
                     button(type='button' class='btn btn-default active' id='female') Female
                     button(type='button' class='btn btn-default' id='male') Male
@@ -608,6 +608,9 @@ html(lang='en')
     script(src='js/bootstrap.min.js')
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8lRm1SQ5qlhTnvAAwX5Y8mO-P9qq8HfQ&signed_in=true&libraries=places&callback=initialize" async defer)
     script.
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
       var user_location=0;
       $(document).keypress(function(e) { 
           if(e.which ==13 && validateEmail($('#mail').val()) && $('#p').val() && $('#login').css('display') === 'block') {
@@ -817,24 +820,31 @@ html(lang='en')
           switch(false) {
             case($('#uname').val()):
             $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваше имя </p> ');
+            $('#uname').tootip();
             break
             case($('#pas').val() ):
             $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите пароль </p> ');
+            $('#pas').tootip();
             break
             case($('#email').val() ):
             $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Введите email (будет выслано подтверждение) </p> ');
+            $('#email').tootip();
             break
             case(validateEmail($('#email').val()) ):
             $('#regerrtext').empty().append('<p><strong>Email</strong> <br> Некорректный email </p> ');
+            $('#email').tootip({"title":"Некорректный email"});
             break
             case(reg_location ):
             $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
+            $('#regautocomplete').tootip();
             break
             case(reg_location_name ):
             $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите город </p> ');
+            $('#regautocomplete').tootip();
             break
             case($('#age').val()):
             $('#regerrtext').empty().append('<p><strong>Заполните все поля</strong> <br> Укажите ваш возраст </p> ');
+            $('#age').tootip();
             break
           }
           $('.regerr').slideToggle();
