@@ -880,15 +880,15 @@ html(lang='en')
           types: ['(cities)'],
           componentRestrictions: {}
          };
-         var input1 = document.getElementById('user_location');
-         var autocomplete = new google.maps.places.Autocomplete(input1, options);
-         google.maps.event.addListener(autocomplete, 'place_changed', function(){
-           //# $('.your-input').val() to get the value from your input
-           var place = autocomplete.getPlace();
-           console.log(place);
-           user_location = place.place_id ? place.place_id : 0;
-           run_search();
-         });
+         //var input1 = document.getElementById('user_location');
+         //var autocomplete = new google.maps.places.Autocomplete(input1, options);
+         //google.maps.event.addListener(autocomplete, 'place_changed', function(){
+         //  //# $('.your-input').val() to get the value from your input
+         //  var place = autocomplete.getPlace();
+         //  console.log(place);
+         //  user_location = place.place_id ? place.place_id : 0;
+         //  run_search();
+         //});
          var input2 = document.getElementById('regautocomplete');
          var regautocomplete = new google.maps.places.Autocomplete(input2 , options);
         google.maps.event.addListener(regautocomplete, 'place_changed', function() {
