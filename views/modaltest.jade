@@ -59,6 +59,20 @@ html(lang='en')
         color:#0080D6;
         font-weight:200;
       }
+      .btn-blue {
+        background-color:transparent;
+        border-color:#09f;
+        color:#09f;
+        font-weight:200;
+        text-transform:uppercase;
+        letter-spacing:2px;
+      }
+      .btn-blue:hover, .btn-blue:active, .btn-blue:focus {
+        background-color:#09f;
+        border-color:#09f;
+        color:#white;
+        font-weight:200;
+      }
       .modal-body  {
         padding:0px;
       }
@@ -68,6 +82,7 @@ html(lang='en')
         height:50px;
         font-weight:500;
         box-shadow:none;
+        border-radius:0px;
       }
       .modal-body .form-control:last-child {
         border:none;
@@ -124,9 +139,9 @@ html(lang='en')
                     textarea#about.form-control(autocomplete="off" placeholder='What do you do for living ? What are you interested in? Who are you looking for?')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  .btn-group 
-                    button(type='button' class='btn btn-default active' id='female') Female
-                    button(type='button' class='btn btn-default' id='male') Male
+                  .btn-group(style='margin-top:10xp;margin-bottom:10px;')
+                    button(type='button' class='btn btn-blue active' id='female') Female
+                    button(type='button' class='btn btn-blue' id='male') Male
           .modal-footer(style='text-align:center;')
             button.btn.btn-success#regbutton  Регистрация
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
