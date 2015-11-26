@@ -67,7 +67,7 @@ html(lang='en')
         text-transform:uppercase;
         letter-spacing:2px;
       }
-      .btn-blue:hover, .btn-blue:active, .btn-blue:focus {
+      .btn-blue:hover, .btn-blue:active, .btn-blue:focus, .btn-blue.active, .btn-blue.active:active, .btn-blue.active:focus, .btn-blue.active:hover {
         background-color:#09f;
         border-color:#09f;
         color:#white;
@@ -102,7 +102,7 @@ html(lang='en')
     #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog(role='document')
         .modal-content
-          .modal-header
+          .modal-header(style='background-color:#828282;border-top-left-radius:6px;border-top-right-radius:6px;')
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true')  ×
             h4.modal-title(style='color:#ddd;')  Регистрация 
@@ -144,7 +144,7 @@ html(lang='en')
                     textarea#about.form-control(autocomplete="off" placeholder='What do you do for living ? What are you interested in? Who are you looking for?')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  .btn-group(style='margin-top:10xp;margin-bottom:10px;')
+                  .btn-group(style='margin-top:10px;margin-bottom:10px;')
                     button(type='button' class='btn btn-blue active' id='female') Female
                     button(type='button' class='btn btn-blue' id='male') Male
           .modal-footer
