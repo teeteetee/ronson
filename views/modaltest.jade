@@ -59,22 +59,22 @@ html(lang='en')
         color:#0080D6;
         font-weight:200;
       }
-      #login .modal-body  {
+      .modal-body  {
         padding:0px;
       }
-      #login .modal-body .form-control {
+      .modal-body .form-control {
         border:none;
         border-bottom:1px solid #eee;
         height:50px;
         font-weight:500;
       }
-      #login .modal-body .form-control:last-child {
+      .modal-body .form-control:last-child {
         border:none;
       }
-      #login .modal-body .form-group {
+      .modal-body .form-group {
         margin:0px;
       }
-      #login .modal-body label {
+      .modal-body label {
         display:none;
       }
   body
@@ -95,27 +95,27 @@ html(lang='en')
                 form
                   .form-group#uname_group
                     label(for='pagetitle') 1. Имя
-                    input#uname.form-control(type='text' placeholder='Alex')
+                    input#uname.form-control(type='text' placeholder='1. Name')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#email_group
                     label(for='email') 2. email 
-                    input#email.form-control(type='email' placeholder='intplove@gmail.com' ) 
+                    input#email.form-control(type='email' placeholder='2. Email' ) 
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#pas_group
                     label(for='pagetitle') 3. Пароль
-                    input#pas.form-control(type='password' )
+                    input#pas.form-control(type='password' placeholder='3. Password')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#reg_location_group
                     label(for='pagetitle') 4. Город
-                    input#reg_location.form-control(type='text' placeholder='Moscow' )
+                    input#reg_location.form-control(type='text' placeholder='City' )
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#age_group
                     label(for='pagetitle') 5. Возраст
-                    input#age.form-control(type='text' placeholder='21' )
+                    input#age.form-control(type='text' placeholder='Age' )
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#about_group
@@ -139,10 +139,10 @@ html(lang='en')
             form
               .form-group
                 label(for='email')  email
-                input#mail.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
+                input#mail.form-control(type='email', autocomplete='off', placeholder='email')
               .form-group
                 label(for='pagetitle')  Пароль
-                input#p.form-control(type='password', autocomplete='off', placeholder='Neuroscience')
+                input#p.form-control(type='password', autocomplete='off', placeholder='password')
           .modal-footer
             button.btn.btn-primary#loginbutton(type='button')  Войти
     .comtainer
