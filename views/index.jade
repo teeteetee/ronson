@@ -189,16 +189,6 @@ html(lang='en')
       h6 {
       color:#ddd;
       }
-      #head .btn-default,#head .btn-default:hover,#head .btn-default:focus {
-      border-color:teal;
-      background-color:#333;
-      color:teal;
-      }
-      #head .btn-default.active,#head .btn-default.active:active {
-      border-color:teal;
-      background-color:teal;
-      color:#333;
-      }
       .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
       background-color:teal;
       border-color:teal;
@@ -211,9 +201,6 @@ html(lang='en')
       }
       .user .col-xs-9 {
       padding-left:10px;
-      }
-      .modal .form-group {
-      max-width:400px;
       }
       .user .col-xs-3 {
       text-align:center;
@@ -427,7 +414,7 @@ html(lang='en')
       .pac-container {
         z-index: 1060 !important;
       }
-      .btn-blue {
+      .btn-default {
         background-color:transparent;
         border-color:#09f;
         color:#09f;
@@ -435,7 +422,7 @@ html(lang='en')
         text-transform:uppercase;
         letter-spacing:2px;
       }
-      .btn-blue:hover, .btn-blue:active, .btn-blue:focus, .btn-blue.active, .btn-blue.active:active, .btn-blue.active:focus, .btn-blue.active:hover {
+      .btn-default:hover, .btn-default:active, .btn-default:focus, .btn-default.active, .btn-default.active:active, .btn-default.active:focus, .btn-default.active:hover {
         background-color:#09f;
         border-color:#09f;
         color:white;
@@ -522,7 +509,7 @@ html(lang='en')
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#pas_group
                     label(for='pagetitle') 3. Пароль
-                    input#pas.form-control(type='Password' )
+                    input#pas.form-control(type='password' placeholder='Password')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#reg_location_group
@@ -540,7 +527,7 @@ html(lang='en')
                     textarea#about.form-control(autocomplete="off" placeholder='What do you do for living ? What are you interested in? Who are you looking for?')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  .btn-group 
+                  .btn-group(style='margin-top:10px;margin-bottom:10px;')
                     button(type='button' class='btn btn-default active' id='female') Female
                     button(type='button' class='btn btn-default' id='male') Male
           .modal-footer
