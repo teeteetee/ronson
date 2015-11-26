@@ -93,6 +93,11 @@ html(lang='en')
       .modal-body label {
         display:none;
       }
+      #regbutton {
+        background-color:#09f;
+        border:none;
+        color:white;
+      }
   body
     #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog(role='document')
@@ -107,7 +112,7 @@ html(lang='en')
                 .col-xs-12
                   h4#regerrtext
             .row
-              .col-xs-12
+              .col-xs-12(style='text-align:center;')
                 form
                   .form-group#uname_group
                     label(for='pagetitle') 1. Имя
@@ -142,7 +147,7 @@ html(lang='en')
                   .btn-group(style='margin-top:10xp;margin-bottom:10px;')
                     button(type='button' class='btn btn-blue active' id='female') Female
                     button(type='button' class='btn btn-blue' id='male') Male
-          .modal-footer(style='text-align:center;')
+          .modal-footer
             button.btn.btn-success#regbutton  Регистрация
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog(role='document')
