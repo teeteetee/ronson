@@ -67,6 +67,7 @@ html(lang='en')
         border-bottom:1px solid #eee;
         height:50px;
         font-weight:500;
+        box-shadow:none;
       }
       .modal-body .form-control:last-child {
         border:none;
@@ -95,17 +96,17 @@ html(lang='en')
                 form
                   .form-group#uname_group
                     label(for='pagetitle') 1. Имя
-                    input#uname.form-control(type='text' placeholder='1. Name')
+                    input#uname.form-control(type='text' placeholder=' Name')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#email_group
                     label(for='email') 2. email 
-                    input#email.form-control(type='email' placeholder='2. Email' ) 
+                    input#email.form-control(type='email' placeholder=' Email' ) 
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#pas_group
                     label(for='pagetitle') 3. Пароль
-                    input#pas.form-control(type='password' placeholder='3. Password')
+                    input#pas.form-control(type='password' placeholder=' Password')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#reg_location_group
