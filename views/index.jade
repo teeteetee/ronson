@@ -121,7 +121,16 @@ html(lang='en')
           display: flex;
           align-items: center;
       }
+      .avatar {
+        margin:auto !important;
+        height:90px;
+        width:90px;
+      }
       @media (min-width: 767px){
+      .avatar{
+        margin-left:10px;
+        float:left !important;
+      }
       .row {
       display: -webkit-box;
       display: -webkit-flex;
@@ -727,12 +736,12 @@ html(lang='en')
                   if(!user) {
                   var onlick='openreg()';
                   }
-                  var avatar_insert = "<div class='emptyavatar'></div>";
+                  var avatar_insert = "<div class='emptyavatar'></div><h5 class='visible-xs'>"+element.name+", "+element.age+"</h5><h6 class='visible-xs'><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6>";
                   if(element.userpic) {
-                    avatar_insert = "<img id='avatar' class='img-circle' style='margin:auto !important;height:90px;width:90px;' src='/userpics/"+element._id+".png''></img>";
+                    avatar_insert = "<img id='avatar' class='img-circle avatar' src='/userpics/"+element._id+".png''></img><h5 class='visible-xs'>"+element.name+", "+element.age+"</h5><h6 class='visible-xs'><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6>";
                   }
                   var margin_insert = element.about ? 'margin-xs' : '';
-                  var insert="<div class='row user'><div class='col-sm-3 vcenter'>"+avatar_insert+"</div><div class='col-sm-6'><h5>"+element.name+", "+element.age+"</h5><h6><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6><p style='text-align:left;' class='"+margin_insert+"'>"+element.about+"</p></div><div class='col-sm-3' style='text-align:center;'><a class='btn btn-sm btn-send' onclick='"+onlick+"' style='max-width:85px;'>Написать</a></div></div>";
+                  var insert="<div class='row user'><div class='col-sm-3 vcenter'>"+avatar_insert+"</div><div class='col-sm-6'><h5 class='hidden-xs'>"+element.name+", "+element.age+"</h5><h6 class='hidden-xs'><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6><p style='text-align:left;' class='"+margin_insert+"'>"+element.about+"</p></div><div class='col-sm-3' style='text-align:center;'><a class='btn btn-sm btn-send' onclick='"+onlick+"' style='max-width:85px;'>Написать</a></div></div>";
                   if(user && user.email && element.email === user.email){
                     insert='';
                   }
