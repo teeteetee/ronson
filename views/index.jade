@@ -135,6 +135,10 @@ html(lang='en')
       }
       }
       @media (max-width: 767px) {
+      .small_view {
+        margin-top:0px;
+        margin-left:20px;
+      }
       h6.visible-xs,h5.visible-xs,a.visible-xs {
         display:inline-block !important;
       }
@@ -741,9 +745,9 @@ html(lang='en')
                   if(!user) {
                   var onlick='openreg()';
                   }
-                  var avatar_insert = "<div class='emptyavatar'></div><h5 class='visible-xs'>"+element.name+", "+element.age+"</h5><h6 class='visible-xs'><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6><a class='btn btn-sm btn-send visible-xs' onclick='"+onlick+"' style='max-width:85px;'>Написать</a>";
+                  var avatar_insert = "<div class='emptyavatar'></div><h5 class='visible-xs small_view'>"+element.name+", "+element.age+"</h5><br><h6 class='visible-xs small_view'><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6><br><a class='btn btn-sm btn-send visible-xs small_view' onclick='"+onlick+"' style='max-width:85px;'>Написать</a>";
                   if(element.userpic) {
-                    avatar_insert = "<img id='avatar' class='img-circle avatar' src='/userpics/"+element._id+".png''></img><h5 class='visible-xs'>"+element.name+", "+element.age+"</h5><h6 class='visible-xs'><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6><a class='btn btn-sm btn-send visible-xs' onclick='"+onlick+"' style='max-width:85px;'>Написать</a>";
+                    avatar_insert = "<img id='avatar' class='img-circle avatar' src='/userpics/"+element._id+".png''></img><h5 class='visible-xs small_view'>"+element.name+", "+element.age+"</h5><br><h6 class='visible-xs small_view'><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6><br><a class='btn btn-sm btn-send visible-xs small_view' onclick='"+onlick+"' style='max-width:85px;'>Написать</a>";
                   }
                   var margin_insert = element.about ? 'margin-xs' : '';
                   var insert="<div class='row user'><div class='col-sm-3 vcenter'>"+avatar_insert+"</div><div class='col-sm-6'><h5 class='hidden-xs'>"+element.name+", "+element.age+"</h5><h6 class='hidden-xs'><span class='glyphicon glyphicon-map-marker'></span>"+element.city_name+"</h6><p style='text-align:left;' class='"+margin_insert+"'>"+element.about+"</p></div><div class='col-sm-3' style='text-align:center;'><a class='btn btn-sm btn-send hidden-xs' onclick='"+onlick+"' style='max-width:85px;'>Написать</a></div></div>";
