@@ -427,6 +427,45 @@ html(lang='en')
       .pac-container {
         z-index: 1060 !important;
       }
+      .btn-blue {
+        background-color:transparent;
+        border-color:#09f;
+        color:#09f;
+        font-weight:200;
+        text-transform:uppercase;
+        letter-spacing:2px;
+      }
+      .btn-blue:hover, .btn-blue:active, .btn-blue:focus, .btn-blue.active, .btn-blue.active:active, .btn-blue.active:focus, .btn-blue.active:hover {
+        background-color:#09f;
+        border-color:#09f;
+        color:white;
+        font-weight:200;
+      }
+      .modal-body  {
+        padding:0px;
+      }
+      .modal-body .form-control {
+        border:none;
+        border-bottom:1px solid #eee;
+        height:50px;
+        font-weight:500;
+        box-shadow:none;
+        border-radius:0px;
+      }
+      .modal-body .form-control:last-child {
+        border:none;
+      }
+      .modal-body .form-group {
+        margin:0px;
+      }
+      .modal-body label {
+        display:none;
+      }
+      .modalbutton {
+        background-color:#09f;
+        border:none;
+        color:white;
+      }
   body
     //
       <div class='language'>
@@ -459,7 +498,7 @@ html(lang='en')
     #register.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog(role='document')
         .modal-content
-          .modal-header
+          .modal-header(style='background-color:#828282;border-top-left-radius:6px;border-top-right-radius:6px;')
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true')  ×
             h4.modal-title(style='color:#ddd;')  Регистрация 
@@ -469,31 +508,31 @@ html(lang='en')
                 .col-xs-12
                   h4#regerrtext
             .row
-              .col-xs-12
+              .col-xs-12(style='text-align:center;')
                 form
                   .form-group#uname_group
                     label(for='pagetitle') 1. Имя
-                    input#uname.form-control(type='text' placeholder='Alex')
+                    input#uname.form-control(type='text' placeholder='Name')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#email_group
                     label(for='email') 2. email 
-                    input#email.form-control(type='email' placeholder='intplove@gmail.com' ) 
+                    input#email.form-control(type='email' placeholder='Email' ) 
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#pas_group
                     label(for='pagetitle') 3. Пароль
-                    input#pas.form-control(type='password' )
+                    input#pas.form-control(type='Password' )
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#reg_location_group
                     label(for='pagetitle') 4. Город
-                    input#reg_location.form-control(type='text' placeholder='Moscow' )
+                    input#reg_location.form-control(type='text' placeholder='City' )
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#age_group
                     label(for='pagetitle') 5. Возраст
-                    input#age.form-control(type='text' placeholder='21' )
+                    input#age.form-control(type='text' placeholder='Age' )
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
                   .form-group#about_group
@@ -504,16 +543,16 @@ html(lang='en')
                   .btn-group 
                     button(type='button' class='btn btn-default active' id='female') Female
                     button(type='button' class='btn btn-default' id='male') Male
-          .modal-footer(style='text-align:center;')
-            button.btn.btn-success#regbutton  Регистрация
+          .modal-footer
+            button.btn.btn-success.modalbutton#regbutton  Регистрация
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog(role='document')
         .modal-content
-          .modal-header
+          .modal-header(style='background-color:#828282;border-top-left-radius:6px;border-top-right-radius:6px;')
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true')  ×
             h4.modal-title(style='color:#ddd;')  Регистрация 
-          .modal-body
+          .modal-body(style='text-align:center;')
             form
               .form-group
                 label(for='email')  email
@@ -522,7 +561,7 @@ html(lang='en')
                 label(for='pagetitle')  Пароль
                 input#p.form-control(type='password', autocomplete='off', placeholder='Neuroscience')
           .modal-footer
-            button.btn.btn-primary#loginbutton(type='button')  Войти
+            button.btn.btn-primary.modalbutton#loginbutton(type='button')  Войти
     .container(id='wait' style='background-color:rgba(0, 0, 0, 0.63);position:fixed;width:100%;height:100%;z-index:9999;display:none;')
         .row(id='spin') 
           .col-xs-12(style='text-align:center;')
