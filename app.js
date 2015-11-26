@@ -789,7 +789,9 @@ function make_userpic(res,_mail,x1,y1,x2,y2,fullimgname,output_path,output_path_
                });
 }
 
-
+app.get('/modaltest',function (req,res){
+  res.render('modaltest');
+}),
 //------------
 
 app.get('/logout',function (req,res){
