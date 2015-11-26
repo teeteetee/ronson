@@ -522,15 +522,16 @@ html(lang='en')
         .col-xs-12
           h4 Прислать для подтверждения email еще раз
           button#resendconf.btn.btn-warning(type='button') Прислать
-      .row#regrow(style='padding-top:30px;padding-bottom:30px;text-align:center;')
-        .col-xs-12
-          .btn-group
-            button#showregbutton(type='button' class='btn btn-danger') Регистрация
-            button#showloginbutton(type='button' class='btn btn-danger') Вход
       #mainholder.row
         #main.col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-6.col-lg-offset-3
           #head.row
             .col-xs-12
+              .row#regrow(style='padding-top:10px;padding-bottom:10px;text-align:center;')
+                .col-xs-12
+                  h5
+                    a#showregbutton Регистрация
+                    | &#124;
+                    a#showloginbutton  Вход
               #profile.row.hidden-xs
                 //
                   .col-xs-12
