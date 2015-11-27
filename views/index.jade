@@ -1160,6 +1160,7 @@ html(lang='en')
             }).done(function( msg ) {
                 if(msg.init&&parseInt(msg.init_num) <11) {
                     $('.pagination').css('display','none');
+                    populate(msg);
                    }
                    else
                    {
@@ -1172,6 +1173,7 @@ html(lang='en')
                              console.log('requesting page of users');
                              pgnt(num);
                         });
+                        populate(msg);
                     }
                });
           }
