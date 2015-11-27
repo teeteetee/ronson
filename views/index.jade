@@ -453,10 +453,13 @@ html(lang='en')
         border:none;
         color:white;
       }
-      #pagination{
+      .pagination{
         padding-top:20px;
         padding-bottom:20px;
         text-align:center;
+      }
+      .pagination:last-child {
+        padding-bottom:30px;
       }
   body
     //
@@ -624,11 +627,11 @@ html(lang='en')
                 a(style='margin-right:10px;') Регистрация
                 | &#124;
                 a(style='margin-left:10px;')  Вход
-          .row#pagination
+          .row.pagination
             .col-xs-12#page-selection-top
           .row
             .col-xs-12#user_insert
-          .row
+          .row.pagination
             .col-xs-12#page-selection-bottom
               //
                 nav
@@ -1099,7 +1102,7 @@ html(lang='en')
                 if(msg && msg.count){
                    console.log('###########  '+msg.count+'  ############');
                    if(parseInt(msg.count) <11) {
-                    $('#pagination').css('display','none');
+                    $('.pagination').css('display','none');
                    }
                    else
                    {
