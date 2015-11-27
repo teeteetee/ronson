@@ -1101,7 +1101,8 @@ html(lang='en')
                             total: pag_num
                         }).on("page", function(event, /* page number here */ num){
                              //$("#content").html("Insert content"); // some ajax content loading...
-                             alert('more: '+num);
+                             console.log('requesting page of users');
+                             pgtn(num);
                         });
                     }
                 }
@@ -1131,6 +1132,28 @@ html(lang='en')
           $.ajax({
               method: "POST",
               url: "/search",
+              data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&user_location="+user_location
+            }).done(function( msg ) {
+                //populate(msg)
+                populate(msg);
+               });
+          }
+          function pgnt(p_num) {
+          var gender;
+          if($('#male_search').hasClass('active')){
+            gender = 1;
+          }
+          else if($('#female_search').hasClass('active')){
+            gender = 2;
+          }
+          else {
+            gender =0;
+          }
+          var agefrom = $('#agefrom').val() ? $('#agefrom').val() :0;
+          var ageto = $('#ageto').val() ? $('#ageto').val() :0;
+          $.ajax({
+              method: "POST",
+              url: "/pgnt/"+p_num,
               data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&user_location="+user_location
             }).done(function( msg ) {
                 //populate(msg)

@@ -259,7 +259,7 @@ app.post('/usercount',function (req,res){
 });
 
 app.post('/getusers',function (req,res){
-  users.find({},{limit:20,sort:{regdate:1}}, function (err,done) { 
+  users.find({},{limit:10,sort:{regdate:1}}, function (err,done) { 
         if(err) {
          res.send(0);
         }
@@ -271,9 +271,10 @@ app.post('/getusers',function (req,res){
       });
 });
 
-app.post('/getusers_pgnt',function (req,res){
-
-  users.find({},{limit:20,sort:{regdate:1}}, function (err,done) { 
+app.post('/pgnt/:skip',function (req,res){
+  //getting users through pagination
+  var query ={};
+  users.find(query,{limit:10,skip:req.params.skip,sort:{regdate:1}}, function (err,done) { 
         if(err) {
          res.send(0);
         }
