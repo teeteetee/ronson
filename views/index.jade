@@ -1091,7 +1091,7 @@ html(lang='en')
               data: 0
             }).done(function( msg ) {
                 if(msg && msg.count){
-                   if msg.count <11 {
+                   if(parseInt(msg.count) <11) {
                     $('#pagination').css('display','none');
                    }
                    else
