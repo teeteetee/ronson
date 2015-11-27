@@ -1105,7 +1105,7 @@ html(lang='en')
                    {
                       var pag_num = (parseInt(msg.count)-parseInt(msg.count)%10)/10;
                       if(parseInt(msg.count)%10){pag_num++;}
-                      $('#page-selection').bootpag({
+                      $('#page-selection-top, #page-selection-bottom').bootpag({
                             total: pag_num
                         }).on("page", function(event, /* page number here */ num){
                              //$("#content").html("Insert content"); // some ajax content loading...
