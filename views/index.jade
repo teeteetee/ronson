@@ -625,25 +625,26 @@ html(lang='en')
                 | &#124;
                 a(style='margin-left:10px;')  Вход
           .row#pagination
-            .col-xs-12
-              nav
-                ul.pagination
-                  li
-                    a(href="#" aria-label="Previous")
-                      span(aria-hidden="true") &laquo;
-                  li.active
-                    a(href="#") 1
-                  li
-                    a(href="#") 2
-                  li
-                    a(href="#") 3
-                  li
-                    a(href="#") 4
-                  li
-                    a(href="#") 5
-                  li
-                    a(href="#" aria-label="Next")
-                      span(aria-hidden="true") &raquo;
+            .col-xs-12#page-selection
+              //
+                nav
+                  ul.pagination
+                    li
+                      a(href="#" aria-label="Previous")
+                        span(aria-hidden="true") &laquo;
+                    li.active
+                      a(href="#") 1
+                    li
+                      a(href="#") 2
+                    li
+                      a(href="#") 3
+                    li
+                      a(href="#") 4
+                    li
+                      a(href="#") 5
+                    li
+                      a(href="#" aria-label="Next")
+                        span(aria-hidden="true") &raquo;
     #ru_cont.container(style='display:none;')
     footer.footer.hidden-xs
       .container
@@ -683,6 +684,7 @@ html(lang='en')
     // Include all compiled plugins (below), or include individual files as needed
     //script(src='/js/jquery.min.js')
     script(src='js/bootstrap.min.js')
+    script(type="text/javascript" src="js/jquery.bootpag.min.js")
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8lRm1SQ5qlhTnvAAwX5Y8mO-P9qq8HfQ&signed_in=true&libraries=places&callback=initialize" async defer)
     script.
       var user_location=0;
@@ -1089,7 +1091,12 @@ html(lang='en')
               data: 0
             }).done(function( msg ) {
                 if(msg){
-                  console.log(msg.count);
+                  $('#page-selection').bootpag({
+                        total: parseInt(msg.count)
+                    }).on("page", function(event, /* page number here */ num){
+                         //$("#content").html("Insert content"); // some ajax content loading...
+                         alert('more');
+                    });
                 }
                });
         //search
