@@ -273,17 +273,19 @@ app.post('/getusers',function (req,res){
 
 app.post('/pgnt/:skip',function (req,res){
   //getting users through pagination
-  var query ={};
-  users.find(query,{limit:10,skip:req.params.skip,sort:{regdate:1}}, function (err,done) { 
-        if(err) {
-         res.send(0);
-        }
-        else {
-          var ms = {};
-          ms.userlist = done;
-          res.send(ms);
-        }
-      });
+  if(parseInt(req.params.skip))
+  {var query ={};
+    var skip_num = parseInt(req.params.skip)*10;
+    users.find(query,{limit:10,skip:skip_num,sort:{regdate:1}}, function (err,done) { 
+          if(err) {
+           res.send(0);
+          }
+          else {
+            var ms = {};
+            ms.userlist = done;
+            res.send(ms);
+          }
+        });}
 });
 
 app.get('/verify/:token',function (req,res){
