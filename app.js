@@ -273,7 +273,7 @@ app.post('/getusers',function (req,res){
 
 app.post('/pgnt/:skip',function (req,res){
   //getting users through pagination
-  {var query ={};
+  var query ={};
     var skip_num = parseInt(req.params.skip)>0?(parseInt(req.params.skip)-1)*10:0;
     users.find(query,{limit:10,skip:skip_num,sort:{regdate:1}}, function (err,done) { 
           if(err) {
