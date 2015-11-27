@@ -614,11 +614,13 @@ app.post('/signin',function (req,res){
          
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
-          req.session.email = confirmed.email;
-          req.session.confirmed = confirmed.confirmed;
-          req.session.name = confirmed.name;
+          if(parseInt(confirmed.confirmed))
+          {req.session.email = confirmed.email;
+           req.session.confirmed = confirmed.confirmed;
+           req.session.name = confirmed.name;}
 
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
+          ms.confirmed = confirmed;
           ms.trouble = 0;
           ms.mtext= 'success';
           res.send(ms);

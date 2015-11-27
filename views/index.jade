@@ -995,28 +995,13 @@ html(lang='en')
         if(parsed.trouble === 1)
         {
         console.log('TROUBLE === 1');
-        switch (parsed.mtext){
-        case('db'):
-        $('#pwderr').empty();
-        $('#pwderr').append("<p>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</p>");
-        $('#pwderr').slideToggle();
-        allowauth = 1;
-        break;
-        case('wrong pas'):
-        $('#pwderr').empty();
-        $('#pwderr').append("<p>Wrong password</p>");
-        $('#pwderr').slideToggle();
-        allowauth = 1;
-        break;
-        case('wronguser'):
-        $('#pwderr').empty();
-        $('#pwderr').append("<p>Wrong email</p>");
-        $('#pwderr').slideToggle();
-        allowauth =1;
-        break;
-        }}
+        }
         else {
-        window.location = 'http://intplove.com';
+          if(!parseInt(parsed.confirmed)) {
+           $('#regrow').css('display','none');
+           $('#resendveri').css('display','block');
+          }
+           else {window.location = 'http://intplove.com';}
         }
         }
         };
