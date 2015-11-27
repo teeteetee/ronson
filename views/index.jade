@@ -458,8 +458,12 @@ html(lang='en')
         padding-bottom:20px;
         text-align:center;
       }
-      .pagination:last-child {
-        padding-bottom:30px;
+      .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+       background-color: #DCDCDC;
+       border-color: #DCDCDC;
+      }
+      .pagination>li>a, .pagination>li>span {
+        color: #A7A7A7;
       }
   body
     //
@@ -633,25 +637,6 @@ html(lang='en')
             .col-xs-12#user_insert
           .row.pagination
             .col-xs-12#page-selection-bottom
-              //
-                nav
-                  ul.pagination
-                    li
-                      a(href="#" aria-label="Previous")
-                        span(aria-hidden="true") &laquo;
-                    li.active
-                      a(href="#") 1
-                    li
-                      a(href="#") 2
-                    li
-                      a(href="#") 3
-                    li
-                      a(href="#") 4
-                    li
-                      a(href="#") 5
-                    li
-                      a(href="#" aria-label="Next")
-                        span(aria-hidden="true") &raquo;
     #ru_cont.container(style='display:none;')
     footer.footer.hidden-xs
       .container
@@ -710,21 +695,21 @@ html(lang='en')
         if(!$('#male_search').hasClass('active')){
          $('#gender_search .btn').removeClass('active');
          $('#male_search').addClass('active');
-         run_search();
+         pgnt(0);
         }
         });
       $('#female_search').click(function(){
         if(!$('#female_search').hasClass('active')){
          $('#gender_search .btn').removeClass('active');
          $('#female_search').addClass('active');
-         run_search();
+         pgnt(0);
         }
         });
       $('#all_search').click(function(){
         if(!$('#all_search').hasClass('active')){
          $('#gender_search .btn').removeClass('active');
          $('#all_search').addClass('active');
-         run_search();
+         pgnt(0);
         }
         });
       $('#male').click(function(){
@@ -772,15 +757,18 @@ html(lang='en')
         }
       }
       var user_arr = [];
+      //###################################################//
       console.log('gonna request users');
-      $.ajax({
-             method: "POST",
-             url: "/getusers",
-             data: 0
-           })
-             .done(function( msg ) {
-              populate(msg);
-               });
+      //$.ajax({
+      //       method: "POST",
+      //       url: "/getusers",
+      //       data: 0
+      //     })
+      //       .done(function( msg ) {
+      //        populate(msg);
+      //         });
+      pgtn(0);
+      //###################################################//
       function populate (msg) {
         if(msg.userlist && msg.userlist.length){
               $('.user').remove();
@@ -960,7 +948,7 @@ html(lang='en')
            var place = autocomplete.getPlace();
            console.log(place);
            user_location = place.place_id ? place.place_id : 0;
-           run_search();
+           pgnt(0);
          });
          var input2 = document.getElementById('reg_location');
          var reg_location = new google.maps.places.Autocomplete(input2 , options);
@@ -1083,6 +1071,7 @@ html(lang='en')
         //Most libraries like jQuery/Prototype/Dojo do this
         sndrequest.send('rcvr='+user_arr[index]._id+'&txtbody='+txtbody);
         }
+        //###################################################//
         $.ajax({
               method: "POST",
               url: "/ntfc_m",
@@ -1094,6 +1083,7 @@ html(lang='en')
                  $('#envelope').css('color','#ff9900');
                 }
                });
+        //###################################################//
         $.ajax({
               method: "POST",
               url: "/usercount",
@@ -1118,37 +1108,38 @@ html(lang='en')
                     }
                 }
                });
+        //###################################################//
         //search
         $("#agefrom").change(function() {
         console.log('something is on');
-        run_search();
+        pgnt(0);
         });
         $("#ageto").change(function() {
         console.log('something is on');
-        run_search();
+        pgnt(0);
         });
-        function run_search() {
-          var gender;
-          if($('#male_search').hasClass('active')){
-            gender = 1;
-          }
-          else if($('#female_search').hasClass('active')){
-            gender = 2;
-          }
-          else {
-            gender =0;
-          }
-          var agefrom = $('#agefrom').val() ? $('#agefrom').val() :0;
-          var ageto = $('#ageto').val() ? $('#ageto').val() :0;
-          $.ajax({
-              method: "POST",
-              url: "/search",
-              data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&user_location="+user_location
-            }).done(function( msg ) {
-                //populate(msg)
-                populate(msg);
-               });
-          }
+        //function run_search() {
+        //  var gender;
+        //  if($('#male_search').hasClass('active')){
+        //    gender = 1;
+        //  }
+        //  else if($('#female_search').hasClass('active')){
+        //    gender = 2;
+        //  }
+        //  else {
+        //    gender =0;
+        //  }
+        //  var agefrom = $('#agefrom').val() ? $('#agefrom').val() :0;
+        //  var ageto = $('#ageto').val() ? $('#ageto').val() :0;
+        //  $.ajax({
+        //      method: "POST",
+        //      url: "/search",
+        //      data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&user_location="+user_location
+        //    }).done(function( msg ) {
+        //        //populate(msg)
+        //        populate(msg);
+        //       });
+        //  }
           function pgnt(p_num) {
           var gender;
           if($('#male_search').hasClass('active')){
@@ -1167,8 +1158,21 @@ html(lang='en')
               url: "/pgnt/"+p_num,
               data: "gender="+gender+"&agefrom="+agefrom+"&ageto="+ageto+"&user_location="+user_location
             }).done(function( msg ) {
-                //populate(msg)
-                populate(msg);
+                if(msg.init&&parseInt(msg.init_num) <11) {
+                    $('.pagination').css('display','none');
+                   }
+                   else
+                   {
+                      var pag_num = (parseInt(msg.count)-parseInt(msg.count)%10)/10;
+                      if(parseInt(msg.count)%10){pag_num++;}
+                      $('#page-selection-top, #page-selection-bottom').bootpag({
+                            total: pag_num
+                        }).on("page", function(event, /* page number here */ num){
+                             //$("#content").html("Insert content"); // some ajax content loading...
+                             console.log('requesting page of users');
+                             pgnt(num);
+                        });
+                    }
                });
           }
 
