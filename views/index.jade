@@ -1084,30 +1084,30 @@ html(lang='en')
                 }
                });
         //###################################################//
-        $.ajax({
-              method: "POST",
-              url: "/usercount",
-              data: 0
-            }).done(function( msg ) {
-                if(msg && msg.count){
-                   console.log('###########  '+msg.count+'  ############');
-                   if(parseInt(msg.count) <11) {
-                    $('.pagination').css('display','none');
-                   }
-                   else
-                   {
-                      var pag_num = (parseInt(msg.count)-parseInt(msg.count)%10)/10;
-                      if(parseInt(msg.count)%10){pag_num++;}
-                      $('#page-selection-top, #page-selection-bottom').bootpag({
-                            total: pag_num
-                        }).on("page", function(event, /* page number here */ num){
-                             //$("#content").html("Insert content"); // some ajax content loading...
-                             console.log('requesting page of users');
-                             pgnt(num);
-                        });
-                    }
-                }
-               });
+        //$.ajax({
+        //      method: "POST",
+        //      url: "/usercount",
+        //      data: 0
+        //    }).done(function( msg ) {
+        //        if(msg && msg.count){
+        //           console.log('###########  '+msg.count+'  ############');
+        //           if(parseInt(msg.count) <11) {
+        //            $('.pagination').css('display','none');
+        //           }
+        //           else
+        //           {
+        //              var pag_num = (parseInt(msg.count)-parseInt(msg.count)%10)/10;
+        //              if(parseInt(msg.count)%10){pag_num++;}
+        //              $('#page-selection-top, #page-selection-bottom').bootpag({
+        //                    total: pag_num
+        //                }).on("page", function(event, /* page number here */ num){
+        //                     //$("#content").html("Insert content"); // some ajax content loading...
+        //                     console.log('requesting page of users');
+        //                     pgnt(num);
+        //                });
+        //            }
+        //        }
+        //       });
         //###################################################//
         //search
         $("#agefrom").change(function() {
@@ -1162,10 +1162,10 @@ html(lang='en')
                     $('.pagination').css('display','none');
                     populate(msg);
                    }
-                   else
+                   else if(msg.init&&parseInt(msg.init_num) >10)
                    {
-                      var pag_num = (parseInt(msg.count)-parseInt(msg.count)%10)/10;
-                      if(parseInt(msg.count)%10){pag_num++;}
+                      var pag_num = (parseInt(msg.init_num)-parseInt(msg.init_num)%10)/10;
+                      if(parseInt(msg.init_num)%10){pag_num++;}
                       $('#page-selection-top, #page-selection-bottom').bootpag({
                             total: pag_num
                         }).on("page", function(event, /* page number here */ num){
@@ -1175,6 +1175,9 @@ html(lang='en')
                         });
                         populate(msg);
                     }
+                  else if(!msg.init) {
+                    populate(msg);
+                  }
                });
           }
 
