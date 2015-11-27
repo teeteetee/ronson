@@ -1090,13 +1090,20 @@ html(lang='en')
               url: "/usercount",
               data: 0
             }).done(function( msg ) {
-                if(msg){
-                  $('#page-selection').bootpag({
-                        total: parseInt(msg.count)
-                    }).on("page", function(event, /* page number here */ num){
-                         //$("#content").html("Insert content"); // some ajax content loading...
-                         alert('more');
-                    });
+                if(msg && msg.count){
+                   if msg.count <11 {
+                    $('#pagination').css('display','none');
+                   }
+                   else
+                   {
+                      var pag_num = (parseInt(msg.count)-parseInt(msg.count)%10)/10;
+                      $('#page-selection').bootpag({
+                            total: pag_num
+                        }).on("page", function(event, /* page number here */ num){
+                             //$("#content").html("Insert content"); // some ajax content loading...
+                             alert('more: '+num);
+                        });
+                    }
                 }
                });
         //search
