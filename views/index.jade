@@ -625,7 +625,11 @@ html(lang='en')
                 | &#124;
                 a(style='margin-left:10px;')  Вход
           .row#pagination
-            .col-xs-12#page-selection
+            .col-xs-12#page-selection-top
+          .row
+            .col-xs-12#user_insert
+          .row
+            .col-xs-12#page-selection-bottom
               //
                 nav
                   ul.pagination
@@ -796,13 +800,15 @@ html(lang='en')
                   if(user && user.email && element.email === user.email){
                     insert='';
                   }
-                  $('#main').append(insert);}
+                  //$('#main').append(insert);}
+                  $('#user_insert').append(insert);}
                  });
             }
             else {
               $('.user').remove();
               var insert = "<div class='row user' style='padding-top:50px;padding-bottom:50px;text-align:center;'><div class='col-xs-12'><h3 style='color:#ddd;'>Никого не нашли</h3></div></div>";
-              $('#main').append(insert);
+              //$('#main').append(insert);
+              $('#user_insert').append(insert);
             }
       }
       $('.btn-send').click(function(){
