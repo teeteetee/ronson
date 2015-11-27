@@ -272,19 +272,57 @@ app.post('/getusers',function (req,res){
 });
 
 app.post('/pgnt/:skip',function (req,res){
-  //getting users through pagination
+  var ms = {};
   var query ={};
-    var skip_num = parseInt(req.params.skip)>0?(parseInt(req.params.skip)-1)*10:0;
-    users.find(query,{limit:10,skip:skip_num,sort:{regdate:1}}, function (err,done) { 
+  if(req.body.user_location != '0') {
+    query.city = req.body.user_location;
+  }
+  if(req.body.gender != '0') {
+    query.gender = req.body.gender;
+  }
+  if(req.body.agefrom != '0') {
+    query.age={};
+    query.age['$gt']=parseInt(req.body.agefrom)?parseInt(req.body.agefrom)-1:0;
+  }
+  if(req.body.ageto != '0') {
+    if(!query.age){
+      query.age ={};
+    }
+    query.age['$lt']=parseInt(req.body.ageto)+1;
+  }
+  if(!parseInt(req.params.skip)){
+   ms.init=1;
+   users.count(query,function(err,count){
+    if(err) {
+      console.log('err while count(): '+err);
+    }
+    else {
+      users.find(query,{limit:10,sort:{regdate:1}}, function (err,done) { 
           if(err) {
            res.send(0);
           }
           else {
-            var ms = {};
+            ms.init=1;
+            ms.init_num = count;
             ms.userlist = done;
             res.send(ms);
           }
         });
+    }
+   });
+  }
+  else
+   { var skip_num = parseInt(req.params.skip)>0?(parseInt(req.params.skip)-1)*10:0;
+       users.find(query,{limit:10,skip:skip_num,sort:{regdate:1}}, function (err,done) { 
+             if(err) {
+              res.send(0);
+             }
+             else {
+               ms.init=0;
+               ms.userlist = done;
+               res.send(ms);
+             }
+           });}
 });
 
 app.get('/verify/:token',function (req,res){
