@@ -1097,6 +1097,7 @@ html(lang='en')
                    else
                    {
                       var pag_num = (parseInt(msg.count)-parseInt(msg.count)%10)/10;
+                      if(parseInt(msg.count)%10){pag_num++;}
                       $('#page-selection').bootpag({
                             total: pag_num
                         }).on("page", function(event, /* page number here */ num){
