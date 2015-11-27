@@ -635,7 +635,7 @@ html(lang='en')
           .row#resendveri(style='text-align:center;background-image: linear-gradient(90deg, rgb(255, 0, 105), #00A3BF);padding-top:10px;padding-bottom:20px;')
             .col-xs-12
               h4(style='font-weight:200;color:white;') Пройдите по ссылке в письме, чтобы активировать аккаунт
-              button#resendconf.btn.btn-white(type='button') Письмо не пришло 
+              button#resendconf.btn.btn-white(type='button' style='margin-top:20px;') Письмо не пришло 
           .row.pagination
             .col-xs-12#page-selection-top
           .row
@@ -1042,8 +1042,9 @@ html(lang='en')
                 alert(msg.mtext);
                }
                else {
-                $('#resendveri').slideToggle();
-                alert('check your mailbox');
+                $('#resendveri h4').text('').append('Проверьте свой почтовый ящик. Если возникли проблемы, напишите нам <br><a href="mailto:feedback@intp.com">Поддержка</a>');
+                $('#resendconf').attr('disabled',true).text('Отправили еще одно письмо');
+                console.log('check your mailbox');
                }
                });
           }
