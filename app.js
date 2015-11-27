@@ -245,8 +245,35 @@ app.get('/messages',function (req,res){
   }
 });
 
+app.post('/usercount',function (req,res){
+  users.count({}, function (err,count) { 
+        if(err) {
+         res.send(0);
+        }
+        else {
+          var ms = {};
+          ms.count = count;
+          res.send(ms);
+        }
+      });
+});
+
 app.post('/getusers',function (req,res){
-  users.find({},{limit:20,sort:{regdate:0}}, function (err,done) { 
+  users.find({},{limit:20,sort:{regdate:1}}, function (err,done) { 
+        if(err) {
+         res.send(0);
+        }
+        else {
+          var ms = {};
+          ms.userlist = done;
+          res.send(ms);
+        }
+      });
+});
+
+app.post('/getusers_pgnt',function (req,res){
+
+  users.find({},{limit:20,sort:{regdate:1}}, function (err,done) { 
         if(err) {
          res.send(0);
         }

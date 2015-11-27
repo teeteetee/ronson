@@ -1083,6 +1083,15 @@ html(lang='en')
                  $('#envelope').css('color','#ff9900');
                 }
                });
+        $.ajax({
+              method: "POST",
+              url: "/usercount",
+              data: 0
+            }).done(function( msg ) {
+                if(msg){
+                  alert(msg.usercount);
+                }
+               });
         //search
         $("#agefrom").change(function() {
         console.log('something is on');
