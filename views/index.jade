@@ -453,6 +453,11 @@ html(lang='en')
         border:none;
         color:white;
       }
+      #pagination{
+        padding-top:20px;
+        padding-bottom:20px;
+        text-align:center;
+      }
   body
     //
       <div class='language'>
@@ -578,15 +583,6 @@ html(lang='en')
           #head.row
             .col-xs-12
               #profile.row.hidden-xs
-                //
-                  .col-xs-12
-                    a.active Поиск
-                    | &#124;
-                    a(href='/profile') Профиль
-                    | &#124;
-                    a#messages(href='/messages') Сообщения
-                    | &#124;
-                    a(href='/logout') Выйти
                 .col-xs-3.active
                   a(href='#')
                     span(class='glyphicon glyphicon-search' style='margin-right:5px;') 
@@ -628,38 +624,26 @@ html(lang='en')
                 a(style='margin-right:10px;') Регистрация
                 | &#124;
                 a(style='margin-left:10px;')  Вход
-            //
-              <nav>
-              <ul class="pagination" style='margin-bottom:0px;'>
-              <li>
-              <a href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              </a>
-              </li>
-              <li class='active'><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-              <a href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              </a>
-              </li>
-              </ul>
-              </nav>
-        //
-          .row.user
-            .col-xs-3
-              .emptyavatar
-              a.btn.btn-sm.btn-send.btn-default Написать
-            .col-xs-9
-              h5 Dima, 24
-              h6
-                span.glyphicon.glyphicon-map-marker(style='margin-right:5px;')
-                | Москва
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
+          .row#pagination
+            .col-xs-12
+              nav>
+                ul.pagination
+                  li
+                    a(href="#" aria-label="Previous")
+                      span(aria-hidden="true") &laquo;
+                  li
+                    a(href="#") 1
+                  li
+                    a(href="#") 2
+                  li
+                    a(href="#") 3
+                  li
+                    a(href="#") 4
+                  li
+                    a(href="#") 5
+                  li
+                    a(href="#" aria-label="Next")
+                      span(aria-hidden="true") &raquo;
     #ru_cont.container(style='display:none;')
     footer.footer.hidden-xs
       .container
