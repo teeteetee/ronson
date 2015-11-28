@@ -928,12 +928,14 @@ html(lang='en')
              }
             
             if(!user_location )
-            {$('#reg_location_group').addClass('has-feedback has-error');
+            {console.log(user_location);
+              $('#reg_location_group').addClass('has-feedback has-error');
              $('#reg_location_group .err_indicator').removeClass('hidden');
             }
             
             if(!user_location_name )
-            {$('#reg_location_group').addClass('has-feedback has-error');
+            {console.log(user_location_name);
+              $('#reg_location_group').addClass('has-feedback has-error');
              $('#reg_location_group .err_indicator').removeClass('hidden');
             }
             
