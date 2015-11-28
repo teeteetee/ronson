@@ -961,7 +961,7 @@ html(lang='en')
            //# $('.your-input').val() to get the value from your input
            var place = autocomplete.getPlace();
            console.log(place);
-           first_input_user_location = place.place_id ? place.place_id : 0;
+           first_input_user_location = place.place_id ;
            pgnt(0);
          });
          var input2 = document.getElementById('reg_location');
@@ -970,7 +970,7 @@ html(lang='en')
           //fillInAddress();
           var place = reg_location.getPlace();
           console.log(place.place_id);
-          second_input_user_location = place.place_id ? place.place_id : 0;
+          second_input_user_location = place.place_id ;
           second_input_uuser_location_name = place.address_components[0].long_name;
         });
         }
