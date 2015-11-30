@@ -434,7 +434,9 @@ html(lang='en')
       }
       .modal-body .form-control {
         border:none;
-        border-bottom:1px solid #eee;
+        border-bottom:1px solid #2F2F2F;
+        color:#FF7DA5;
+        background-color:#464646;
         height:50px;
         font-weight:500;
         box-shadow:none;
@@ -508,7 +510,7 @@ html(lang='en')
                 .col-xs-12
                   h4#regerrtext
             .row
-              .col-xs-12(style='text-align:center;')
+              .col-xs-12(style='text-align:center;padding: 0px;margin-left: 15px;background-color: #333;')
                 form
                   .form-group#uname_group
                     label(for='pagetitle') 1. Имя
@@ -543,7 +545,7 @@ html(lang='en')
                   .btn-group(style='margin-top:10px;margin-bottom:10px;')
                     button(type='button' class='btn btn-default active' id='female') Female
                     button(type='button' class='btn btn-default' id='male') Male
-          .modal-footer
+          .modal-footer(style='background-color:#333;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:color:#272727;')
             button.btn.btn-success.modalbutton#regbutton  Регистрация
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog.modal-sm(role='document')
@@ -962,7 +964,6 @@ html(lang='en')
            var place = autocomplete.getPlace();
            console.log(place);
            first_input_user_location = place.place_id ;
-           pgnt(0);
          });
          var input2 = document.getElementById('reg_location');
          var reg_location = new google.maps.places.Autocomplete(input2 , options);
@@ -973,6 +974,7 @@ html(lang='en')
           second_input_user_location = place.place_id ;
           second_input_uuser_location_name = place.address_components[0].long_name;
         });
+        pgnt(0);
         }
          function validateEmail(email) { 
         console.log('checking email');
