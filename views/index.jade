@@ -413,6 +413,8 @@ html(lang='en')
       background-color: transparent;
       border-color: #393939;
       font-weight:400;
+      text-transform:uppercase;
+      letter-spacing:2px;
       }
       .btn-reg:hover, .btn-reg:active, .btn-reg:focus, .btn-reg.active{
       background-color: #393939;
@@ -523,8 +525,8 @@ html(lang='en')
               .row.regerr
                 .col-xs-12
                   h4#regerrtext
-            .row
-              .col-xs-12(style='text-align:center;padding: 0px;margin-left: 15px;margin-right: 15px;background-color:#464646;')
+            .row(style='margin:0px;')
+              .col-xs-12(style='text-align:center;padding: 0px;background-color:#464646;')
                 form
                   .form-group#uname_group
                     label(for='pagetitle') 1. Имя
@@ -922,44 +924,52 @@ html(lang='en')
         request.send("uemail="+$('#email').val()+"&p="+$('#pas').val()+"&ugen="+male+"&uage="+$('#age').val()+"&ucity="+second_input_user_location+"&ucity_name="+second_input_user_location_name+"&uabout="+about+"&uname="+$('#uname').val());
         }
         else {
-            console.log('making a hint');
-            $('.form-group').removeClass('has-feedback has-error');
-            $('.err_indicator').addClass('hidden');
+            //console.log('making a hint');
+            //$('.form-group').removeClass('has-feedback has-error');
+            //$('.err_indicator').addClass('hidden');
+            $('.form-group').css('border-left','none');
             if(!$('#uname').val())
-            {$('#uname_group').addClass('has-feedback has-error');
-             $('#uname_group .err_indicator').removeClass('hidden');
+            {//$('#uname_group').addClass('has-feedback has-error');
+             //$('#uname_group .err_indicator').removeClass('hidden');
+             $('#uname_group').css('border-left','10px solid #C34B4B;');
             }
             
             if(!$('#pas').val() )
-            {$('#pas_group').addClass('has-feedback has-error');
-             $('#pas_group .err_indicator').removeClass('hidden');
+            {//$('#pas_group').addClass('has-feedback has-error');
+             //$('#pas_group .err_indicator').removeClass('hidden');
+             $('#pas_gruop').css('border-left','10px solid #C34B4B;');
             }
             
             if(!$('#email').val() )
-            {$('#email_group').addClass('has-feedback has-error');
-             $('#email_group .err_indicator').removeClass('hidden');
+            {//$('#email_group').addClass('has-feedback has-error');
+             //$('#email_group .err_indicator').removeClass('hidden');
+             $('#email_group').css('border-left','10px solid #C34B4B;');
              }
             
             if(!validateEmail($('#email').val()) )
-            { $('#email_group').addClass('has-feedback has-error');
-              $('#email_group .err_indicator').removeClass('hidden');
+            { //$('#email_group').addClass('has-feedback has-error');
+              //$('#email_group .err_indicator').removeClass('hidden');
+              $('#email_group').css('border-left','10px solid #C34B4B;');
              }
             
             if(!second_input_user_location )
-            {console.log(second_input_user_location);
-              $('#reg_location_group').addClass('has-feedback has-error');
-             $('#reg_location_group .err_indicator').removeClass('hidden');
+            {//console.log(second_input_user_location);
+             // $('#reg_location_group').addClass('has-feedback has-error');
+             //$('#reg_location_group .err_indicator').removeClass('hidden');
+             $('#reg_location_group').css('border-left','10px solid #C34B4B;');
             }
             
             if(!second_input_user_location_name )
-            {console.log(second_input_user_location_name);
-              $('#reg_location_group').addClass('has-feedback has-error');
-             $('#reg_location_group .err_indicator').removeClass('hidden');
+            {//console.log(second_input_user_location_name);
+             // $('#reg_location_group').addClass('has-feedback has-error');
+             //$('#reg_location_group .err_indicator').removeClass('hidden');
+             $('#reg_location_group').css('border-left','10px solid #C34B4B;');
             }
             
             if(!$('#age').val())
-            {$('#age_group').addClass('has-feedback has-error');
-             $('#age_group .err_indicator').removeClass('hidden');
+            {//$('#age_group').addClass('has-feedback has-error');
+             //$('#age_group .err_indicator').removeClass('hidden');
+             $('#age_group').css('border-left','10px solid #C34B4B;');
              }
             
           //$('.regerr').slideToggle();
