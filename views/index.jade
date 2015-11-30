@@ -484,6 +484,9 @@ html(lang='en')
         color: #929292;
         font-weight: 200;
       }
+      .err_border {
+        border-left:10px solid #c34646;
+      }
   body
     //
       <div class='language'>
@@ -927,32 +930,32 @@ html(lang='en')
             //console.log('making a hint');
             //$('.form-group').removeClass('has-feedback has-error');
             //$('.err_indicator').addClass('hidden');
-            $('.form-group').css('border-left','none');
+            $('.form-group').removeClass('err_border');
             if(!$('#uname').val())
             {//$('#uname_group').addClass('has-feedback has-error');
              //$('#uname_group .err_indicator').removeClass('hidden');
-             $('#uname_group').css('border-left','10px solid #C34B4B;');
+             $('#uname_group').addClass('err_border')
              console.log('1');
             }
             
             if(!$('#pas').val() )
             {//$('#pas_group').addClass('has-feedback has-error');
              //$('#pas_group .err_indicator').removeClass('hidden');
-             $('#pas_gruop').css('border-left','10px solid #C34B4B;');
+             $('#pas_gruop').addClass('err_border')
              console.log('2');
             }
             
             if(!$('#email').val() )
             {//$('#email_group').addClass('has-feedback has-error');
              //$('#email_group .err_indicator').removeClass('hidden');
-             $('#email_group').css('border-left','10px solid #C34B4B;');
+             $('#email_group').addClass('err_border')
              console.log('3');
              }
             
             if(!validateEmail($('#email').val()) )
             { //$('#email_group').addClass('has-feedback has-error');
               //$('#email_group .err_indicator').removeClass('hidden');
-              $('#email_group').css('border-left','10px solid #C34B4B;');
+              $('#email_group').addClass('err_border')
               console.log('4');
              }
             
@@ -960,7 +963,7 @@ html(lang='en')
             {//console.log(second_input_user_location);
              // $('#reg_location_group').addClass('has-feedback has-error');
              //$('#reg_location_group .err_indicator').removeClass('hidden');
-             $('#reg_location_group').css('border-left','10px solid #C34B4B;');
+             $('#reg_location_group').addClass('err_border')
              console.log('5');
             }
             
@@ -968,14 +971,14 @@ html(lang='en')
             {//console.log(second_input_user_location_name);
              // $('#reg_location_group').addClass('has-feedback has-error');
              //$('#reg_location_group .err_indicator').removeClass('hidden');
-             $('#reg_location_group').css('border-left','10px solid #C34B4B;');
+             $('#reg_location_group').addClass('err_border')
              console.log('6');
             }
             
             if(!$('#age').val())
             {//$('#age_group').addClass('has-feedback has-error');
              //$('#age_group .err_indicator').removeClass('hidden');
-             $('#age_group').css('border-left','10px solid #C34B4B;');
+             $('#age_group').addClass('err_border')
              console.log('7');
              }
             
