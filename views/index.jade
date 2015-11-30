@@ -407,7 +407,16 @@ html(lang='en')
         background-color:white;
         border-color:white;
         color:#333;
-        font-weight:200;
+        font-weight:400;
+      }
+      .btn-reg {
+      background-color: transparent;
+      border-color: #393939;
+      font-weight:400;
+      }
+      .btn-reg:hover, .btn-reg:active, .btn-reg:focus, .btn-reg.active{
+      background-color: #393939;
+      border-color: #393939;
       }
       .ui-autocomplete {
       z-index: 1060 !important;
@@ -468,6 +477,11 @@ html(lang='en')
       .pagination>li>a, .pagination>li>span {
         color: #A7A7A7;
       }
+      .modal-title {
+        text-align:center;
+        color: #929292;
+        font-weight: 200;
+      }
   body
     //
       <div class='language'>
@@ -503,7 +517,7 @@ html(lang='en')
           .modal-header(style='background-color:#383737;border-top-left-radius:6px;border-top-right-radius:6px;border-bottom: none;')
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true')  ×
-            h4.modal-title(style='color: #929292;font-weight: 200;')  Регистрация 
+            h4.modal-title  Регистрация 
           .modal-body
             //
               .row.regerr
@@ -542,10 +556,10 @@ html(lang='en')
                     textarea#about.form-control(autocomplete="off" placeholder='What do you do for living ? What are you interested in? Who are you looking for?')
                     span(class="hidden err_indicator glyphicon glyphicon-remove form-control-feedback" aria-hidden="true")
                     span(class="hidden success_indicator glyphicon glyphicon-ok form-control-feedback" aria-hidden="true")
-                  .btn-group(style='margin-top:10px;margin-bottom:10px;')
-                    button(type='button' class='btn btn-white active' id='female') Female
-                    button(type='button' class='btn btn-white' id='male') Male
-          .modal-footer(style='background-color:#333;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:none;')
+                  .btn-group(style='margin:20px;')
+                    button(type='button' style='color:#E85757;' class='btn btn-reg active' id='female') Female
+                    button(type='button' style='color:#2AACE2;' class='btn btn-reg' id='male') Male
+          .modal-footer(style='background-color:#333;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:none;padding:20px;')
             button.btn.btn-success.modalbutton#regbutton  Регистрация
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog.modal-sm(role='document')
