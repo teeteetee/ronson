@@ -5,7 +5,7 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-    title INTP Love
+    title Знакомства INTP INTJ
     // Bootstrap
     link(href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext', rel='stylesheet', type='text/css')
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
@@ -729,6 +729,7 @@ html(lang='en')
          $('#gender_search .btn').removeClass('active');
          $('#male_search').addClass('active');
          pgnt(0);
+         console.log('mt');
         }
         });
       $('#female_search').click(function(){
@@ -736,6 +737,7 @@ html(lang='en')
          $('#gender_search .btn').removeClass('active');
          $('#female_search').addClass('active');
          pgnt(0);
+         console.log('fmt');
         }
         });
       $('#all_search').click(function(){
@@ -743,6 +745,7 @@ html(lang='en')
          $('#gender_search .btn').removeClass('active');
          $('#all_search').addClass('active');
          pgnt(0);
+         console.log('at');
         }
         });
       $('#male').click(function(){
@@ -805,6 +808,7 @@ html(lang='en')
       //        populate(msg);
       //         });
       pgnt(0);
+      console.log('unt');
       //###################################################//
       function populate (msg) {
         if(msg.userlist && msg.userlist.length){
@@ -1019,6 +1023,7 @@ html(lang='en')
           second_input_uuser_location_name = place.address_components[0].long_name;
         });
         pgnt(0);
+        console.log('it');
         }
          function validateEmail(email) { 
         console.log('checking email');
@@ -1157,10 +1162,12 @@ html(lang='en')
         $("#agefrom").change(function() {
         console.log('something is on');
         pgnt(0);
+        console.log('aft');
         });
         $("#ageto").change(function() {
         console.log('something is on');
         pgnt(0);
+        console.log('att');
         });
         //function run_search() {
         //  var gender;
@@ -1217,6 +1224,7 @@ html(lang='en')
                              //$("#content").html("Insert content"); // some ajax content loading...
                              console.log('requesting page of users');
                              pgnt(num);
+                             console.log('pagination');
                         });
                         populate(msg);
                     }
