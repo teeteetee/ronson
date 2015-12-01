@@ -1218,14 +1218,13 @@ html(lang='en')
                       var pag_num = (parseInt(msg.init_num)-parseInt(msg.init_num)%10)/10;
                       if(parseInt(msg.init_num)%10){pag_num++;}
                       $('#page-selection-top, #page-selection-bottom').empty;
-                      $('#page-selection-top, #page-selection-bottom').bootpag({
-                            total: pag_num
-                        }).on("page", function(event, /* page number here */ num){
-                             //$("#content").html("Insert content"); // some ajax content loading...
-                             console.log('requesting page of users');
-                             pgnt(num);
-                             console.log('pagination');
-                        });
+                      $('#page-selection-top, #page-selection-bottom').bootpag({total: pag_num});
+                      $('ul.pagination.bootpag li').click(function() {
+                          var num = $(this).attr('data-lp');
+                        //$("#content").html("Insert content"); // some ajax content loading...
+                        console.log('requesting page of users');
+                        pgnt(num);
+                      });
                         populate(msg);
                     }
                   else if(!msg.init) {
