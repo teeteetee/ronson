@@ -1217,7 +1217,7 @@ html(lang='en')
                    {
                       var pag_num = (parseInt(msg.init_num)-parseInt(msg.init_num)%10)/10;
                       if(parseInt(msg.init_num)%10){pag_num++;}
-                      $('#page-selection-top, #page-selection-bottom').empty;
+                      $('#page-selection-top, #page-selection-bottom').empty();
                       $('#page-selection-top, #page-selection-bottom').bootpag({total: pag_num});
                       $('ul.pagination.bootpag li').click(function() {
                           var num = $(this).attr('data-lp');
